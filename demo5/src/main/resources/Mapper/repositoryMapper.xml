@@ -4,7 +4,15 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.example.demo.mapper.repositoryMapper">
-    <insert id="createNewRepo" parameterType="repository">
-        insert into repo value (null, #{content}, #{comment}, #{commit_time}, #{version_id});
+    <insert id="createNewRepo" parameterType="repository"  keyProperty="repoId" useGeneratedKeys="true">
+        insert into repo value (null, #{content}, #{comment}, #{commit_time}, #{versionId});
+    </insert>
+
+    <insert id="createNewStaticRepo" parameterType="repository">
+        insert into static_repo value (#{name}, #{star}, #{fork}, #{AgentId});
+    </insert>
+
+    <insert id="createNewBranch" parameterType="repository">
+        insert into branchtable value (#{AgentId}, #{name}, #{branch}, #{repoId});
     </insert>
 </mapper>

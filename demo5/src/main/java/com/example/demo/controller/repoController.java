@@ -12,8 +12,8 @@ public class repoController {
     @Autowired
     private repositoryService service;
 
-    @RequestMapping("/add")
-    int add(){
-        return service.add(1, "abc", "first", "1000-01-01");
-    }
+//    @RequestMapping("/add")
+//    int add(){
+//        return service.add(1, "abc", "first", "1000-01-01");
+//    }
 }

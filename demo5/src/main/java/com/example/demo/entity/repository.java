@@ -12,13 +12,20 @@ public class repository {
     private String name;
     private int star;
     private int fork;
-    private int version_id;
+    private int AgentId;
+    private int versionId;
+    private String branch;
     private String content;
     private String comment;
     private String commit_time;
 
-    public repository(int version_id, String content, String comment, String commit_time) {
-        this.version_id = version_id;
+    public repository(String name, int star, int fork, int agentId, int versionId, String branch, String content, String comment, String commit_time) {
+        this.name = name;
+        this.star = star;
+        this.fork = fork;
+        AgentId = agentId;
+        this.versionId = versionId;
+        this.branch = branch;
         this.content = content;
         this.comment = comment;
         this.commit_time = commit_time;

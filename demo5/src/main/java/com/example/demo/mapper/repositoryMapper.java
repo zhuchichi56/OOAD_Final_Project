@@ -8,4 +8,7 @@ public interface repositoryMapper {
 
     int createNewRepo(repository repository);
 
+    int createNewStaticRepo(repository repository);
+
+    int createNewBranch(repository repository);
 }
