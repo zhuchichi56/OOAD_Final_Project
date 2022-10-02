@@ -1,16 +1,14 @@
 package com.example.demo.controller;
 
-import com.example.demo.service.repositoryService;
+import com.example.demo.service.RepositoryService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.List;
 
 @RestController
-public class repoController {
+public class RepoController {
     @Autowired
-    private repositoryService service;
+    private RepositoryService service;
 
 //    @RequestMapping("/add")
 //    int add(){
