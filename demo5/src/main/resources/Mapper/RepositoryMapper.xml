@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.demo.mapper.RepositoryMapper">
+    <insert id="createNewRepo" parameterType="Repository"  keyProperty="repoId" useGeneratedKeys="true">
+        insert into repo value (null, #{content}, #{comment}, #{commitTime}, #{versionId});
+    </insert>
+
+    <insert id="createNewStaticRepo" parameterType="Repository">
+        insert into static_repo value (#{name}, #{star}, #{fork}, #{agentId});
+    </insert>
+
+    <insert id="createNewBranch" parameterType="Repository">
+        insert into branchtable value (#{agentId}, #{name}, #{branch}, #{repoId});
+    </insert>
+</mapper>
