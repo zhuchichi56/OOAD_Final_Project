@@ -14,7 +14,7 @@ class Demo5ApplicationTests {
 
     @Test
     void contextLoads() {
-        repositoryService.createNewRepo("first",1,"sadas", "1000-09-01");
+        System.out.println(repositoryService.createNewRepo("first",1,"sadas", "1000-09-01"));
     }
 
 }

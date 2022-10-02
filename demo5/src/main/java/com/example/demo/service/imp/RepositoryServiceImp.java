@@ -3,24 +3,35 @@ package com.example.demo.service.imp;
 import com.example.demo.entity.Repository;
 import com.example.demo.mapper.RepositoryMapper;
 import com.example.demo.service.RepositoryService;
+import com.example.demo.util.TransactionUtil;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.TransactionStatus;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class RepositoryServiceImp implements RepositoryService {
     @Autowired
     RepositoryMapper repositoryMapper;
 
-//    @Override
-//    public int add(int version_id, String content, String comment, String commit_time){
-//        return repositoryMapper.createNewRepo(new repository(version_id,content,comment,commit_time));
-//    }
+    @Autowired
+    private DataSourceTransactionManager dataSourceTransactionManager;
 
     @Override
-    public void createNewRepo(String name, int AgentId, String content, String commit_time) {
+    public int createNewRepo(String name, int AgentId, String content, String commit_time) {
         Repository repo = new Repository(name, 0, 0, AgentId, 1, "main", content, "the main branch", commit_time);
-        repositoryMapper.createNewRepo(repo);
-        repositoryMapper.createNewStaticRepo(repo);
-        repositoryMapper.createNewBranch(repo);
+        TransactionStatus transaction = TransactionUtil.getTransaction(dataSourceTransactionManager);
+        try {
+            repositoryMapper.createNewRepo(repo);
+            repositoryMapper.createNewStaticRepo(repo);
+            repositoryMapper.createNewBranch(repo);
+            dataSourceTransactionManager.commit(transaction);
+        }catch (Exception e){
+            e.printStackTrace();
+            dataSourceTransactionManager.rollback(transaction);
+            return 0;
+        }
+        return 1;
     }
 }
