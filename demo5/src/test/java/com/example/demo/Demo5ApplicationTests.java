@@ -14,7 +14,7 @@ class Demo5ApplicationTests {
 
     @Test
     void contextLoads() {
-        mapper.createNewRepo(new repository(0, 1, "abc", "first", "1000-01-01"));
+        mapper.createNewRepo(new repository(1, "abc", "first", "1000-01-01"));
     }
 
 }

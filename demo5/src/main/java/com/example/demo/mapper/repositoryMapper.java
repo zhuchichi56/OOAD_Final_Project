@@ -6,6 +6,6 @@ import org.apache.ibatis.annotations.Mapper;
 @Mapper
 public interface repositoryMapper {
 
-    void createNewRepo(repository repository);
+    int createNewRepo(repository repository);
 
 }

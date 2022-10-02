@@ -17,8 +17,7 @@ public class repository {
     private String comment;
     private String commit_time;
 
-    public repository(int repoId, int version_id, String content, String comment, String commit_time) {
-        this.repoId = repoId;
+    public repository(int version_id, String content, String comment, String commit_time) {
         this.version_id = version_id;
         this.content = content;
         this.comment = comment;
