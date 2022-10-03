@@ -9,4 +9,7 @@ import org.apache.ibatis.annotations.Param;
 public interface BranchMapper {
 
     int createNewBranch(@Param("static") StaticRepo staticRepo, @Param("branch") Branch branch);
+    Branch selectBranchByRepoNameAndAgentIdAndBranchName(@Param("repoName") String repoName, @Param("agentId") int agentId,
+                                            @Param("branchName") String branchName);
+
 }

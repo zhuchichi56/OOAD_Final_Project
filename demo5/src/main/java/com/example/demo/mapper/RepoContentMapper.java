@@ -10,4 +10,5 @@ import org.apache.ibatis.annotations.Param;
 public interface RepoContentMapper {
 
     int createNewRepo(RepoContent content);
+    RepoContent selectRepoContentByRepoId(@Param("repoId") int repoId);
 }
