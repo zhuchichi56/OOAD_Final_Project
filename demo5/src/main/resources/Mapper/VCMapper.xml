@@ -3,6 +3,11 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.example.demo.mapper.VCMapper">
+
+    <insert id="VCMapper">
+        insert into vc values (#{VC.fatherRepoId}, #{VC.childRepoId})
+    </insert>
+
     <select id="getChildRepoId" resultType="java.lang.Integer">
         select ChildRepoId from vc where FatherRepoId = #{fatherRepoId};
     </select>
