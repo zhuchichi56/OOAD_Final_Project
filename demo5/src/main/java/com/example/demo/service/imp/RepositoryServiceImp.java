@@ -25,11 +25,11 @@ public class RepositoryServiceImp implements RepositoryService {
     @Override
     public int createNewRepo(String name, int agentId, String content, String commit_time) {
         Branch branch = new Branch("main",0,0);
-        RepoContent repoContent = new RepoContent(content, "the main branch", commit_time, "1.0");
-        StaticRepo staticRepo = new StaticRepo(0,name,0,0,agentId);
+        RepoContent repoContent = new RepoContent(0,content, "the main branch", commit_time, "1.0");
+        StaticRepo staticRepo = new StaticRepo(name,0,0,agentId);
         TransactionStatus transaction = TransactionUtil.getTransaction(dataSourceTransactionManager);
         try {
-            repositoryMapper.createNewRepo(staticRepo,repoContent);
+            repositoryMapper.createNewRepo(repoContent);
             repositoryMapper.createNewStaticRepo(staticRepo);
             repositoryMapper.createNewBranch(staticRepo,branch);
             dataSourceTransactionManager.commit(transaction);

@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class RepoContent {
+    private int repoId;
     private String content;
     private String comment;
     private String commitTime;

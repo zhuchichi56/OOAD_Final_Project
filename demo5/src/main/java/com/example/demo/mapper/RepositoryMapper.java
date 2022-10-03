@@ -10,7 +10,7 @@ import org.apache.ibatis.annotations.Param;
 @Mapper
 public interface RepositoryMapper {
 
-    int createNewRepo(@Param("static") StaticRepo staticRepo, @Param("content") RepoContent content);
+    int createNewRepo(RepoContent content);
 
     int createNewStaticRepo(StaticRepo staticRepo);
 

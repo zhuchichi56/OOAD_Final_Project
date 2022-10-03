@@ -9,7 +9,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class StaticRepo {
-    private int repoId;
     private String repoName;
     private int star;
     private int fork;

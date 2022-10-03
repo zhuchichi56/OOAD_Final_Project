@@ -14,7 +14,7 @@ class Demo5ApplicationTests {
 
     @Test
     void contextLoads() {
-        System.out.println(repositoryService.createNewRepo("second",5,"test", "2022-09-01"));
+        System.out.println(repositoryService.createNewRepo("Third",5,"test2", "2022-10-01"));
     }
 
 }
