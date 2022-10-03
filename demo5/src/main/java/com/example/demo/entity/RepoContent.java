@@ -7,8 +7,9 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Repository {
-    private StaticRepo staticRepo;
-    private Branch branch;
-    private RepoContent content;
+public class RepoContent {
+    private String content;
+    private String comment;
+    private String commitTime;
+    private String versionId;
 }
