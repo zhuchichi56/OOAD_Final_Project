@@ -35,6 +35,9 @@ public class RepositoryServiceImp implements RepositoryService {
         TransactionStatus transaction = TransactionUtil.getTransaction(dataSourceTransactionManager);
         try {
             repoContentMapper.createNewRepo(repoContent);
+            int repoId = repoContent.getRepoId();
+            branch.setRootRepoId(repoId);
+            branch.setCurrentRepoId(repoId);
             staticRepoMapper.createNewStaticRepo(staticRepo);
             branchMapper.createNewBranch(staticRepo,branch);
             dataSourceTransactionManager.commit(transaction);
