@@ -8,6 +8,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Branch {
+    private String repoName;
+    private int agentId;
     private String branchName;
     private int currentRepoId;
     private int rootRepoId;

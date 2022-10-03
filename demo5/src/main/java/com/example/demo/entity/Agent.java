@@ -8,6 +8,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Agent {
-    private int AgentId;
-    private String name;
+    private int agentId;
+    private String agentName;
 }

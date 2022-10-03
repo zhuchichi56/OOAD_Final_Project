@@ -5,6 +5,20 @@
 
 <mapper namespace="com.example.demo.mapper.RepoContentMapper">
     <insert id="createNewRepo" parameterType="RepoContent"  keyProperty="repoId" useGeneratedKeys="true">
-        insert into repo value (null, #{content}, #{comment}, #{commitTime}, #{versionId});
+        insert into repocontent value (null, #{content}, #{comment}, #{commitTime}, #{versionId});
     </insert>
+
+    <select id="selectRepoContentByRepoId" resultMap="RepoContentResultMap">
+        select * from repocontent where RepoId = #{repoId};
+    </select>
+
+    <!--RepoContent ResultMap-->
+    <resultMap id="RepoContentResultMap" type="com.example.demo.entity.RepoContent">
+        <id property="repoId" column="RepoId" />
+
+        <result property="content" column="Content" />
+        <result property="comment" column="Comment"/>
+        <result property="commitTime" column="CommitTime" />
+        <result property="versionId" column="VersionId"/>
+    </resultMap>
 </mapper>

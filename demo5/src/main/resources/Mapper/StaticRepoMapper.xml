@@ -5,6 +5,18 @@
 
 <mapper namespace="com.example.demo.mapper.StaticRepoMapper">
     <insert id="createNewStaticRepo" parameterType="StaticRepo">
-        insert into static_repo value (#{repoName}, #{star}, #{fork}, #{agentId});
+        insert into staticrepo value (#{repoName}, #{star}, #{fork}, #{agentId});
     </insert>
+
+    <!--get Static Repo -->
+    <select id="getStaticRepoByRepoNameAgentId" resultMap="StaticRepoResultMap">
+        select * from staticrepo where RepoName = #{repoName} and AgentId = #{agentId};
+    </select>
+    <!--Static Repo ResultMap-->
+    <resultMap id="StaticRepoResultMap" type="com.example.demo.entity.StaticRepo">
+        <id property="repoName" column="RepoName" />
+        <id property="agentId" column="AgentId" />
+        <result property="star" column="Star" />
+        <result property="fork" column="Fork"/>
+    </resultMap>
 </mapper>

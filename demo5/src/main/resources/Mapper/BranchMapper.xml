@@ -7,4 +7,16 @@
     <insert id="createNewBranch" >
         insert into branchtable value (#{static.agentId}, #{static.repoName}, #{branch.branchName}, #{branch.rootRepoId}, #{branch.currentRepoId});
     </insert>
+    
+    <select id="selectBranchByRepoNameAndAgentIdAndBranchName" resultMap="BranchResultMap">
+        select * from branchtable where RepoName = #{repoName} and AgentId = #{agentId} and BranchName = #{branchName};
+    </select>
+
+    <resultMap id="BranchResultMap" type="com.example.demo.entity.Branch">
+        <id property="repoName" column="RepoName" />
+        <id property="agentId" column="AgentId" />
+        <result property="branchName" column="BranchName" />
+        <result property="rootRepoId" column="RootRepoId"/>
+        <result property="currentRepoId" column="CurrentRepoId"/>
+    </resultMap>
 </mapper>
