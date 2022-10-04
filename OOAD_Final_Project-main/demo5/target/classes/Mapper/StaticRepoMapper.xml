@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="com.example.demo.mapper.StaticRepoMapper">
+
+
+    <insert id="createNewStaticRepo" parameterType="StaticRepo">
+        insert into StaticRepo value (#{staticRepo.agentId}, #{staticRepo.repoName},  #{staticRepo.star}, #{staticRepo.fork});
+    </insert>
+
+
+    <!--    <select id="selectRepoContentByRepoId" resultMap="RepoContentResultMap">-->
+    <!--        select * from repocontent where RepoId = #{repoId};-->
+    <!--    </select>-->
+
+    <!--    &lt;!&ndash;RepoContent ResultMap&ndash;&gt;-->
+    <!--    <resultMap id="RepoContentResultMap" type="com.example.demo.entity.RepoContent">-->
+    <!--        <id property="repoId" column="RepoId" />-->
+
+    <!--        <result property="content" column="Content" />-->
+    <!--        <result property="comment" column="Comment"/>-->
+    <!--        <result property="commitTime" column="CommitTime" />-->
+    <!--        <result property="versionId" column="VersionId"/>-->
+    <!--    </resultMap>-->
+
+</mapper>
+

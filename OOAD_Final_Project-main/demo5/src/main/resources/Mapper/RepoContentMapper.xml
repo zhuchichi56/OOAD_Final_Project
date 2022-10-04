@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="com.example.demo.mapper.RepoContentMapper">
+
+
+    <!--    commit 在 main 分支第一步，创建一个新的仓库并且直接返回 childId-->
+    <insert id="createNewRepoContent" parameterType="RepoContent" useGeneratedKeys="true" keyProperty="repoId">
+        insert into RepoContent value (null, #{repoContent.content}, #{repoContent.comment}, #{repoContent.commitTime});
+    </insert>
+
+
+    <!-- 根据RepoId 返回RepoContent -->
+    <select id="selectRepoContent" resultType="RepoContent">
+        select * from RepoContent where RepoId = #{repoId} ;
+    </select>
+
+
+
+
+<!--    <select id="selectRepoContentByRepoId" resultMap="RepoContentResultMap">-->
+<!--        select * from repocontent where RepoId = #{repoId};-->
+<!--    </select>-->
+
+<!--    &lt;!&ndash;RepoContent ResultMap&ndash;&gt;-->
+<!--    <resultMap id="RepoContentResultMap" type="com.example.demo.entity.RepoContent">-->
+<!--        <id property="repoId" column="RepoId" />-->
+
+<!--        <result property="content" column="Content" />-->
+<!--        <result property="comment" column="Comment"/>-->
+<!--        <result property="commitTime" column="CommitTime" />-->
+<!--        <result property="versionId" column="VersionId"/>-->
+<!--    </resultMap>-->
+
+</mapper>
+
