@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 public class Branch {
     private int agentId;
     private String repoName;
-    private String branchName = "main";
+    private String branchName = "Master";
     private int rootRepoId;
     private int currentRepoId;
 

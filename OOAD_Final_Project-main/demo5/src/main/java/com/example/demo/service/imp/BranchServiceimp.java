@@ -21,6 +21,9 @@ public class BranchServiceimp implements BranchService {
     private DataSourceTransactionManager dataSourceTransactionManager;
 
 
+    /**
+     * 创建子分支
+     * **/
     @Override
     public int createNewBranchOnOldBranch(int AgentId, String RepoName, String BranchName, String BaseBranch) {
 

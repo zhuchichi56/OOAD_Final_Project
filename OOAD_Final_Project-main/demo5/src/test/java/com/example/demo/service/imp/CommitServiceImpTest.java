@@ -25,14 +25,14 @@ class CommitServiceImpTest {
 
     @Test
     void commitFilesOnMain(){
-        commitService.commitFilesOnMain(2,"hello7","main","nihaoshfasdfasfasddfasfsa","update main files4","2002-02-11");
+        commitService.commitFiles(2,"hello7","main","nihaoshfasdfasfasddfasfsa","update main files4","2002-02-11");
     }
 
 
-    @Test
-    void commitFilesOnNewBranch(){
-        commitService.commitFilesOnNewBranch(2,"hello7","branch3","main","nihaoshfasdfasdfasdfasfs23a","craete branch and update main files3","2002-02-11");
-    }
+//    @Test
+//    void commitFilesOnNewBranch(){
+//        commitService.commitFilesOnNewBranch(2,"hello7","branch3","main","nihaoshfasdfasdfasdfasfs23a","craete branch and update main files3","2002-02-11");
+//    }
 
     //新创建一个分支操作;
 

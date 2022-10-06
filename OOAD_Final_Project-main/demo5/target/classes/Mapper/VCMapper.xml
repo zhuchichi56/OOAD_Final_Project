@@ -15,11 +15,27 @@
 
 
     <!--  返回father  -->
-    <select id="selectVCbyChild" resultType="VC">
-        select * from VC where ChildRepoId = #{childRepoId} ;
+    <select id="selectVCbyFather" resultMap="VC">
+        select * from VC where FatherRepoId = #{rootRepoId} ;
     </select>
 
+    <resultMap id="VC" type="VC">
+        <result column="FatherRepoId" property="fatherRepoId"></result>
+        <result column="ChildRepoId" property="childRepoId"></result>
+    </resultMap>
 
+    <select id="selectVCbyFather" resultType="VC">
+        select * from VC where ChildRepoId = #{ChildRepoId} ;
+    </select>
+
+    <update id="updateVC">
+        update VC SET FatherRepoId = #{NewFatherId}, ChildRepoId = #{NewChildId}
+                  where FatherRepoId = #{vc.FatherId} and ChildRepoId = #{vc.ChildId};
+    </update>
+
+    <delete id="deleteVC" parameterType="VC">
+        delete from VC where FatherRepoId = #{fatherRepoId} and ChildRepoId = #{childRepoId}
+    </delete>
 
 
 
