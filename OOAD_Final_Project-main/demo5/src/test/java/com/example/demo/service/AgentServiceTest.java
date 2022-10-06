@@ -20,7 +20,7 @@ class AgentServiceTest {
 
     @Test
     void createName() {
-        System.out.println(agentService.CreateName(new Agent("test")));
+        System.out.println(agentService.CreateName(new Agent("tet")));
     }
 }
 

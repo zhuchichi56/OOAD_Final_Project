@@ -24,7 +24,7 @@
         <result column="ChildRepoId" property="childRepoId"></result>
     </resultMap>
 
-    <select id="selectVCbyFather" resultType="VC">
+    <select id="selectVCbyChild" resultType="VC">
         select * from VC where ChildRepoId = #{ChildRepoId} ;
     </select>
 
