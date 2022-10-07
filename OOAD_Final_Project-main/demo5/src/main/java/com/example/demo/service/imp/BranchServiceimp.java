@@ -32,7 +32,9 @@ public class BranchServiceimp implements BranchService {
 
             Branch basebranch = branchMapper.selectBranchAll(AgentId, RepoName, BaseBranch);
             // 创建一个新的分支
-            return branchMapper.createNewBranch(new Branch(AgentId, RepoName, BranchName, basebranch.getRootRepoId(), basebranch.getCurrentRepoId()));
+            int num = branchMapper.createNewBranch(new Branch(AgentId, RepoName, BranchName, basebranch.getRootRepoId(), basebranch.getCurrentRepoId()));
+            dataSourceTransactionManager.commit(transaction);
+            return num;
         }
         catch (Exception e){
             e.printStackTrace();

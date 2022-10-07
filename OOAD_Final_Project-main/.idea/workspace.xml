@@ -4,12 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e808988d-61fd-4fe5-b049-ea8c081eb28d" name="Changes" comment="store">
+    <list default="true" id="e808988d-61fd-4fe5-b049-ea8c081eb28d" name="Changes" comment="修好xml的bug">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo5/src/main/resources/Mapper/VCMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/demo5/src/main/resources/Mapper/VCMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo5/src/main/java/com/example/demo/service/imp/BranchServiceimp.java" beforeDir="false" afterPath="$PROJECT_DIR$/demo5/src/main/java/com/example/demo/service/imp/BranchServiceimp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo5/src/main/java/com/example/demo/service/imp/CommitServiceImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/demo5/src/main/java/com/example/demo/service/imp/CommitServiceImp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo5/src/main/java/com/example/demo/service/imp/VCServiceImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/demo5/src/main/java/com/example/demo/service/imp/VCServiceImp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo5/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/demo5/src/main/resources/application.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/demo5/src/test/java/com/example/demo/service/AgentServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/demo5/src/test/java/com/example/demo/service/AgentServiceTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo5/target/classes/Mapper/VCMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/demo5/target/classes/Mapper/VCMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo5/target/test-classes/com/example/demo/service/AgentServiceTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/demo5/target/test-classes/com/example/demo/service/AgentServiceTest.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -64,7 +65,7 @@
     &quot;spring.configuration.checksum&quot;: &quot;95346415f1f5933a78386d1759d2ef22&quot;
   }
 }</component>
-  <component name="RunManager" selected="JUnit.AgentServiceTest.createName">
+  <component name="RunManager" selected="JUnit.AgentServiceTest.createRepo">
     <configuration name="AgentServiceTest.createName" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="demo5" />
       <extension name="coverage">
@@ -76,6 +77,22 @@
       <option name="PACKAGE_NAME" value="com.example.demo.service" />
       <option name="MAIN_CLASS_NAME" value="com.example.demo.service.AgentServiceTest" />
       <option name="METHOD_NAME" value="createName" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="AgentServiceTest.createRepo" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="demo5" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.example.demo.service.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.example.demo.service" />
+      <option name="MAIN_CLASS_NAME" value="com.example.demo.service.AgentServiceTest" />
+      <option name="METHOD_NAME" value="createRepo" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -106,6 +123,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.AgentServiceTest.createRepo" />
         <item itemvalue="JUnit.AgentServiceTest.createName" />
         <item itemvalue="JUnit.VCServiceImpTest.selectTest" />
       </list>
@@ -125,6 +143,8 @@
       <workItem from="1665033353702" duration="2134000" />
       <workItem from="1665035777039" duration="279000" />
       <workItem from="1665036150692" duration="3973000" />
+      <workItem from="1665041235882" duration="35000" />
+      <workItem from="1665131623560" duration="2221000" />
     </task>
     <task id="LOCAL-00001" summary="store">
       <created>1665036247079</created>
@@ -133,7 +153,14 @@
       <option name="project" value="LOCAL" />
       <updated>1665036247080</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="修好xml的bug">
+      <created>1665041260564</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1665041260564</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -152,6 +179,18 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="store" />
-    <option name="LAST_COMMIT_MESSAGE" value="store" />
+    <MESSAGE value="修好xml的bug" />
+    <option name="LAST_COMMIT_MESSAGE" value="修好xml的bug" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/demo5/src/main/java/com/example/demo/service/imp/CommitServiceImp.java</url>
+          <line>52</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

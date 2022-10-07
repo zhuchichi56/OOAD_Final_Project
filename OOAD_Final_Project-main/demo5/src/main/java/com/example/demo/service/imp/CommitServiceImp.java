@@ -55,6 +55,7 @@ public class CommitServiceImp implements CommitService {
             int rootCurrentId = repoContent.getRepoId();
             branchMapper.createNewBranch(new Branch(AgentId,RepoName,rootCurrentId,rootCurrentId));
             vcMapper.createNewVc(rootCurrentId,rootCurrentId);
+            dataSourceTransactionManager.commit(transaction);
         }catch (Exception e){
             e.printStackTrace();
             dataSourceTransactionManager.rollback(transaction);
@@ -87,6 +88,7 @@ public class CommitServiceImp implements CommitService {
 
             //更新到最新的 childId
             branchMapper.updateBranchCurrentId(AgentId,RepoName,BranchName,childId);
+            dataSourceTransactionManager.commit(transaction);
         }catch (Exception e){
             e.printStackTrace();
             dataSourceTransactionManager.rollback(transaction);
@@ -94,26 +96,6 @@ public class CommitServiceImp implements CommitService {
         }
         return 1;
     }
-
-
-
-//    @Override
-//    public int commitFilesOnNewBranch(int AgentId, String RepoName, String BranchName,String BaseBranch, String Content, String Comment, String Date) {
-//        TransactionStatus transaction = TransactionUtil.getTransaction(dataSourceTransactionManager);
-//        try {
-//            //查找子分支;
-//            Branch basebranch = branchMapper.selectBranchAll(AgentId,RepoName,BranchName);
-////            // 创建一个新的分支
-////            branchMapper.createNewBranch(new Branch(AgentId,RepoName,BranchName, basebranch.getRootRepoId(), basebranch.getCurrentRepoId()));
-//            //再从这个基础上进行提交；
-//            commitFilesOnMain(AgentId,RepoName,BranchName,Content, Comment,Date);
-//        }catch (Exception e){
-//            e.printStackTrace();
-//            dataSourceTransactionManager.rollback(transaction);
-//            return 0;
-//        }
-//        return 1;
-//    }
 
 }
 

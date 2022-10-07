@@ -17,10 +17,17 @@ import static org.junit.jupiter.api.Assertions.*;
 class AgentServiceTest {
     @Autowired
     AgentService agentService;
+    @Autowired
+    CommitService commitService;
 
     @Test
     void createName() {
-        System.out.println(agentService.CreateName(new Agent("tet")));
+        System.out.println(agentService.CreateName(new Agent("test20")));
+    }
+
+    @Test
+    void createRepo(){
+        System.out.println(commitService.initRepository(1,"TestRepository"));
     }
 }
 
