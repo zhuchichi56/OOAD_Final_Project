@@ -11,12 +11,12 @@ import java.util.List;
 @Mapper
 public interface VCMapper {
     //更新VC表
-    int createNewVc(@Param("fatherId") int FatherId,@Param("childId") int ChildId );
-    List<VC> selectVCbyFather(@Param("rootRepoId") int RootId);
+    int createNewVc(@Param("fatherId") int fatherId,@Param("childId") int childId );
+    List<VC> selectVCbyFather(@Param("rootRepoId") int rootId);
 
-    VC selectVCbyChild(int ChildId);
+    VC selectVCbyChild(int childId);
 
-    int updateVC(@Param("vc") VC vc,int NewFatherId,int NewChildId);
+    int updateVC(@Param("vc") VC vc, @Param("newFatherId") int newFatherId, @Param("newChildId")int newChildId);
 
     int deleteVC(VC vc);
 }

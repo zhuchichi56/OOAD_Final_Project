@@ -25,12 +25,12 @@
     </resultMap>
 
     <select id="selectVCbyChild" resultType="VC">
-        select * from VC where ChildRepoId = #{ChildRepoId} ;
+        select * from VC where ChildRepoId = #{childRepoId} ;
     </select>
 
     <update id="updateVC">
-        update VC SET FatherRepoId = #{NewFatherId}, ChildRepoId = #{NewChildId}
-                  where FatherRepoId = #{vc.FatherId} and ChildRepoId = #{vc.ChildId};
+        update VC SET FatherRepoId = #{newFatherId}, ChildRepoId = #{newChildId}
+                  where FatherRepoId = #{vc.fatherRepoId} and ChildRepoId = #{vc.childRepoId};
     </update>
 
     <delete id="deleteVC" parameterType="VC">

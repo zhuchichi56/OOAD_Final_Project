@@ -16,22 +16,22 @@ public interface BranchMapper {
 
 
     //直接搜到
-    int createNewBranchOnOldBranch(String OldBranch);
+    int createNewBranchOnOldBranch(String oldBranch);
 
 
     //得到fatherRepoId;
-    Branch selectBranchAll (@Param("agentId")int AgentId,
-                               @Param("repoName")String RepoName,
-                               @Param("branchName")String BranchName);
+    Branch selectBranchAll (@Param("agentId")int agentId,
+                               @Param("repoName")String repoName,
+                               @Param("branchName")String branchName);
 
 
 
 
     //更新CurrentId 用从RepoID得来的ChildId；
-    int updateBranchCurrentId(@Param("agentId") int AgentId,
-                              @Param("repoName") String RepoName,
-                              @Param("branchName")String BranchName,
-                              @Param("currentRepoId") int CurrentRepoId);
+    int updateBranchCurrentId(@Param("agentId") int agentId,
+                              @Param("repoName") String repoName,
+                              @Param("branchName")String branchName,
+                              @Param("currentRepoId") int currentRepoId);
 
 
 }

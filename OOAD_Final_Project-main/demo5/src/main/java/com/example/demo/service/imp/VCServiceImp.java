@@ -38,11 +38,11 @@ public class VCServiceImp implements VCService {
      * */
 
     @Override
-    public ArrayList<RepoContent> showRepoVCList(int AgentId, String RepoName, String BranchName) {
+    public ArrayList<RepoContent> showRepoVCList(int agentId, String repoName, String branchName) {
         TransactionStatus transaction = TransactionUtil.getTransaction(dataSourceTransactionManager);
         ArrayList<RepoContent> repoContentsList = new ArrayList<>();
         try {
-            Branch branch = branchMapper.selectBranchAll(AgentId,RepoName,BranchName);
+            Branch branch = branchMapper.selectBranchAll(agentId,repoName,branchName);
             int currentRepoId = branch.getCurrentRepoId();
             int rootRepoId = branch.getRootRepoId();
             int tempRepoId = currentRepoId;
@@ -65,21 +65,21 @@ public class VCServiceImp implements VCService {
      * 回滚版本，将vc链的结构改变，将想要回滚的版本放置到叶子节点处，并将最新ID更新为回滚版本
      * **/
     @Override
-    public void rollBack(int OldRepoId, int AgentId, String RepoName, String BranchName) {
+    public void rollBack(int oldRepoId, int agentId, String repoName, String branchName) {
         TransactionStatus transaction = TransactionUtil.getTransaction(dataSourceTransactionManager);
         try {
-            Branch branch = branchMapper.selectBranchAll(AgentId,RepoName,BranchName);
+            Branch branch = branchMapper.selectBranchAll(agentId,repoName,branchName);
             //以回滚版本为孩子节点的VC
-            VC vc1 = vcMapper.selectVCbyChild(OldRepoId);
+            VC vc1 = vcMapper.selectVCbyChild(oldRepoId);
             //以回滚版本为父亲节点的VC
             int currentRepoId = branch.getCurrentRepoId();
             //找到处于该branch的子节点
-            VC vc2 = vcMapper.selectVCbyFather(OldRepoId)
+            VC vc2 = vcMapper.selectVCbyFather(oldRepoId)
                     .stream().filter(o->DFS(o.getChildRepoId(),currentRepoId)==1).findFirst().get();
             vcMapper.updateVC(vc2,vc1.getFatherRepoId(),vc2.getChildRepoId());
             vcMapper.deleteVC(vc1);
-            vcMapper.createNewVc(currentRepoId,OldRepoId);
-            branchMapper.updateBranchCurrentId(AgentId,RepoName,BranchName,OldRepoId);
+            vcMapper.createNewVc(currentRepoId,oldRepoId);
+            branchMapper.updateBranchCurrentId(agentId,repoName,branchName,oldRepoId);
             dataSourceTransactionManager.commit(transaction);
         }  catch (Exception e){
             e.printStackTrace();
@@ -87,13 +87,13 @@ public class VCServiceImp implements VCService {
         }
     }
 
-    private int DFS(int StartId, int EndId){
-        if (StartId == EndId){
+    private int DFS(int startId, int endId){
+        if (startId == endId){
             return 1;
         }
         int ans = 0;
-        for (VC c : vcMapper.selectVCbyFather(StartId)){
-            ans +=DFS(c.getChildRepoId(),EndId);
+        for (VC c : vcMapper.selectVCbyFather(startId)){
+            ans +=DFS(c.getChildRepoId(),endId);
         }
         return ans;
     }

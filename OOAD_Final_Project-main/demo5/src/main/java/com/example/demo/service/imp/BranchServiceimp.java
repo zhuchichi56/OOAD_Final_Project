@@ -25,14 +25,14 @@ public class BranchServiceimp implements BranchService {
      * 创建子分支
      * **/
     @Override
-    public int createNewBranchOnOldBranch(int AgentId, String RepoName, String BranchName, String BaseBranch) {
+    public int createNewBranchOnOldBranch(int agentId, String repoName, String branchName, String baseBranch) {
 
         TransactionStatus transaction = TransactionUtil.getTransaction(dataSourceTransactionManager);
         try {
 
-            Branch basebranch = branchMapper.selectBranchAll(AgentId, RepoName, BaseBranch);
+            Branch basebranch = branchMapper.selectBranchAll(agentId, repoName, baseBranch);
             // 创建一个新的分支
-            int num = branchMapper.createNewBranch(new Branch(AgentId, RepoName, BranchName, basebranch.getRootRepoId(), basebranch.getCurrentRepoId()));
+            int num = branchMapper.createNewBranch(new Branch(agentId, repoName, branchName, basebranch.getRootRepoId(), basebranch.getCurrentRepoId()));
             dataSourceTransactionManager.commit(transaction);
             return num;
         }

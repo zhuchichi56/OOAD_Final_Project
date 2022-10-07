@@ -10,7 +10,7 @@ public interface RepoContentMapper {
 
     int createNewRepoContent(@Param("repoContent") RepoContent repoContent);
 
-    RepoContent selectRepoContent(@Param("repoId") int RepoId);
+    RepoContent selectRepoContent(@Param("repoId") int repoId);
 
 
 

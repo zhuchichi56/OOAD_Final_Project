@@ -16,7 +16,7 @@ public class AgentServiceImp implements AgentService {
 
     //直接返回User的自增主键；
     @Override
-    public int CreateName(Agent agent) {
+    public int createName(Agent agent) {
 
         int count = agentMapper.createAgent(agent);
         return agent.getAgentId();
