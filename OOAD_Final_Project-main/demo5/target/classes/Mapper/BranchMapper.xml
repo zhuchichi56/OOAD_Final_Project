@@ -7,20 +7,20 @@
 
 
     <insert id="createNewBranch" parameterType="Branch">
-        insert into Branch value (#{branch.agentId}, #{branch.repoName},#{branch.branchName},#{branch.rootRepoId},#{branch.currentRepoId});
+        insert into branch value (#{branch.agentId}, #{branch.repoName},#{branch.branchName},#{branch.rootRepoId},#{branch.currentRepoId});
     </insert>
 
 
 
     <!--  返回每个分支最新的节点(Father)  -->
     <select id="selectBranchAll" resultType="Branch">
-       select * from Branch where RepoName = #{repoName} and AgentId = #{agentId} and BranchName = #{branchName};
+       select * from branch where RepoName = #{repoName} and AgentId = #{agentId} and BranchName = #{branchName};
     </select>
 
 
     <!--  用新new出来的最新节点(child) 更新 -->
     <update id="updateBranchCurrentId">
-        update Branch set CurrentRepoId = #{currentRepoId} where RepoName = #{repoName} and AgentId = #{agentId} and BranchName = #{branchName};
+        update branch set CurrentRepoId = #{currentRepoId} where RepoName = #{repoName} and AgentId = #{agentId} and BranchName = #{branchName};
     </update>
 
 

@@ -34,7 +34,7 @@ public class VCServiceImp implements VCService {
     private DataSourceTransactionManager dataSourceTransactionManager;
 
     /**
-     * 查找历史记录时，从叶子节点向上搜索
+     * 查找历史记录时，从叶子节点向上搜索（未测试）
      * */
 
     @Override

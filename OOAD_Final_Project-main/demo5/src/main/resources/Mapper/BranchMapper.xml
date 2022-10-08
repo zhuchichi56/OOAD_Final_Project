@@ -23,22 +23,6 @@
         update branch set CurrentRepoId = #{currentRepoId} where RepoName = #{repoName} and AgentId = #{agentId} and BranchName = #{branchName};
     </update>
 
-
-
-
-
-
-
-<!--    <select id="selectBranchByRepoNameAndAgentIdAndBranchName" resultMap="BranchResultMap">-->
-<!--        select * from branchtable where RepoName = #{repoName} and AgentId = #{agentId} and BranchName = #{branchName};-->
-<!--    </select>-->
-
-
-<!--    <select id="GetCurrentRepoId" resultType="Branch"  >-->
-<!--        select current_RepoId from TABLE ( BranchTable ) where Branch= #{Branch} and RepoName= #{RepoName} and AgentId = #{AgentId}-->
-<!--    </select>-->
-
-
 </mapper>
 
 
