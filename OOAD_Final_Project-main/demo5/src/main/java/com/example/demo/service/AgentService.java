@@ -3,6 +3,6 @@ package com.example.demo.service;
 import com.example.demo.entity.Agent;
 
 public interface AgentService {
-    int createName(Agent agent);
+    int createName();
 }
 

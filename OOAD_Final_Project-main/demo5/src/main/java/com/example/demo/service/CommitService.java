@@ -2,11 +2,11 @@ package com.example.demo.service;
 
 public interface CommitService {
 
-    int initRepository(int agentId,String repoName);
+    int initRepository();
 
 
     //可以实现对文件属性的增删改;
-    int commitFiles(int agentId,String repoName,String branchName,String content, String comment, String date);
+    int commitFiles();
 
     //新branch 操作:
     // creatBranch 再从新的branch上调用commitFilesOnMain 就行了;
