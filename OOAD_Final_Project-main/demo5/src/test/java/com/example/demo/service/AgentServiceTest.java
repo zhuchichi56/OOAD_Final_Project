@@ -14,7 +14,7 @@ class AgentServiceTest {
 
     @Test
     void createName() {
-        System.out.println(agentService.createName(new Agent("tet")));
+        System.out.println(agentService.createName(new Agent("test82")));
     }
 }
 

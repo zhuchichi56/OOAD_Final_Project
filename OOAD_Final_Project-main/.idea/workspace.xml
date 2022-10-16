@@ -4,13 +4,29 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e808988d-61fd-4fe5-b049-ea8c081eb28d" name="Changes" comment="修好xml的bug">
+    <list default="true" id="e808988d-61fd-4fe5-b049-ea8c081eb28d" name="Changes" comment="修好事务管理">
+      <change afterPath="$PROJECT_DIR$/demo5/src/main/java/com/example/demo/mapper/ContributorMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/demo5/src/main/resources/Mapper/ContributorMapper.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo5/src/main/java/com/example/demo/service/imp/BranchServiceimp.java" beforeDir="false" afterPath="$PROJECT_DIR$/demo5/src/main/java/com/example/demo/service/imp/BranchServiceimp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo5/src/main/java/com/example/demo/service/imp/CommitServiceImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/demo5/src/main/java/com/example/demo/service/imp/CommitServiceImp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo5/src/main/java/com/example/demo/service/AgentService.java" beforeDir="false" afterPath="$PROJECT_DIR$/demo5/src/main/java/com/example/demo/service/AgentService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo5/src/main/java/com/example/demo/service/imp/AgentServiceImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/demo5/src/main/java/com/example/demo/service/imp/AgentServiceImp.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/demo5/src/main/java/com/example/demo/service/imp/VCServiceImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/demo5/src/main/java/com/example/demo/service/imp/VCServiceImp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo5/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/demo5/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo5/src/main/resources/Mapper/AgentMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/demo5/src/main/resources/Mapper/AgentMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo5/src/main/resources/Mapper/BranchMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/demo5/src/main/resources/Mapper/BranchMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo5/src/main/resources/Mapper/RepoContentMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/demo5/src/main/resources/Mapper/RepoContentMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo5/src/main/resources/Mapper/StaticRepoMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/demo5/src/main/resources/Mapper/StaticRepoMapper.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/demo5/src/test/java/com/example/demo/service/AgentServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/demo5/src/test/java/com/example/demo/service/AgentServiceTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo5/target/classes/Mapper/BranchMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/demo5/target/classes/Mapper/BranchMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo5/target/classes/Mapper/VCMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/demo5/target/classes/Mapper/VCMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo5/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/demo5/target/classes/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo5/target/classes/com/example/demo/mapper/VCMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/demo5/target/classes/com/example/demo/mapper/VCMapper.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo5/target/classes/com/example/demo/service/AgentService.class" beforeDir="false" afterPath="$PROJECT_DIR$/demo5/target/classes/com/example/demo/service/AgentService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo5/target/classes/com/example/demo/service/imp/AgentServiceImp.class" beforeDir="false" afterPath="$PROJECT_DIR$/demo5/target/classes/com/example/demo/service/imp/AgentServiceImp.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo5/target/classes/com/example/demo/service/imp/BranchServiceimp.class" beforeDir="false" afterPath="$PROJECT_DIR$/demo5/target/classes/com/example/demo/service/imp/BranchServiceimp.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo5/target/classes/com/example/demo/service/imp/CommitServiceImp.class" beforeDir="false" afterPath="$PROJECT_DIR$/demo5/target/classes/com/example/demo/service/imp/CommitServiceImp.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo5/target/classes/com/example/demo/service/imp/VCServiceImp.class" beforeDir="false" afterPath="$PROJECT_DIR$/demo5/target/classes/com/example/demo/service/imp/VCServiceImp.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo5/target/test-classes/com/example/demo/service/AgentServiceTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/demo5/target/test-classes/com/example/demo/service/AgentServiceTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo5/target/test-classes/com/example/demo/service/imp/CommitServiceImpTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/demo5/target/test-classes/com/example/demo/service/imp/CommitServiceImpTest.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -65,7 +81,7 @@
     &quot;spring.configuration.checksum&quot;: &quot;95346415f1f5933a78386d1759d2ef22&quot;
   }
 }</component>
-  <component name="RunManager" selected="JUnit.AgentServiceTest.createRepo">
+  <component name="RunManager" selected="JUnit.AgentServiceTest.createName">
     <configuration name="AgentServiceTest.createName" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="demo5" />
       <extension name="coverage">
@@ -123,8 +139,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.AgentServiceTest.createRepo" />
         <item itemvalue="JUnit.AgentServiceTest.createName" />
+        <item itemvalue="JUnit.AgentServiceTest.createRepo" />
         <item itemvalue="JUnit.VCServiceImpTest.selectTest" />
       </list>
     </recent_temporary>
@@ -144,7 +160,9 @@
       <workItem from="1665035777039" duration="279000" />
       <workItem from="1665036150692" duration="3973000" />
       <workItem from="1665041235882" duration="35000" />
-      <workItem from="1665131623560" duration="2221000" />
+      <workItem from="1665131623560" duration="4148000" />
+      <workItem from="1665148681829" duration="112000" />
+      <workItem from="1665224243826" duration="1540000" />
     </task>
     <task id="LOCAL-00001" summary="store">
       <created>1665036247079</created>
@@ -160,7 +178,14 @@
       <option name="project" value="LOCAL" />
       <updated>1665041260564</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="修好事务管理">
+      <created>1665134017458</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1665134017458</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -180,7 +205,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="store" />
     <MESSAGE value="修好xml的bug" />
-    <option name="LAST_COMMIT_MESSAGE" value="修好xml的bug" />
+    <MESSAGE value="修好事务管理" />
+    <option name="LAST_COMMIT_MESSAGE" value="修好事务管理" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
