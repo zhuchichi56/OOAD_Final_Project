@@ -11,7 +11,9 @@
         insert into StaticRepo value (#{staticRepo.agentId}, #{staticRepo.repoName},  #{staticRepo.star}, #{staticRepo.fork});
     </insert>
 
-
+    <select id="checkRepoInfo" resultType="int">
+        select count(*) from StaticRepo where AgentId = #{agentId} and RepoName = #{repoName};
+    </select>
 
 </mapper>
 

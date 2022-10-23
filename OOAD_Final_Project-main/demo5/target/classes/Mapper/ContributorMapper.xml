@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="com.example.demo.mapper.ContributorMapper">
+
+
+    <insert id="insertNewContributor">
+        insert into contributor value (#{ownerId}, #{repoName},  #{contributorId});
+    </insert>
+
+    <select id="checkContributor" resultType="int">
+        select count(*) from contributor where AgentId = #{ownerId} and RepoName = #{repoName} and ContributorId = #{contributorId}
+    </select>
+
+</mapper>

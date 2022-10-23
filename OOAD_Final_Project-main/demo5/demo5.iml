@@ -97,5 +97,10 @@
     <orderEntry type="library" name="Maven: com.alibaba:druid:1.2.12" level="project" />
     <orderEntry type="library" name="Maven: org.slf4j:slf4j-api:1.7.30" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-autoconfigure:2.3.7.RELEASE" level="project" />
+    <orderEntry type="library" name="Maven: org.eclipse.jgit:org.eclipse.jgit:6.3.0.202209071007-r" level="project" />
+    <orderEntry type="library" name="Maven: com.googlecode.javaewah:JavaEWAH:1.1.13" level="project" />
+    <orderEntry type="library" name="Maven: org.eclipse.jgit:org.eclipse.jgit.archive:6.3.0.202209071007-r" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.commons:commons-compress:1.21" level="project" />
+    <orderEntry type="library" name="Maven: org.osgi:org.osgi.core:6.0.0" level="project" />
   </component>
 </module>
