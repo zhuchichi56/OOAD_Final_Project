@@ -3,7 +3,6 @@ package com.example.demo.service.imp;
 
 import com.example.demo.entity.StaticRepo;
 import com.example.demo.mapper.*;
-import java.text.SimpleDateFormat;
 import com.example.demo.service.CommitService;
 
 import com.example.demo.util.DateParser;
@@ -11,18 +10,15 @@ import org.eclipse.jgit.api.Git;
 import org.eclipse.jgit.api.RmCommand;
 import org.eclipse.jgit.api.Status;
 import org.eclipse.jgit.api.errors.GitAPIException;
-import org.eclipse.jgit.lib.ObjectId;
 import org.eclipse.jgit.lib.Ref;
 import org.eclipse.jgit.lib.Repository;
 import org.eclipse.jgit.revwalk.RevCommit;
 import org.eclipse.jgit.revwalk.RevWalk;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.stereotype.Service;
 
 import java.io.File;
 import java.io.IOException;
-import java.nio.file.Paths;
 import java.util.*;
 
 
@@ -45,8 +41,9 @@ public class CommitServiceImp implements CommitService {
     public int initRepository(int agentId, String repoName){
         staticRepoMapper.createNewStaticRepo(new StaticRepo(agentId, repoName,0,0));
         try {
-            Git.init().setDirectory(new File(localPath+"\\"+agentId+"\\"+repoName))
-                      .setInitialBranch("Master").call();
+            Git git = Git.init().setDirectory(new File(localPath+"\\"+agentId+"\\"+repoName))
+                    .setInitialBranch("Master").call();
+            git.commit().setMessage("Test").call();
         } catch (GitAPIException e) {
             return 0;
         }

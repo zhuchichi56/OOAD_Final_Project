@@ -4,58 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e808988d-61fd-4fe5-b049-ea8c081eb28d" name="Changes" comment="加入项目邀请贡献者和检测资格的服务">
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_googlecode_javaewah_JavaEWAH_1_1_13.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_commons_commons_compress_1_21.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_eclipse_jgit_org_eclipse_jgit_6_3_0_202209071007_r.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_eclipse_jgit_org_eclipse_jgit_archive_6_3_0_202209071007_r.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_osgi_org_osgi_core_6_0_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/demo5/src/main/java/com/example/demo/util/DateParser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2022_10_7_17_55_[Changes]/AgentServiceTest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2022_10_7_17_55_[Changes]/CommitServiceImp.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2022_10_7_17_55_[Changes]/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2022_10_7_17_55__Changes_.xml" beforeDir="false" />
+    <list default="true" id="e808988d-61fd-4fe5-b049-ea8c081eb28d" name="Changes" comment="jgit">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo5/demo5.iml" beforeDir="false" afterPath="$PROJECT_DIR$/demo5/demo5.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo5/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/demo5/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo5/src/main/java/com/example/demo/mapper/StaticRepoMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/demo5/src/main/java/com/example/demo/mapper/StaticRepoMapper.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/demo5/src/main/java/com/example/demo/service/BranchService.java" beforeDir="false" afterPath="$PROJECT_DIR$/demo5/src/main/java/com/example/demo/service/BranchService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo5/src/main/java/com/example/demo/service/CommitService.java" beforeDir="false" afterPath="$PROJECT_DIR$/demo5/src/main/java/com/example/demo/service/CommitService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo5/src/main/java/com/example/demo/service/imp/BranchServiceimp.java" beforeDir="false" afterPath="$PROJECT_DIR$/demo5/src/main/java/com/example/demo/service/imp/BranchServiceimp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo5/src/main/java/com/example/demo/service/imp/BranchServiceImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/demo5/src/main/java/com/example/demo/service/imp/BranchServiceImp.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/demo5/src/main/java/com/example/demo/service/imp/CommitServiceImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/demo5/src/main/java/com/example/demo/service/imp/CommitServiceImp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo5/src/main/resources/Mapper/StaticRepoMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/demo5/src/main/resources/Mapper/StaticRepoMapper.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/demo5/src/test/java/com/example/demo/service/imp/CommitServiceImpTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/demo5/src/test/java/com/example/demo/service/imp/CommitServiceImpTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo5/src/test/java/com/example/demo/service/imp/VCServiceImpTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo5/target/classes/Mapper/AgentMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/demo5/target/classes/Mapper/AgentMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo5/target/classes/Mapper/BranchMapper.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo5/target/classes/Mapper/RepoContentMapper.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo5/target/classes/Mapper/StaticRepoMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/demo5/target/classes/Mapper/StaticRepoMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo5/target/classes/Mapper/VCMapper.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/demo5/target/classes/com/example/demo/Demo5Application.class" beforeDir="false" afterPath="$PROJECT_DIR$/demo5/target/classes/com/example/demo/Demo5Application.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo5/target/classes/com/example/demo/config/CrossOriginConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/demo5/target/classes/com/example/demo/config/CrossOriginConfig.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo5/target/classes/com/example/demo/controller/RepoController.class" beforeDir="false" afterPath="$PROJECT_DIR$/demo5/target/classes/com/example/demo/controller/RepoController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo5/target/classes/com/example/demo/entity/Agent.class" beforeDir="false" afterPath="$PROJECT_DIR$/demo5/target/classes/com/example/demo/entity/Agent.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo5/target/classes/com/example/demo/entity/Branch.class" beforeDir="false" afterPath="$PROJECT_DIR$/demo5/target/classes/com/example/demo/entity/Branch.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo5/target/classes/com/example/demo/entity/RepoContent.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo5/target/classes/com/example/demo/entity/StaticRepo.class" beforeDir="false" afterPath="$PROJECT_DIR$/demo5/target/classes/com/example/demo/entity/StaticRepo.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo5/target/classes/com/example/demo/entity/VC.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo5/target/classes/com/example/demo/mapper/AgentMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/demo5/target/classes/com/example/demo/mapper/AgentMapper.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo5/target/classes/com/example/demo/mapper/BranchMapper.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo5/target/classes/com/example/demo/mapper/RepoContentMapper.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo5/target/classes/com/example/demo/mapper/StaticRepoMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/demo5/target/classes/com/example/demo/mapper/StaticRepoMapper.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo5/target/classes/com/example/demo/mapper/VCMapper.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo5/target/classes/com/example/demo/service/AgentService.class" beforeDir="false" afterPath="$PROJECT_DIR$/demo5/target/classes/com/example/demo/service/AgentService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo5/target/classes/com/example/demo/service/BranchService.class" beforeDir="false" afterPath="$PROJECT_DIR$/demo5/target/classes/com/example/demo/service/BranchService.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/demo5/target/classes/com/example/demo/service/CommitService.class" beforeDir="false" afterPath="$PROJECT_DIR$/demo5/target/classes/com/example/demo/service/CommitService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo5/target/classes/com/example/demo/service/VCService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo5/target/classes/com/example/demo/service/imp/AgentServiceImp.class" beforeDir="false" afterPath="$PROJECT_DIR$/demo5/target/classes/com/example/demo/service/imp/AgentServiceImp.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/demo5/target/classes/com/example/demo/service/imp/BranchServiceimp.class" beforeDir="false" afterPath="$PROJECT_DIR$/demo5/target/classes/com/example/demo/service/imp/BranchServiceimp.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/demo5/target/classes/com/example/demo/service/imp/CommitServiceImp.class" beforeDir="false" afterPath="$PROJECT_DIR$/demo5/target/classes/com/example/demo/service/imp/CommitServiceImp.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo5/target/classes/com/example/demo/service/imp/VCServiceImp.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo5/target/classes/com/example/demo/util/TransactionUtil.class" beforeDir="false" afterPath="$PROJECT_DIR$/demo5/target/classes/com/example/demo/util/TransactionUtil.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/demo5/target/test-classes/com/example/demo/service/imp/CommitServiceImpTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/demo5/target/test-classes/com/example/demo/service/imp/CommitServiceImpTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo5/target/test-classes/com/example/demo/service/imp/VCServiceImpTest.class" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -73,7 +32,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$/.." value="main" />
+        <entry key="$PROJECT_DIR$/.." value="version3" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
@@ -111,7 +70,7 @@
     &quot;spring.configuration.checksum&quot;: &quot;95346415f1f5933a78386d1759d2ef22&quot;
   }
 }</component>
-  <component name="RunManager" selected="JUnit.CommitServiceImpTest.commitFilesOnMain">
+  <component name="RunManager" selected="JUnit.CommitServiceImpTest.initRepository">
     <configuration name="AgentServiceTest.createName" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="demo5" />
       <extension name="coverage">
@@ -201,10 +160,10 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.CommitServiceImpTest.initRepository" />
         <item itemvalue="JUnit.CommitServiceImpTest.commitFilesOnMain" />
         <item itemvalue="JUnit.CommitServiceImpTest.rollBackTest" />
         <item itemvalue="JUnit.CommitServiceImpTest.getAllCommits" />
-        <item itemvalue="JUnit.CommitServiceImpTest.initRepository" />
         <item itemvalue="JUnit.AgentServiceTest.createName" />
       </list>
     </recent_temporary>
@@ -238,6 +197,9 @@
       <workItem from="1666181212785" duration="1815000" />
       <workItem from="1666189897808" duration="625000" />
       <workItem from="1666318414503" duration="821000" />
+      <workItem from="1667130999386" duration="1798000" />
+      <workItem from="1667133237551" duration="201000" />
+      <workItem from="1667133919239" duration="348000" />
     </task>
     <task id="LOCAL-00001" summary="store">
       <created>1665036247079</created>
@@ -296,17 +258,17 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/demo5/src/main/java/com/example/demo/service/imp/CommitServiceImp.java</url>
-          <line>44</line>
+          <line>40</line>
           <option name="timeStamp" value="1" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/demo5/src/main/java/com/example/demo/service/imp/CommitServiceImp.java</url>
-          <line>83</line>
+          <line>80</line>
           <option name="timeStamp" value="3" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/demo5/src/main/java/com/example/demo/service/imp/CommitServiceImp.java</url>
-          <line>157</line>
+          <line>154</line>
           <option name="timeStamp" value="4" />
         </line-breakpoint>
       </breakpoints>

@@ -1,0 +1,24 @@
+<changelist name="Uncommitted_changes_before_Merge_at_2022_10_30_18_36_[Changes]" date="1667126449455" recycled="true" deleted="true">
+  <option name="PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_2022_10_30_18_36_[Changes]/shelved.patch" />
+  <option name="DESCRIPTION" value="Uncommitted changes before Merge at 2022/10/30 18:36 [Changes]" />
+  <binary>
+    <option name="BEFORE_PATH" value="demo5/target/test-classes/com/example/demo/service/imp/CommitServiceImpTest.class" />
+    <option name="AFTER_PATH" value="demo5/target/test-classes/com/example/demo/service/imp/CommitServiceImpTest.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_2022_10_30_18_36_[Changes]/CommitServiceImpTest.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="demo5/target/classes/com/example/demo/service/CommitService.class" />
+    <option name="AFTER_PATH" value="demo5/target/classes/com/example/demo/service/CommitService.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_2022_10_30_18_36_[Changes]/CommitService.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="demo5/target/classes/com/example/demo/service/imp/BranchServiceimp.class" />
+    <option name="AFTER_PATH" value="demo5/target/classes/com/example/demo/service/imp/BranchServiceimp.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_2022_10_30_18_36_[Changes]/BranchServiceimp.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="demo5/target/classes/com/example/demo/service/imp/CommitServiceImp.class" />
+    <option name="AFTER_PATH" value="demo5/target/classes/com/example/demo/service/imp/CommitServiceImp.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_2022_10_30_18_36_[Changes]/CommitServiceImp.class" />
+  </binary>
+</changelist>

@@ -32,12 +32,12 @@ class CommitServiceImpTest {
 
     @Autowired
     AgentService agentService;
-    private String localPath = "C:\\Users\\12078\\Desktop\\大三上\\ooad\\test\\1\\test1";
+    private String localPath = "C:\\Users\\12078\\Desktop\\大三上\\ooad\\test\\2\\repo1";
 
     @Test
     void initRepository() {
         try {
-            System.out.println(commitService.initRepository(1,"test1"));
+            System.out.println(commitService.initRepository(2,"repo4"));
         } catch (GitAPIException e) {
             throw new RuntimeException(e);
         }
@@ -45,8 +45,8 @@ class CommitServiceImpTest {
 
     @Test
     void commitFilesOnMain(){
-        File file = new File("C:\\Users\\12078\\Desktop\\大三上\\ooad\\MyWeb");
-        commitService.commitFiles(1, "test1", "branch1", file);
+//        File file = new File("C:\\Users\\12078\\Desktop\\大三上\\ooad\\MyWeb");
+        commitService.commitFiles(2, "repo3", "Master", null);
     }
 
 
