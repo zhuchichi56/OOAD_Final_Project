@@ -4,17 +4,24 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e808988d-61fd-4fe5-b049-ea8c081eb28d" name="Changes" comment="jgit">
+    <list default="true" id="e808988d-61fd-4fe5-b049-ea8c081eb28d" name="Changes" comment="10.30">
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/demo5/src/test/java/com/example/demo/service/FunctionTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/demo5/src/main/java/com/example/demo/service/BranchService.java" beforeDir="false" afterPath="$PROJECT_DIR$/demo5/src/main/java/com/example/demo/service/BranchService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo5/src/main/java/com/example/demo/service/CommitService.java" beforeDir="false" afterPath="$PROJECT_DIR$/demo5/src/main/java/com/example/demo/service/CommitService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/demo5/src/main/java/com/example/demo/service/imp/BranchServiceImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/demo5/src/main/java/com/example/demo/service/imp/BranchServiceImp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo5/src/main/java/com/example/demo/service/imp/BranchServiceimp.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/demo5/src/main/java/com/example/demo/service/imp/CommitServiceImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/demo5/src/main/java/com/example/demo/service/imp/CommitServiceImp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo5/src/test/java/com/example/demo/service/imp/CommitServiceImpTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/demo5/src/test/java/com/example/demo/service/imp/CommitServiceImpTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo5/target/classes/com/example/demo/Demo5Application.class" beforeDir="false" afterPath="$PROJECT_DIR$/demo5/target/classes/com/example/demo/Demo5Application.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo5/src/main/java/com/example/demo/service/imp/RepositoryServiceImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/demo5/src/main/java/com/example/demo/service/imp/RepositoryServiceImp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo5/src/test/java/com/example/demo/service/imp/CommitServiceImpTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo5/target/classes/com/example/demo/service/BranchService.class" beforeDir="false" afterPath="$PROJECT_DIR$/demo5/target/classes/com/example/demo/service/BranchService.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/demo5/target/classes/com/example/demo/service/CommitService.class" beforeDir="false" afterPath="$PROJECT_DIR$/demo5/target/classes/com/example/demo/service/CommitService.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/demo5/target/classes/com/example/demo/service/imp/BranchServiceimp.class" beforeDir="false" afterPath="$PROJECT_DIR$/demo5/target/classes/com/example/demo/service/imp/BranchServiceimp.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/demo5/target/classes/com/example/demo/service/imp/CommitServiceImp.class" beforeDir="false" afterPath="$PROJECT_DIR$/demo5/target/classes/com/example/demo/service/imp/CommitServiceImp.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo5/target/test-classes/com/example/demo/service/imp/CommitServiceImpTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/demo5/target/test-classes/com/example/demo/service/imp/CommitServiceImpTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo5/target/classes/com/example/demo/service/imp/RepositoryServiceImp.class" beforeDir="false" afterPath="$PROJECT_DIR$/demo5/target/classes/com/example/demo/service/imp/RepositoryServiceImp.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo5/target/test-classes/com/example/demo/service/imp/CommitServiceImpTest.class" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -70,8 +77,8 @@
     &quot;spring.configuration.checksum&quot;: &quot;95346415f1f5933a78386d1759d2ef22&quot;
   }
 }</component>
-  <component name="RunManager" selected="JUnit.CommitServiceImpTest.initRepository">
-    <configuration name="AgentServiceTest.createName" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="JUnit.FunctionTest.testPull">
+    <configuration name="FunctionTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="demo5" />
       <extension name="coverage">
         <pattern>
@@ -80,72 +87,71 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="com.example.demo.service" />
-      <option name="MAIN_CLASS_NAME" value="com.example.demo.service.AgentServiceTest" />
-      <option name="METHOD_NAME" value="createName" />
+      <option name="MAIN_CLASS_NAME" value="com.example.demo.service.FunctionTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="FunctionTest.testBranch" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="demo5" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.example.demo.service.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.example.demo.service" />
+      <option name="MAIN_CLASS_NAME" value="com.example.demo.service.FunctionTest" />
+      <option name="METHOD_NAME" value="testBranch" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="CommitServiceImpTest.commitFilesOnMain" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="FunctionTest.testCommit" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="demo5" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.example.demo.service.imp.*" />
+          <option name="PATTERN" value="com.example.demo.service.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="com.example.demo.service.imp" />
-      <option name="MAIN_CLASS_NAME" value="com.example.demo.service.imp.CommitServiceImpTest" />
-      <option name="METHOD_NAME" value="commitFilesOnMain" />
+      <option name="PACKAGE_NAME" value="com.example.demo.service" />
+      <option name="MAIN_CLASS_NAME" value="com.example.demo.service.FunctionTest" />
+      <option name="METHOD_NAME" value="testCommit" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="CommitServiceImpTest.getAllCommits" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="FunctionTest.testMerge" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="demo5" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.example.demo.service.imp.*" />
+          <option name="PATTERN" value="com.example.demo.service.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="com.example.demo.service.imp" />
-      <option name="MAIN_CLASS_NAME" value="com.example.demo.service.imp.CommitServiceImpTest" />
-      <option name="METHOD_NAME" value="getAllCommits" />
+      <option name="PACKAGE_NAME" value="com.example.demo.service" />
+      <option name="MAIN_CLASS_NAME" value="com.example.demo.service.FunctionTest" />
+      <option name="METHOD_NAME" value="testMerge" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="CommitServiceImpTest.initRepository" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="FunctionTest.testPull" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="demo5" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.example.demo.service.imp.*" />
+          <option name="PATTERN" value="com.example.demo.service.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="com.example.demo.service.imp" />
-      <option name="MAIN_CLASS_NAME" value="com.example.demo.service.imp.CommitServiceImpTest" />
-      <option name="METHOD_NAME" value="initRepository" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="CommitServiceImpTest.rollBackTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="demo5" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.example.demo.service.imp.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.example.demo.service.imp" />
-      <option name="MAIN_CLASS_NAME" value="com.example.demo.service.imp.CommitServiceImpTest" />
-      <option name="METHOD_NAME" value="rollBackTest" />
+      <option name="PACKAGE_NAME" value="com.example.demo.service" />
+      <option name="MAIN_CLASS_NAME" value="com.example.demo.service.FunctionTest" />
+      <option name="METHOD_NAME" value="testPull" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -160,11 +166,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.CommitServiceImpTest.initRepository" />
-        <item itemvalue="JUnit.CommitServiceImpTest.commitFilesOnMain" />
-        <item itemvalue="JUnit.CommitServiceImpTest.rollBackTest" />
-        <item itemvalue="JUnit.CommitServiceImpTest.getAllCommits" />
-        <item itemvalue="JUnit.AgentServiceTest.createName" />
+        <item itemvalue="JUnit.FunctionTest.testPull" />
+        <item itemvalue="JUnit.FunctionTest.testMerge" />
+        <item itemvalue="JUnit.FunctionTest.testCommit" />
+        <item itemvalue="JUnit.FunctionTest.testBranch" />
+        <item itemvalue="JUnit.FunctionTest" />
       </list>
     </recent_temporary>
   </component>
@@ -199,7 +205,7 @@
       <workItem from="1666318414503" duration="821000" />
       <workItem from="1667130999386" duration="1798000" />
       <workItem from="1667133237551" duration="201000" />
-      <workItem from="1667133919239" duration="348000" />
+      <workItem from="1667133919239" duration="3154000" />
     </task>
     <task id="LOCAL-00001" summary="store">
       <created>1665036247079</created>
@@ -229,7 +235,14 @@
       <option name="project" value="LOCAL" />
       <updated>1665225893542</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="10.30">
+      <created>1667134317702</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1667134317702</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -251,24 +264,15 @@
     <MESSAGE value="修好xml的bug" />
     <MESSAGE value="修好事务管理" />
     <MESSAGE value="加入项目邀请贡献者和检测资格的服务" />
-    <option name="LAST_COMMIT_MESSAGE" value="加入项目邀请贡献者和检测资格的服务" />
+    <MESSAGE value="10.30" />
+    <option name="LAST_COMMIT_MESSAGE" value="10.30" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/demo5/src/main/java/com/example/demo/service/imp/CommitServiceImp.java</url>
-          <line>40</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/demo5/src/main/java/com/example/demo/service/imp/CommitServiceImp.java</url>
-          <line>80</line>
-          <option name="timeStamp" value="3" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/demo5/src/main/java/com/example/demo/service/imp/CommitServiceImp.java</url>
-          <line>154</line>
+          <line>138</line>
           <option name="timeStamp" value="4" />
         </line-breakpoint>
       </breakpoints>

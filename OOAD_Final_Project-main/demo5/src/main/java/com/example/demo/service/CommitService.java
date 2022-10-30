@@ -10,13 +10,6 @@ import java.util.List;
 
 public interface CommitService {
 
-    /**
-     * 创建一个空的仓库，并创建主分支Master
-     * return -1 表示有重名仓库
-     * return 0 代表发生创建错误
-     * return 1 代表成功创建
-     * **/
-    int initRepository(int agentId, String repoName) throws GitAPIException;
 
     int checkRepoInfo(int agentId, String repoName);
 
@@ -47,11 +40,6 @@ public interface CommitService {
      * @param branch
      * @return
      */
-    File clone(int agentId, String repoName, String branch);
-    //新branch 操作:
-    // creatBranch 再从新的branch上调用commitFilesOnMain 就行了;
-
-//    int commitFilesOnNewBranch(int AgentId,String RepoName,String BranchName,String BaseBranch,String Content, String Comment, String Date);
 
 }
 

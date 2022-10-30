@@ -30,25 +30,8 @@ public class CommitServiceImp implements CommitService {
     @Autowired
     StaticRepoMapper staticRepoMapper;
 
-    private String localPath = "C:\\Users\\12078\\Desktop\\大三上\\ooad\\test";
+    private String localPath = "C:\\Users\\12078\\Desktop\\大三上\\local";
 
- /**
-  * 创建一个空的仓库，并创建主分支Master
-  * return 0 代表发生创建错误
-  * return 1 代表成功创建
-  * **/
-    @Override
-    public int initRepository(int agentId, String repoName){
-        staticRepoMapper.createNewStaticRepo(new StaticRepo(agentId, repoName,0,0));
-        try {
-            Git git = Git.init().setDirectory(new File(localPath+"\\"+agentId+"\\"+repoName))
-                    .setInitialBranch("Master").call();
-            git.commit().setMessage("Test").call();
-        } catch (GitAPIException e) {
-            return 0;
-        }
-        return 1;
-    }
 
     /**
      * 检测有无这个仓库的存在
@@ -73,7 +56,8 @@ public class CommitServiceImp implements CommitService {
 
     @Override
     public int commitFiles(int agentId, String repoName, String branch, File file) {
-        String path = localPath+"\\"+agentId+"\\"+repoName;
+//        String path = localPath+"\\"+agentId+"\\"+repoName;
+        String path = localPath+"\\"+repoName;
         try {
             File origin = new File(path);
             Git git = Git.open(origin);
@@ -155,18 +139,7 @@ public class CommitServiceImp implements CommitService {
         return commits;
     }
 
-    /**
-     * clone分支的最新版本
-     * @param agentId
-     * @param repoName
-     * @param branch
-     * @return
-     */
-    @Override
-    public File clone(int agentId, String repoName, String branch) {
-        String path = localPath+"\\"+agentId+"\\"+repoName;
-        return new File(path);
-    }
+
 }
 
 

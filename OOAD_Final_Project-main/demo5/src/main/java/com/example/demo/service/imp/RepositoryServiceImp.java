@@ -6,13 +6,11 @@ import org.eclipse.jgit.api.Git;
 import org.eclipse.jgit.api.errors.GitAPIException;
 import org.eclipse.jgit.lib.Repository;
 import org.eclipse.jgit.storage.file.FileRepositoryBuilder;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Paths;
-import java.util.logging.Logger;
 
 @Service
 public class RepositoryServiceImp implements RepositoryService{
@@ -21,13 +19,15 @@ public class RepositoryServiceImp implements RepositoryService{
 
     @Override
     public Git initRepository(String path, String repositoryName) {
-        File repository = new File(path + repositoryName);
+        File repository = new File(path +"\\" + repositoryName);
         if(repository.exists()) {
             System.out.println("repo exists");
         }
         Git git = null;
         try {
             git = Git.init().setDirectory(repository).call();
+            git.commit().setMessage("Initial commit").call();
+            git.checkout().setName("master").call();
         } catch (GitAPIException e) {
             e.printStackTrace();
         }
@@ -39,7 +39,7 @@ public class RepositoryServiceImp implements RepositoryService{
     @Override
     public Git cloneRepository(String remotePathUrl, String localPath, String repositoryName) {
         Git git = null;
-        File repository = new File(localPath + repositoryName);
+        File repository = new File(localPath + "\\" + repositoryName);
         if(repository.exists()) {
             System.out.println("repo exists");
         }
@@ -61,7 +61,7 @@ public class RepositoryServiceImp implements RepositoryService{
         Repository repository = null;
         try{
              repository = new FileRepositoryBuilder()
-                    .setGitDir(Paths.get(path + repositoryName, ".git").toFile())
+                    .setGitDir(Paths.get(path +"\\"+ repositoryName, ".git").toFile())
                     .build();
         } catch (IOException e) {
             e.printStackTrace();
