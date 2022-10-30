@@ -33,24 +33,7 @@ public class CommitServiceImp implements CommitService {
 
 
 
- /**
-  * 创建一个空的仓库，并创建主分支Master
-  * **/
-    @Override
-    public int initRepository() {
 
-        return 1;
-    }
-
-
-/**
- * 指定分支提交数据
- * */
-
-    @Override
-    public int commitFiles() {
-        return 1;
-    }
 }
 
 
