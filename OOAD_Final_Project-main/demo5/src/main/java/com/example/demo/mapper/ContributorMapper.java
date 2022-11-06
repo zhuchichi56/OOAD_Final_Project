@@ -6,8 +6,8 @@ import org.apache.ibatis.annotations.Param;
 @Mapper
 public interface ContributorMapper {
 
-    int insertNewContributor(@Param("contributorId") int contributorId,@Param("ownerId") int ownerId,@Param("repoName") String repoName);
+    int insertNewContributor(@Param("contributorName") String contributorName,@Param("repositoryId") String hash);
 
-    int checkContributor(@Param("contributorId") int contributorId,@Param("ownerId") int ownerId,@Param("repoName") String repoName);
+    int checkContributor(@Param("contributorName") String contributorName,@Param("repositoryId") String hash);
 }
 

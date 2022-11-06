@@ -9,14 +9,9 @@ import org.springframework.context.annotation.Bean;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Agent {
-    private int agentId;
     private String agentName;
-//    public Agent(int agentId) {
-//        this.agentId = agentId;
-//    }
-    public Agent(String agentName) {
-        this.agentName = agentName;
-    }
+
+    private String password;
 }
 
 

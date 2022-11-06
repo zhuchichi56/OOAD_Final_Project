@@ -1,11 +1,11 @@
 package com.example.demo.service.imp;
 
 
-import com.example.demo.entity.StaticRepo;
 import com.example.demo.mapper.*;
 import com.example.demo.service.CommitService;
 
 import com.example.demo.util.DateParser;
+import com.example.demo.util.FileCoverUtil;
 import org.eclipse.jgit.api.Git;
 import org.eclipse.jgit.api.RmCommand;
 import org.eclipse.jgit.api.Status;
@@ -28,26 +28,28 @@ public class CommitServiceImp implements CommitService {
     AgentMapper agentMapper;
 
     @Autowired
-    StaticRepoMapper staticRepoMapper;
+    RepositoryMapper repositoryMapper;
 
     private String localPath = "C:\\Users\\12078\\Desktop\\大三上\\local";
 
 
     /**
      * 检测有无这个仓库的存在
-     * @param agentId
+     * @param agentName
      * @param repoName
      * @return
      */
     @Override
-    public int checkRepoInfo(int agentId, String repoName) {
-        return staticRepoMapper.checkRepoInfo(agentId,repoName);
+    public int checkRepoInfo(String agentName, String repoName) {
+        if (!repositoryMapper.getRepoId(agentName,repoName).equals(""))
+            return 1;
+        return 0;
     }
 
 
     /**
      * 指定分支提交数据,多用户提交情况还未考虑
-     * @param agentId
+     * @param agentName
      * @param repoName
      * @param branch
      * @param file
@@ -55,10 +57,11 @@ public class CommitServiceImp implements CommitService {
      */
 
     @Override
-    public int commitFiles(int agentId, String repoName, String branch, File file) {
-//        String path = localPath+"\\"+agentId+"\\"+repoName;
-        String path = localPath+"\\"+repoName;
+    public int commitFiles(String agentName, String repoName, String branch, File file) {
+        String path = localPath+"\\"+agentName+"\\"+repoName;
+//        String path = localPath+"\\"+repoName;
         try {
+            FileCoverUtil.updateFile(path,file);
             File origin = new File(path);
             Git git = Git.open(origin);
             git.checkout().setCreateBranch(false).setName(branch).call();
@@ -114,15 +117,15 @@ public class CommitServiceImp implements CommitService {
 
     /**
      * 返回所有提交版本的ID
-     * @param agentId
+     * @param agentName
      * @param repoName
      * @param branch
      * @return
      */
     @Override
-    public List<RevCommit> getCommitsByBranch(int agentId, String repoName, String branch) {
+    public List<RevCommit> getCommitsByBranch(String agentName, String repoName, String branch) {
         List<RevCommit> commits = new ArrayList<>();
-        String path = localPath+"\\"+agentId+"\\"+repoName;
+        String path = localPath+"\\"+agentName+"\\"+repoName;
         try {
             Git git = Git.open(new File(path));
             Repository repository = git.getRepository();

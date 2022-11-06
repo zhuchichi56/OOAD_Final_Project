@@ -1,13 +1,12 @@
 package com.example.demo.service;
 
 import com.example.demo.entity.Agent;
-import com.example.demo.entity.StaticRepo;
 
 public interface AgentService {
-    int createName(Agent agent);
+    String createUser(Agent agent);
 
-    int inviteContributor(Agent agent, Agent contributor, String repoName);
+    int inviteContributor(String contributorName, String repositoryId);
 
-    int checkContributor(Agent agent, Agent contributor, String repoName);
+    int checkContributor(String contributorName, String repositoryId);
 }
 

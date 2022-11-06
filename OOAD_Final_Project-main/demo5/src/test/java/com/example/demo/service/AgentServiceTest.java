@@ -12,10 +12,10 @@ class AgentServiceTest {
     @Autowired
     AgentService agentService;
 
-    @Test
-    void createName() {
-        System.out.println(agentService.createName(new Agent("test82")));
-    }
+//    @Test
+//    void createName() {
+//        System.out.println(agentService.createName(new Agent("test82")));
+//    }
 }
 
 

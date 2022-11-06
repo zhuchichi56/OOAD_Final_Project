@@ -8,14 +8,14 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class StaticRepo {
-    private int agentId;
+public class Repo {
+    private String agentName;
     private String repoName;
     private int star = 0 ;
     private int fork = 0 ;
 
-    public StaticRepo(int agentId, String repoName) {
-        this.agentId = agentId;
+    public Repo(String agentName, String repoName) {
+        this.agentName = agentName;
         this.repoName = repoName;
     }
 }

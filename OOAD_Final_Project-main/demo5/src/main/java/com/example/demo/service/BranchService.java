@@ -14,12 +14,12 @@ public interface BranchService {
 
     /**
      * 给出ObjectId,并回滚至该版本
-     * @param agentId
+     * @param agentName
      * @param repoName
      * @param id
      * @return
      */
-    int rollback(int agentId, String repoName, String id);
+    int rollback(String agentName, String repoName, String id);
     Ref createBranch(Git repository, String branchName) throws GitAPIException;
 
     Ref switchBranch(Git repository, String branchName) throws GitAPIException;

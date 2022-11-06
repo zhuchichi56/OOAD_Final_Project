@@ -80,14 +80,14 @@ public class BranchServiceImp implements BranchService {
 
     /**
      * 给出ObjectId,并回滚至该版本
-     * @param agentId
+     * @param agentName
      * @param repoName
      * @param id
      * @return
      */
     @Override
-    public int rollback(int agentId,String repoName,String id) {
-        String path = localPath+"\\"+agentId+"\\"+repoName;
+    public int rollback(String agentName,String repoName,String id) {
+        String path = localPath+"\\"+agentName+"\\"+repoName;
         try {
             Git git = Git.open(new File(path));
             Repository repository = git.getRepository();

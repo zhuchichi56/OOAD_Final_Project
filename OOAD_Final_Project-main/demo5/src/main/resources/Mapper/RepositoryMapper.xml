@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="com.example.demo.mapper.RepositoryMapper">
+
+
+    <insert id="createNewRepository">
+        insert into repository value (#{hash},#{Repository.agentName},#{Repository.repoName},#{Repository.star},#{Repository.fork});
+    </insert>
+
+    <select id="getRepoId" resultType="String">
+        select repositoryId from repository where ownerName = #{agentName} and RepoName = #{repoName};
+    </select>
+
+</mapper>
+

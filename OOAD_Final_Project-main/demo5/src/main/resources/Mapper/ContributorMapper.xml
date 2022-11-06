@@ -8,7 +8,7 @@
 
 
     <insert id="insertNewContributor">
-        insert into contributor value (#{ownerId}, #{repoName},  #{contributorId});
+        insert into contributor value (#{repositoryId},  #{contributorName});
     </insert>
 
     <select id="checkContributor" resultType="int">
