@@ -8,11 +8,11 @@
 
 
     <insert id="insertNewContributor">
-        insert into contributor value (#{repositoryId},  #{contributorName});
+        insert into contributor values (#{repositoryId},  #{contributorName});
     </insert>
 
     <select id="checkContributor" resultType="int">
-        select count(*) from contributor where AgentId = #{ownerId} and RepoName = #{repoName} and ContributorId = #{contributorId}
+        select count(*) from contributor where AgentId=#{ownerId} and RepoName=#{repoName} and ContributorId=#{contributorId};
     </select>
 
 </mapper>

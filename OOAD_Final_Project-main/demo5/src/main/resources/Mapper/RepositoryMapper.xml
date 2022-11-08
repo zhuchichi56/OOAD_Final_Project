@@ -15,5 +15,15 @@
         select repositoryId from repository where ownerName = #{agentName} and RepoName = #{repoName};
     </select>
 
+    <select id="getRepoById" resultMap="repoMap">
+        select * from repository where repositoryId = #{repoId};
+    </select>
+
+    <resultMap id="repoMap" type="Repo">
+        <id column="ownerName" property="agentName" />
+        <id column="repoName" property="repoName" />
+        <id column="Star" property="star" />
+        <id column="Fork" property="fork" />
+    </resultMap>
 </mapper>
 

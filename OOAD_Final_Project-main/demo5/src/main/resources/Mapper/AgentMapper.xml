@@ -7,10 +7,16 @@
 <mapper namespace="com.example.demo.mapper.AgentMapper">
 
         <insert id="createAgent" parameterType="Agent">
-            insert into Agent value (#{agent.agentName}, #{agent.password});
+            insert into Agent values (#{agent.agentName}, #{agent.password}, #{agent.iconUrl});
         </insert>
 
+        <update id="updateUserName">
+            update Agent set agentName=#{newName} where agentName=#{oldName};
+        </update>
 
+        <update id="updateUseIcon">
+            update Agent set iconUrl=#{newIconUrl} where agentName=#{name};
+        </update>
 </mapper>
 
 

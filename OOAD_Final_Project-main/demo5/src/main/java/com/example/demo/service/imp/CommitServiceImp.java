@@ -34,20 +34,6 @@ public class CommitServiceImp implements CommitService {
 
 
     /**
-     * 检测有无这个仓库的存在
-     * @param agentName
-     * @param repoName
-     * @return
-     */
-    @Override
-    public int checkRepoInfo(String agentName, String repoName) {
-        if (!repositoryMapper.getRepoId(agentName,repoName).equals(""))
-            return 1;
-        return 0;
-    }
-
-
-    /**
      * 指定分支提交数据,多用户提交情况还未考虑
      * @param agentName
      * @param repoName
@@ -133,7 +119,7 @@ public class CommitServiceImp implements CommitService {
             RevWalk revWalk = new RevWalk(repository);
             revWalk.markStart(revWalk.parseCommit(ref.getObjectId()));
             for (RevCommit revCommit: revWalk){
-                System.out.printf("The commit time:%s The commit ID:%s\n", DateParser.printTime(revCommit.getCommitTime()), revCommit.getName());
+                System.out.printf("The commit time:%s The commit ID:%s\n", DateParser.getCommitDate(revCommit.getCommitTime()), revCommit.getName());
                 commits.add(revCommit);
             }
         } catch (IOException e) {

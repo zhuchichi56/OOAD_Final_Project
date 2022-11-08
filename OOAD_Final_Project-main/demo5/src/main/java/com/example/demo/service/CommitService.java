@@ -10,9 +10,6 @@ import java.util.List;
 
 public interface CommitService {
 
-
-    int checkRepoInfo(String agentName, String repoName);
-
     /**
      * 指定分支提交数据,多用户提交情况还未考虑
      * @param agentName

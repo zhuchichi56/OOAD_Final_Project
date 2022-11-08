@@ -44,6 +44,19 @@ public class RepositoryServiceImp implements RepositoryService{
         return git;
     }
 
+    /**
+     * 检测有无这个仓库的存在
+     * @param agentName
+     * @param repoName
+     * @return
+     */
+    @Override
+    public int checkRepoInfo(String agentName, String repoName) {
+        if (!repositoryMapper.getRepoId(agentName,repoName).equals(""))
+            return 1;
+        return 0;
+    }
+
     @Override
     public Git cloneRepository(String remotePathUrl, String localPath, String agentName, String repositoryName) {
         Git git = null;

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.demo.mapper.CommentMapper">
+    <insert id="insertComment">
+        insert into issuecomment values (#{commentId},#{issueId},#{comment},#{agent},#{time});
+    </insert>
+    
+    <select id="getComments" resultMap="Comment">
+        select * from issuecomment where issueId=#{issueId};
+    </select>
+
+    <resultMap id="commentMap" type="Comment">
+        <id column="commentId" property="commentId" />
+        <id column="comment" property="comment" />
+        <id column="issueId" property="issueId" />
+        <id column="agentName" property="anchor" />
+        <id column="publishTime" property="time" />
+    </resultMap>
+
+    <delete id="deleteComment">
+        delete from issuecomment where commentId = #{commentId};
+    </delete>
+</mapper>
