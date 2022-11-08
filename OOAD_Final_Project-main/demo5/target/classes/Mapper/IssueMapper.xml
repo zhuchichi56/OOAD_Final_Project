@@ -9,7 +9,7 @@
                                   repositoryId = #{repoId}, issueTitle = #{title}, createTime = #{time});
     </insert>
 
-    <select id="getIssues" resultMap="IssueMap">
+    <select id="getIssues" resultMap="issueMap">
         select * from issue where repositoryId = #{repoId};
     </select>
 

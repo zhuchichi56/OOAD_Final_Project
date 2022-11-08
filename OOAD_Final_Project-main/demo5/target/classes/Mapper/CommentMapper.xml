@@ -8,7 +8,7 @@
         insert into issuecomment values (#{commentId},#{issueId},#{comment},#{agent},#{time});
     </insert>
     
-    <select id="getComments" resultMap="Comment">
+    <select id="getComments" resultMap="commentMap">
         select * from issuecomment where issueId=#{issueId};
     </select>
 

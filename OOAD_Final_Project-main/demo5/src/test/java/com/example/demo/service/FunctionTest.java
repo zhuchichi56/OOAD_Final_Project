@@ -66,7 +66,7 @@ public class FunctionTest {
     @Test
     void testCommit(){
 
-        File file = new File("C:\\Users\\12078\\Desktop\\TEST\\local\\User_test_A\\REPO001\\");
+        File file = new File("C:\\Users\\12078\\Desktop\\grade three 1\\AI\\lab\\Practice7");
         commitService.commitFiles(localPath ,"User_test_A", "REPO001", "master", file);
     }
     @Test
