@@ -25,5 +25,18 @@
         <id column="Star" property="star" />
         <id column="Fork" property="fork" />
     </resultMap>
+
+    <update id="updateOwnerName">
+        update repository set ownerName=#{newName} where ownerName=#{oldName};
+    </update>
+
+    <select id="getAllRepo" resultType="String">
+        select repositoryId
+        from repository where ownerName = #{ownerName};
+    </select>
+
+    <update id="updateRepoId">
+        update repository set repositoryId=#{newId} where repositoryId=#{oldId};
+    </update>
 </mapper>
 

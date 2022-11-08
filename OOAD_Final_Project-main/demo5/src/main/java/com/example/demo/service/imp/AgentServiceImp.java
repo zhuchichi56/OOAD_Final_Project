@@ -3,11 +3,9 @@ package com.example.demo.service.imp;
 
 import com.example.demo.entity.Agent;
 import com.example.demo.entity.Repo;
-import com.example.demo.mapper.AgentMapper;
-import com.example.demo.mapper.ContributorMapper;
-import com.example.demo.mapper.RepositoryMapper;
-import com.example.demo.mapper.StarRepoMapper;
+import com.example.demo.mapper.*;
 import com.example.demo.service.AgentService;
+import com.example.demo.util.encodeUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -31,6 +29,13 @@ public class AgentServiceImp implements AgentService {
     @Autowired
     RepositoryMapper repositoryMapper;
 
+    @Autowired
+    IssueMapper issueMapper;
+
+    @Autowired
+    CommentMapper commentMapper;
+
+
     /**
      * 用户注册
      * **/
@@ -43,12 +48,17 @@ public class AgentServiceImp implements AgentService {
 
     @Override
     public int updateUserName(String old, String latest) {
-        return agentMapper.updateUserName(old,latest);
+        List<String> repoIds = repositoryMapper.getAllRepo(old);
+        for (String repoId : repoIds) {
+            Repo repo = repositoryMapper.getRepoById(repoId);
+            repositoryMapper.updateRepoId(repoId, encodeUtil.hash(latest, repo.getRepoName()));
+        }
+        return agentMapper.updateUserName(old, latest);
     }
 
     @Override
-    public int updateUserIcon(String name, byte[] imageData) {
-        String url = "C:\\Users\\12078\\Desktop\\大三上\\picture\\"+name+".jpg";
+    public int updateUserIcon(String localPath, String name, byte[] imageData) {
+        String url = localPath + name + ".jpg";
         Image image = Toolkit.getDefaultToolkit().createImage(imageData);
         try {
             ImageIO.write((RenderedImage) image,"JPEG", new File(url));

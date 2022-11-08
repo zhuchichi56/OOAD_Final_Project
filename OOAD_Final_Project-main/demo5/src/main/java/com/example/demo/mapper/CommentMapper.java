@@ -14,5 +14,7 @@ public interface CommentMapper {
 
     List<Comment> getComments(@Param("issueId") String issueId);
 
-    int deleteComments(@Param("commentId") String hash);
+    int deleteComment(@Param("commentId") String hash);
+
+    int updateCommentUserName(@Param("oldName") String oldName, @Param("newName") String newName);
 }

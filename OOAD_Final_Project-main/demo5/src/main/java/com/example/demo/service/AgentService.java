@@ -11,7 +11,7 @@ public interface AgentService {
 
     int updateUserName(String old, String latest);
 
-    int updateUserIcon(String name, byte[] imageData);
+    int updateUserIcon(String localPath, String name, byte[] imageData);
 
     int inviteContributor(String contributorName, String repositoryId);
 

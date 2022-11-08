@@ -14,4 +14,7 @@ public interface IssueMapper {
     List<Issue> getIssues(@Param("repoId") String repoId);
 
     int deleteIssue(@Param("issueId") String issueId);
+
+    int updateCreatorName(@Param("oldName") String oldName, @Param("newName") String newName);
+
 }

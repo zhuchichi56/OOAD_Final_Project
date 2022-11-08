@@ -5,11 +5,10 @@
 
 <mapper namespace="com.example.demo.mapper.IssueMapper">
     <insert id="createIssue">
-        insert into issue values (issueId = #{issueId}, creatorName = #{agentName},
-                                  repositoryId = #{repoId}, issueTitle = #{title}, createTime = #{time});
+        insert into issue values (#{issueId}, #{agentName}, #{repoId}, #{title},#{time});
     </insert>
 
-    <select id="getIssues" resultMap="IssueMap">
+    <select id="getIssues" resultMap="issueMap">
         select * from issue where repositoryId = #{repoId};
     </select>
 
@@ -23,4 +22,8 @@
     <delete id="deleteIssue">
         delete i, ic from issue i inner join issuecomment ic on issueId = #{issueId}
     </delete>
+
+    <update id="updateCreatorName">
+        update issue set creatorName=#{newName} where creatorName=#{oldName};
+    </update>
 </mapper>

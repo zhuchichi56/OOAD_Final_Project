@@ -30,7 +30,7 @@ public class CommitServiceImp implements CommitService {
     @Autowired
     RepositoryMapper repositoryMapper;
 
-    private String localPath = "C:\\Users\\12078\\Desktop\\大三上\\local";
+
 
 
     /**
@@ -43,7 +43,7 @@ public class CommitServiceImp implements CommitService {
      */
 
     @Override
-    public int commitFiles(String agentName, String repoName, String branch, File file) {
+    public int commitFiles(String localPath, String agentName, String repoName, String branch, File file) {
         String path = localPath+"\\"+agentName+"\\"+repoName;
 //        String path = localPath+"\\"+repoName;
         try {
@@ -109,7 +109,7 @@ public class CommitServiceImp implements CommitService {
      * @return
      */
     @Override
-    public List<RevCommit> getCommitsByBranch(String agentName, String repoName, String branch) {
+    public List<RevCommit> getCommitsByBranch(String localPath, String agentName, String repoName, String branch) {
         List<RevCommit> commits = new ArrayList<>();
         String path = localPath+"\\"+agentName+"\\"+repoName;
         try {

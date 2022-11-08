@@ -39,13 +39,13 @@ public class IssueServiceImp implements IssueService {
     @Override
     public int commentInIssue(String issueId, String agentName, String content) {
         String time = DateParser.getCurrentDate();
-        String commentId = encodeUtil.hash(issueId, agentName, content, time);
+        String commentId = encodeUtil.hash(issueId, agentName, content, String.valueOf(System.currentTimeMillis()));
         return commentMapper.insertComment(commentId,content,agentName,issueId,time);
     }
 
     @Override
     public int deleteCommentInIssue(String commentId) {
-        return commentMapper.deleteComments(commentId);
+        return commentMapper.deleteComment(commentId);
     }
 
     @Override

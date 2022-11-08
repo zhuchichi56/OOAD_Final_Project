@@ -8,7 +8,7 @@
         insert into issuecomment values (#{commentId},#{issueId},#{comment},#{agent},#{time});
     </insert>
     
-    <select id="getComments" resultMap="Comment">
+    <select id="getComments" resultMap="commentMap">
         select * from issuecomment where issueId=#{issueId};
     </select>
 
@@ -23,4 +23,10 @@
     <delete id="deleteComment">
         delete from issuecomment where commentId = #{commentId};
     </delete>
+
+    <update id="updateCommentUserName">
+        update issuecomment set agentName=#{newName} where agentName=#{oldName};
+    </update>
+
+
 </mapper>
