@@ -8,7 +8,8 @@
 
 
     <insert id="createNewRepository">
-        insert into repository value (#{hash},#{Repository.agentName},#{Repository.repoName},#{Repository.star},#{Repository.fork});
+        insert into repository value (#{hash},#{Repository.agentName},#{Repository.repoName},
+            #{Repository.star},#{Repository.fork},#{Repository.authority});
     </insert>
 
     <select id="getRepoId" resultType="String">
@@ -25,5 +26,18 @@
         <id column="Star" property="star" />
         <id column="Fork" property="fork" />
     </resultMap>
+
+<!--    <update id="updateOwnerName">-->
+<!--        update repository set ownerName=#{newName} where ownerName=#{oldName} and repositoryId = #{repoId};-->
+<!--    </update>-->
+
+    <select id="getAllRepo" resultType="String">
+        select repositoryId
+        from repository where ownerName = #{ownerName};
+    </select>
+
+    <update id="updateRepoId">
+        update repository set repositoryId=#{newId} where repositoryId=#{oldId};
+    </update>
 </mapper>
 

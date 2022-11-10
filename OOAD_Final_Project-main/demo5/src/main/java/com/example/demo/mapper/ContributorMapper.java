@@ -10,6 +10,6 @@ public interface ContributorMapper {
 
     int checkContributor(@Param("contributorName") String contributorName,@Param("repositoryId") String hash);
 
-    int updateContributorName(@Param("oldName") String oldName, @Param("newName") String newName);
+//    int updateContributorName(@Param("oldName") String oldName, @Param("newName") String newName);
 }
 

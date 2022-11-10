@@ -16,5 +16,5 @@ public interface CommentMapper {
 
     int deleteComment(@Param("commentId") String hash);
 
-    int updateCommentUserName(@Param("oldName") String oldName, @Param("newName") String newName);
+//    int updateCommentUserName(@Param("oldName") String oldName, @Param("newName") String newName);
 }

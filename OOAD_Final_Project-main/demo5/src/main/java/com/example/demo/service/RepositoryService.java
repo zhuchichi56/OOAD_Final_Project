@@ -4,7 +4,7 @@ import org.eclipse.jgit.api.Git;
 
 public interface RepositoryService {
 
-    Git initRepository (String path,String agentName ,String repositoryName);
+    Git initRepository (String path,String agentName ,String repositoryName, int authority);
 
     int checkRepoInfo(String agentName, String repoName);
 

@@ -51,6 +51,7 @@ public class AgentServiceImp implements AgentService {
         List<String> repoIds = repositoryMapper.getAllRepo(old);
         for (String repoId : repoIds) {
             Repo repo = repositoryMapper.getRepoById(repoId);
+//            repositoryMapper.updateOwnerName(old, latest);
             repositoryMapper.updateRepoId(repoId, encodeUtil.hash(latest, repo.getRepoName()));
         }
         return agentMapper.updateUserName(old, latest);

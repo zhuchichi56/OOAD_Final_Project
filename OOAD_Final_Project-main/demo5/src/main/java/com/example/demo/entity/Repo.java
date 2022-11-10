@@ -13,9 +13,11 @@ public class Repo {
     private String repoName;
     private int star = 0 ;
     private int fork = 0 ;
+    private int authority = 1;
 
-    public Repo(String agentName, String repoName) {
+    public Repo(String agentName, String repoName, int authority) {
         this.agentName = agentName;
         this.repoName = repoName;
+        this.authority = authority;
     }
 }

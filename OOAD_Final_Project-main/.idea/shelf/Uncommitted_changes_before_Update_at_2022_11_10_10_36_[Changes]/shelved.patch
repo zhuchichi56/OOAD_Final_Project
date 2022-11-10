@@ -1,0 +1,905 @@
+Index: demo5/src/main/resources/Mapper/IssueMapper.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\" ?>\r\n<!DOCTYPE mapper\r\n        PUBLIC \"-//mybatis.org//DTD Mapper 3.0//EN\"\r\n        \"http://mybatis.org/dtd/mybatis-3-mapper.dtd\">\r\n\r\n<mapper namespace=\"com.example.demo.mapper.IssueMapper\">\r\n    <insert id=\"createIssue\">\r\n        insert into issue values (issueId = #{issueId}, creatorName = #{agentName},\r\n                                  repositoryId = #{repoId}, issueTitle = #{title}, createTime = #{time});\r\n    </insert>\r\n\r\n    <select id=\"getIssues\" resultMap=\"issueMap\">\r\n        select * from issue where repositoryId = #{repoId};\r\n    </select>\r\n\r\n    <resultMap id=\"issueMap\" type=\"Issue\">\r\n        <id column=\"issueId\" property=\"issueId\" />\r\n        <id column=\"issueTitle\" property=\"title\" />\r\n        <id column=\"creatorName\" property=\"creator\" />\r\n        <id column=\"createTime\" property=\"publishTime\" />\r\n    </resultMap>\r\n\r\n    <delete id=\"deleteIssue\">\r\n        delete i, ic from issue i inner join issuecomment ic on issueId = #{issueId}\r\n    </delete>\r\n</mapper>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/demo5/src/main/resources/Mapper/IssueMapper.xml b/demo5/src/main/resources/Mapper/IssueMapper.xml
+--- a/demo5/src/main/resources/Mapper/IssueMapper.xml	(revision cd958c87146e40187425c19c8b919bac450c7a99)
++++ b/demo5/src/main/resources/Mapper/IssueMapper.xml	(date 1667912542992)
+@@ -5,8 +5,7 @@
+ 
+ <mapper namespace="com.example.demo.mapper.IssueMapper">
+     <insert id="createIssue">
+-        insert into issue values (issueId = #{issueId}, creatorName = #{agentName},
+-                                  repositoryId = #{repoId}, issueTitle = #{title}, createTime = #{time});
++        insert into issue values (#{issueId},#{agentName},#{repoId},#{title},#{time});
+     </insert>
+ 
+     <select id="getIssues" resultMap="issueMap">
+Index: demo5/src/main/resources/Mapper/ContributorMapper.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\" ?>\r\n<!DOCTYPE mapper\r\n        PUBLIC \"-//mybatis.org//DTD Mapper 3.0//EN\"\r\n        \"http://mybatis.org/dtd/mybatis-3-mapper.dtd\">\r\n\r\n\r\n<mapper namespace=\"com.example.demo.mapper.ContributorMapper\">\r\n\r\n\r\n    <insert id=\"insertNewContributor\">\r\n        insert into contributor values (#{repositoryId},  #{contributorName});\r\n    </insert>\r\n\r\n    <select id=\"checkContributor\" resultType=\"int\">\r\n        select count(*) from contributor where AgentId=#{ownerId} and RepoName=#{repoName} and ContributorId=#{contributorId};\r\n    </select>\r\n\r\n</mapper>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/demo5/src/main/resources/Mapper/ContributorMapper.xml b/demo5/src/main/resources/Mapper/ContributorMapper.xml
+--- a/demo5/src/main/resources/Mapper/ContributorMapper.xml	(revision cd958c87146e40187425c19c8b919bac450c7a99)
++++ b/demo5/src/main/resources/Mapper/ContributorMapper.xml	(date 1667909843395)
+@@ -12,7 +12,7 @@
+     </insert>
+ 
+     <select id="checkContributor" resultType="int">
+-        select count(*) from contributor where AgentId=#{ownerId} and RepoName=#{repoName} and ContributorId=#{contributorId};
++        select count(*) from contributor where repositoryId=#{repositoryId} and ContributorName=#{contributorName};
+     </select>
+ 
+ </mapper>
+\ No newline at end of file
+Index: .idea/shelf/Uncommitted_changes_before_Merge_at_2022_10_30_18_36__Changes_.xml
+===================================================================
+diff --git a/.idea/shelf/Uncommitted_changes_before_Merge_at_2022_10_30_18_36__Changes_.xml b/.idea/shelf/Uncommitted_changes_before_Merge_at_2022_10_30_18_36__Changes_.xml
+deleted file mode 100644
+--- a/.idea/shelf/Uncommitted_changes_before_Merge_at_2022_10_30_18_36__Changes_.xml	(revision cd958c87146e40187425c19c8b919bac450c7a99)
++++ /dev/null	(revision cd958c87146e40187425c19c8b919bac450c7a99)
+@@ -1,24 +0,0 @@
+-<changelist name="Uncommitted_changes_before_Merge_at_2022_10_30_18_36_[Changes]" date="1667126449455" recycled="true" deleted="true">
+-  <option name="PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_2022_10_30_18_36_[Changes]/shelved.patch" />
+-  <option name="DESCRIPTION" value="Uncommitted changes before Merge at 2022/10/30 18:36 [Changes]" />
+-  <binary>
+-    <option name="BEFORE_PATH" value="demo5/target/test-classes/com/example/demo/service/imp/CommitServiceImpTest.class" />
+-    <option name="AFTER_PATH" value="demo5/target/test-classes/com/example/demo/service/imp/CommitServiceImpTest.class" />
+-    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_2022_10_30_18_36_[Changes]/CommitServiceImpTest.class" />
+-  </binary>
+-  <binary>
+-    <option name="BEFORE_PATH" value="demo5/target/classes/com/example/demo/service/CommitService.class" />
+-    <option name="AFTER_PATH" value="demo5/target/classes/com/example/demo/service/CommitService.class" />
+-    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_2022_10_30_18_36_[Changes]/CommitService.class" />
+-  </binary>
+-  <binary>
+-    <option name="BEFORE_PATH" value="demo5/target/classes/com/example/demo/service/imp/BranchServiceimp.class" />
+-    <option name="AFTER_PATH" value="demo5/target/classes/com/example/demo/service/imp/BranchServiceimp.class" />
+-    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_2022_10_30_18_36_[Changes]/BranchServiceimp.class" />
+-  </binary>
+-  <binary>
+-    <option name="BEFORE_PATH" value="demo5/target/classes/com/example/demo/service/imp/CommitServiceImp.class" />
+-    <option name="AFTER_PATH" value="demo5/target/classes/com/example/demo/service/imp/CommitServiceImp.class" />
+-    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_2022_10_30_18_36_[Changes]/CommitServiceImp.class" />
+-  </binary>
+-</changelist>
+\ No newline at end of file
+Index: .idea/shelf/Uncommitted_changes_before_Merge_at_2022_10_30_18_36_[Changes]/shelved.patch
+===================================================================
+diff --git a/.idea/shelf/Uncommitted_changes_before_Merge_at_2022_10_30_18_36_[Changes]/shelved.patch b/.idea/shelf/Uncommitted_changes_before_Merge_at_2022_10_30_18_36_[Changes]/shelved.patch
+deleted file mode 100644
+--- a/.idea/shelf/Uncommitted_changes_before_Merge_at_2022_10_30_18_36_[Changes]/shelved.patch	(revision cd958c87146e40187425c19c8b919bac450c7a99)
++++ /dev/null	(revision cd958c87146e40187425c19c8b919bac450c7a99)
+@@ -1,182 +0,0 @@
+-Index: demo5/src/test/java/com/example/demo/service/imp/CommitServiceImpTest.java
+-IDEA additional info:
+-Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+-<+>package com.example.demo.service.imp;\r\n\r\n\r\nimport com.example.demo.service.AgentService;\r\nimport com.example.demo.service.BranchService;\r\nimport com.example.demo.service.CommitService;\r\n\r\nimport org.eclipse.jgit.api.errors.GitAPIException;\r\nimport org.eclipse.jgit.lib.ObjectId;\r\nimport org.eclipse.jgit.lib.Repository;\r\nimport org.eclipse.jgit.storage.file.FileRepositoryBuilder;\r\nimport org.junit.jupiter.api.Test;\r\nimport org.springframework.beans.factory.annotation.Autowired;\r\nimport org.springframework.boot.test.context.SpringBootTest;\r\n\r\nimport java.io.File;\r\nimport java.io.IOException;\r\n\r\nimport static org.junit.jupiter.api.Assertions.*;\r\n\r\n@SpringBootTest\r\nclass CommitServiceImpTest {\r\n\r\n\r\n    @Autowired\r\n    BranchService branchService;\r\n\r\n\r\n    @Autowired\r\n    CommitService commitService;\r\n\r\n\r\n    @Autowired\r\n    AgentService agentService;\r\n    private String localPath = \"C:\\\\Users\\\\12078\\\\Desktop\\\\大三上\\\\ooad\\\\test\\\\1\\\\test1\";\r\n\r\n    @Test\r\n    void initRepository() {\r\n        try {\r\n            System.out.println(commitService.initRepository(1,\"test1\"));\r\n        } catch (GitAPIException e) {\r\n            throw new RuntimeException(e);\r\n        }\r\n    }\r\n\r\n    @Test\r\n    void commitFilesOnMain(){\r\n        File file = new File(\"C:\\\\Users\\\\12078\\\\Desktop\\\\大三上\\\\ooad\\\\MyWeb\");\r\n        commitService.commitFiles(1, \"test1\", \"branch1\", file);\r\n    }\r\n\r\n\r\n\r\n    @Test\r\n    void rollBackTest(){\r\n        System.out.println(branchService.rollback(1,\"test1\",\"79cc7c4afd801628bbe8c9c97fb20352b794a319\"));\r\n    }\r\n\r\n    @Test\r\n    void getAllCommits(){\r\n        commitService.getCommitsByBranch(1,\"test1\", \"branch1\");\r\n    }\r\n//    @Test\r\n//    void commitFilesOnNewBranch(){\r\n//        commitService.commitFilesOnNewBranch(2,\"hello7\",\"branch3\",\"main\",\"nihaoshfasdfasdfasdfasfs23a\",\"craete branch and update main files3\",\"2002-02-11\");\r\n//    }\r\n\r\n    //新创建一个分支操作;\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n}\r\n\r\n\r\n\r\n\r\n\r\n\r\n//select 语句有点问题；\r\n\r\n
+-Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+-<+>UTF-8
+-===================================================================
+-diff --git a/demo5/src/test/java/com/example/demo/service/imp/CommitServiceImpTest.java b/demo5/src/test/java/com/example/demo/service/imp/CommitServiceImpTest.java
+---- a/demo5/src/test/java/com/example/demo/service/imp/CommitServiceImpTest.java	(revision 1da384510ee408c971d32ceb00fa21363a87c8ff)
+-+++ b/demo5/src/test/java/com/example/demo/service/imp/CommitServiceImpTest.java	(date 1666523792900)
+-@@ -32,7 +32,7 @@
+- 
+-     @Autowired
+-     AgentService agentService;
+--    private String localPath = "C:\\Users\\12078\\Desktop\\大三上\\ooad\\test\\1\\test1";
+-+    private String localPath = "C:\\Users\\12078\\Desktop\\grade three 1\\ooad\\test\\1\\test1";
+- 
+-     @Test
+-     void initRepository() {
+-@@ -45,7 +45,7 @@
+- 
+-     @Test
+-     void commitFilesOnMain(){
+--        File file = new File("C:\\Users\\12078\\Desktop\\大三上\\ooad\\MyWeb");
+-+        File file = new File("C:\\Users\\12078\\Desktop\\grade three 1\\ooad\\MyWeb");
+-         commitService.commitFiles(1, "test1", "branch1", file);
+-     }
+- 
+-Index: demo5/src/main/java/com/example/demo/service/imp/CommitServiceImp.java
+-IDEA additional info:
+-Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+-<+>package com.example.demo.service.imp;\r\n\r\n\r\nimport com.example.demo.entity.StaticRepo;\r\nimport com.example.demo.mapper.*;\r\nimport java.text.SimpleDateFormat;\r\nimport com.example.demo.service.CommitService;\r\n\r\nimport com.example.demo.util.DateParser;\r\nimport org.eclipse.jgit.api.Git;\r\nimport org.eclipse.jgit.api.RmCommand;\r\nimport org.eclipse.jgit.api.Status;\r\nimport org.eclipse.jgit.api.errors.GitAPIException;\r\nimport org.eclipse.jgit.lib.ObjectId;\r\nimport org.eclipse.jgit.lib.Ref;\r\nimport org.eclipse.jgit.lib.Repository;\r\nimport org.eclipse.jgit.revwalk.RevCommit;\r\nimport org.eclipse.jgit.revwalk.RevWalk;\r\nimport org.springframework.beans.factory.annotation.Autowired;\r\nimport org.springframework.jdbc.datasource.DataSourceTransactionManager;\r\nimport org.springframework.stereotype.Service;\r\n\r\nimport java.io.File;\r\nimport java.io.IOException;\r\nimport java.nio.file.Paths;\r\nimport java.util.*;\r\n\r\n\r\n@Service\r\npublic class CommitServiceImp implements CommitService {\r\n    @Autowired\r\n    AgentMapper agentMapper;\r\n\r\n    @Autowired\r\n    StaticRepoMapper staticRepoMapper;\r\n\r\n    private String localPath = \"C:\\\\Users\\\\12078\\\\Desktop\\\\大三上\\\\ooad\\\\test\";\r\n\r\n /**\r\n  * 创建一个空的仓库，并创建主分支Master\r\n  * return 0 代表发生创建错误\r\n  * return 1 代表成功创建\r\n  * **/\r\n    @Override\r\n    public int initRepository(int agentId, String repoName){\r\n        staticRepoMapper.createNewStaticRepo(new StaticRepo(agentId, repoName,0,0));\r\n        try {\r\n            Git.init().setDirectory(new File(localPath+\"\\\\\"+agentId+\"\\\\\"+repoName))\r\n                      .setInitialBranch(\"Master\").call();\r\n        } catch (GitAPIException e) {\r\n            return 0;\r\n        }\r\n        return 1;\r\n    }\r\n\r\n    /**\r\n     * 检测有无这个仓库的存在\r\n     * @param agentId\r\n     * @param repoName\r\n     * @return\r\n     */\r\n    @Override\r\n    public int checkRepoInfo(int agentId, String repoName) {\r\n        return staticRepoMapper.checkRepoInfo(agentId,repoName);\r\n    }\r\n\r\n\r\n    /**\r\n     * 指定分支提交数据,多用户提交情况还未考虑\r\n     * @param agentId\r\n     * @param repoName\r\n     * @param branch\r\n     * @param file\r\n     * @return\r\n     */\r\n\r\n    @Override\r\n    public int commitFiles(int agentId, String repoName, String branch, File file) {\r\n        String path = localPath+\"\\\\\"+agentId+\"\\\\\"+repoName;\r\n        try {\r\n            File origin = new File(path);\r\n            Git git = Git.open(origin);\r\n            git.checkout().setCreateBranch(false).setName(branch).call();\r\n            git.add().addFilepattern(\".\").call();\r\n            Status status = git.status().call();\r\n            if (!checkStatus(status)){\r\n                return -1;\r\n            }\r\n            RmCommand rm = git.rm();\r\n            for (String m: status.getMissing()){\r\n                rm.addFilepattern(m).call();\r\n                rm = git.rm();\r\n                status = git.status().call();\r\n            }\r\n            for (String r: status.getRemoved()){\r\n                rm.addFilepattern(r).call();\r\n                rm = git.rm();\r\n                status = git.status().call();\r\n            }\r\n            git.commit().setMessage(\"default value\").call();\r\n        } catch (IOException | GitAPIException e) {\r\n            throw new RuntimeException(e);\r\n        }\r\n        return 1;\r\n    }\r\n\r\n    /**\r\n     * 检查本地文件变更状态\r\n     * @param status\r\n     * @return\r\n     */\r\n    private boolean checkStatus(Status status){\r\n        int add = status.getAdded().size();\r\n        System.out.printf(\"新增%d个文件\\n\", add);\r\n        int change = status.getChanged().size();\r\n        System.out.printf(\"变更%d个文件\\n\", change);\r\n        int remove = status.getRemoved().size();\r\n        System.out.printf(\"删除%d个文件\\n\", remove);\r\n        int miss = status.getMissing().size();\r\n        System.out.printf(\"丢失%d个文件\\n\", miss);\r\n        int modified = status.getModified().size();\r\n        System.out.printf(\"修改%d个文件\\n\", modified);\r\n        int conflict = status.getConflicting().size();\r\n        System.out.printf(\"冲突%d个文件\\n\", conflict);\r\n        int ignore = status.getIgnoredNotInIndex().size();\r\n        System.out.printf(\"忽略%d个文件\\n\", ignore);\r\n        if (add == 0 && change == 0 && remove == 0 && miss == 0 && modified ==0 && conflict == 0 && ignore == 0){\r\n            System.out.println(\"未发生改变\");\r\n            return false;\r\n        }\r\n        return true;\r\n    }\r\n\r\n    /**\r\n     * 返回所有提交版本的ID\r\n     * @param agentId\r\n     * @param repoName\r\n     * @param branch\r\n     * @return\r\n     */\r\n    @Override\r\n    public List<RevCommit> getCommitsByBranch(int agentId, String repoName, String branch) {\r\n        List<RevCommit> commits = new ArrayList<>();\r\n        String path = localPath+\"\\\\\"+agentId+\"\\\\\"+repoName;\r\n        try {\r\n            Git git = Git.open(new File(path));\r\n            Repository repository = git.getRepository();\r\n            Ref ref = repository.findRef(branch);\r\n            RevWalk revWalk = new RevWalk(repository);\r\n            revWalk.markStart(revWalk.parseCommit(ref.getObjectId()));\r\n            for (RevCommit revCommit: revWalk){\r\n                System.out.printf(\"The commit time:%s The commit ID:%s\\n\", DateParser.printTime(revCommit.getCommitTime()), revCommit.getName());\r\n                commits.add(revCommit);\r\n            }\r\n        } catch (IOException e) {\r\n            throw new RuntimeException(e);\r\n        }\r\n        return commits;\r\n    }\r\n\r\n    /**\r\n     * clone分支的最新版本\r\n     * @param agentId\r\n     * @param repoName\r\n     * @param branch\r\n     * @return\r\n     */\r\n    @Override\r\n    public File clone(int agentId, String repoName, String branch) {\r\n        String path = localPath+\"\\\\\"+agentId+\"\\\\\"+repoName;\r\n        return new File(path);\r\n    }\r\n}\r\n\r\n\r\n\r\n
+-Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+-<+>UTF-8
+-===================================================================
+-diff --git a/demo5/src/main/java/com/example/demo/service/imp/CommitServiceImp.java b/demo5/src/main/java/com/example/demo/service/imp/CommitServiceImp.java
+---- a/demo5/src/main/java/com/example/demo/service/imp/CommitServiceImp.java	(revision 1da384510ee408c971d32ceb00fa21363a87c8ff)
+-+++ b/demo5/src/main/java/com/example/demo/service/imp/CommitServiceImp.java	(date 1666523822566)
+-@@ -34,7 +34,7 @@
+-     @Autowired
+-     StaticRepoMapper staticRepoMapper;
+- 
+--    private String localPath = "C:\\Users\\12078\\Desktop\\大三上\\ooad\\test";
+-+    private String localPath = "C:\\Users\\12078\\Desktop\\grade three 1\\ooad\\test";
+- 
+-  /**
+-   * 创建一个空的仓库，并创建主分支Master
+-Index: demo5/src/main/java/com/example/demo/service/imp/BranchServiceimp.java
+-IDEA additional info:
+-Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+-<+>package com.example.demo.service.imp;\r\n\r\n\r\nimport com.example.demo.entity.Branch;\r\n\r\nimport com.example.demo.service.BranchService;\r\nimport com.example.demo.util.TransactionUtil;\r\nimport org.eclipse.jgit.api.Git;\r\nimport org.eclipse.jgit.api.ResetCommand;\r\nimport org.eclipse.jgit.api.errors.CheckoutConflictException;\r\nimport org.eclipse.jgit.api.errors.GitAPIException;\r\nimport org.eclipse.jgit.lib.ObjectId;\r\nimport org.eclipse.jgit.lib.Repository;\r\nimport org.eclipse.jgit.revwalk.RevCommit;\r\nimport org.eclipse.jgit.revwalk.RevWalk;\r\nimport org.springframework.beans.factory.annotation.Autowired;\r\nimport org.springframework.jdbc.datasource.DataSourceTransactionManager;\r\nimport org.springframework.stereotype.Service;\r\nimport org.springframework.transaction.TransactionStatus;\r\n\r\nimport java.io.File;\r\nimport java.io.IOException;\r\n\r\n\r\n@Service\r\npublic class BranchServiceimp implements BranchService {\r\n\r\n\r\n\r\n    @Autowired\r\n    private DataSourceTransactionManager dataSourceTransactionManager;\r\n    private String localPath = \"C:\\\\Users\\\\12078\\\\Desktop\\\\大三上\\\\ooad\\\\test\";\r\n\r\n\r\n    /**\r\n     * 创建子分支\r\n     * **/\r\n    @Override\r\n    public int createNewBranchOnOldBranch() {\r\n\r\n\r\n        return 1;\r\n    }\r\n\r\n    /**\r\n     * 给出ObjectId,并回滚至该版本\r\n     * @param agentId\r\n     * @param repoName\r\n     * @param id\r\n     * @return\r\n     */\r\n    @Override\r\n    public int rollback(int agentId,String repoName,String id) {\r\n        String path = localPath+\"\\\\\"+agentId+\"\\\\\"+repoName;\r\n        try {\r\n            Git git = Git.open(new File(path));\r\n            Repository repository = git.getRepository();\r\n            RevWalk revWalk = new RevWalk(repository);\r\n            ObjectId objectId = repository.resolve(id);\r\n            RevCommit revCommit = revWalk.parseCommit(objectId);\r\n            String preVision = revCommit.getName();\r\n            git.reset().setMode(ResetCommand.ResetType.HARD).setRef(preVision).call();\r\n            repository.close();\r\n        } catch (IOException | GitAPIException e) {\r\n            return -1;\r\n        }\r\n        return 1;\r\n    }\r\n}\r\n
+-Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+-<+>UTF-8
+-===================================================================
+-diff --git a/demo5/src/main/java/com/example/demo/service/imp/BranchServiceimp.java b/demo5/src/main/java/com/example/demo/service/imp/BranchServiceimp.java
+---- a/demo5/src/main/java/com/example/demo/service/imp/BranchServiceimp.java	(revision 1da384510ee408c971d32ceb00fa21363a87c8ff)
+-+++ b/demo5/src/main/java/com/example/demo/service/imp/BranchServiceimp.java	(date 1666523746400)
+-@@ -29,7 +29,7 @@
+- 
+-     @Autowired
+-     private DataSourceTransactionManager dataSourceTransactionManager;
+--    private String localPath = "C:\\Users\\12078\\Desktop\\大三上\\ooad\\test";
+-+    private String localPath = "C:\\Users\\12078\\Desktop\\grade three 1\\ooad\\test";
+- 
+- 
+-     /**
+-Index: .idea/workspace.xml
+-IDEA additional info:
+-Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+-<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"AutoImportSettings\">\r\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"e808988d-61fd-4fe5-b049-ea8c081eb28d\" name=\"Changes\" comment=\"加入项目邀请贡献者和检测资格的服务\">\r\n      <change afterPath=\"$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/.idea/libraries/Maven__com_googlecode_javaewah_JavaEWAH_1_1_13.xml\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/.idea/libraries/Maven__org_apache_commons_commons_compress_1_21.xml\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/.idea/libraries/Maven__org_eclipse_jgit_org_eclipse_jgit_6_3_0_202209071007_r.xml\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/.idea/libraries/Maven__org_eclipse_jgit_org_eclipse_jgit_archive_6_3_0_202209071007_r.xml\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/.idea/libraries/Maven__org_osgi_org_osgi_core_6_0_0.xml\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/demo5/src/main/java/com/example/demo/util/DateParser.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2022_10_7_17_55_[Changes]/AgentServiceTest.class\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2022_10_7_17_55_[Changes]/CommitServiceImp.class\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2022_10_7_17_55_[Changes]/shelved.patch\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2022_10_7_17_55__Changes_.xml\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/demo5/demo5.iml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/demo5/demo5.iml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/demo5/pom.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/demo5/pom.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/demo5/src/main/java/com/example/demo/mapper/StaticRepoMapper.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/demo5/src/main/java/com/example/demo/mapper/StaticRepoMapper.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/demo5/src/main/java/com/example/demo/service/BranchService.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/demo5/src/main/java/com/example/demo/service/BranchService.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/demo5/src/main/java/com/example/demo/service/CommitService.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/demo5/src/main/java/com/example/demo/service/CommitService.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/demo5/src/main/java/com/example/demo/service/imp/BranchServiceimp.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/demo5/src/main/java/com/example/demo/service/imp/BranchServiceimp.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/demo5/src/main/java/com/example/demo/service/imp/CommitServiceImp.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/demo5/src/main/java/com/example/demo/service/imp/CommitServiceImp.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/demo5/src/main/resources/Mapper/StaticRepoMapper.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/demo5/src/main/resources/Mapper/StaticRepoMapper.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/demo5/src/test/java/com/example/demo/service/imp/CommitServiceImpTest.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/demo5/src/test/java/com/example/demo/service/imp/CommitServiceImpTest.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/demo5/src/test/java/com/example/demo/service/imp/VCServiceImpTest.java\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/demo5/target/classes/Mapper/AgentMapper.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/demo5/target/classes/Mapper/AgentMapper.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/demo5/target/classes/Mapper/BranchMapper.xml\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/demo5/target/classes/Mapper/RepoContentMapper.xml\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/demo5/target/classes/Mapper/StaticRepoMapper.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/demo5/target/classes/Mapper/StaticRepoMapper.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/demo5/target/classes/Mapper/VCMapper.xml\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/demo5/target/classes/com/example/demo/Demo5Application.class\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/demo5/target/classes/com/example/demo/Demo5Application.class\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/demo5/target/classes/com/example/demo/config/CrossOriginConfig.class\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/demo5/target/classes/com/example/demo/config/CrossOriginConfig.class\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/demo5/target/classes/com/example/demo/controller/RepoController.class\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/demo5/target/classes/com/example/demo/controller/RepoController.class\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/demo5/target/classes/com/example/demo/entity/Agent.class\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/demo5/target/classes/com/example/demo/entity/Agent.class\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/demo5/target/classes/com/example/demo/entity/Branch.class\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/demo5/target/classes/com/example/demo/entity/Branch.class\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/demo5/target/classes/com/example/demo/entity/RepoContent.class\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/demo5/target/classes/com/example/demo/entity/StaticRepo.class\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/demo5/target/classes/com/example/demo/entity/StaticRepo.class\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/demo5/target/classes/com/example/demo/entity/VC.class\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/demo5/target/classes/com/example/demo/mapper/AgentMapper.class\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/demo5/target/classes/com/example/demo/mapper/AgentMapper.class\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/demo5/target/classes/com/example/demo/mapper/BranchMapper.class\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/demo5/target/classes/com/example/demo/mapper/RepoContentMapper.class\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/demo5/target/classes/com/example/demo/mapper/StaticRepoMapper.class\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/demo5/target/classes/com/example/demo/mapper/StaticRepoMapper.class\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/demo5/target/classes/com/example/demo/mapper/VCMapper.class\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/demo5/target/classes/com/example/demo/service/AgentService.class\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/demo5/target/classes/com/example/demo/service/AgentService.class\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/demo5/target/classes/com/example/demo/service/BranchService.class\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/demo5/target/classes/com/example/demo/service/BranchService.class\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/demo5/target/classes/com/example/demo/service/CommitService.class\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/demo5/target/classes/com/example/demo/service/CommitService.class\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/demo5/target/classes/com/example/demo/service/VCService.class\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/demo5/target/classes/com/example/demo/service/imp/AgentServiceImp.class\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/demo5/target/classes/com/example/demo/service/imp/AgentServiceImp.class\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/demo5/target/classes/com/example/demo/service/imp/BranchServiceimp.class\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/demo5/target/classes/com/example/demo/service/imp/BranchServiceimp.class\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/demo5/target/classes/com/example/demo/service/imp/CommitServiceImp.class\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/demo5/target/classes/com/example/demo/service/imp/CommitServiceImp.class\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/demo5/target/classes/com/example/demo/service/imp/VCServiceImp.class\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/demo5/target/classes/com/example/demo/util/TransactionUtil.class\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/demo5/target/classes/com/example/demo/util/TransactionUtil.class\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/demo5/target/test-classes/com/example/demo/service/imp/CommitServiceImpTest.class\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/demo5/target/test-classes/com/example/demo/service/imp/CommitServiceImpTest.class\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/demo5/target/test-classes/com/example/demo/service/imp/VCServiceImpTest.class\" beforeDir=\"false\" />\r\n    </list>\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"FileTemplateManagerImpl\">\r\n    <option name=\"RECENT_TEMPLATES\">\r\n      <list>\r\n        <option value=\"Interface\" />\r\n        <option value=\"Class\" />\r\n      </list>\r\n    </option>\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_BRANCH_BY_REPOSITORY\">\r\n      <map>\r\n        <entry key=\"$PROJECT_DIR$/..\" value=\"main\" />\r\n      </map>\r\n    </option>\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$/..\" />\r\n  </component>\r\n  <component name=\"MarkdownSettingsMigration\">\r\n    <option name=\"stateVersion\" value=\"1\" />\r\n  </component>\r\n  <component name=\"MavenImportPreferences\">\r\n    <option name=\"generalSettings\">\r\n      <MavenGeneralSettings>\r\n        <option name=\"useMavenConfig\" value=\"true\" />\r\n      </MavenGeneralSettings>\r\n    </option>\r\n  </component>\r\n  <component name=\"ProjectId\" id=\"2FfkegxeiUIfbxlovHti4qVbdTf\" />\r\n  <component name=\"ProjectLevelVcsManager\" settingsEditedManually=\"true\" />\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\">{\r\n  &quot;keyToString&quot;: {\r\n    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,\r\n    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,\r\n    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,\r\n    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,\r\n    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,\r\n    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,\r\n    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,\r\n    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,\r\n    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,\r\n    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,\r\n    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,\r\n    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;,\r\n    &quot;spring.configuration.checksum&quot;: &quot;95346415f1f5933a78386d1759d2ef22&quot;\r\n  }\r\n}</component>\r\n  <component name=\"RunManager\" selected=\"JUnit.CommitServiceImpTest.commitFilesOnMain\">\r\n    <configuration name=\"AgentServiceTest.createName\" type=\"JUnit\" factoryName=\"JUnit\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <module name=\"demo5\" />\r\n      <extension name=\"coverage\">\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"com.example.demo.service.*\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n      </extension>\r\n      <option name=\"PACKAGE_NAME\" value=\"com.example.demo.service\" />\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"com.example.demo.service.AgentServiceTest\" />\r\n      <option name=\"METHOD_NAME\" value=\"createName\" />\r\n      <option name=\"TEST_OBJECT\" value=\"method\" />\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration name=\"CommitServiceImpTest.commitFilesOnMain\" type=\"JUnit\" factoryName=\"JUnit\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <module name=\"demo5\" />\r\n      <extension name=\"coverage\">\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"com.example.demo.service.imp.*\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n      </extension>\r\n      <option name=\"PACKAGE_NAME\" value=\"com.example.demo.service.imp\" />\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"com.example.demo.service.imp.CommitServiceImpTest\" />\r\n      <option name=\"METHOD_NAME\" value=\"commitFilesOnMain\" />\r\n      <option name=\"TEST_OBJECT\" value=\"method\" />\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration name=\"CommitServiceImpTest.getAllCommits\" type=\"JUnit\" factoryName=\"JUnit\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <module name=\"demo5\" />\r\n      <extension name=\"coverage\">\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"com.example.demo.service.imp.*\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n      </extension>\r\n      <option name=\"PACKAGE_NAME\" value=\"com.example.demo.service.imp\" />\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"com.example.demo.service.imp.CommitServiceImpTest\" />\r\n      <option name=\"METHOD_NAME\" value=\"getAllCommits\" />\r\n      <option name=\"TEST_OBJECT\" value=\"method\" />\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration name=\"CommitServiceImpTest.initRepository\" type=\"JUnit\" factoryName=\"JUnit\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <module name=\"demo5\" />\r\n      <extension name=\"coverage\">\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"com.example.demo.service.imp.*\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n      </extension>\r\n      <option name=\"PACKAGE_NAME\" value=\"com.example.demo.service.imp\" />\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"com.example.demo.service.imp.CommitServiceImpTest\" />\r\n      <option name=\"METHOD_NAME\" value=\"initRepository\" />\r\n      <option name=\"TEST_OBJECT\" value=\"method\" />\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration name=\"CommitServiceImpTest.rollBackTest\" type=\"JUnit\" factoryName=\"JUnit\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <module name=\"demo5\" />\r\n      <extension name=\"coverage\">\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"com.example.demo.service.imp.*\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n      </extension>\r\n      <option name=\"PACKAGE_NAME\" value=\"com.example.demo.service.imp\" />\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"com.example.demo.service.imp.CommitServiceImpTest\" />\r\n      <option name=\"METHOD_NAME\" value=\"rollBackTest\" />\r\n      <option name=\"TEST_OBJECT\" value=\"method\" />\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration name=\"Demo5Application\" type=\"SpringBootApplicationConfigurationType\" factoryName=\"Spring Boot\">\r\n      <module name=\"demo5\" />\r\n      <option name=\"SPRING_BOOT_MAIN_CLASS\" value=\"com.example.demo.Demo5Application\" />\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <recent_temporary>\r\n      <list>\r\n        <item itemvalue=\"JUnit.CommitServiceImpTest.commitFilesOnMain\" />\r\n        <item itemvalue=\"JUnit.CommitServiceImpTest.rollBackTest\" />\r\n        <item itemvalue=\"JUnit.CommitServiceImpTest.getAllCommits\" />\r\n        <item itemvalue=\"JUnit.CommitServiceImpTest.initRepository\" />\r\n        <item itemvalue=\"JUnit.AgentServiceTest.createName\" />\r\n      </list>\r\n    </recent_temporary>\r\n  </component>\r\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"e808988d-61fd-4fe5-b049-ea8c081eb28d\" name=\"Changes\" comment=\"\" />\r\n      <created>1664890626293</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1664890626293</updated>\r\n      <workItem from=\"1664890629664\" duration=\"44000\" />\r\n      <workItem from=\"1664939503180\" duration=\"6153000\" />\r\n      <workItem from=\"1665028672516\" duration=\"4662000\" />\r\n      <workItem from=\"1665033353702\" duration=\"2134000\" />\r\n      <workItem from=\"1665035777039\" duration=\"279000\" />\r\n      <workItem from=\"1665036150692\" duration=\"3973000\" />\r\n      <workItem from=\"1665041235882\" duration=\"35000\" />\r\n      <workItem from=\"1665131623560\" duration=\"4148000\" />\r\n      <workItem from=\"1665148681829\" duration=\"112000\" />\r\n      <workItem from=\"1665224243826\" duration=\"1668000\" />\r\n      <workItem from=\"1665389177136\" duration=\"6000\" />\r\n      <workItem from=\"1665397661354\" duration=\"2354000\" />\r\n      <workItem from=\"1665922615934\" duration=\"618000\" />\r\n      <workItem from=\"1665964766391\" duration=\"3141000\" />\r\n      <workItem from=\"1666097765346\" duration=\"8637000\" />\r\n      <workItem from=\"1666168461162\" duration=\"2533000\" />\r\n      <workItem from=\"1666173124487\" duration=\"600000\" />\r\n      <workItem from=\"1666173746581\" duration=\"611000\" />\r\n      <workItem from=\"1666181212785\" duration=\"1815000\" />\r\n      <workItem from=\"1666189897808\" duration=\"625000\" />\r\n      <workItem from=\"1666318414503\" duration=\"821000\" />\r\n    </task>\r\n    <task id=\"LOCAL-00001\" summary=\"store\">\r\n      <created>1665036247079</created>\r\n      <option name=\"number\" value=\"00001\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1665036247080</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00002\" summary=\"修好xml的bug\">\r\n      <created>1665041260564</created>\r\n      <option name=\"number\" value=\"00002\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00002\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1665041260564</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00003\" summary=\"修好事务管理\">\r\n      <created>1665134017458</created>\r\n      <option name=\"number\" value=\"00003\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00003\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1665134017458</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00004\" summary=\"加入项目邀请贡献者和检测资格的服务\">\r\n      <created>1665225893542</created>\r\n      <option name=\"number\" value=\"00004\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00004\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1665225893542</updated>\r\n    </task>\r\n    <option name=\"localTasksCounter\" value=\"5\" />\r\n    <servers />\r\n  </component>\r\n  <component name=\"TypeScriptGeneratedFilesManager\">\r\n    <option name=\"version\" value=\"3\" />\r\n  </component>\r\n  <component name=\"Vcs.Log.Tabs.Properties\">\r\n    <option name=\"TAB_STATES\">\r\n      <map>\r\n        <entry key=\"MAIN\">\r\n          <value>\r\n            <State />\r\n          </value>\r\n        </entry>\r\n      </map>\r\n    </option>\r\n  </component>\r\n  <component name=\"VcsManagerConfiguration\">\r\n    <MESSAGE value=\"store\" />\r\n    <MESSAGE value=\"修好xml的bug\" />\r\n    <MESSAGE value=\"修好事务管理\" />\r\n    <MESSAGE value=\"加入项目邀请贡献者和检测资格的服务\" />\r\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"加入项目邀请贡献者和检测资格的服务\" />\r\n  </component>\r\n  <component name=\"XDebuggerManager\">\r\n    <breakpoint-manager>\r\n      <breakpoints>\r\n        <line-breakpoint enabled=\"true\" type=\"java-line\">\r\n          <url>file://$PROJECT_DIR$/demo5/src/main/java/com/example/demo/service/imp/CommitServiceImp.java</url>\r\n          <line>44</line>\r\n          <option name=\"timeStamp\" value=\"1\" />\r\n        </line-breakpoint>\r\n        <line-breakpoint enabled=\"true\" type=\"java-line\">\r\n          <url>file://$PROJECT_DIR$/demo5/src/main/java/com/example/demo/service/imp/CommitServiceImp.java</url>\r\n          <line>83</line>\r\n          <option name=\"timeStamp\" value=\"3\" />\r\n        </line-breakpoint>\r\n        <line-breakpoint enabled=\"true\" type=\"java-line\">\r\n          <url>file://$PROJECT_DIR$/demo5/src/main/java/com/example/demo/service/imp/CommitServiceImp.java</url>\r\n          <line>157</line>\r\n          <option name=\"timeStamp\" value=\"4\" />\r\n        </line-breakpoint>\r\n      </breakpoints>\r\n    </breakpoint-manager>\r\n  </component>\r\n</project>
+-Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+-<+>UTF-8
+-===================================================================
+-diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+---- a/.idea/workspace.xml	(revision 1da384510ee408c971d32ceb00fa21363a87c8ff)
+-+++ b/.idea/workspace.xml	(date 1666525400446)
+-@@ -4,58 +4,15 @@
+-     <option name="autoReloadType" value="SELECTIVE" />
+-   </component>
+-   <component name="ChangeListManager">
+--    <list default="true" id="e808988d-61fd-4fe5-b049-ea8c081eb28d" name="Changes" comment="加入项目邀请贡献者和检测资格的服务">
+--      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+--      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_googlecode_javaewah_JavaEWAH_1_1_13.xml" afterDir="false" />
+--      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_commons_commons_compress_1_21.xml" afterDir="false" />
+--      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_eclipse_jgit_org_eclipse_jgit_6_3_0_202209071007_r.xml" afterDir="false" />
+--      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_eclipse_jgit_org_eclipse_jgit_archive_6_3_0_202209071007_r.xml" afterDir="false" />
+--      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_osgi_org_osgi_core_6_0_0.xml" afterDir="false" />
+--      <change afterPath="$PROJECT_DIR$/demo5/src/main/java/com/example/demo/util/DateParser.java" afterDir="false" />
+--      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2022_10_7_17_55_[Changes]/AgentServiceTest.class" beforeDir="false" />
+--      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2022_10_7_17_55_[Changes]/CommitServiceImp.class" beforeDir="false" />
+--      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2022_10_7_17_55_[Changes]/shelved.patch" beforeDir="false" />
+--      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2022_10_7_17_55__Changes_.xml" beforeDir="false" />
+-+    <list default="true" id="e808988d-61fd-4fe5-b049-ea8c081eb28d" name="Changes" comment="jgit">
+-       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+--      <change beforePath="$PROJECT_DIR$/demo5/demo5.iml" beforeDir="false" afterPath="$PROJECT_DIR$/demo5/demo5.iml" afterDir="false" />
+--      <change beforePath="$PROJECT_DIR$/demo5/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/demo5/pom.xml" afterDir="false" />
+--      <change beforePath="$PROJECT_DIR$/demo5/src/main/java/com/example/demo/mapper/StaticRepoMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/demo5/src/main/java/com/example/demo/mapper/StaticRepoMapper.java" afterDir="false" />
+--      <change beforePath="$PROJECT_DIR$/demo5/src/main/java/com/example/demo/service/BranchService.java" beforeDir="false" afterPath="$PROJECT_DIR$/demo5/src/main/java/com/example/demo/service/BranchService.java" afterDir="false" />
+--      <change beforePath="$PROJECT_DIR$/demo5/src/main/java/com/example/demo/service/CommitService.java" beforeDir="false" afterPath="$PROJECT_DIR$/demo5/src/main/java/com/example/demo/service/CommitService.java" afterDir="false" />
+-       <change beforePath="$PROJECT_DIR$/demo5/src/main/java/com/example/demo/service/imp/BranchServiceimp.java" beforeDir="false" afterPath="$PROJECT_DIR$/demo5/src/main/java/com/example/demo/service/imp/BranchServiceimp.java" afterDir="false" />
+-       <change beforePath="$PROJECT_DIR$/demo5/src/main/java/com/example/demo/service/imp/CommitServiceImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/demo5/src/main/java/com/example/demo/service/imp/CommitServiceImp.java" afterDir="false" />
+--      <change beforePath="$PROJECT_DIR$/demo5/src/main/resources/Mapper/StaticRepoMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/demo5/src/main/resources/Mapper/StaticRepoMapper.xml" afterDir="false" />
+-       <change beforePath="$PROJECT_DIR$/demo5/src/test/java/com/example/demo/service/imp/CommitServiceImpTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/demo5/src/test/java/com/example/demo/service/imp/CommitServiceImpTest.java" afterDir="false" />
+--      <change beforePath="$PROJECT_DIR$/demo5/src/test/java/com/example/demo/service/imp/VCServiceImpTest.java" beforeDir="false" />
+--      <change beforePath="$PROJECT_DIR$/demo5/target/classes/Mapper/AgentMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/demo5/target/classes/Mapper/AgentMapper.xml" afterDir="false" />
+--      <change beforePath="$PROJECT_DIR$/demo5/target/classes/Mapper/BranchMapper.xml" beforeDir="false" />
+--      <change beforePath="$PROJECT_DIR$/demo5/target/classes/Mapper/RepoContentMapper.xml" beforeDir="false" />
+--      <change beforePath="$PROJECT_DIR$/demo5/target/classes/Mapper/StaticRepoMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/demo5/target/classes/Mapper/StaticRepoMapper.xml" afterDir="false" />
+--      <change beforePath="$PROJECT_DIR$/demo5/target/classes/Mapper/VCMapper.xml" beforeDir="false" />
+--      <change beforePath="$PROJECT_DIR$/demo5/target/classes/com/example/demo/Demo5Application.class" beforeDir="false" afterPath="$PROJECT_DIR$/demo5/target/classes/com/example/demo/Demo5Application.class" afterDir="false" />
+--      <change beforePath="$PROJECT_DIR$/demo5/target/classes/com/example/demo/config/CrossOriginConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/demo5/target/classes/com/example/demo/config/CrossOriginConfig.class" afterDir="false" />
+--      <change beforePath="$PROJECT_DIR$/demo5/target/classes/com/example/demo/controller/RepoController.class" beforeDir="false" afterPath="$PROJECT_DIR$/demo5/target/classes/com/example/demo/controller/RepoController.class" afterDir="false" />
+--      <change beforePath="$PROJECT_DIR$/demo5/target/classes/com/example/demo/entity/Agent.class" beforeDir="false" afterPath="$PROJECT_DIR$/demo5/target/classes/com/example/demo/entity/Agent.class" afterDir="false" />
+--      <change beforePath="$PROJECT_DIR$/demo5/target/classes/com/example/demo/entity/Branch.class" beforeDir="false" afterPath="$PROJECT_DIR$/demo5/target/classes/com/example/demo/entity/Branch.class" afterDir="false" />
+--      <change beforePath="$PROJECT_DIR$/demo5/target/classes/com/example/demo/entity/RepoContent.class" beforeDir="false" />
+--      <change beforePath="$PROJECT_DIR$/demo5/target/classes/com/example/demo/entity/StaticRepo.class" beforeDir="false" afterPath="$PROJECT_DIR$/demo5/target/classes/com/example/demo/entity/StaticRepo.class" afterDir="false" />
+--      <change beforePath="$PROJECT_DIR$/demo5/target/classes/com/example/demo/entity/VC.class" beforeDir="false" />
+--      <change beforePath="$PROJECT_DIR$/demo5/target/classes/com/example/demo/mapper/AgentMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/demo5/target/classes/com/example/demo/mapper/AgentMapper.class" afterDir="false" />
+--      <change beforePath="$PROJECT_DIR$/demo5/target/classes/com/example/demo/mapper/BranchMapper.class" beforeDir="false" />
+--      <change beforePath="$PROJECT_DIR$/demo5/target/classes/com/example/demo/mapper/RepoContentMapper.class" beforeDir="false" />
+--      <change beforePath="$PROJECT_DIR$/demo5/target/classes/com/example/demo/mapper/StaticRepoMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/demo5/target/classes/com/example/demo/mapper/StaticRepoMapper.class" afterDir="false" />
+--      <change beforePath="$PROJECT_DIR$/demo5/target/classes/com/example/demo/mapper/VCMapper.class" beforeDir="false" />
+--      <change beforePath="$PROJECT_DIR$/demo5/target/classes/com/example/demo/service/AgentService.class" beforeDir="false" afterPath="$PROJECT_DIR$/demo5/target/classes/com/example/demo/service/AgentService.class" afterDir="false" />
+--      <change beforePath="$PROJECT_DIR$/demo5/target/classes/com/example/demo/service/BranchService.class" beforeDir="false" afterPath="$PROJECT_DIR$/demo5/target/classes/com/example/demo/service/BranchService.class" afterDir="false" />
+-       <change beforePath="$PROJECT_DIR$/demo5/target/classes/com/example/demo/service/CommitService.class" beforeDir="false" afterPath="$PROJECT_DIR$/demo5/target/classes/com/example/demo/service/CommitService.class" afterDir="false" />
+--      <change beforePath="$PROJECT_DIR$/demo5/target/classes/com/example/demo/service/VCService.class" beforeDir="false" />
+--      <change beforePath="$PROJECT_DIR$/demo5/target/classes/com/example/demo/service/imp/AgentServiceImp.class" beforeDir="false" afterPath="$PROJECT_DIR$/demo5/target/classes/com/example/demo/service/imp/AgentServiceImp.class" afterDir="false" />
+-       <change beforePath="$PROJECT_DIR$/demo5/target/classes/com/example/demo/service/imp/BranchServiceimp.class" beforeDir="false" afterPath="$PROJECT_DIR$/demo5/target/classes/com/example/demo/service/imp/BranchServiceimp.class" afterDir="false" />
+-       <change beforePath="$PROJECT_DIR$/demo5/target/classes/com/example/demo/service/imp/CommitServiceImp.class" beforeDir="false" afterPath="$PROJECT_DIR$/demo5/target/classes/com/example/demo/service/imp/CommitServiceImp.class" afterDir="false" />
+--      <change beforePath="$PROJECT_DIR$/demo5/target/classes/com/example/demo/service/imp/VCServiceImp.class" beforeDir="false" />
+--      <change beforePath="$PROJECT_DIR$/demo5/target/classes/com/example/demo/util/TransactionUtil.class" beforeDir="false" afterPath="$PROJECT_DIR$/demo5/target/classes/com/example/demo/util/TransactionUtil.class" afterDir="false" />
+-       <change beforePath="$PROJECT_DIR$/demo5/target/test-classes/com/example/demo/service/imp/CommitServiceImpTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/demo5/target/test-classes/com/example/demo/service/imp/CommitServiceImpTest.class" afterDir="false" />
+--      <change beforePath="$PROJECT_DIR$/demo5/target/test-classes/com/example/demo/service/imp/VCServiceImpTest.class" beforeDir="false" />
+-     </list>
+-     <option name="SHOW_DIALOG" value="false" />
+-     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+-@@ -238,6 +195,7 @@
+-       <workItem from="1666181212785" duration="1815000" />
+-       <workItem from="1666189897808" duration="625000" />
+-       <workItem from="1666318414503" duration="821000" />
+-+      <workItem from="1666523365885" duration="2032000" />
+-     </task>
+-     <task id="LOCAL-00001" summary="store">
+-       <created>1665036247079</created>
+-@@ -267,7 +225,14 @@
+-       <option name="project" value="LOCAL" />
+-       <updated>1665225893542</updated>
+-     </task>
+--    <option name="localTasksCounter" value="5" />
+-+    <task id="LOCAL-00005" summary="jgit">
+-+      <created>1666523437521</created>
+-+      <option name="number" value="00005" />
+-+      <option name="presentableId" value="LOCAL-00005" />
+-+      <option name="project" value="LOCAL" />
+-+      <updated>1666523437521</updated>
+-+    </task>
+-+    <option name="localTasksCounter" value="6" />
+-     <servers />
+-   </component>
+-   <component name="TypeScriptGeneratedFilesManager">
+-@@ -289,7 +254,8 @@
+-     <MESSAGE value="修好xml的bug" />
+-     <MESSAGE value="修好事务管理" />
+-     <MESSAGE value="加入项目邀请贡献者和检测资格的服务" />
+--    <option name="LAST_COMMIT_MESSAGE" value="加入项目邀请贡献者和检测资格的服务" />
+-+    <MESSAGE value="jgit" />
+-+    <option name="LAST_COMMIT_MESSAGE" value="jgit" />
+-   </component>
+-   <component name="XDebuggerManager">
+-     <breakpoint-manager>
+-@@ -308,6 +274,11 @@
+-           <url>file://$PROJECT_DIR$/demo5/src/main/java/com/example/demo/service/imp/CommitServiceImp.java</url>
+-           <line>157</line>
+-           <option name="timeStamp" value="4" />
+-+        </line-breakpoint>
+-+        <line-breakpoint enabled="true" type="java-line">
+-+          <url>file://$PROJECT_DIR$/demo5/src/main/java/com/example/demo/service/imp/CommitServiceImp.java</url>
+-+          <line>128</line>
+-+          <option name="timeStamp" value="5" />
+-         </line-breakpoint>
+-       </breakpoints>
+-     </breakpoint-manager>
+Index: .idea/libraries/Maven__org_eclipse_jgit_org_eclipse_jgit_6_3_0_202209071007_r.xml
+===================================================================
+diff --git a/.idea/libraries/Maven__org_eclipse_jgit_org_eclipse_jgit_6_3_0_202209071007_r.xml b/.idea/libraries/Maven__org_eclipse_jgit_org_eclipse_jgit_6_3_0_202209071007_r.xml
+deleted file mode 100644
+--- a/.idea/libraries/Maven__org_eclipse_jgit_org_eclipse_jgit_6_3_0_202209071007_r.xml	(revision cd958c87146e40187425c19c8b919bac450c7a99)
++++ /dev/null	(revision cd958c87146e40187425c19c8b919bac450c7a99)
+@@ -1,13 +0,0 @@
+-<component name="libraryTable">
+-  <library name="Maven: org.eclipse.jgit:org.eclipse.jgit:6.3.0.202209071007-r">
+-    <CLASSES>
+-      <root url="jar://$MAVEN_REPOSITORY$/org/eclipse/jgit/org.eclipse.jgit/6.3.0.202209071007-r/org.eclipse.jgit-6.3.0.202209071007-r.jar!/" />
+-    </CLASSES>
+-    <JAVADOC>
+-      <root url="jar://$MAVEN_REPOSITORY$/org/eclipse/jgit/org.eclipse.jgit/6.3.0.202209071007-r/org.eclipse.jgit-6.3.0.202209071007-r-javadoc.jar!/" />
+-    </JAVADOC>
+-    <SOURCES>
+-      <root url="jar://$MAVEN_REPOSITORY$/org/eclipse/jgit/org.eclipse.jgit/6.3.0.202209071007-r/org.eclipse.jgit-6.3.0.202209071007-r-sources.jar!/" />
+-    </SOURCES>
+-  </library>
+-</component>
+\ No newline at end of file
+Index: demo5/src/main/java/com/example/demo/service/imp/IssueServiceImp.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.demo.service.imp;\r\n\r\nimport com.example.demo.entity.Comment;\r\nimport com.example.demo.entity.Issue;\r\nimport com.example.demo.mapper.CommentMapper;\r\nimport com.example.demo.mapper.IssueMapper;\r\nimport com.example.demo.service.IssueService;\r\nimport com.example.demo.util.DateParser;\r\nimport com.example.demo.util.encodeUtil;\r\nimport org.springframework.beans.factory.annotation.Autowired;\r\nimport org.springframework.stereotype.Service;\r\n\r\nimport java.util.List;\r\n\r\n@Service\r\npublic class IssueServiceImp implements IssueService {\r\n    @Autowired\r\n    IssueMapper issueMapper;\r\n    @Autowired\r\n    CommentMapper commentMapper;\r\n\r\n    @Override\r\n    public int createIssueInRepo(String agentName, String repoId, String title) {\r\n        String issueID = encodeUtil.hash(agentName, repoId, title);\r\n        String time = DateParser.getCurrentDate();\r\n        return issueMapper.createIssue(issueID, agentName, repoId, title, time);\r\n    }\r\n\r\n    @Override\r\n    public int deleteIssueInRepo(String issueId) {\r\n        return issueMapper.deleteIssue(issueId);\r\n    }\r\n\r\n    @Override\r\n    public List<Issue> showAllIssues(String repoId) {\r\n        return issueMapper.getIssues(repoId);\r\n    }\r\n\r\n    @Override\r\n    public int commentInIssue(String issueId, String agentName, String content) {\r\n        String time = DateParser.getCurrentDate();\r\n        String commentId = encodeUtil.hash(issueId, agentName, content, time);\r\n        return commentMapper.insertComment(commentId,content,agentName,issueId,time);\r\n    }\r\n\r\n    @Override\r\n    public int deleteCommentInIssue(String commentId) {\r\n        return commentMapper.deleteComments(commentId);\r\n    }\r\n\r\n    @Override\r\n    public List<Comment> showAllCommentsInIssue(String issueId) {\r\n        return commentMapper.getComments(issueId);\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/demo5/src/main/java/com/example/demo/service/imp/IssueServiceImp.java b/demo5/src/main/java/com/example/demo/service/imp/IssueServiceImp.java
+--- a/demo5/src/main/java/com/example/demo/service/imp/IssueServiceImp.java	(revision cd958c87146e40187425c19c8b919bac450c7a99)
++++ b/demo5/src/main/java/com/example/demo/service/imp/IssueServiceImp.java	(date 1667914162119)
+@@ -45,7 +45,7 @@
+ 
+     @Override
+     public int deleteCommentInIssue(String commentId) {
+-        return commentMapper.deleteComments(commentId);
++        return commentMapper.deleteComment(commentId);
+     }
+ 
+     @Override
+Index: demo5/pom.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project xmlns=\"http://maven.apache.org/POM/4.0.0\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\r\n         xsi:schemaLocation=\"http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd\">\r\n    <modelVersion>4.0.0</modelVersion>\r\n    <groupId>com.example</groupId>\r\n    <artifactId>demo5</artifactId>\r\n    <version>0.0.1-SNAPSHOT</version>\r\n    <name>demo5</name>\r\n    <description>demo5</description>\r\n\r\n    <properties>\r\n        <java.version>1.8</java.version>\r\n        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>\r\n        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>\r\n        <spring-boot.version>2.3.7.RELEASE</spring-boot.version>\r\n    </properties>\r\n\r\n    <dependencies>\r\n\r\n        \r\n\r\n        <dependency>\r\n            <groupId>org.springframework.boot</groupId>\r\n            <artifactId>spring-boot-starter-web</artifactId>\r\n        </dependency>\r\n\r\n\r\n        <dependency>\r\n            <groupId>org.mybatis.spring.boot</groupId>\r\n            <artifactId>mybatis-spring-boot-starter</artifactId>\r\n            <version>2.2.2</version>\r\n        </dependency>\r\n\r\n\r\n        <dependency>\r\n            <groupId>org.projectlombok</groupId>\r\n            <artifactId>lombok</artifactId>\r\n            <optional>true</optional>\r\n        </dependency>\r\n\r\n        <dependency>\r\n            <groupId>org.springframework.boot</groupId>\r\n            <artifactId>spring-boot-starter-test</artifactId>\r\n            <scope>test</scope>\r\n            <exclusions>\r\n                <exclusion>\r\n                    <groupId>org.junit.vintage</groupId>\r\n                    <artifactId>junit-vintage-engine</artifactId>\r\n                </exclusion>\r\n            </exclusions>\r\n        </dependency>\r\n\r\n\r\n\r\n\r\n        <!-- mysql驱动依赖  -->\r\n        <dependency>\r\n            <groupId>mysql</groupId>\r\n            <artifactId>mysql-connector-java</artifactId>\r\n            <version>8.0.30</version>\r\n        </dependency>\r\n\r\n        <!--    数据连接池 druid    -->\r\n        <dependency>\r\n            <groupId>com.alibaba</groupId>\r\n            <artifactId>druid-spring-boot-starter</artifactId>\r\n            <version>1.2.12</version>\r\n        </dependency>\r\n\r\n        <dependency>\r\n            <groupId>org.eclipse.jgit</groupId>\r\n            <artifactId>org.eclipse.jgit</artifactId>\r\n            <version>6.3.0.202209071007-r</version>\r\n        </dependency>\r\n\r\n        <dependency>\r\n            <groupId>org.eclipse.jgit</groupId>\r\n            <artifactId>org.eclipse.jgit.archive</artifactId>\r\n            <version>6.3.0.202209071007-r</version>\r\n        </dependency>\r\n\r\n    </dependencies>\r\n\r\n    <dependencyManagement>\r\n        <dependencies>\r\n            <dependency>\r\n                <groupId>org.springframework.boot</groupId>\r\n                <artifactId>spring-boot-dependencies</artifactId>\r\n                <version>${spring-boot.version}</version>\r\n                <type>pom</type>\r\n                <scope>import</scope>\r\n            </dependency>\r\n        </dependencies>\r\n    </dependencyManagement>\r\n\r\n    <build>\r\n        <plugins>\r\n            <plugin>\r\n                <groupId>org.apache.maven.plugins</groupId>\r\n                <artifactId>maven-compiler-plugin</artifactId>\r\n                <version>3.8.1</version>\r\n                <configuration>\r\n                    <source>1.8</source>\r\n                    <target>1.8</target>\r\n                    <encoding>UTF-8</encoding>\r\n                </configuration>\r\n            </plugin>\r\n            <plugin>\r\n                <groupId>org.springframework.boot</groupId>\r\n                <artifactId>spring-boot-maven-plugin</artifactId>\r\n                <version>2.3.7.RELEASE</version>\r\n                <configuration>\r\n                    <mainClass>com.example.demo.Demo5Application</mainClass>\r\n                </configuration>\r\n                <executions>\r\n                    <execution>\r\n                        <id>repackage</id>\r\n                        <goals>\r\n                            <goal>repackage</goal>\r\n                        </goals>\r\n                    </execution>\r\n                </executions>\r\n            </plugin>\r\n        </plugins>\r\n    </build>\r\n\r\n</project>\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/demo5/pom.xml b/demo5/pom.xml
+--- a/demo5/pom.xml	(revision cd958c87146e40187425c19c8b919bac450c7a99)
++++ b/demo5/pom.xml	(date 1667909409976)
+@@ -70,13 +70,13 @@
+         <dependency>
+             <groupId>org.eclipse.jgit</groupId>
+             <artifactId>org.eclipse.jgit</artifactId>
+-            <version>6.3.0.202209071007-r</version>
++            <version>4.4.1.201607150455-r</version>
+         </dependency>
+ 
+         <dependency>
+             <groupId>org.eclipse.jgit</groupId>
+             <artifactId>org.eclipse.jgit.archive</artifactId>
+-            <version>6.3.0.202209071007-r</version>
++            <version>5.8.1.202007141445-r</version>
+         </dependency>
+ 
+     </dependencies>
+Index: demo5/src/main/java/com/example/demo/mapper/CommentMapper.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.demo.mapper;\r\n\r\nimport com.example.demo.entity.Comment;\r\nimport org.apache.ibatis.annotations.Mapper;\r\nimport org.apache.ibatis.annotations.Param;\r\n\r\nimport java.util.List;\r\n\r\n@Mapper\r\npublic interface CommentMapper {\r\n\r\n    int insertComment(@Param(\"commentId\") String hash,@Param(\"comment\") String comment,\r\n                      @Param(\"agent\") String agent, @Param(\"issueId\") String issueId, @Param(\"time\") String time);\r\n\r\n    List<Comment> getComments(@Param(\"issueId\") String issueId);\r\n\r\n    int deleteComments(@Param(\"commentId\") String hash);\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/demo5/src/main/java/com/example/demo/mapper/CommentMapper.java b/demo5/src/main/java/com/example/demo/mapper/CommentMapper.java
+--- a/demo5/src/main/java/com/example/demo/mapper/CommentMapper.java	(revision cd958c87146e40187425c19c8b919bac450c7a99)
++++ b/demo5/src/main/java/com/example/demo/mapper/CommentMapper.java	(date 1667914162088)
+@@ -14,5 +14,5 @@
+ 
+     List<Comment> getComments(@Param("issueId") String issueId);
+ 
+-    int deleteComments(@Param("commentId") String hash);
++    int deleteComment(@Param("commentId") String hash);
+ }
+Index: .idea/libraries/Maven__com_googlecode_javaewah_JavaEWAH_1_1_13.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/libraries/Maven__com_googlecode_javaewah_JavaEWAH_1_1_13.xml b/.idea/libraries/Maven__com_googlecode_javaewah_JavaEWAH_0_7_9.xml
+rename from .idea/libraries/Maven__com_googlecode_javaewah_JavaEWAH_1_1_13.xml
+rename to .idea/libraries/Maven__com_googlecode_javaewah_JavaEWAH_0_7_9.xml
+--- a/.idea/libraries/Maven__com_googlecode_javaewah_JavaEWAH_1_1_13.xml	(revision cd958c87146e40187425c19c8b919bac450c7a99)
++++ b/.idea/libraries/Maven__com_googlecode_javaewah_JavaEWAH_0_7_9.xml	(date 1667909504759)
+@@ -1,13 +1,13 @@
+ <component name="libraryTable">
+-  <library name="Maven: com.googlecode.javaewah:JavaEWAH:1.1.13">
++  <library name="Maven: com.googlecode.javaewah:JavaEWAH:0.7.9">
+     <CLASSES>
+-      <root url="jar://$MAVEN_REPOSITORY$/com/googlecode/javaewah/JavaEWAH/1.1.13/JavaEWAH-1.1.13.jar!/" />
++      <root url="jar://$MAVEN_REPOSITORY$/com/googlecode/javaewah/JavaEWAH/0.7.9/JavaEWAH-0.7.9.jar!/" />
+     </CLASSES>
+     <JAVADOC>
+-      <root url="jar://$MAVEN_REPOSITORY$/com/googlecode/javaewah/JavaEWAH/1.1.13/JavaEWAH-1.1.13-javadoc.jar!/" />
++      <root url="jar://$MAVEN_REPOSITORY$/com/googlecode/javaewah/JavaEWAH/0.7.9/JavaEWAH-0.7.9-javadoc.jar!/" />
+     </JAVADOC>
+     <SOURCES>
+-      <root url="jar://$MAVEN_REPOSITORY$/com/googlecode/javaewah/JavaEWAH/1.1.13/JavaEWAH-1.1.13-sources.jar!/" />
++      <root url="jar://$MAVEN_REPOSITORY$/com/googlecode/javaewah/JavaEWAH/0.7.9/JavaEWAH-0.7.9-sources.jar!/" />
+     </SOURCES>
+   </library>
+ </component>
+\ No newline at end of file
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"AutoImportSettings\">\r\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"e808988d-61fd-4fe5-b049-ea8c081eb28d\" name=\"Changes\" comment=\"10.30\">\r\n      <change afterPath=\"$PROJECT_DIR$/.idea/dataSources.xml\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/demo5/src/main/java/com/example/demo/util/encodeUtil.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_2022_10_30_18_36__Changes_.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_2022_10_30_18_36__Changes_.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/demo5/src/main/java/com/example/demo/controller/RepoController.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/demo5/src/main/java/com/example/demo/controller/UserPageController.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/demo5/src/main/java/com/example/demo/entity/Agent.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/demo5/src/main/java/com/example/demo/entity/Agent.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/demo5/src/main/java/com/example/demo/entity/Branch.java\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/demo5/src/main/java/com/example/demo/entity/StaticRepo.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/demo5/src/main/java/com/example/demo/entity/Repo.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/demo5/src/main/java/com/example/demo/mapper/ContributorMapper.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/demo5/src/main/java/com/example/demo/mapper/ContributorMapper.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/demo5/src/main/java/com/example/demo/mapper/StaticRepoMapper.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/demo5/src/main/java/com/example/demo/mapper/RepositoryMapper.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/demo5/src/main/java/com/example/demo/service/AgentService.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/demo5/src/main/java/com/example/demo/service/AgentService.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/demo5/src/main/java/com/example/demo/service/BranchService.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/demo5/src/main/java/com/example/demo/service/BranchService.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/demo5/src/main/java/com/example/demo/service/CommitService.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/demo5/src/main/java/com/example/demo/service/CommitService.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/demo5/src/main/java/com/example/demo/service/RepositoryService.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/demo5/src/main/java/com/example/demo/service/RepositoryService.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/demo5/src/main/java/com/example/demo/service/imp/AgentServiceImp.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/demo5/src/main/java/com/example/demo/service/imp/AgentServiceImp.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/demo5/src/main/java/com/example/demo/service/imp/BranchServiceImp.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/demo5/src/main/java/com/example/demo/service/imp/BranchServiceImp.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/demo5/src/main/java/com/example/demo/service/imp/CommitServiceImp.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/demo5/src/main/java/com/example/demo/service/imp/CommitServiceImp.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/demo5/src/main/java/com/example/demo/service/imp/RepositoryServiceImp.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/demo5/src/main/java/com/example/demo/service/imp/RepositoryServiceImp.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/demo5/src/main/resources/Mapper/AgentMapper.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/demo5/src/main/resources/Mapper/AgentMapper.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/demo5/src/main/resources/Mapper/ContributorMapper.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/demo5/src/main/resources/Mapper/ContributorMapper.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/demo5/src/main/resources/Mapper/StaticRepoMapper.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/demo5/src/main/resources/Mapper/RepositoryMapper.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/demo5/src/test/java/com/example/demo/service/AgentServiceTest.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/demo5/src/test/java/com/example/demo/service/AgentServiceTest.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/demo5/src/test/java/com/example/demo/service/FunctionTest.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/demo5/src/test/java/com/example/demo/service/FunctionTest.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/demo5/target/classes/Mapper/AgentMapper.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/demo5/target/classes/Mapper/AgentMapper.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/demo5/target/classes/Mapper/ContributorMapper.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/demo5/target/classes/Mapper/ContributorMapper.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/demo5/target/classes/Mapper/StaticRepoMapper.xml\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/demo5/target/classes/com/example/demo/controller/RepoController.class\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/demo5/target/classes/com/example/demo/entity/Agent.class\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/demo5/target/classes/com/example/demo/entity/Agent.class\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/demo5/target/classes/com/example/demo/entity/Branch.class\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/demo5/target/classes/com/example/demo/entity/StaticRepo.class\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/demo5/target/classes/com/example/demo/mapper/ContributorMapper.class\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/demo5/target/classes/com/example/demo/mapper/ContributorMapper.class\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/demo5/target/classes/com/example/demo/mapper/StaticRepoMapper.class\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/demo5/target/classes/com/example/demo/service/AgentService.class\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/demo5/target/classes/com/example/demo/service/AgentService.class\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/demo5/target/classes/com/example/demo/service/BranchService.class\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/demo5/target/classes/com/example/demo/service/BranchService.class\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/demo5/target/classes/com/example/demo/service/CommitService.class\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/demo5/target/classes/com/example/demo/service/CommitService.class\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/demo5/target/classes/com/example/demo/service/RepositoryService.class\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/demo5/target/classes/com/example/demo/service/RepositoryService.class\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/demo5/target/classes/com/example/demo/service/imp/AgentServiceImp.class\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/demo5/target/classes/com/example/demo/service/imp/AgentServiceImp.class\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/demo5/target/classes/com/example/demo/service/imp/BranchServiceimp.class\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/demo5/target/classes/com/example/demo/service/imp/BranchServiceimp.class\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/demo5/target/classes/com/example/demo/service/imp/CommitServiceImp.class\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/demo5/target/classes/com/example/demo/service/imp/CommitServiceImp.class\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/demo5/target/classes/com/example/demo/service/imp/RepositoryServiceImp.class\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/demo5/target/classes/com/example/demo/service/imp/RepositoryServiceImp.class\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/demo5/target/test-classes/com/example/demo/service/AgentServiceTest.class\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/demo5/target/test-classes/com/example/demo/service/AgentServiceTest.class\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/demo5/target/test-classes/com/example/demo/service/FunctionTest.class\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/demo5/target/test-classes/com/example/demo/service/FunctionTest.class\" afterDir=\"false\" />\r\n    </list>\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"FileTemplateManagerImpl\">\r\n    <option name=\"RECENT_TEMPLATES\">\r\n      <list>\r\n        <option value=\"Interface\" />\r\n        <option value=\"Class\" />\r\n      </list>\r\n    </option>\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_BRANCH_BY_REPOSITORY\">\r\n      <map>\r\n        <entry key=\"$PROJECT_DIR$/..\" value=\"version3\" />\r\n      </map>\r\n    </option>\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$/..\" />\r\n  </component>\r\n  <component name=\"MarkdownSettingsMigration\">\r\n    <option name=\"stateVersion\" value=\"1\" />\r\n  </component>\r\n  <component name=\"MavenImportPreferences\">\r\n    <option name=\"generalSettings\">\r\n      <MavenGeneralSettings>\r\n        <option name=\"useMavenConfig\" value=\"true\" />\r\n      </MavenGeneralSettings>\r\n    </option>\r\n  </component>\r\n  <component name=\"ProjectId\" id=\"2FfkegxeiUIfbxlovHti4qVbdTf\" />\r\n  <component name=\"ProjectLevelVcsManager\" settingsEditedManually=\"true\" />\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\">{\r\n  &quot;keyToString&quot;: {\r\n    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,\r\n    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,\r\n    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,\r\n    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,\r\n    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,\r\n    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,\r\n    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,\r\n    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,\r\n    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,\r\n    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,\r\n    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,\r\n    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;,\r\n    &quot;spring.configuration.checksum&quot;: &quot;95346415f1f5933a78386d1759d2ef22&quot;\r\n  },\r\n  &quot;keyToStringList&quot;: {\r\n    &quot;DatabaseDriversLRU&quot;: [\r\n      &quot;mysql&quot;\r\n    ]\r\n  }\r\n}</component>\r\n  <component name=\"RunManager\" selected=\"JUnit.FunctionTest.testCreateBranch\">\r\n    <configuration name=\"FunctionTest.test\" type=\"JUnit\" factoryName=\"JUnit\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <module name=\"demo5\" />\r\n      <extension name=\"coverage\">\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"com.example.demo.service.*\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n      </extension>\r\n      <option name=\"PACKAGE_NAME\" value=\"com.example.demo.service\" />\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"com.example.demo.service.FunctionTest\" />\r\n      <option name=\"METHOD_NAME\" value=\"test\" />\r\n      <option name=\"TEST_OBJECT\" value=\"method\" />\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration name=\"FunctionTest.testCommit\" type=\"JUnit\" factoryName=\"JUnit\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <module name=\"demo5\" />\r\n      <extension name=\"coverage\">\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"com.example.demo.service.*\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n      </extension>\r\n      <option name=\"PACKAGE_NAME\" value=\"com.example.demo.service\" />\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"com.example.demo.service.FunctionTest\" />\r\n      <option name=\"METHOD_NAME\" value=\"testCommit\" />\r\n      <option name=\"TEST_OBJECT\" value=\"method\" />\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration name=\"FunctionTest.testCreateBranch\" type=\"JUnit\" factoryName=\"JUnit\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <module name=\"demo5\" />\r\n      <extension name=\"coverage\">\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"com.example.demo.service.*\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n      </extension>\r\n      <option name=\"PACKAGE_NAME\" value=\"com.example.demo.service\" />\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"com.example.demo.service.FunctionTest\" />\r\n      <option name=\"METHOD_NAME\" value=\"testCreateBranch\" />\r\n      <option name=\"TEST_OBJECT\" value=\"method\" />\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration name=\"FunctionTest.testInitRemote\" type=\"JUnit\" factoryName=\"JUnit\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <module name=\"demo5\" />\r\n      <extension name=\"coverage\">\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"com.example.demo.service.*\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n      </extension>\r\n      <option name=\"PACKAGE_NAME\" value=\"com.example.demo.service\" />\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"com.example.demo.service.FunctionTest\" />\r\n      <option name=\"METHOD_NAME\" value=\"testInitRemote\" />\r\n      <option name=\"TEST_OBJECT\" value=\"method\" />\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration name=\"FunctionTest.testRegisterAgent\" type=\"JUnit\" factoryName=\"JUnit\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <module name=\"demo5\" />\r\n      <extension name=\"coverage\">\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"com.example.demo.service.*\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n      </extension>\r\n      <option name=\"PACKAGE_NAME\" value=\"com.example.demo.service\" />\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"com.example.demo.service.FunctionTest\" />\r\n      <option name=\"METHOD_NAME\" value=\"testRegisterAgent\" />\r\n      <option name=\"TEST_OBJECT\" value=\"method\" />\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration name=\"Demo5Application\" type=\"SpringBootApplicationConfigurationType\" factoryName=\"Spring Boot\">\r\n      <module name=\"demo5\" />\r\n      <option name=\"SPRING_BOOT_MAIN_CLASS\" value=\"com.example.demo.Demo5Application\" />\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <recent_temporary>\r\n      <list>\r\n        <item itemvalue=\"JUnit.FunctionTest.testCreateBranch\" />\r\n        <item itemvalue=\"JUnit.FunctionTest.testRegisterAgent\" />\r\n        <item itemvalue=\"JUnit.FunctionTest.testInitRemote\" />\r\n        <item itemvalue=\"JUnit.FunctionTest.testCommit\" />\r\n        <item itemvalue=\"JUnit.FunctionTest.test\" />\r\n      </list>\r\n    </recent_temporary>\r\n  </component>\r\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"e808988d-61fd-4fe5-b049-ea8c081eb28d\" name=\"Changes\" comment=\"\" />\r\n      <created>1664890626293</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1664890626293</updated>\r\n      <workItem from=\"1664890629664\" duration=\"44000\" />\r\n      <workItem from=\"1664939503180\" duration=\"6153000\" />\r\n      <workItem from=\"1665028672516\" duration=\"4662000\" />\r\n      <workItem from=\"1665033353702\" duration=\"2134000\" />\r\n      <workItem from=\"1665035777039\" duration=\"279000\" />\r\n      <workItem from=\"1665036150692\" duration=\"3973000\" />\r\n      <workItem from=\"1665041235882\" duration=\"35000\" />\r\n      <workItem from=\"1665131623560\" duration=\"4148000\" />\r\n      <workItem from=\"1665148681829\" duration=\"112000\" />\r\n      <workItem from=\"1665224243826\" duration=\"1668000\" />\r\n      <workItem from=\"1665389177136\" duration=\"6000\" />\r\n      <workItem from=\"1665397661354\" duration=\"2354000\" />\r\n      <workItem from=\"1665922615934\" duration=\"618000\" />\r\n      <workItem from=\"1665964766391\" duration=\"3141000\" />\r\n      <workItem from=\"1666097765346\" duration=\"8637000\" />\r\n      <workItem from=\"1666168461162\" duration=\"2533000\" />\r\n      <workItem from=\"1666173124487\" duration=\"600000\" />\r\n      <workItem from=\"1666173746581\" duration=\"611000\" />\r\n      <workItem from=\"1666181212785\" duration=\"1815000\" />\r\n      <workItem from=\"1666189897808\" duration=\"625000\" />\r\n      <workItem from=\"1666318414503\" duration=\"821000\" />\r\n      <workItem from=\"1667130999386\" duration=\"1798000\" />\r\n      <workItem from=\"1667133237551\" duration=\"201000\" />\r\n      <workItem from=\"1667133919239\" duration=\"3154000\" />\r\n      <workItem from=\"1667445399167\" duration=\"512000\" />\r\n      <workItem from=\"1667712212231\" duration=\"6855000\" />\r\n    </task>\r\n    <task id=\"LOCAL-00001\" summary=\"store\">\r\n      <created>1665036247079</created>\r\n      <option name=\"number\" value=\"00001\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1665036247080</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00002\" summary=\"修好xml的bug\">\r\n      <created>1665041260564</created>\r\n      <option name=\"number\" value=\"00002\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00002\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1665041260564</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00003\" summary=\"修好事务管理\">\r\n      <created>1665134017458</created>\r\n      <option name=\"number\" value=\"00003\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00003\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1665134017458</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00004\" summary=\"加入项目邀请贡献者和检测资格的服务\">\r\n      <created>1665225893542</created>\r\n      <option name=\"number\" value=\"00004\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00004\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1665225893542</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00005\" summary=\"10.30\">\r\n      <created>1667134317702</created>\r\n      <option name=\"number\" value=\"00005\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00005\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1667134317702</updated>\r\n    </task>\r\n    <option name=\"localTasksCounter\" value=\"6\" />\r\n    <servers />\r\n  </component>\r\n  <component name=\"TypeScriptGeneratedFilesManager\">\r\n    <option name=\"version\" value=\"3\" />\r\n  </component>\r\n  <component name=\"Vcs.Log.Tabs.Properties\">\r\n    <option name=\"TAB_STATES\">\r\n      <map>\r\n        <entry key=\"MAIN\">\r\n          <value>\r\n            <State />\r\n          </value>\r\n        </entry>\r\n      </map>\r\n    </option>\r\n  </component>\r\n  <component name=\"VcsManagerConfiguration\">\r\n    <MESSAGE value=\"store\" />\r\n    <MESSAGE value=\"修好xml的bug\" />\r\n    <MESSAGE value=\"修好事务管理\" />\r\n    <MESSAGE value=\"加入项目邀请贡献者和检测资格的服务\" />\r\n    <MESSAGE value=\"10.30\" />\r\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"10.30\" />\r\n  </component>\r\n  <component name=\"XDebuggerManager\">\r\n    <breakpoint-manager>\r\n      <breakpoints>\r\n        <line-breakpoint enabled=\"true\" type=\"java-line\">\r\n          <url>file://$PROJECT_DIR$/demo5/src/main/java/com/example/demo/service/imp/CommitServiceImp.java</url>\r\n          <line>141</line>\r\n          <option name=\"timeStamp\" value=\"4\" />\r\n        </line-breakpoint>\r\n        <line-breakpoint enabled=\"true\" type=\"java-line\">\r\n          <url>file://$PROJECT_DIR$/demo5/src/main/java/com/example/demo/service/imp/RepositoryServiceImp.java</url>\r\n          <line>29</line>\r\n          <option name=\"timeStamp\" value=\"5\" />\r\n        </line-breakpoint>\r\n        <line-breakpoint enabled=\"true\" type=\"java-line\">\r\n          <url>file://$PROJECT_DIR$/demo5/src/main/java/com/example/demo/service/imp/RepositoryServiceImp.java</url>\r\n          <line>50</line>\r\n          <option name=\"timeStamp\" value=\"6\" />\r\n        </line-breakpoint>\r\n      </breakpoints>\r\n    </breakpoint-manager>\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision cd958c87146e40187425c19c8b919bac450c7a99)
++++ b/.idea/workspace.xml	(date 1667912610656)
+@@ -4,49 +4,25 @@
+     <option name="autoReloadType" value="SELECTIVE" />
+   </component>
+   <component name="ChangeListManager">
+-    <list default="true" id="e808988d-61fd-4fe5-b049-ea8c081eb28d" name="Changes" comment="10.30">
+-      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/demo5/src/main/java/com/example/demo/util/encodeUtil.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_2022_10_30_18_36__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_2022_10_30_18_36__Changes_.xml" afterDir="false" />
++    <list default="true" id="e808988d-61fd-4fe5-b049-ea8c081eb28d" name="Changes" comment="修改fileUtil">
++      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_jcraft_jsch_0_1_53.xml" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__commons_codec_commons_codec_1_14.xml" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_httpcomponents_httpclient_4_5_13.xml" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_httpcomponents_httpcore_4_4_14.xml" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_eclipse_jgit_org_eclipse_jgit_4_4_1_201607150455_r.xml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_googlecode_javaewah_JavaEWAH_1_1_13.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_googlecode_javaewah_JavaEWAH_0_7_9.xml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_commons_commons_compress_1_21.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_commons_commons_compress_1_19.xml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_eclipse_jgit_org_eclipse_jgit_6_3_0_202209071007_r.xml" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_eclipse_jgit_org_eclipse_jgit_archive_6_3_0_202209071007_r.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_eclipse_jgit_org_eclipse_jgit_archive_5_8_1_202007141445_r.xml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_osgi_org_osgi_core_6_0_0.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_osgi_org_osgi_core_4_3_1.xml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_2022_10_30_18_36_[Changes]/shelved.patch" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_2022_10_30_18_36__Changes_.xml" beforeDir="false" />
+       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/demo5/src/main/java/com/example/demo/controller/RepoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/demo5/src/main/java/com/example/demo/controller/UserPageController.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/demo5/src/main/java/com/example/demo/entity/Agent.java" beforeDir="false" afterPath="$PROJECT_DIR$/demo5/src/main/java/com/example/demo/entity/Agent.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/demo5/src/main/java/com/example/demo/entity/Branch.java" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/demo5/src/main/java/com/example/demo/entity/StaticRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/demo5/src/main/java/com/example/demo/entity/Repo.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/demo5/src/main/java/com/example/demo/mapper/ContributorMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/demo5/src/main/java/com/example/demo/mapper/ContributorMapper.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/demo5/src/main/java/com/example/demo/mapper/StaticRepoMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/demo5/src/main/java/com/example/demo/mapper/RepositoryMapper.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/demo5/src/main/java/com/example/demo/service/AgentService.java" beforeDir="false" afterPath="$PROJECT_DIR$/demo5/src/main/java/com/example/demo/service/AgentService.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/demo5/src/main/java/com/example/demo/service/BranchService.java" beforeDir="false" afterPath="$PROJECT_DIR$/demo5/src/main/java/com/example/demo/service/BranchService.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/demo5/src/main/java/com/example/demo/service/CommitService.java" beforeDir="false" afterPath="$PROJECT_DIR$/demo5/src/main/java/com/example/demo/service/CommitService.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/demo5/src/main/java/com/example/demo/service/RepositoryService.java" beforeDir="false" afterPath="$PROJECT_DIR$/demo5/src/main/java/com/example/demo/service/RepositoryService.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/demo5/src/main/java/com/example/demo/service/imp/AgentServiceImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/demo5/src/main/java/com/example/demo/service/imp/AgentServiceImp.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/demo5/src/main/java/com/example/demo/service/imp/BranchServiceImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/demo5/src/main/java/com/example/demo/service/imp/BranchServiceImp.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/demo5/src/main/java/com/example/demo/service/imp/CommitServiceImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/demo5/src/main/java/com/example/demo/service/imp/CommitServiceImp.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/demo5/src/main/java/com/example/demo/service/imp/RepositoryServiceImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/demo5/src/main/java/com/example/demo/service/imp/RepositoryServiceImp.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/demo5/src/main/resources/Mapper/AgentMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/demo5/src/main/resources/Mapper/AgentMapper.xml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/demo5/demo5.iml" beforeDir="false" afterPath="$PROJECT_DIR$/demo5/demo5.iml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/demo5/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/demo5/pom.xml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/demo5/src/main/java/com/example/demo/controller/UserPageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/demo5/src/main/java/com/example/demo/controller/UserPageController.java" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/demo5/src/main/resources/Mapper/ContributorMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/demo5/src/main/resources/Mapper/ContributorMapper.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/demo5/src/main/resources/Mapper/StaticRepoMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/demo5/src/main/resources/Mapper/RepositoryMapper.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/demo5/src/test/java/com/example/demo/service/AgentServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/demo5/src/test/java/com/example/demo/service/AgentServiceTest.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/demo5/src/test/java/com/example/demo/service/FunctionTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/demo5/src/test/java/com/example/demo/service/FunctionTest.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/demo5/target/classes/Mapper/AgentMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/demo5/target/classes/Mapper/AgentMapper.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/demo5/target/classes/Mapper/ContributorMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/demo5/target/classes/Mapper/ContributorMapper.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/demo5/target/classes/Mapper/StaticRepoMapper.xml" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/demo5/target/classes/com/example/demo/controller/RepoController.class" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/demo5/target/classes/com/example/demo/entity/Agent.class" beforeDir="false" afterPath="$PROJECT_DIR$/demo5/target/classes/com/example/demo/entity/Agent.class" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/demo5/target/classes/com/example/demo/entity/Branch.class" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/demo5/target/classes/com/example/demo/entity/StaticRepo.class" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/demo5/target/classes/com/example/demo/mapper/ContributorMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/demo5/target/classes/com/example/demo/mapper/ContributorMapper.class" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/demo5/target/classes/com/example/demo/mapper/StaticRepoMapper.class" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/demo5/target/classes/com/example/demo/service/AgentService.class" beforeDir="false" afterPath="$PROJECT_DIR$/demo5/target/classes/com/example/demo/service/AgentService.class" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/demo5/target/classes/com/example/demo/service/BranchService.class" beforeDir="false" afterPath="$PROJECT_DIR$/demo5/target/classes/com/example/demo/service/BranchService.class" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/demo5/target/classes/com/example/demo/service/CommitService.class" beforeDir="false" afterPath="$PROJECT_DIR$/demo5/target/classes/com/example/demo/service/CommitService.class" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/demo5/target/classes/com/example/demo/service/RepositoryService.class" beforeDir="false" afterPath="$PROJECT_DIR$/demo5/target/classes/com/example/demo/service/RepositoryService.class" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/demo5/target/classes/com/example/demo/service/imp/AgentServiceImp.class" beforeDir="false" afterPath="$PROJECT_DIR$/demo5/target/classes/com/example/demo/service/imp/AgentServiceImp.class" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/demo5/target/classes/com/example/demo/service/imp/BranchServiceimp.class" beforeDir="false" afterPath="$PROJECT_DIR$/demo5/target/classes/com/example/demo/service/imp/BranchServiceimp.class" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/demo5/target/classes/com/example/demo/service/imp/CommitServiceImp.class" beforeDir="false" afterPath="$PROJECT_DIR$/demo5/target/classes/com/example/demo/service/imp/CommitServiceImp.class" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/demo5/target/classes/com/example/demo/service/imp/RepositoryServiceImp.class" beforeDir="false" afterPath="$PROJECT_DIR$/demo5/target/classes/com/example/demo/service/imp/RepositoryServiceImp.class" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/demo5/target/test-classes/com/example/demo/service/AgentServiceTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/demo5/target/test-classes/com/example/demo/service/AgentServiceTest.class" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/demo5/target/test-classes/com/example/demo/service/FunctionTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/demo5/target/test-classes/com/example/demo/service/FunctionTest.class" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/demo5/src/main/resources/Mapper/IssueMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/demo5/src/main/resources/Mapper/IssueMapper.xml" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+@@ -56,8 +32,8 @@
+   <component name="FileTemplateManagerImpl">
+     <option name="RECENT_TEMPLATES">
+       <list>
+-        <option value="Interface" />
+         <option value="Class" />
++        <option value="Interface" />
+       </list>
+     </option>
+   </component>
+@@ -107,8 +83,13 @@
+     ]
+   }
+ }</component>
+-  <component name="RunManager" selected="JUnit.FunctionTest.testCreateBranch">
+-    <configuration name="FunctionTest.test" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
++  <component name="RecentsManager">
++    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
++      <recent name="com.example.demo.service" />
++    </key>
++  </component>
++  <component name="RunManager" selected="JUnit.FunctionTest.testCommit">
++    <configuration name="FunctionTest.testCommit" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+       <module name="demo5" />
+       <extension name="coverage">
+         <pattern>
+@@ -118,13 +99,13 @@
+       </extension>
+       <option name="PACKAGE_NAME" value="com.example.demo.service" />
+       <option name="MAIN_CLASS_NAME" value="com.example.demo.service.FunctionTest" />
+-      <option name="METHOD_NAME" value="test" />
++      <option name="METHOD_NAME" value="testCommit" />
+       <option name="TEST_OBJECT" value="method" />
+       <method v="2">
+         <option name="Make" enabled="true" />
+       </method>
+     </configuration>
+-    <configuration name="FunctionTest.testCommit" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
++    <configuration name="FunctionTest.testCreateBranch" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+       <module name="demo5" />
+       <extension name="coverage">
+         <pattern>
+@@ -134,13 +115,13 @@
+       </extension>
+       <option name="PACKAGE_NAME" value="com.example.demo.service" />
+       <option name="MAIN_CLASS_NAME" value="com.example.demo.service.FunctionTest" />
+-      <option name="METHOD_NAME" value="testCommit" />
++      <option name="METHOD_NAME" value="testCreateBranch" />
+       <option name="TEST_OBJECT" value="method" />
+       <method v="2">
+         <option name="Make" enabled="true" />
+       </method>
+     </configuration>
+-    <configuration name="FunctionTest.testCreateBranch" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
++    <configuration name="FunctionTest.testInitial" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+       <module name="demo5" />
+       <extension name="coverage">
+         <pattern>
+@@ -150,13 +131,13 @@
+       </extension>
+       <option name="PACKAGE_NAME" value="com.example.demo.service" />
+       <option name="MAIN_CLASS_NAME" value="com.example.demo.service.FunctionTest" />
+-      <option name="METHOD_NAME" value="testCreateBranch" />
++      <option name="METHOD_NAME" value="testInitial" />
+       <option name="TEST_OBJECT" value="method" />
+       <method v="2">
+         <option name="Make" enabled="true" />
+       </method>
+     </configuration>
+-    <configuration name="FunctionTest.testInitRemote" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
++    <configuration name="FunctionTest.testNewAgent" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+       <module name="demo5" />
+       <extension name="coverage">
+         <pattern>
+@@ -166,13 +147,13 @@
+       </extension>
+       <option name="PACKAGE_NAME" value="com.example.demo.service" />
+       <option name="MAIN_CLASS_NAME" value="com.example.demo.service.FunctionTest" />
+-      <option name="METHOD_NAME" value="testInitRemote" />
++      <option name="METHOD_NAME" value="testNewAgent" />
+       <option name="TEST_OBJECT" value="method" />
+       <method v="2">
+         <option name="Make" enabled="true" />
+       </method>
+     </configuration>
+-    <configuration name="FunctionTest.testRegisterAgent" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
++    <configuration name="FunctionTest.testSwitchBranch" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+       <module name="demo5" />
+       <extension name="coverage">
+         <pattern>
+@@ -182,7 +163,7 @@
+       </extension>
+       <option name="PACKAGE_NAME" value="com.example.demo.service" />
+       <option name="MAIN_CLASS_NAME" value="com.example.demo.service.FunctionTest" />
+-      <option name="METHOD_NAME" value="testRegisterAgent" />
++      <option name="METHOD_NAME" value="testSwitchBranch" />
+       <option name="TEST_OBJECT" value="method" />
+       <method v="2">
+         <option name="Make" enabled="true" />
+@@ -197,11 +178,11 @@
+     </configuration>
+     <recent_temporary>
+       <list>
++        <item itemvalue="JUnit.FunctionTest.testCommit" />
++        <item itemvalue="JUnit.FunctionTest.testSwitchBranch" />
+         <item itemvalue="JUnit.FunctionTest.testCreateBranch" />
+-        <item itemvalue="JUnit.FunctionTest.testRegisterAgent" />
+-        <item itemvalue="JUnit.FunctionTest.testInitRemote" />
+-        <item itemvalue="JUnit.FunctionTest.testCommit" />
+-        <item itemvalue="JUnit.FunctionTest.test" />
++        <item itemvalue="JUnit.FunctionTest.testInitial" />
++        <item itemvalue="JUnit.FunctionTest.testNewAgent" />
+       </list>
+     </recent_temporary>
+   </component>
+@@ -239,6 +220,15 @@
+       <workItem from="1667133919239" duration="3154000" />
+       <workItem from="1667445399167" duration="512000" />
+       <workItem from="1667712212231" duration="6855000" />
++      <workItem from="1667721880616" duration="1471000" />
++      <workItem from="1667780027362" duration="5750000" />
++      <workItem from="1667800957105" duration="5512000" />
++      <workItem from="1667880825534" duration="852000" />
++      <workItem from="1667890668432" duration="431000" />
++      <workItem from="1667891177623" duration="66000" />
++      <workItem from="1667893414754" duration="139000" />
++      <workItem from="1667896855436" duration="700000" />
++      <workItem from="1667904577048" duration="7947000" />
+     </task>
+     <task id="LOCAL-00001" summary="store">
+       <created>1665036247079</created>
+@@ -275,7 +265,35 @@
+       <option name="project" value="LOCAL" />
+       <updated>1667134317702</updated>
+     </task>
+-    <option name="localTasksCounter" value="6" />
++    <task id="LOCAL-00006" summary="11.6">
++      <created>1667722121447</created>
++      <option name="number" value="00006" />
++      <option name="presentableId" value="LOCAL-00006" />
++      <option name="project" value="LOCAL" />
++      <updated>1667722121448</updated>
++    </task>
++    <task id="LOCAL-00007" summary="加上issue，starRepo，用户头像等功能">
++      <created>1667890779216</created>
++      <option name="number" value="00007" />
++      <option name="presentableId" value="LOCAL-00007" />
++      <option name="project" value="LOCAL" />
++      <updated>1667890779216</updated>
++    </task>
++    <task id="LOCAL-00008" summary="加上issue，starRepo，用户头像等功能">
++      <created>1667907255999</created>
++      <option name="number" value="00008" />
++      <option name="presentableId" value="LOCAL-00008" />
++      <option name="project" value="LOCAL" />
++      <updated>1667907255999</updated>
++    </task>
++    <task id="LOCAL-00009" summary="修改fileUtil">
++      <created>1667909177908</created>
++      <option name="number" value="00009" />
++      <option name="presentableId" value="LOCAL-00009" />
++      <option name="project" value="LOCAL" />
++      <updated>1667909177908</updated>
++    </task>
++    <option name="localTasksCounter" value="10" />
+     <servers />
+   </component>
+   <component name="TypeScriptGeneratedFilesManager">
+@@ -298,25 +316,18 @@
+     <MESSAGE value="修好事务管理" />
+     <MESSAGE value="加入项目邀请贡献者和检测资格的服务" />
+     <MESSAGE value="10.30" />
+-    <option name="LAST_COMMIT_MESSAGE" value="10.30" />
++    <MESSAGE value="11.6" />
++    <MESSAGE value="加上issue，starRepo，用户头像等功能" />
++    <MESSAGE value="修改fileUtil" />
++    <option name="LAST_COMMIT_MESSAGE" value="修改fileUtil" />
+   </component>
+   <component name="XDebuggerManager">
+     <breakpoint-manager>
+       <breakpoints>
+         <line-breakpoint enabled="true" type="java-line">
+           <url>file://$PROJECT_DIR$/demo5/src/main/java/com/example/demo/service/imp/CommitServiceImp.java</url>
+-          <line>141</line>
++          <line>127</line>
+           <option name="timeStamp" value="4" />
+-        </line-breakpoint>
+-        <line-breakpoint enabled="true" type="java-line">
+-          <url>file://$PROJECT_DIR$/demo5/src/main/java/com/example/demo/service/imp/RepositoryServiceImp.java</url>
+-          <line>29</line>
+-          <option name="timeStamp" value="5" />
+-        </line-breakpoint>
+-        <line-breakpoint enabled="true" type="java-line">
+-          <url>file://$PROJECT_DIR$/demo5/src/main/java/com/example/demo/service/imp/RepositoryServiceImp.java</url>
+-          <line>50</line>
+-          <option name="timeStamp" value="6" />
+         </line-breakpoint>
+       </breakpoints>
+     </breakpoint-manager>
+Index: .idea/libraries/Maven__com_jcraft_jsch_0_1_53.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/libraries/Maven__com_jcraft_jsch_0_1_53.xml b/.idea/libraries/Maven__com_jcraft_jsch_0_1_53.xml
+new file mode 100644
+--- /dev/null	(date 1667909504776)
++++ b/.idea/libraries/Maven__com_jcraft_jsch_0_1_53.xml	(date 1667909504776)
+@@ -0,0 +1,13 @@
++<component name="libraryTable">
++  <library name="Maven: com.jcraft:jsch:0.1.53">
++    <CLASSES>
++      <root url="jar://$MAVEN_REPOSITORY$/com/jcraft/jsch/0.1.53/jsch-0.1.53.jar!/" />
++    </CLASSES>
++    <JAVADOC>
++      <root url="jar://$MAVEN_REPOSITORY$/com/jcraft/jsch/0.1.53/jsch-0.1.53-javadoc.jar!/" />
++    </JAVADOC>
++    <SOURCES>
++      <root url="jar://$MAVEN_REPOSITORY$/com/jcraft/jsch/0.1.53/jsch-0.1.53-sources.jar!/" />
++    </SOURCES>
++  </library>
++</component>
+\ No newline at end of file
+Index: demo5/src/main/java/com/example/demo/controller/UserPageController.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.demo.controller;\r\n\r\nimport org.springframework.web.bind.annotation.PathVariable;\r\nimport org.springframework.web.bind.annotation.RequestMapping;\r\nimport org.springframework.web.bind.annotation.RestController;\r\n\r\n\r\n@RestController\r\n@RequestMapping(value = \"/UserPage\")\r\npublic class UserPageController {\r\n\r\n    @RequestMapping(\"/{name}\")\r\n    public String showUserInfo(@PathVariable(\"name\") String name){\r\n        return \"success\";\r\n    }\r\n\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/demo5/src/main/java/com/example/demo/controller/UserPageController.java b/demo5/src/main/java/com/example/demo/controller/UserPageController.java
+--- a/demo5/src/main/java/com/example/demo/controller/UserPageController.java	(revision cd958c87146e40187425c19c8b919bac450c7a99)
++++ b/demo5/src/main/java/com/example/demo/controller/UserPageController.java	(date 1667911014758)
+@@ -3,6 +3,7 @@
+ import org.springframework.web.bind.annotation.PathVariable;
+ import org.springframework.web.bind.annotation.RequestMapping;
+ import org.springframework.web.bind.annotation.RestController;
++import org.springframework.web.multipart.MultipartHttpServletRequest;
+ 
+ 
+ @RestController
+Index: .idea/libraries/Maven__org_eclipse_jgit_org_eclipse_jgit_4_4_1_201607150455_r.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/libraries/Maven__org_eclipse_jgit_org_eclipse_jgit_4_4_1_201607150455_r.xml b/.idea/libraries/Maven__org_eclipse_jgit_org_eclipse_jgit_4_4_1_201607150455_r.xml
+new file mode 100644
+--- /dev/null	(date 1667909504868)
++++ b/.idea/libraries/Maven__org_eclipse_jgit_org_eclipse_jgit_4_4_1_201607150455_r.xml	(date 1667909504868)
+@@ -0,0 +1,13 @@
++<component name="libraryTable">
++  <library name="Maven: org.eclipse.jgit:org.eclipse.jgit:4.4.1.201607150455-r">
++    <CLASSES>
++      <root url="jar://$MAVEN_REPOSITORY$/org/eclipse/jgit/org.eclipse.jgit/4.4.1.201607150455-r/org.eclipse.jgit-4.4.1.201607150455-r.jar!/" />
++    </CLASSES>
++    <JAVADOC>
++      <root url="jar://$MAVEN_REPOSITORY$/org/eclipse/jgit/org.eclipse.jgit/4.4.1.201607150455-r/org.eclipse.jgit-4.4.1.201607150455-r-javadoc.jar!/" />
++    </JAVADOC>
++    <SOURCES>
++      <root url="jar://$MAVEN_REPOSITORY$/org/eclipse/jgit/org.eclipse.jgit/4.4.1.201607150455-r/org.eclipse.jgit-4.4.1.201607150455-r-sources.jar!/" />
++    </SOURCES>
++  </library>
++</component>
+\ No newline at end of file
+Index: .idea/libraries/Maven__org_eclipse_jgit_org_eclipse_jgit_archive_6_3_0_202209071007_r.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/libraries/Maven__org_eclipse_jgit_org_eclipse_jgit_archive_6_3_0_202209071007_r.xml b/.idea/libraries/Maven__org_eclipse_jgit_org_eclipse_jgit_archive_5_8_1_202007141445_r.xml
+rename from .idea/libraries/Maven__org_eclipse_jgit_org_eclipse_jgit_archive_6_3_0_202209071007_r.xml
+rename to .idea/libraries/Maven__org_eclipse_jgit_org_eclipse_jgit_archive_5_8_1_202007141445_r.xml
+--- a/.idea/libraries/Maven__org_eclipse_jgit_org_eclipse_jgit_archive_6_3_0_202209071007_r.xml	(revision cd958c87146e40187425c19c8b919bac450c7a99)
++++ b/.idea/libraries/Maven__org_eclipse_jgit_org_eclipse_jgit_archive_5_8_1_202007141445_r.xml	(date 1667909504885)
+@@ -1,13 +1,13 @@
+ <component name="libraryTable">
+-  <library name="Maven: org.eclipse.jgit:org.eclipse.jgit.archive:6.3.0.202209071007-r">
++  <library name="Maven: org.eclipse.jgit:org.eclipse.jgit.archive:5.8.1.202007141445-r">
+     <CLASSES>
+-      <root url="jar://$MAVEN_REPOSITORY$/org/eclipse/jgit/org.eclipse.jgit.archive/6.3.0.202209071007-r/org.eclipse.jgit.archive-6.3.0.202209071007-r.jar!/" />
++      <root url="jar://$MAVEN_REPOSITORY$/org/eclipse/jgit/org.eclipse.jgit.archive/5.8.1.202007141445-r/org.eclipse.jgit.archive-5.8.1.202007141445-r.jar!/" />
+     </CLASSES>
+     <JAVADOC>
+-      <root url="jar://$MAVEN_REPOSITORY$/org/eclipse/jgit/org.eclipse.jgit.archive/6.3.0.202209071007-r/org.eclipse.jgit.archive-6.3.0.202209071007-r-javadoc.jar!/" />
++      <root url="jar://$MAVEN_REPOSITORY$/org/eclipse/jgit/org.eclipse.jgit.archive/5.8.1.202007141445-r/org.eclipse.jgit.archive-5.8.1.202007141445-r-javadoc.jar!/" />
+     </JAVADOC>
+     <SOURCES>
+-      <root url="jar://$MAVEN_REPOSITORY$/org/eclipse/jgit/org.eclipse.jgit.archive/6.3.0.202209071007-r/org.eclipse.jgit.archive-6.3.0.202209071007-r-sources.jar!/" />
++      <root url="jar://$MAVEN_REPOSITORY$/org/eclipse/jgit/org.eclipse.jgit.archive/5.8.1.202007141445-r/org.eclipse.jgit.archive-5.8.1.202007141445-r-sources.jar!/" />
+     </SOURCES>
+   </library>
+ </component>
+\ No newline at end of file
+Index: .idea/libraries/Maven__org_osgi_org_osgi_core_6_0_0.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/libraries/Maven__org_osgi_org_osgi_core_6_0_0.xml b/.idea/libraries/Maven__org_osgi_org_osgi_core_4_3_1.xml
+rename from .idea/libraries/Maven__org_osgi_org_osgi_core_6_0_0.xml
+rename to .idea/libraries/Maven__org_osgi_org_osgi_core_4_3_1.xml
+--- a/.idea/libraries/Maven__org_osgi_org_osgi_core_6_0_0.xml	(revision cd958c87146e40187425c19c8b919bac450c7a99)
++++ b/.idea/libraries/Maven__org_osgi_org_osgi_core_4_3_1.xml	(date 1667909504907)
+@@ -1,13 +1,13 @@
+ <component name="libraryTable">
+-  <library name="Maven: org.osgi:org.osgi.core:6.0.0">
++  <library name="Maven: org.osgi:org.osgi.core:4.3.1">
+     <CLASSES>
+-      <root url="jar://$MAVEN_REPOSITORY$/org/osgi/org.osgi.core/6.0.0/org.osgi.core-6.0.0.jar!/" />
++      <root url="jar://$MAVEN_REPOSITORY$/org/osgi/org.osgi.core/4.3.1/org.osgi.core-4.3.1.jar!/" />
+     </CLASSES>
+     <JAVADOC>
+-      <root url="jar://$MAVEN_REPOSITORY$/org/osgi/org.osgi.core/6.0.0/org.osgi.core-6.0.0-javadoc.jar!/" />
++      <root url="jar://$MAVEN_REPOSITORY$/org/osgi/org.osgi.core/4.3.1/org.osgi.core-4.3.1-javadoc.jar!/" />
+     </JAVADOC>
+     <SOURCES>
+-      <root url="jar://$MAVEN_REPOSITORY$/org/osgi/org.osgi.core/6.0.0/org.osgi.core-6.0.0-sources.jar!/" />
++      <root url="jar://$MAVEN_REPOSITORY$/org/osgi/org.osgi.core/4.3.1/org.osgi.core-4.3.1-sources.jar!/" />
+     </SOURCES>
+   </library>
+ </component>
+\ No newline at end of file
+Index: .idea/libraries/Maven__commons_codec_commons_codec_1_14.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/libraries/Maven__commons_codec_commons_codec_1_14.xml b/.idea/libraries/Maven__commons_codec_commons_codec_1_14.xml
+new file mode 100644
+--- /dev/null	(date 1667909504795)
++++ b/.idea/libraries/Maven__commons_codec_commons_codec_1_14.xml	(date 1667909504795)
+@@ -0,0 +1,13 @@
++<component name="libraryTable">
++  <library name="Maven: commons-codec:commons-codec:1.14">
++    <CLASSES>
++      <root url="jar://$MAVEN_REPOSITORY$/commons-codec/commons-codec/1.14/commons-codec-1.14.jar!/" />
++    </CLASSES>
++    <JAVADOC>
++      <root url="jar://$MAVEN_REPOSITORY$/commons-codec/commons-codec/1.14/commons-codec-1.14-javadoc.jar!/" />
++    </JAVADOC>
++    <SOURCES>
++      <root url="jar://$MAVEN_REPOSITORY$/commons-codec/commons-codec/1.14/commons-codec-1.14-sources.jar!/" />
++    </SOURCES>
++  </library>
++</component>
+\ No newline at end of file
+Index: .idea/libraries/Maven__org_apache_commons_commons_compress_1_21.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/libraries/Maven__org_apache_commons_commons_compress_1_21.xml b/.idea/libraries/Maven__org_apache_commons_commons_compress_1_19.xml
+rename from .idea/libraries/Maven__org_apache_commons_commons_compress_1_21.xml
+rename to .idea/libraries/Maven__org_apache_commons_commons_compress_1_19.xml
+--- a/.idea/libraries/Maven__org_apache_commons_commons_compress_1_21.xml	(revision cd958c87146e40187425c19c8b919bac450c7a99)
++++ b/.idea/libraries/Maven__org_apache_commons_commons_compress_1_19.xml	(date 1667909504814)
+@@ -1,13 +1,13 @@
+ <component name="libraryTable">
+-  <library name="Maven: org.apache.commons:commons-compress:1.21">
++  <library name="Maven: org.apache.commons:commons-compress:1.19">
+     <CLASSES>
+-      <root url="jar://$MAVEN_REPOSITORY$/org/apache/commons/commons-compress/1.21/commons-compress-1.21.jar!/" />
++      <root url="jar://$MAVEN_REPOSITORY$/org/apache/commons/commons-compress/1.19/commons-compress-1.19.jar!/" />
+     </CLASSES>
+     <JAVADOC>
+-      <root url="jar://$MAVEN_REPOSITORY$/org/apache/commons/commons-compress/1.21/commons-compress-1.21-javadoc.jar!/" />
++      <root url="jar://$MAVEN_REPOSITORY$/org/apache/commons/commons-compress/1.19/commons-compress-1.19-javadoc.jar!/" />
+     </JAVADOC>
+     <SOURCES>
+-      <root url="jar://$MAVEN_REPOSITORY$/org/apache/commons/commons-compress/1.21/commons-compress-1.21-sources.jar!/" />
++      <root url="jar://$MAVEN_REPOSITORY$/org/apache/commons/commons-compress/1.19/commons-compress-1.19-sources.jar!/" />
+     </SOURCES>
+   </library>
+ </component>
+\ No newline at end of file
+Index: .idea/libraries/Maven__org_apache_httpcomponents_httpclient_4_5_13.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/libraries/Maven__org_apache_httpcomponents_httpclient_4_5_13.xml b/.idea/libraries/Maven__org_apache_httpcomponents_httpclient_4_5_13.xml
+new file mode 100644
+--- /dev/null	(date 1667909504836)
++++ b/.idea/libraries/Maven__org_apache_httpcomponents_httpclient_4_5_13.xml	(date 1667909504836)
+@@ -0,0 +1,13 @@
++<component name="libraryTable">
++  <library name="Maven: org.apache.httpcomponents:httpclient:4.5.13">
++    <CLASSES>
++      <root url="jar://$MAVEN_REPOSITORY$/org/apache/httpcomponents/httpclient/4.5.13/httpclient-4.5.13.jar!/" />
++    </CLASSES>
++    <JAVADOC>
++      <root url="jar://$MAVEN_REPOSITORY$/org/apache/httpcomponents/httpclient/4.5.13/httpclient-4.5.13-javadoc.jar!/" />
++    </JAVADOC>
++    <SOURCES>
++      <root url="jar://$MAVEN_REPOSITORY$/org/apache/httpcomponents/httpclient/4.5.13/httpclient-4.5.13-sources.jar!/" />
++    </SOURCES>
++  </library>
++</component>
+\ No newline at end of file
+Index: demo5/demo5.iml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<module org.jetbrains.idea.maven.project.MavenProjectsManager.isMavenModule=\"true\" type=\"JAVA_MODULE\" version=\"4\">\r\n  <component name=\"FacetManager\">\r\n    <facet type=\"web\" name=\"Web\">\r\n      <configuration>\r\n        <webroots />\r\n        <sourceRoots>\r\n          <root url=\"file://$MODULE_DIR$/src/main/java\" />\r\n          <root url=\"file://$MODULE_DIR$/src/main/resources\" />\r\n        </sourceRoots>\r\n      </configuration>\r\n    </facet>\r\n    <facet type=\"Spring\" name=\"Spring\">\r\n      <configuration />\r\n    </facet>\r\n  </component>\r\n  <component name=\"NewModuleRootManager\" LANGUAGE_LEVEL=\"JDK_1_8\">\r\n    <output url=\"file://$MODULE_DIR$/target/classes\" />\r\n    <output-test url=\"file://$MODULE_DIR$/target/test-classes\" />\r\n    <content url=\"file://$MODULE_DIR$\">\r\n      <sourceFolder url=\"file://$MODULE_DIR$/src/main/java\" isTestSource=\"false\" />\r\n      <sourceFolder url=\"file://$MODULE_DIR$/src/main/resources\" type=\"java-resource\" />\r\n      <sourceFolder url=\"file://$MODULE_DIR$/src/test/java\" isTestSource=\"true\" />\r\n      <excludeFolder url=\"file://$MODULE_DIR$/target\" />\r\n    </content>\r\n    <orderEntry type=\"inheritedJdk\" />\r\n    <orderEntry type=\"sourceFolder\" forTests=\"false\" />\r\n    <orderEntry type=\"library\" name=\"Maven: org.springframework.boot:spring-boot-starter-web:2.3.7.RELEASE\" level=\"project\" />\r\n    <orderEntry type=\"library\" name=\"Maven: org.springframework.boot:spring-boot-starter:2.3.7.RELEASE\" level=\"project\" />\r\n    <orderEntry type=\"library\" name=\"Maven: org.springframework.boot:spring-boot:2.3.7.RELEASE\" level=\"project\" />\r\n    <orderEntry type=\"library\" name=\"Maven: org.springframework.boot:spring-boot-starter-logging:2.3.7.RELEASE\" level=\"project\" />\r\n    <orderEntry type=\"library\" name=\"Maven: ch.qos.logback:logback-classic:1.2.3\" level=\"project\" />\r\n    <orderEntry type=\"library\" name=\"Maven: ch.qos.logback:logback-core:1.2.3\" level=\"project\" />\r\n    <orderEntry type=\"library\" name=\"Maven: org.apache.logging.log4j:log4j-to-slf4j:2.13.3\" level=\"project\" />\r\n    <orderEntry type=\"library\" name=\"Maven: org.apache.logging.log4j:log4j-api:2.13.3\" level=\"project\" />\r\n    <orderEntry type=\"library\" name=\"Maven: org.slf4j:jul-to-slf4j:1.7.30\" level=\"project\" />\r\n    <orderEntry type=\"library\" name=\"Maven: jakarta.annotation:jakarta.annotation-api:1.3.5\" level=\"project\" />\r\n    <orderEntry type=\"library\" name=\"Maven: org.yaml:snakeyaml:1.26\" level=\"project\" />\r\n    <orderEntry type=\"library\" name=\"Maven: org.springframework.boot:spring-boot-starter-json:2.3.7.RELEASE\" level=\"project\" />\r\n    <orderEntry type=\"library\" name=\"Maven: com.fasterxml.jackson.core:jackson-databind:2.11.3\" level=\"project\" />\r\n    <orderEntry type=\"library\" name=\"Maven: com.fasterxml.jackson.core:jackson-annotations:2.11.3\" level=\"project\" />\r\n    <orderEntry type=\"library\" name=\"Maven: com.fasterxml.jackson.core:jackson-core:2.11.3\" level=\"project\" />\r\n    <orderEntry type=\"library\" name=\"Maven: com.fasterxml.jackson.datatype:jackson-datatype-jdk8:2.11.3\" level=\"project\" />\r\n    <orderEntry type=\"library\" name=\"Maven: com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.11.3\" level=\"project\" />\r\n    <orderEntry type=\"library\" name=\"Maven: com.fasterxml.jackson.module:jackson-module-parameter-names:2.11.3\" level=\"project\" />\r\n    <orderEntry type=\"library\" name=\"Maven: org.springframework.boot:spring-boot-starter-tomcat:2.3.7.RELEASE\" level=\"project\" />\r\n    <orderEntry type=\"library\" name=\"Maven: org.apache.tomcat.embed:tomcat-embed-core:9.0.41\" level=\"project\" />\r\n    <orderEntry type=\"library\" name=\"Maven: org.glassfish:jakarta.el:3.0.3\" level=\"project\" />\r\n    <orderEntry type=\"library\" name=\"Maven: org.apache.tomcat.embed:tomcat-embed-websocket:9.0.41\" level=\"project\" />\r\n    <orderEntry type=\"library\" name=\"Maven: org.springframework:spring-web:5.2.12.RELEASE\" level=\"project\" />\r\n    <orderEntry type=\"library\" name=\"Maven: org.springframework:spring-beans:5.2.12.RELEASE\" level=\"project\" />\r\n    <orderEntry type=\"library\" name=\"Maven: org.springframework:spring-webmvc:5.2.12.RELEASE\" level=\"project\" />\r\n    <orderEntry type=\"library\" name=\"Maven: org.springframework:spring-aop:5.2.12.RELEASE\" level=\"project\" />\r\n    <orderEntry type=\"library\" name=\"Maven: org.springframework:spring-context:5.2.12.RELEASE\" level=\"project\" />\r\n    <orderEntry type=\"library\" name=\"Maven: org.springframework:spring-expression:5.2.12.RELEASE\" level=\"project\" />\r\n    <orderEntry type=\"library\" name=\"Maven: org.mybatis.spring.boot:mybatis-spring-boot-starter:2.2.2\" level=\"project\" />\r\n    <orderEntry type=\"library\" name=\"Maven: org.springframework.boot:spring-boot-starter-jdbc:2.3.7.RELEASE\" level=\"project\" />\r\n    <orderEntry type=\"library\" name=\"Maven: com.zaxxer:HikariCP:3.4.5\" level=\"project\" />\r\n    <orderEntry type=\"library\" name=\"Maven: org.springframework:spring-jdbc:5.2.12.RELEASE\" level=\"project\" />\r\n    <orderEntry type=\"library\" name=\"Maven: org.springframework:spring-tx:5.2.12.RELEASE\" level=\"project\" />\r\n    <orderEntry type=\"library\" name=\"Maven: org.mybatis.spring.boot:mybatis-spring-boot-autoconfigure:2.2.2\" level=\"project\" />\r\n    <orderEntry type=\"library\" name=\"Maven: org.mybatis:mybatis:3.5.9\" level=\"project\" />\r\n    <orderEntry type=\"library\" name=\"Maven: org.mybatis:mybatis-spring:2.0.7\" level=\"project\" />\r\n    <orderEntry type=\"library\" name=\"Maven: org.projectlombok:lombok:1.18.16\" level=\"project\" />\r\n    <orderEntry type=\"library\" scope=\"TEST\" name=\"Maven: org.springframework.boot:spring-boot-starter-test:2.3.7.RELEASE\" level=\"project\" />\r\n    <orderEntry type=\"library\" scope=\"TEST\" name=\"Maven: org.springframework.boot:spring-boot-test:2.3.7.RELEASE\" level=\"project\" />\r\n    <orderEntry type=\"library\" scope=\"TEST\" name=\"Maven: org.springframework.boot:spring-boot-test-autoconfigure:2.3.7.RELEASE\" level=\"project\" />\r\n    <orderEntry type=\"library\" scope=\"TEST\" name=\"Maven: com.jayway.jsonpath:json-path:2.4.0\" level=\"project\" />\r\n    <orderEntry type=\"library\" scope=\"TEST\" name=\"Maven: net.minidev:json-smart:2.3\" level=\"project\" />\r\n    <orderEntry type=\"library\" scope=\"TEST\" name=\"Maven: net.minidev:accessors-smart:1.2\" level=\"project\" />\r\n    <orderEntry type=\"library\" scope=\"TEST\" name=\"Maven: org.ow2.asm:asm:5.0.4\" level=\"project\" />\r\n    <orderEntry type=\"library\" scope=\"TEST\" name=\"Maven: jakarta.xml.bind:jakarta.xml.bind-api:2.3.3\" level=\"project\" />\r\n    <orderEntry type=\"library\" scope=\"TEST\" name=\"Maven: jakarta.activation:jakarta.activation-api:1.2.2\" level=\"project\" />\r\n    <orderEntry type=\"library\" scope=\"TEST\" name=\"Maven: org.assertj:assertj-core:3.16.1\" level=\"project\" />\r\n    <orderEntry type=\"library\" scope=\"TEST\" name=\"Maven: org.hamcrest:hamcrest:2.2\" level=\"project\" />\r\n    <orderEntry type=\"library\" scope=\"TEST\" name=\"Maven: org.junit.jupiter:junit-jupiter:5.6.3\" level=\"project\" />\r\n    <orderEntry type=\"library\" scope=\"TEST\" name=\"Maven: org.junit.jupiter:junit-jupiter-api:5.6.3\" level=\"project\" />\r\n    <orderEntry type=\"library\" scope=\"TEST\" name=\"Maven: org.apiguardian:apiguardian-api:1.1.0\" level=\"project\" />\r\n    <orderEntry type=\"library\" scope=\"TEST\" name=\"Maven: org.opentest4j:opentest4j:1.2.0\" level=\"project\" />\r\n    <orderEntry type=\"library\" scope=\"TEST\" name=\"Maven: org.junit.platform:junit-platform-commons:1.6.3\" level=\"project\" />\r\n    <orderEntry type=\"library\" scope=\"TEST\" name=\"Maven: org.junit.jupiter:junit-jupiter-params:5.6.3\" level=\"project\" />\r\n    <orderEntry type=\"library\" scope=\"TEST\" name=\"Maven: org.junit.jupiter:junit-jupiter-engine:5.6.3\" level=\"project\" />\r\n    <orderEntry type=\"library\" scope=\"TEST\" name=\"Maven: org.junit.platform:junit-platform-engine:1.6.3\" level=\"project\" />\r\n    <orderEntry type=\"library\" scope=\"TEST\" name=\"Maven: org.mockito:mockito-core:3.3.3\" level=\"project\" />\r\n    <orderEntry type=\"library\" scope=\"TEST\" name=\"Maven: net.bytebuddy:byte-buddy:1.10.18\" level=\"project\" />\r\n    <orderEntry type=\"library\" scope=\"TEST\" name=\"Maven: net.bytebuddy:byte-buddy-agent:1.10.18\" level=\"project\" />\r\n    <orderEntry type=\"library\" scope=\"TEST\" name=\"Maven: org.objenesis:objenesis:2.6\" level=\"project\" />\r\n    <orderEntry type=\"library\" scope=\"TEST\" name=\"Maven: org.mockito:mockito-junit-jupiter:3.3.3\" level=\"project\" />\r\n    <orderEntry type=\"library\" scope=\"TEST\" name=\"Maven: org.skyscreamer:jsonassert:1.5.0\" level=\"project\" />\r\n    <orderEntry type=\"library\" scope=\"TEST\" name=\"Maven: com.vaadin.external.google:android-json:0.0.20131108.vaadin1\" level=\"project\" />\r\n    <orderEntry type=\"library\" name=\"Maven: org.springframework:spring-core:5.2.12.RELEASE\" level=\"project\" />\r\n    <orderEntry type=\"library\" name=\"Maven: org.springframework:spring-jcl:5.2.12.RELEASE\" level=\"project\" />\r\n    <orderEntry type=\"library\" scope=\"TEST\" name=\"Maven: org.springframework:spring-test:5.2.12.RELEASE\" level=\"project\" />\r\n    <orderEntry type=\"library\" scope=\"TEST\" name=\"Maven: org.xmlunit:xmlunit-core:2.7.0\" level=\"project\" />\r\n    <orderEntry type=\"library\" name=\"Maven: mysql:mysql-connector-java:8.0.30\" level=\"project\" />\r\n    <orderEntry type=\"library\" name=\"Maven: com.alibaba:druid-spring-boot-starter:1.2.12\" level=\"project\" />\r\n    <orderEntry type=\"library\" name=\"Maven: com.alibaba:druid:1.2.12\" level=\"project\" />\r\n    <orderEntry type=\"library\" name=\"Maven: org.slf4j:slf4j-api:1.7.30\" level=\"project\" />\r\n    <orderEntry type=\"library\" name=\"Maven: org.springframework.boot:spring-boot-autoconfigure:2.3.7.RELEASE\" level=\"project\" />\r\n    <orderEntry type=\"library\" name=\"Maven: org.eclipse.jgit:org.eclipse.jgit:6.3.0.202209071007-r\" level=\"project\" />\r\n    <orderEntry type=\"library\" name=\"Maven: com.googlecode.javaewah:JavaEWAH:1.1.13\" level=\"project\" />\r\n    <orderEntry type=\"library\" name=\"Maven: org.eclipse.jgit:org.eclipse.jgit.archive:6.3.0.202209071007-r\" level=\"project\" />\r\n    <orderEntry type=\"library\" name=\"Maven: org.apache.commons:commons-compress:1.21\" level=\"project\" />\r\n    <orderEntry type=\"library\" name=\"Maven: org.osgi:org.osgi.core:6.0.0\" level=\"project\" />\r\n  </component>\r\n</module>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/demo5/demo5.iml b/demo5/demo5.iml
+--- a/demo5/demo5.iml	(revision cd958c87146e40187425c19c8b919bac450c7a99)
++++ b/demo5/demo5.iml	(date 1667909504730)
+@@ -97,10 +97,14 @@
+     <orderEntry type="library" name="Maven: com.alibaba:druid:1.2.12" level="project" />
+     <orderEntry type="library" name="Maven: org.slf4j:slf4j-api:1.7.30" level="project" />
+     <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-autoconfigure:2.3.7.RELEASE" level="project" />
+-    <orderEntry type="library" name="Maven: org.eclipse.jgit:org.eclipse.jgit:6.3.0.202209071007-r" level="project" />
+-    <orderEntry type="library" name="Maven: com.googlecode.javaewah:JavaEWAH:1.1.13" level="project" />
+-    <orderEntry type="library" name="Maven: org.eclipse.jgit:org.eclipse.jgit.archive:6.3.0.202209071007-r" level="project" />
+-    <orderEntry type="library" name="Maven: org.apache.commons:commons-compress:1.21" level="project" />
+-    <orderEntry type="library" name="Maven: org.osgi:org.osgi.core:6.0.0" level="project" />
++    <orderEntry type="library" name="Maven: org.eclipse.jgit:org.eclipse.jgit:4.4.1.201607150455-r" level="project" />
++    <orderEntry type="library" name="Maven: com.jcraft:jsch:0.1.53" level="project" />
++    <orderEntry type="library" name="Maven: com.googlecode.javaewah:JavaEWAH:0.7.9" level="project" />
++    <orderEntry type="library" name="Maven: org.apache.httpcomponents:httpclient:4.5.13" level="project" />
++    <orderEntry type="library" name="Maven: org.apache.httpcomponents:httpcore:4.4.14" level="project" />
++    <orderEntry type="library" name="Maven: commons-codec:commons-codec:1.14" level="project" />
++    <orderEntry type="library" name="Maven: org.eclipse.jgit:org.eclipse.jgit.archive:5.8.1.202007141445-r" level="project" />
++    <orderEntry type="library" name="Maven: org.apache.commons:commons-compress:1.19" level="project" />
++    <orderEntry type="library" name="Maven: org.osgi:org.osgi.core:4.3.1" level="project" />
+   </component>
+ </module>
+\ No newline at end of file
+Index: .idea/libraries/Maven__org_apache_httpcomponents_httpcore_4_4_14.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/libraries/Maven__org_apache_httpcomponents_httpcore_4_4_14.xml b/.idea/libraries/Maven__org_apache_httpcomponents_httpcore_4_4_14.xml
+new file mode 100644
+--- /dev/null	(date 1667909504853)
++++ b/.idea/libraries/Maven__org_apache_httpcomponents_httpcore_4_4_14.xml	(date 1667909504853)
+@@ -0,0 +1,13 @@
++<component name="libraryTable">
++  <library name="Maven: org.apache.httpcomponents:httpcore:4.4.14">
++    <CLASSES>
++      <root url="jar://$MAVEN_REPOSITORY$/org/apache/httpcomponents/httpcore/4.4.14/httpcore-4.4.14.jar!/" />
++    </CLASSES>
++    <JAVADOC>
++      <root url="jar://$MAVEN_REPOSITORY$/org/apache/httpcomponents/httpcore/4.4.14/httpcore-4.4.14-javadoc.jar!/" />
++    </JAVADOC>
++    <SOURCES>
++      <root url="jar://$MAVEN_REPOSITORY$/org/apache/httpcomponents/httpcore/4.4.14/httpcore-4.4.14-sources.jar!/" />
++    </SOURCES>
++  </library>
++</component>
+\ No newline at end of file

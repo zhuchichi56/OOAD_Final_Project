@@ -20,10 +20,6 @@
     </resultMap>
 
     <delete id="deleteIssue">
-        delete i, ic from issue i inner join issuecomment ic on issueId = #{issueId}
+        delete from issue where issueId = #{issueId}
     </delete>
-
-    <update id="updateCreatorName">
-        update issue set creatorName=#{newName} where creatorName=#{oldName};
-    </update>
 </mapper>

@@ -7,7 +7,7 @@
 <mapper namespace="com.example.demo.mapper.AgentMapper">
 
         <insert id="createAgent" parameterType="Agent">
-            insert into Agent values (#{agent.agentName}, #{agent.password}, #{agent.iconUrl});
+            insert into agent values (#{agent.agentName}, #{agent.password}, #{agent.iconUrl});
         </insert>
 
         <update id="updateUserName">

@@ -14,6 +14,6 @@ public interface StarRepoMapper {
 
     List<String> getAllStarRepos(@Param("agentName") String name);
 
-    int updateStarUserName(@Param("oldName") String oldName, @Param("newName") String newName);
+//    int updateStarUserName(@Param("oldName") String oldName, @Param("newName") String newName);
 
 }

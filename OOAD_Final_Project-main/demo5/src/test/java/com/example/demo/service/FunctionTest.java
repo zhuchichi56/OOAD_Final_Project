@@ -16,8 +16,8 @@ import java.util.List;
 
 @SpringBootTest
 public class FunctionTest {
-    String localPath = "C:\\Users\\vip\\Desktop\\TEST\\Local";
-    String remoteURL = "C:\\Users\\vip\\Desktop\\TEST\\Local\\User_B\\Repo_002";
+    String localPath = "C:\\Users\\12078\\Desktop\\TEST\\Local";
+    String remoteURL = "C:\\Users\\12078\\Desktop\\TEST\\Local\\User_B\\Repo_002";
 
     String testDirectory = "C:\\Users\\vip\\Desktop\\Files";
     @Autowired
@@ -44,25 +44,23 @@ public class FunctionTest {
     }
     @Test
     void testInitial() throws GitAPIException {
-        Git repo = repositoryService.initRepository(localPath, "User_A","Repo_001");
-        Git repo1 = repositoryService.initRepository(localPath, "User_B","Repo_002");
+        Git repo = repositoryService.initRepository(localPath, "User_A","Repo_001", 1);
+        Git repo1 = repositoryService.initRepository(localPath, "User_B","Repo_002", 1);
     }
     @Test
     void testStar(){
-        agentService.starNewRepo("User_A", "5d9f1778a1471c0f9cd24524dc0366756bc0041e");
-        agentService.inviteContributor("User_A", "5d9f1778a1471c0f9cd24524dc0366756bc0041e");
-
+        agentService.starNewRepo("User_B", "2666908d8f3dad76eb0b45899a556e0a071f32d7");
+        agentService.inviteContributor("User_B", "2666908d8f3dad76eb0b45899a556e0a071f32d7");
     }
     @Test
     void testIssue(){
-        String repoId = repositoryMapper.getRepoId("User_A","Repo_001");
-        issueService.createIssueInRepo("User_A", repoId, "you have bug!!!");
+        String repoId = repositoryMapper.getRepoId("User_C","Repo_001");
+        issueService.createIssueInRepo("User_C", repoId, "you have bug!!!");
         List<Issue> issues = issueService.showAllIssues(repoId);
         issueService.commentInIssue(issues.get(0).getIssueId(), "User_B","hello world");
         issueService.commentInIssue(issues.get(0).getIssueId(), "User_B","hello world");
         issueService.commentInIssue(issues.get(0).getIssueId(), "User_B","hello world");
         issueService.showAllCommentsInIssue(issues.get(0).getIssueId());
-
     }
     @Test
     void testUser(){
@@ -75,8 +73,8 @@ public class FunctionTest {
 
     @Test
     void testDelete(){
-
-        issueService.deleteCommentInIssue("503b45e329c4d4e0afe671436193679f10de9108");
+//        issueService.deleteCommentInIssue("f13edba5b6a064f0897e13d994fb77f39b624126");
+        issueService.deleteIssueInRepo("f13edba5b6a064f0897e13d994fb77f39b624126");
     }
 
 

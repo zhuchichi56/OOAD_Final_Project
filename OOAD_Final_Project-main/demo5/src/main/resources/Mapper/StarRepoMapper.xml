@@ -21,9 +21,5 @@
         update agentstarrepo set agentName=#{newName} where agentName=#{oldName};
     </update>
 
-    <update id="updateRepoId">
-        update agentstarrepo set repositoryId=#{newId} where repositoryId=#{oldId};
-    </update>
-
 
 </mapper>

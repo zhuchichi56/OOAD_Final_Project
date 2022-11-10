@@ -12,7 +12,12 @@
     </insert>
 
     <select id="checkContributor" resultType="int">
-        select count(*) from contributor where AgentId=#{ownerId} and RepoName=#{repoName} and ContributorId=#{contributorId};
+        select count(*) from contributor where repositoryId=#{repositoryId} and contributorName=#{contributorName};
     </select>
+
+<!--    <update id="updateContributorName">-->
+<!--        update contributor set contributorName=#{newName} where contributorName=#{oldName};-->
+<!--    </update>-->
+
 
 </mapper>
