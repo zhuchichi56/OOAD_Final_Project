@@ -58,6 +58,11 @@ public class RepositoryServiceImp implements RepositoryService{
     }
 
     @Override
+    public int updateAuthority(String repoId, int authority) {
+        return repositoryMapper.updateAuthority(authority,repoId);
+    }
+
+    @Override
     public Git cloneRepository(String remotePathUrl, String localPath, String agentName, String repositoryName) {
         Git git = null;
         File repository = new File(localPath+ "\\" + agentName +"\\" + repositoryName);

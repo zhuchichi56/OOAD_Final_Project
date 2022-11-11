@@ -67,6 +67,12 @@ public class FunctionTest {
         agentService.updateUserName("User_A", "User_C");
     }
 
+    @Test
+    void temTest(){
+        List<String> list =branchService.getContent(localPath+'\\'+"User_test_A"+'\\'+"REPO001",localPath+'\\'+"User_test_A"+'\\'+"REPO001"+'\\'+"practice7","master");
+        list.forEach(o-> System.out.println(o));
+    }
+
 
 
 

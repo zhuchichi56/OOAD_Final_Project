@@ -10,6 +10,15 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 @RequestMapping(value = "/UserPage")
 public class UserPageController {
 
+    /***
+     * json:
+     *  userName:
+     *  repoList:
+     *      repoName:
+     *      permission:
+     *      msg:
+     *  useImage:
+     */
     @RequestMapping("/{name}")
     public String showUserInfo(@PathVariable("name") String name){
         return "success";

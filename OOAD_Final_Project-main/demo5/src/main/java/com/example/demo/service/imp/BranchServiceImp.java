@@ -18,6 +18,9 @@ import org.springframework.stereotype.Service;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
 
 
 @Service
@@ -27,7 +30,7 @@ public class BranchServiceImp implements BranchService {
 
     @Autowired
     private DataSourceTransactionManager dataSourceTransactionManager;
-    private String localPath = "C:\\Users\\12078\\Desktop\\大三上\\ooad\\test";
+//    private String localPath = "C:\\Users\\12078\\Desktop\\大三上\\ooad\\test";
 
 
     @Override
@@ -45,12 +48,22 @@ public class BranchServiceImp implements BranchService {
 
     @Override
     public Ref switchBranch(Git repository, String branchName) throws GitAPIException {
-//        if(BranchUtil.branchExist(repository, branchName)) {
-//            return repository.checkout().setName(branchName).call();
-//        }
-//        return null;
+
 
         return repository.checkout().setName(branchName).call();
+    }
+
+
+    @Override
+    public List<String> getContent(String path, String dirPath, String branch) {
+        try {
+            Git repository = Git.open(new File(path));
+            Ref ref = switchBranch(repository,branch);
+            File f = new File(dirPath);
+            return Arrays.stream(f.listFiles()).map(File::getName).filter(o->!o.equals(".git")).collect(Collectors.toList());
+        } catch (GitAPIException | IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @Override
@@ -78,16 +91,8 @@ public class BranchServiceImp implements BranchService {
         return localRepository;
     }
 
-    /**
-     * 给出ObjectId,并回滚至该版本
-     * @param agentName
-     * @param repoName
-     * @param id
-     * @return
-     */
     @Override
-    public int rollback(String agentName,String repoName,String id) {
-        String path = localPath+"\\"+agentName+"\\"+repoName;
+    public int rollback(String path,String id) {
         try {
             Git git = Git.open(new File(path));
             Repository repository = git.getRepository();
