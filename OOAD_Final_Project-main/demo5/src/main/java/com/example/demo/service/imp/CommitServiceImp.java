@@ -22,6 +22,8 @@ import java.io.IOException;
 import java.util.*;
 
 
+
+
 @Service
 public class CommitServiceImp implements CommitService {
     @Autowired
@@ -29,6 +31,9 @@ public class CommitServiceImp implements CommitService {
 
     @Autowired
     RepositoryMapper repositoryMapper;
+
+    public static String flash = "/";
+
 
 
 
@@ -42,10 +47,11 @@ public class CommitServiceImp implements CommitService {
      * @return
      */
 
+
+
     @Override
     public int commitFiles(String localPath, String agentName, String repoName, String branch, File file) {
-        String path = localPath+"\\"+agentName+"\\"+repoName;
-//        String path = localPath+"\\"+repoName;
+        String path = localPath+flash+agentName+flash+repoName;
         try {
             FileCoverUtil.updateFile(path,file);
             File origin = new File(path);
@@ -111,7 +117,7 @@ public class CommitServiceImp implements CommitService {
     @Override
     public List<RevCommit> getCommitsByBranch(String localPath, String agentName, String repoName, String branch) {
         List<RevCommit> commits = new ArrayList<>();
-        String path = localPath+"\\"+agentName+"\\"+repoName;
+        String path = localPath+flash+agentName+flash+repoName;
         try {
             Git git = Git.open(new File(path));
             Repository repository = git.getRepository();
@@ -130,6 +136,7 @@ public class CommitServiceImp implements CommitService {
 
 
 }
+
 
 
 

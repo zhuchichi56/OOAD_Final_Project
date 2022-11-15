@@ -21,11 +21,13 @@ import java.nio.file.Paths;
 public class RepositoryServiceImp implements RepositoryService{
     @Autowired
     RepositoryMapper repositoryMapper;
+    public static String flash = "/";
+
 
 
     @Override
     public Git initRepository(String path, String agentName, String repositoryName, int authority) {
-        File repository = new File(path+ "\\" + agentName +"\\" + repositoryName);
+        File repository = new File(path+ flash + agentName +flash + repositoryName);
         if (repositoryMapper.getRepoId(agentName,repositoryName) == null)
             repositoryMapper.createNewRepository(encodeUtil.hash(agentName,repositoryName), new Repo(agentName, repositoryName, authority));
         if(repository.exists()) {
@@ -39,8 +41,6 @@ public class RepositoryServiceImp implements RepositoryService{
         } catch (GitAPIException e) {
             e.printStackTrace();
         }
-
-        
         return git;
     }
 
@@ -65,7 +65,7 @@ public class RepositoryServiceImp implements RepositoryService{
     @Override
     public Git cloneRepository(String remotePathUrl, String localPath, String agentName, String repositoryName) {
         Git git = null;
-        File repository = new File(localPath+ "\\" + agentName +"\\" + repositoryName);
+        File repository = new File(localPath+ flash + agentName +flash + repositoryName);
         if(repository.exists()) {
             System.out.println("repo exists");
         }
@@ -87,7 +87,7 @@ public class RepositoryServiceImp implements RepositoryService{
         Repository repository = null;
         try{
              repository = new FileRepositoryBuilder()
-                    .setGitDir(Paths.get(path+ "\\" + agentName +"\\" + repositoryName, ".git").toFile())
+                    .setGitDir(Paths.get(path+ flash + agentName +flash + repositoryName, ".git").toFile())
                     .build();
         } catch (IOException e) {
             e.printStackTrace();
@@ -97,3 +97,7 @@ public class RepositoryServiceImp implements RepositoryService{
         return Git.wrap(repository);
     }
 }
+
+
+
+

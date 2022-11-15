@@ -19,6 +19,12 @@ public class UserPageController {
      *      msg:
      *  useImage:
      */
+
+
+
+
+
+
     @RequestMapping("/{name}")
     public String showUserInfo(@PathVariable("name") String name){
         return "success";

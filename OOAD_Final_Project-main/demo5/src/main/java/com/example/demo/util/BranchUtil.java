@@ -31,6 +31,7 @@ public  class BranchUtil {
         return treeParser;
     }
 
+
     public static void listDiff(Repository repository, Git git, ObjectId oldCommit, ObjectId newCommit) throws GitAPIException, IOException {
         List<DiffEntry> diffs = git.diff()
                 .setOldTree(prepareTreeParser(repository, oldCommit))
