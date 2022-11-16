@@ -12,10 +12,7 @@ public class FileCoverUtil {
     public static void updateFile(String path, File file){
         File origin = new File(path);
         deleteFile(origin);
-        File[] list = file.listFiles();
-        for (File f: list){
-            coverFile(path,f);
-        }
+        coverFile(path, file);
     }
     private static void deleteFile(File file){
         if (file.getName().equals(".git")){
@@ -45,7 +42,6 @@ public class FileCoverUtil {
         } else {
             try {
                 BufferedImage image = ImageIO.read(file);
-
                 if (image != null){
                     String location = path + '\\' + file.getName();
                     ImageIO.write(image, getImageType(file), new File(location));
