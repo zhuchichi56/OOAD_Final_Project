@@ -22,5 +22,11 @@ public interface AgentService {
     int removeStarToRepo(String agentName, String repoId);
 
     List<Repo> allRepoAgentStar(String agentName);
+
+
+
+    List<Repo> getRepoByName(String UserName);
+
+
 }
 

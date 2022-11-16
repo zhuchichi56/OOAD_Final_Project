@@ -36,6 +36,8 @@ public class AgentServiceImp implements AgentService {
     CommentMapper commentMapper;
 
 
+
+
     /**
      * 用户注册
      * **/
@@ -46,9 +48,25 @@ public class AgentServiceImp implements AgentService {
         return agent.getAgentName();
     }
 
+
+
+
+
+    public List<Repo> getRepoByName(String UserName) {
+        return repositoryMapper.getAllRepo(UserName);
+    }
+
+
+
+
+
+
+
+
     @Override
     public int updateUserName(String old, String latest) {
-        List<String> repoIds = repositoryMapper.getAllRepo(old);
+
+        List<String> repoIds = repositoryMapper.getAllRepoId(old);
         for (String repoId : repoIds) {
             Repo repo = repositoryMapper.getRepoById(repoId);
 //            repositoryMapper.updateOwnerName(old, latest);
@@ -56,6 +74,11 @@ public class AgentServiceImp implements AgentService {
         }
         return agentMapper.updateUserName(old, latest);
     }
+
+
+
+
+
 
     @Override
     public int updateUserIcon(String localPath, String name, byte[] imageData) {
@@ -76,6 +99,7 @@ public class AgentServiceImp implements AgentService {
     public int inviteContributor(String contributorName, String repositoryId) {
         return contributorMapper.insertNewContributor(contributorName,repositoryId);
     }
+
 
     /**
      * 检查某个用户是不是某个仓库的贡献者（未测试）
@@ -104,7 +128,6 @@ public class AgentServiceImp implements AgentService {
         List<String> repoIdList = starRepoMapper.getAllStarRepos(agentName);
         return repoIdList.stream().map(o->repositoryMapper.getRepoById(o)).collect(Collectors.toList());
     }
-
 
 
 

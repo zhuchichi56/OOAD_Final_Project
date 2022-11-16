@@ -26,10 +26,10 @@ public  class BranchUtil {
         ObjectReader reader = repository.newObjectReader();
         treeParser.reset(reader, tree.getId());
         walk.dispose();
-
-
         return treeParser;
     }
+
+
 
 
     public static void listDiff(Repository repository, Git git, ObjectId oldCommit, ObjectId newCommit) throws GitAPIException, IOException {
@@ -54,6 +54,16 @@ public  class BranchUtil {
         }
         return false;
     }
+
+    public static List<Ref> getAllBranch(Git git) throws GitAPIException {
+        List<Ref> refs = git.branchList().call();
+        for (Ref ref : refs) {
+            System.out.println(ref.getName());
+        }
+        return refs;
+    }
+
+
 
 
 

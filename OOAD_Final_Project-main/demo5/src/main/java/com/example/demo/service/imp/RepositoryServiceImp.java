@@ -19,10 +19,9 @@ import java.nio.file.Paths;
 
 @Service
 public class RepositoryServiceImp implements RepositoryService{
-    @Autowired
+        @Autowired
     RepositoryMapper repositoryMapper;
     public static String flash = "/";
-
 
 
     @Override
@@ -62,6 +61,7 @@ public class RepositoryServiceImp implements RepositoryService{
         return repositoryMapper.updateAuthority(authority,repoId);
     }
 
+
     @Override
     public Git cloneRepository(String remotePathUrl, String localPath, String agentName, String repositoryName) {
         Git git = null;
@@ -82,6 +82,8 @@ public class RepositoryServiceImp implements RepositoryService{
         return git;
     }
 
+
+
     @Override
     public Git loadLocalRepository(String path, String agentName ,String repositoryName) {
         Repository repository = null;
@@ -97,6 +99,7 @@ public class RepositoryServiceImp implements RepositoryService{
         return Git.wrap(repository);
     }
 }
+
 
 
 

@@ -4,68 +4,52 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bfa79806-750e-4283-884f-11c49e88ba49" name="Changes" comment="方法测试，修改属性名">
-      <change afterPath="$PROJECT_DIR$/.idea/jpa-buddy.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/OOAD_Final_Project-main/demo5/src/main/java/com/example/demo/controller/RepoController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/c00638af-9038-426d-a88b-0829e45c5f81.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/c00638af-9038-426d-a88b-0829e45c5f81.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/jarRepositories.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_jcraft_jsch_0_1_50.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_eclipse_jgit_org_eclipse_jgit_3_5_0_201409260305_r.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+    <list default="true" id="bfa79806-750e-4283-884f-11c49e88ba49" name="Changes" comment="flash">
+      <change afterPath="$PROJECT_DIR$/OOAD_Final_Project-main/demo5/src/main/java/com/example/demo/controller/RepoPageController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/OOAD_Final_Project-main/demo5/demo5.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/OOAD_Final_Project-main/demo5/src/main/java/com/example/demo/Demo5Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/OOAD_Final_Project-main/demo5/src/main/java/com/example/demo/Demo5Application.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OOAD_Final_Project-main/demo5/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/OOAD_Final_Project-main/demo5/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/OOAD_Final_Project-main/demo5/src/main/java/com/example/demo/controller/FileController.java" beforeDir="false" afterPath="$PROJECT_DIR$/OOAD_Final_Project-main/demo5/src/main/java/com/example/demo/controller/FileController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OOAD_Final_Project-main/demo5/src/main/java/com/example/demo/controller/RepoController.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/OOAD_Final_Project-main/demo5/src/main/java/com/example/demo/controller/UserPageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/OOAD_Final_Project-main/demo5/src/main/java/com/example/demo/controller/UserPageController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OOAD_Final_Project-main/demo5/src/main/java/com/example/demo/entity/Repo.java" beforeDir="false" afterPath="$PROJECT_DIR$/OOAD_Final_Project-main/demo5/src/main/java/com/example/demo/entity/Repo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OOAD_Final_Project-main/demo5/src/main/java/com/example/demo/mapper/RepositoryMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/OOAD_Final_Project-main/demo5/src/main/java/com/example/demo/mapper/RepositoryMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OOAD_Final_Project-main/demo5/src/main/java/com/example/demo/service/AgentService.java" beforeDir="false" afterPath="$PROJECT_DIR$/OOAD_Final_Project-main/demo5/src/main/java/com/example/demo/service/AgentService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/OOAD_Final_Project-main/demo5/src/main/java/com/example/demo/service/imp/AgentServiceImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/OOAD_Final_Project-main/demo5/src/main/java/com/example/demo/service/imp/AgentServiceImp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OOAD_Final_Project-main/demo5/src/main/java/com/example/demo/service/imp/BranchServiceImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/OOAD_Final_Project-main/demo5/src/main/java/com/example/demo/service/imp/BranchServiceImp.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/OOAD_Final_Project-main/demo5/src/main/java/com/example/demo/service/imp/CommitServiceImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/OOAD_Final_Project-main/demo5/src/main/java/com/example/demo/service/imp/CommitServiceImp.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/OOAD_Final_Project-main/demo5/src/main/java/com/example/demo/service/imp/RepositoryServiceImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/OOAD_Final_Project-main/demo5/src/main/java/com/example/demo/service/imp/RepositoryServiceImp.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/OOAD_Final_Project-main/demo5/src/main/java/com/example/demo/util/BranchUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/OOAD_Final_Project-main/demo5/src/main/java/com/example/demo/util/BranchUtil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/OOAD_Final_Project-main/demo5/src/main/java/com/example/demo/util/FileCoverUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/OOAD_Final_Project-main/demo5/src/main/java/com/example/demo/util/FileCoverUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OOAD_Final_Project-main/demo5/src/main/resources/Mapper/AgentMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/OOAD_Final_Project-main/demo5/src/main/resources/Mapper/AgentMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OOAD_Final_Project-main/demo5/src/main/resources/Mapper/RepositoryMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/OOAD_Final_Project-main/demo5/src/main/resources/Mapper/RepositoryMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OOAD_Final_Project-main/demo5/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/OOAD_Final_Project-main/demo5/src/main/resources/application.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/OOAD_Final_Project-main/demo5/src/test/java/com/example/demo/service/FunctionTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/OOAD_Final_Project-main/demo5/src/test/java/com/example/demo/service/FunctionTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/OOAD_Final_Project-main/demo5/target/classes/com/example/demo/Demo5Application.class" beforeDir="false" afterPath="$PROJECT_DIR$/OOAD_Final_Project-main/demo5/target/classes/com/example/demo/Demo5Application.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/OOAD_Final_Project-main/demo5/target/classes/com/example/demo/config/CrossOriginConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/OOAD_Final_Project-main/demo5/target/classes/com/example/demo/config/CrossOriginConfig.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OOAD_Final_Project-main/demo5/target/classes/Mapper/AgentMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/OOAD_Final_Project-main/demo5/target/classes/Mapper/AgentMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OOAD_Final_Project-main/demo5/target/classes/Mapper/CommentMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/OOAD_Final_Project-main/demo5/target/classes/Mapper/CommentMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OOAD_Final_Project-main/demo5/target/classes/Mapper/ContributorMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/OOAD_Final_Project-main/demo5/target/classes/Mapper/ContributorMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OOAD_Final_Project-main/demo5/target/classes/Mapper/RepositoryMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/OOAD_Final_Project-main/demo5/target/classes/Mapper/RepositoryMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OOAD_Final_Project-main/demo5/target/classes/Mapper/StarRepoMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/OOAD_Final_Project-main/demo5/target/classes/Mapper/StarRepoMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OOAD_Final_Project-main/demo5/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/OOAD_Final_Project-main/demo5/target/classes/application.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/OOAD_Final_Project-main/demo5/target/classes/com/example/demo/controller/UserPageController.class" beforeDir="false" afterPath="$PROJECT_DIR$/OOAD_Final_Project-main/demo5/target/classes/com/example/demo/controller/UserPageController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/OOAD_Final_Project-main/demo5/target/classes/com/example/demo/entity/Agent.class" beforeDir="false" afterPath="$PROJECT_DIR$/OOAD_Final_Project-main/demo5/target/classes/com/example/demo/entity/Agent.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/OOAD_Final_Project-main/demo5/target/classes/com/example/demo/entity/Comment.class" beforeDir="false" afterPath="$PROJECT_DIR$/OOAD_Final_Project-main/demo5/target/classes/com/example/demo/entity/Comment.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/OOAD_Final_Project-main/demo5/target/classes/com/example/demo/entity/Issue.class" beforeDir="false" afterPath="$PROJECT_DIR$/OOAD_Final_Project-main/demo5/target/classes/com/example/demo/entity/Issue.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/OOAD_Final_Project-main/demo5/target/classes/com/example/demo/entity/Repo.class" beforeDir="false" afterPath="$PROJECT_DIR$/OOAD_Final_Project-main/demo5/target/classes/com/example/demo/entity/Repo.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/OOAD_Final_Project-main/demo5/target/classes/com/example/demo/mapper/AgentMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/OOAD_Final_Project-main/demo5/target/classes/com/example/demo/mapper/AgentMapper.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/OOAD_Final_Project-main/demo5/target/classes/com/example/demo/mapper/CommentMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/OOAD_Final_Project-main/demo5/target/classes/com/example/demo/mapper/CommentMapper.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/OOAD_Final_Project-main/demo5/target/classes/com/example/demo/mapper/ContributorMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/OOAD_Final_Project-main/demo5/target/classes/com/example/demo/mapper/ContributorMapper.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/OOAD_Final_Project-main/demo5/target/classes/com/example/demo/mapper/IssueMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/OOAD_Final_Project-main/demo5/target/classes/com/example/demo/mapper/IssueMapper.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/OOAD_Final_Project-main/demo5/target/classes/com/example/demo/mapper/RepositoryMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/OOAD_Final_Project-main/demo5/target/classes/com/example/demo/mapper/RepositoryMapper.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/OOAD_Final_Project-main/demo5/target/classes/com/example/demo/mapper/StarRepoMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/OOAD_Final_Project-main/demo5/target/classes/com/example/demo/mapper/StarRepoMapper.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/OOAD_Final_Project-main/demo5/target/classes/com/example/demo/service/AgentService.class" beforeDir="false" afterPath="$PROJECT_DIR$/OOAD_Final_Project-main/demo5/target/classes/com/example/demo/service/AgentService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/OOAD_Final_Project-main/demo5/target/classes/com/example/demo/service/BranchService.class" beforeDir="false" afterPath="$PROJECT_DIR$/OOAD_Final_Project-main/demo5/target/classes/com/example/demo/service/BranchService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/OOAD_Final_Project-main/demo5/target/classes/com/example/demo/service/CommitService.class" beforeDir="false" afterPath="$PROJECT_DIR$/OOAD_Final_Project-main/demo5/target/classes/com/example/demo/service/CommitService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/OOAD_Final_Project-main/demo5/target/classes/com/example/demo/service/IssueService.class" beforeDir="false" afterPath="$PROJECT_DIR$/OOAD_Final_Project-main/demo5/target/classes/com/example/demo/service/IssueService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/OOAD_Final_Project-main/demo5/target/classes/com/example/demo/service/RepositoryService.class" beforeDir="false" afterPath="$PROJECT_DIR$/OOAD_Final_Project-main/demo5/target/classes/com/example/demo/service/RepositoryService.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/OOAD_Final_Project-main/demo5/target/classes/com/example/demo/service/imp/AgentServiceImp.class" beforeDir="false" afterPath="$PROJECT_DIR$/OOAD_Final_Project-main/demo5/target/classes/com/example/demo/service/imp/AgentServiceImp.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/OOAD_Final_Project-main/demo5/target/classes/com/example/demo/service/imp/BranchServiceimp.class" beforeDir="false" afterPath="$PROJECT_DIR$/OOAD_Final_Project-main/demo5/target/classes/com/example/demo/service/imp/BranchServiceimp.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/OOAD_Final_Project-main/demo5/target/classes/com/example/demo/service/imp/CommitServiceImp.class" beforeDir="false" afterPath="$PROJECT_DIR$/OOAD_Final_Project-main/demo5/target/classes/com/example/demo/service/imp/CommitServiceImp.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/OOAD_Final_Project-main/demo5/target/classes/com/example/demo/service/imp/IssueServiceImp.class" beforeDir="false" afterPath="$PROJECT_DIR$/OOAD_Final_Project-main/demo5/target/classes/com/example/demo/service/imp/IssueServiceImp.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/OOAD_Final_Project-main/demo5/target/classes/com/example/demo/service/imp/RepositoryServiceImp.class" beforeDir="false" afterPath="$PROJECT_DIR$/OOAD_Final_Project-main/demo5/target/classes/com/example/demo/service/imp/RepositoryServiceImp.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/OOAD_Final_Project-main/demo5/target/classes/com/example/demo/util/BranchUtil.class" beforeDir="false" afterPath="$PROJECT_DIR$/OOAD_Final_Project-main/demo5/target/classes/com/example/demo/util/BranchUtil.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/OOAD_Final_Project-main/demo5/target/classes/com/example/demo/util/DateParser.class" beforeDir="false" afterPath="$PROJECT_DIR$/OOAD_Final_Project-main/demo5/target/classes/com/example/demo/util/DateParser.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/OOAD_Final_Project-main/demo5/target/classes/com/example/demo/util/FileCoverUtil.class" beforeDir="false" afterPath="$PROJECT_DIR$/OOAD_Final_Project-main/demo5/target/classes/com/example/demo/util/FileCoverUtil.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/OOAD_Final_Project-main/demo5/target/classes/com/example/demo/util/TransactionUtil.class" beforeDir="false" afterPath="$PROJECT_DIR$/OOAD_Final_Project-main/demo5/target/classes/com/example/demo/util/TransactionUtil.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/OOAD_Final_Project-main/demo5/target/classes/com/example/demo/util/encodeUtil.class" beforeDir="false" afterPath="$PROJECT_DIR$/OOAD_Final_Project-main/demo5/target/classes/com/example/demo/util/encodeUtil.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/OOAD_Final_Project-main/demo5/target/demo5-0.0.1-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/OOAD_Final_Project-main/demo5/target/demo5-0.0.1-SNAPSHOT.jar" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/OOAD_Final_Project-main/demo5/target/demo5-0.0.1-SNAPSHOT.jar.original" beforeDir="false" afterPath="$PROJECT_DIR$/OOAD_Final_Project-main/demo5/target/demo5-0.0.1-SNAPSHOT.jar.original" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/OOAD_Final_Project-main/demo5/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/OOAD_Final_Project-main/demo5/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/OOAD_Final_Project-main/demo5/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/OOAD_Final_Project-main/demo5/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/OOAD_Final_Project-main/demo5/target/test-classes/com/example/demo/service/AgentServiceTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/OOAD_Final_Project-main/demo5/target/test-classes/com/example/demo/service/AgentServiceTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OOAD_Final_Project-main/demo5/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/OOAD_Final_Project-main/demo5/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/createdFiles.lst" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/OOAD_Final_Project-main/demo5/target/test-classes/com/example/demo/service/FunctionTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/OOAD_Final_Project-main/demo5/target/test-classes/com/example/demo/service/FunctionTest.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CompilerWorkspaceConfiguration">
+    <option name="MAKE_PROJECT_ON_SAVE" value="true" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -125,13 +109,15 @@
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
     &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;advanced.settings&quot;,
     &quot;spring.configuration.checksum&quot;: &quot;95346415f1f5933a78386d1759d2ef22&quot;
   }
 }</component>
-  <component name="RunManager" selected="JUnit.FunctionTest.testUser">
+  <component name="RunManager" selected="JUnit.FunctionTest.testBranchList">
     <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
@@ -143,7 +129,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="FunctionTest.testCommit" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="generated-requests | #1" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$APPLICATION_CONFIG_DIR$/scratches/generated-requests.http" requestIdentifier="#1" runType="Run single request">
+      <method v="2" />
+    </configuration>
+    <configuration name="generated-requests | #6" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$APPLICATION_CONFIG_DIR$/scratches/generated-requests.http" index="6" requestIdentifier="#6" runType="Run single request">
+      <method v="2" />
+    </configuration>
+    <configuration name="FunctionTest.testBranchList" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="demo5" />
       <extension name="coverage">
         <pattern>
@@ -153,7 +145,7 @@
       </extension>
       <option name="PACKAGE_NAME" value="com.example.demo.service" />
       <option name="MAIN_CLASS_NAME" value="com.example.demo.service.FunctionTest" />
-      <option name="METHOD_NAME" value="testCommit" />
+      <option name="METHOD_NAME" value="testBranchList" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -191,38 +183,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="FunctionTest.testStar" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="demo5" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.example.demo.service.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.example.demo.service" />
-      <option name="MAIN_CLASS_NAME" value="com.example.demo.service.FunctionTest" />
-      <option name="METHOD_NAME" value="testStar" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="FunctionTest.testUser" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="demo5" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.example.demo.service.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.example.demo.service" />
-      <option name="MAIN_CLASS_NAME" value="com.example.demo.service.FunctionTest" />
-      <option name="METHOD_NAME" value="testUser" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="Demo5Application" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="demo5" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.example.demo.Demo5Application" />
@@ -232,11 +192,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.FunctionTest.testUser" />
-        <item itemvalue="JUnit.FunctionTest.testCommit" />
+        <item itemvalue="JUnit.FunctionTest.testBranchList" />
         <item itemvalue="JUnit.FunctionTest.testCreateBranch" />
-        <item itemvalue="JUnit.FunctionTest.testStar" />
         <item itemvalue="JUnit.FunctionTest.testInitial" />
+        <item itemvalue="HTTP Request.generated-requests | #1" />
+        <item itemvalue="HTTP Request.generated-requests | #6" />
       </list>
     </recent_temporary>
   </component>
@@ -259,7 +219,11 @@
       <workItem from="1667110611205" duration="7018000" />
       <workItem from="1668585717146" duration="1327000" />
       <workItem from="1668587889306" duration="1282000" />
-      <workItem from="1668589339637" duration="800000" />
+      <workItem from="1668589339637" duration="2517000" />
+      <workItem from="1668599310315" duration="3357000" />
+      <workItem from="1668602894587" duration="1507000" />
+      <workItem from="1668604479909" duration="3523000" />
+      <workItem from="1668609599000" duration="505000" />
     </task>
     <task id="LOCAL-00001" summary="方法测试，修改属性名">
       <created>1665136480478</created>
@@ -275,7 +239,14 @@
       <option name="project" value="LOCAL" />
       <updated>1665136492808</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="flash">
+      <created>1668590768783</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1668590768783</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -297,7 +268,8 @@
       <path value="$PROJECT_DIR$/.." />
     </ignored-roots>
     <MESSAGE value="方法测试，修改属性名" />
-    <option name="LAST_COMMIT_MESSAGE" value="方法测试，修改属性名" />
+    <MESSAGE value="flash" />
+    <option name="LAST_COMMIT_MESSAGE" value="flash" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -312,12 +284,21 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/OOAD_Final_Project-main/demo5/src/test/java/com/example/demo/service/FunctionTest.java</url>
-          <line>97</line>
+          <line>108</line>
           <properties class="com.example.demo.service.FunctionTest" method="testCommit">
             <option name="EMULATED" value="true" />
             <option name="WATCH_EXIT" value="false" />
           </properties>
           <option name="timeStamp" value="7" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/OOAD_Final_Project-main/demo5/src/test/java/com/example/demo/service/FunctionTest.java</url>
+          <line>56</line>
+          <properties class="com.example.demo.service.FunctionTest" method="testInitial">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="8" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

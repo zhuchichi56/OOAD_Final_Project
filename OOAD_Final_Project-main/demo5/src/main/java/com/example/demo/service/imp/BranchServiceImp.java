@@ -26,11 +26,8 @@ import java.util.stream.Collectors;
 @Service
 public class BranchServiceImp implements BranchService {
 
-
-
     @Autowired
     private DataSourceTransactionManager dataSourceTransactionManager;
-//    private String localPath = "C:\\Users\\12078\\Desktop\\大三上\\ooad\\test";
 
 
     @Override
@@ -45,6 +42,11 @@ public class BranchServiceImp implements BranchService {
 
         return branch;
     }
+
+
+
+
+
 
     @Override
     public Ref switchBranch(Git repository, String branchName) throws GitAPIException {
@@ -107,4 +109,9 @@ public class BranchServiceImp implements BranchService {
         }
         return 1;
     }
+
+
+
+
+
 }

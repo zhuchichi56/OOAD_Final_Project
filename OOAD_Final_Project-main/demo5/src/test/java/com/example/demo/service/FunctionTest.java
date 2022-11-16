@@ -3,6 +3,7 @@ package com.example.demo.service;
 import com.example.demo.entity.Agent;
 import com.example.demo.entity.Issue;
 import com.example.demo.mapper.RepositoryMapper;
+import com.example.demo.util.BranchUtil;
 import org.eclipse.jgit.api.Git;
 import org.eclipse.jgit.api.errors.GitAPIException;
 import org.eclipse.jgit.lib.Ref;
@@ -16,6 +17,7 @@ import java.util.List;
 
 @SpringBootTest
 public class FunctionTest {
+
 
     String localPath = "/Users/zhuhe/Desktop/Jgit";
 
@@ -40,8 +42,8 @@ public class FunctionTest {
 
     @Test
     void testRegisterAgent(){
-        agentService.createUser(new Agent("User_A", "123456","icon"));
-        agentService.createUser(new Agent("User_B", "123456","icon"));
+        agentService.createUser(new Agent("User_F", "123456","icon"));
+        agentService.createUser(new Agent("User_1", "123456","icon"));
     }
 
 
@@ -49,7 +51,10 @@ public class FunctionTest {
     @Test
     void testInitial() throws GitAPIException {
         Git repo = repositoryService.initRepository(localPath, "User_A","Repo_001", 1);
-        Git repo1 = repositoryService.initRepository(localPath, "User_B","Repo_002", 1);
+//        Git repo1 = repositoryService.initRepository(localPath, "User_B","Repo_002", 1);
+        Git rep1o = repositoryService.initRepository(localPath, "User_A","Repo_002", 1);
+        Git repo2 = repositoryService.initRepository(localPath, "User_A","Repo_003", 1);
+        Git repo3 = repositoryService.initRepository(localPath, "User_A","Repo_004", 1);
     }
 
 
@@ -95,6 +100,7 @@ public class FunctionTest {
 
 
 
+
     @Test
     void testCommit(){
         File file = new File(testDirectory);
@@ -102,10 +108,6 @@ public class FunctionTest {
         commitService.commitFiles(localPath, "User_A", "Repo_001", "master", file);
         commitService.getCommitsByBranch(localPath, "User_A", "Repo_001", "master");
     }
-
-
-
-    //
 
 
 
@@ -117,8 +119,21 @@ public class FunctionTest {
         Git repo = repositoryService.loadLocalRepository(localPath, "User_A","Repo_001");
         branchService.createBranch(repo, "branch2");
         branchService.switchBranch(repo, "master");
+        branchService.createBranch(repo, "branch3");
+
     }
 
+
+
+
+
+
+
+    @Test
+    void testBranchList() throws GitAPIException {
+        Git repo = repositoryService.loadLocalRepository(localPath, "User_A","Repo_001");
+        System.out.println(BranchUtil.getAllBranch(repo));
+    }
 
 
 
@@ -152,5 +167,6 @@ public class FunctionTest {
         Git repo = repositoryService.loadLocalRepository(localPath, "User_A","Repo_002");
         branchService.Pull("master", repo, remoteURL);
     }
+
 
 }

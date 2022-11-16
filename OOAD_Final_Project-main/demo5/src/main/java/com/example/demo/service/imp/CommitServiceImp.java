@@ -135,6 +135,28 @@ public class CommitServiceImp implements CommitService {
     }
 
 
+
+
+    public List<RevCommit> getContent(String localPath, String agentName, String repoName, String branch) {
+        List<RevCommit> commits = new ArrayList<>();
+        String path = localPath+flash+agentName+flash+repoName;
+        try {
+            Git git = Git.open(new File(path));
+            Repository repository = git.getRepository();
+            Ref ref = repository.findRef(branch);
+            RevWalk revWalk = new RevWalk(repository);
+            revWalk.markStart(revWalk.parseCommit(ref.getObjectId()));
+            for (RevCommit revCommit: revWalk){
+                System.out.printf("The commit time:%s The commit ID:%s\n", DateParser.getCommitDate(revCommit.getCommitTime()), revCommit.getName());
+                commits.add(revCommit);
+            }
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        return commits;
+    }
+
+
 }
 
 

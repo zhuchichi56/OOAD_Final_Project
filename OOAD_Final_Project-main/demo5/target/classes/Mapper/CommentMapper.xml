@@ -24,9 +24,4 @@
         delete from issuecomment where commentId = #{commentId};
     </delete>
 
-<!--    <update id="updateCommentUserName">-->
-<!--        update issuecomment set agentName=#{newName} where agentName=#{oldName};-->
-<!--    </update>-->
-
-
 </mapper>
