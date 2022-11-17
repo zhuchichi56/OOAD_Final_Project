@@ -22,6 +22,8 @@ import java.io.IOException;
 import java.util.*;
 
 
+
+
 @Service
 public class CommitServiceImp implements CommitService {
     @Autowired
@@ -29,6 +31,9 @@ public class CommitServiceImp implements CommitService {
 
     @Autowired
     RepositoryMapper repositoryMapper;
+
+    public static String flash = "/";
+
 
 
 
@@ -42,10 +47,17 @@ public class CommitServiceImp implements CommitService {
      * @return
      */
 
+
+
     @Override
+<<<<<<< HEAD
     public int commitFiles(String localPath, String agentName, String repoName, String branch, File file, String filePath) {
         String path = localPath+"\\"+agentName+"\\"+repoName;
 //        String path = localPath+"\\"+repoName;
+=======
+    public int commitFiles(String localPath, String agentName, String repoName, String branch, File file) {
+        String path = localPath+flash+agentName+flash+repoName;
+>>>>>>> 03a31e78dbe7e547553c2c15ffa08a3977d8b81b
         try {
             FileCoverUtil.updateFile(filePath,file);
             File origin = new File(path);
@@ -111,7 +123,29 @@ public class CommitServiceImp implements CommitService {
     @Override
     public List<RevCommit> getCommitsByBranch(String localPath, String agentName, String repoName, String branch) {
         List<RevCommit> commits = new ArrayList<>();
-        String path = localPath+"\\"+agentName+"\\"+repoName;
+        String path = localPath+flash+agentName+flash+repoName;
+        try {
+            Git git = Git.open(new File(path));
+            Repository repository = git.getRepository();
+            Ref ref = repository.findRef(branch);
+            RevWalk revWalk = new RevWalk(repository);
+            revWalk.markStart(revWalk.parseCommit(ref.getObjectId()));
+            for (RevCommit revCommit: revWalk){
+                System.out.printf("The commit time:%s The commit ID:%s\n", DateParser.getCommitDate(revCommit.getCommitTime()), revCommit.getName());
+                commits.add(revCommit);
+            }
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        return commits;
+    }
+
+
+
+
+    public List<RevCommit> getContent(String localPath, String agentName, String repoName, String branch) {
+        List<RevCommit> commits = new ArrayList<>();
+        String path = localPath+flash+agentName+flash+repoName;
         try {
             Git git = Git.open(new File(path));
             Repository repository = git.getRepository();
@@ -130,6 +164,7 @@ public class CommitServiceImp implements CommitService {
 
 
 }
+
 
 
 

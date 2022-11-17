@@ -8,6 +8,7 @@ public class FileCoverUtil {
 
     public static void updateFile(String path, File file) {
         File origin = new File(path);
+<<<<<<< HEAD
         if (origin.exists()) {
             if (origin.isDirectory()) {
                 for (File f : origin.listFiles()) {
@@ -30,7 +31,14 @@ public class FileCoverUtil {
                 coverFile(path, f);
             }
         }
+=======
+        deleteFile(origin);
+        coverFile(path,file);
+
+>>>>>>> 03a31e78dbe7e547553c2c15ffa08a3977d8b81b
     }
+
+
     private static void deleteFile(File file){
         if (file.getName().equals(".git")){
             return;

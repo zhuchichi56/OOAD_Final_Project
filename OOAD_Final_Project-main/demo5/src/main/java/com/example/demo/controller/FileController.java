@@ -20,6 +20,11 @@ public class FileController {
     String localpath = "/Users/zhuhe/Desktop/Jgit";
 
 
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> 03a31e78dbe7e547553c2c15ffa08a3977d8b81b
     @PostMapping("/RepoBrowser/{agentName}/{repoName}/{branch}/upload")
     public void upload(MultipartFile file, @PathVariable("agentName") String agentName,
                        @PathVariable("repoName") String repoName, @PathVariable("branch") String branch) throws IOException {
@@ -46,6 +51,14 @@ public class FileController {
 
 
 
+<<<<<<< HEAD
+=======
+
+
+
+
+
+>>>>>>> 03a31e78dbe7e547553c2c15ffa08a3977d8b81b
 //    @GetMapping("/RepoBrowser/{agentName}/{repoName}/{branch}/upload")
 //    public void returnjson(@PathVariable("agentName") String agentName,
 //                       @PathVariable("repoName") String repoName,
@@ -60,7 +73,13 @@ public class FileController {
 //        System.out.println(filePath);
 //
 //
+<<<<<<< HEAD
 //        //这个感觉非常离谱了；
+=======
+
+
+
+>>>>>>> 03a31e78dbe7e547553c2c15ffa08a3977d8b81b
 //
 //
 //
@@ -105,6 +124,13 @@ public class FileController {
 
 
 
+<<<<<<< HEAD
+=======
+
+    /*
+    * 上传文件
+    * */
+>>>>>>> 03a31e78dbe7e547553c2c15ffa08a3977d8b81b
     @PostMapping("/upload")
     public void Test(@RequestParam("file") MultipartFile[] multipartFile,
                      @RequestParam("UserName") String agentName,
@@ -139,3 +165,8 @@ public class FileController {
 
 
 
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> 03a31e78dbe7e547553c2c15ffa08a3977d8b81b

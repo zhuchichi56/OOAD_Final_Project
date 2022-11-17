@@ -3,7 +3,11 @@ package com.example.demo.service;
 import com.example.demo.entity.Agent;
 import com.example.demo.entity.Issue;
 import com.example.demo.mapper.RepositoryMapper;
+<<<<<<< HEAD
 import com.example.demo.util.FileCoverUtil;
+=======
+import com.example.demo.util.BranchUtil;
+>>>>>>> 03a31e78dbe7e547553c2c15ffa08a3977d8b81b
 import org.eclipse.jgit.api.Git;
 import org.eclipse.jgit.api.errors.GitAPIException;
 import org.eclipse.jgit.lib.Ref;
@@ -17,10 +21,16 @@ import java.util.List;
 
 @SpringBootTest
 public class FunctionTest {
-    String localPath = "C:\\Users\\12078\\Desktop\\TEST\\Local";
-    String remoteURL = "C:\\Users\\12078\\Desktop\\TEST\\Local\\User_B\\Repo_002";
 
+<<<<<<< HEAD
     String testDirectory = "C:\\Users\\12078\\Desktop\\Spring-Project-thymeleaf";
+=======
+
+    String localPath = "/Users/zhuhe/Desktop/Jgit";
+
+    String remoteURL = "C:\\Users\\12078\\Desktop\\TEST\\Local\\User_B\\Repo_002";
+    String testDirectory = "/Users/zhuhe/Desktop/Jgit.md";
+>>>>>>> 03a31e78dbe7e547553c2c15ffa08a3977d8b81b
     @Autowired
     RepositoryService repositoryService;
 
@@ -40,19 +50,29 @@ public class FunctionTest {
 
     @Test
     void testRegisterAgent(){
-        agentService.createUser(new Agent("User_A", "123456","icon"));
-        agentService.createUser(new Agent("User_B", "123456","icon"));
+        agentService.createUser(new Agent("User_F", "123456","icon"));
+        agentService.createUser(new Agent("User_1", "123456","icon"));
     }
+
+
+
     @Test
     void testInitial() throws GitAPIException {
         Git repo = repositoryService.initRepository(localPath, "User_A","Repo_001", 1);
-        Git repo1 = repositoryService.initRepository(localPath, "User_B","Repo_002", 1);
+//        Git repo1 = repositoryService.initRepository(localPath, "User_B","Repo_002", 1);
+        Git rep1o = repositoryService.initRepository(localPath, "User_A","Repo_002", 1);
+        Git repo2 = repositoryService.initRepository(localPath, "User_A","Repo_003", 1);
+        Git repo3 = repositoryService.initRepository(localPath, "User_A","Repo_004", 1);
     }
+
+
     @Test
     void testStar(){
         agentService.starNewRepo("User_B", "2666908d8f3dad76eb0b45899a556e0a071f32d7");
         agentService.inviteContributor("User_B", "2666908d8f3dad76eb0b45899a556e0a071f32d7");
     }
+
+
     @Test
     void testIssue(){
         String repoId = repositoryMapper.getRepoId("User_C","Repo_001");
@@ -67,6 +87,7 @@ public class FunctionTest {
     void testUser(){
         agentService.updateUserName("User_A", "User_C");
     }
+
 
     @Test
     void temTest(){
@@ -86,21 +107,51 @@ public class FunctionTest {
 
 
 
+
+
     @Test
     void testCommit(){
         File file = new File(testDirectory);
+<<<<<<< HEAD
 //        FileCoverUtil.updateFile("C:\\Users\\12078\\Desktop\\TEST\\Local\\User_test_A\\REPO001\\block\\Practice7", file);
         String dirPath = "C:\\Users\\12078\\Desktop\\TEST\\Local\\User_A\\Repo_001\\Spring-Project-thymeleaf";
         commitService.commitFiles(localPath, "User_A", "Repo_001", "master", file,dirPath);
 //        commitService.getCommitsByBranch(localPath, "User_A", "Repo_001", "master");
+=======
+        System.out.println(file);
+        commitService.commitFiles(localPath, "User_A", "Repo_001", "master", file);
+        commitService.getCommitsByBranch(localPath, "User_A", "Repo_001", "master");
+>>>>>>> 03a31e78dbe7e547553c2c15ffa08a3977d8b81b
     }
+
+
+
+
+
 
     @Test
     void testCreateBranch() throws GitAPIException {
         Git repo = repositoryService.loadLocalRepository(localPath, "User_A","Repo_001");
         branchService.createBranch(repo, "branch2");
         branchService.switchBranch(repo, "master");
+        branchService.createBranch(repo, "branch3");
+
     }
+
+
+
+
+
+
+
+    @Test
+    void testBranchList() throws GitAPIException {
+        Git repo = repositoryService.loadLocalRepository(localPath, "User_A","Repo_001");
+        System.out.println(BranchUtil.getAllBranch(repo));
+    }
+
+
+
 
     @Test
     void testInitRemote() {
@@ -119,12 +170,10 @@ public class FunctionTest {
 
 
 
-
     @Test
     void testMerge() throws GitAPIException, IOException {
         Git repo = repositoryService.loadLocalRepository(localPath, "User_A","Repo_001");
         branchService.merge(repo, "master", "branch1");
-
 
     }
 
@@ -133,5 +182,6 @@ public class FunctionTest {
         Git repo = repositoryService.loadLocalRepository(localPath, "User_A","Repo_002");
         branchService.Pull("master", repo, remoteURL);
     }
+
 
 }

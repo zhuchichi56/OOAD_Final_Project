@@ -14,9 +14,14 @@
             update Agent set agentName=#{newName} where agentName=#{oldName};
         </update>
 
+
+
         <update id="updateUseIcon">
             update Agent set iconUrl=#{newIconUrl} where agentName=#{name};
         </update>
+
+
+
 </mapper>
 
 
