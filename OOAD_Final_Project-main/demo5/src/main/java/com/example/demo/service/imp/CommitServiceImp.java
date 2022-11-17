@@ -20,8 +20,7 @@ import org.springframework.stereotype.Service;
 import java.io.File;
 import java.io.IOException;
 import java.util.*;
-
-
+import java.util.stream.Collectors;
 
 
 @Service
@@ -36,8 +35,6 @@ public class CommitServiceImp implements CommitService {
 
 
 
-
-
     /**
      * 指定分支提交数据,多用户提交情况还未考虑
      * @param agentName
@@ -49,11 +46,14 @@ public class CommitServiceImp implements CommitService {
 
 
 
+
+
+
     @Override
-    public int commitFiles(String localPath, String agentName, String repoName, String branch, File file) {
-        String path = localPath+flash+agentName+flash+repoName;
+    public int commitFiles(String localPath, String agentName, String repoName, String branch, File file, String filePath) {
+        String path = localPath+File.separator+agentName+File.separator+repoName;
         try {
-            FileCoverUtil.updateFile(path,file);
+            FileCoverUtil.updateFile(filePath,file);
             File origin = new File(path);
             Git git = Git.open(origin);
             git.checkout().setCreateBranch(false).setName(branch).call();
@@ -79,6 +79,10 @@ public class CommitServiceImp implements CommitService {
         }
         return 1;
     }
+
+
+
+
 
     /**
      * 检查本地文件变更状态
@@ -137,27 +141,22 @@ public class CommitServiceImp implements CommitService {
 
 
 
-    public List<RevCommit> getContent(String localPath, String agentName, String repoName, String branch) {
-        List<RevCommit> commits = new ArrayList<>();
-        String path = localPath+flash+agentName+flash+repoName;
+
+
+    @Override
+    public List<String> getContent(String path, String branch,String dirPath) {
         try {
-            Git git = Git.open(new File(path));
-            Repository repository = git.getRepository();
-            Ref ref = repository.findRef(branch);
-            RevWalk revWalk = new RevWalk(repository);
-            revWalk.markStart(revWalk.parseCommit(ref.getObjectId()));
-            for (RevCommit revCommit: revWalk){
-                System.out.printf("The commit time:%s The commit ID:%s\n", DateParser.getCommitDate(revCommit.getCommitTime()), revCommit.getName());
-                commits.add(revCommit);
-            }
-        } catch (IOException e) {
+            Git repository = Git.open(new File(path));
+            Ref ref = repository.checkout().setName(branch).call();
+            File f = new File(dirPath);
+            return Arrays.stream(f.listFiles()).map(File::getName).filter(o->!o.equals(".git")).collect(Collectors.toList());
+        } catch (GitAPIException | IOException e) {
             throw new RuntimeException(e);
         }
-        return commits;
     }
 
-
 }
+
 
 
 

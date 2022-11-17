@@ -22,7 +22,7 @@ public class FunctionTest {
     String localPath = "/Users/zhuhe/Desktop/Jgit";
 
     String remoteURL = "C:\\Users\\12078\\Desktop\\TEST\\Local\\User_B\\Repo_002";
-    String testDirectory = "/Users/zhuhe/Desktop/Jgit.md";
+    String testDirectory = "/Users/zhuhe/Desktop/Spring-Project-thymeleaf";
     @Autowired
     RepositoryService repositoryService;
 
@@ -105,14 +105,9 @@ public class FunctionTest {
     void testCommit(){
         File file = new File(testDirectory);
         System.out.println(file);
-        commitService.commitFiles(localPath, "User_A", "Repo_001", "master", file);
+        commitService.commitFiles(localPath, "User_A", "Repo_001", "master", file ,localPath+File.separator+"User_A"+File.separator+"Repo_001"+File.separator+"master"+File.separator+"filename");
         commitService.getCommitsByBranch(localPath, "User_A", "Repo_001", "master");
     }
-
-
-
-
-
 
     @Test
     void testCreateBranch() throws GitAPIException {
@@ -122,7 +117,6 @@ public class FunctionTest {
         branchService.createBranch(repo, "branch3");
 
     }
-
 
 
 
@@ -140,7 +134,6 @@ public class FunctionTest {
 
     @Test
     void testInitRemote() {
-
         repositoryService.cloneRepository(remoteURL, localPath,"User_A","Repo_002");
     }
 
@@ -170,3 +163,4 @@ public class FunctionTest {
 
 
 }
+

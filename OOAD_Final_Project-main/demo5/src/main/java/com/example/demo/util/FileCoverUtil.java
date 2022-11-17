@@ -11,9 +11,14 @@ public class FileCoverUtil {
 
     public static void updateFile(String path, File file){
         File origin = new File(path);
-        deleteFile(origin);
-        coverFile(path,file);
-
+        if (origin.exists()) {
+            deleteFile(origin);
+        } else {
+            origin.mkdirs();
+        }
+        for (File f: file.listFiles()) {
+            coverFile(path, f);
+        }
     }
 
 
@@ -30,13 +35,25 @@ public class FileCoverUtil {
         file.delete();
     }
 
+
+
+    /*
+    * File 是传进去的 文件或者文件夹
+    * path 是导入的路径
+    * 复制文件夹的函数
+    * */
+
+
+
+
+
     private static void coverFile(String path, File file){
         if (file.getName().equals(".git")){
             return;
         }
         if (file.isDirectory()){
             File[] list = file.listFiles();
-            String newPath = path+'\\'+file.getName();
+            String newPath = path+File.separator+file.getName();
             File coverFile = new File(newPath);
             boolean b = coverFile.mkdir();
             for (File f: list){
@@ -47,13 +64,13 @@ public class FileCoverUtil {
                 BufferedImage image = ImageIO.read(file);
 
                 if (image != null){
-                    String location = path + '\\' + file.getName();
+                    String location = path + File.separator + file.getName();
                     ImageIO.write(image, getImageType(file), new File(location));
                 } else {
                     FileReader fr = new FileReader(file);
                     char[] buffer = new char[999999];
                     int len = fr.read(buffer);
-                    FileWriter fw = new FileWriter(path + '\\' + file.getName());
+                    FileWriter fw = new FileWriter(path + File.separator + file.getName());
                     fw.write(buffer);
                     fr.close();
                     fw.close();
@@ -70,6 +87,8 @@ public class FileCoverUtil {
         int read = fis.read(buf,0,length);
         return buf;
     }
+
+
     private static String getImageType(File file) throws IOException {
 
         FileInputStream fis = null;

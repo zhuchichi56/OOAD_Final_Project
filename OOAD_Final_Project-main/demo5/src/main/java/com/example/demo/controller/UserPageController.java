@@ -49,8 +49,6 @@ public class UserPageController {
 
 
 
-
-
     @ResponseBody
     @RequestMapping(value ="/hello/{name}", method = RequestMethod.GET, produces = "application/json;charset=UTF-8")
     public String showUserInfo(@PathVariable("name") String name){

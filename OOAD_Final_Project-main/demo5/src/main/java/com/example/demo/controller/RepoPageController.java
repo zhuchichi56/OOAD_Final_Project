@@ -8,6 +8,7 @@ import com.example.demo.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.File;
 import java.util.List;
 
 @RestController
@@ -36,7 +37,7 @@ public class RepoPageController {
 
 
 
-    //测下文件和分支操作吧;
+
 
 
 
@@ -47,12 +48,14 @@ public class RepoPageController {
                                @PathVariable("branch") String branch,
                                @PathVariable("path") String path
     ){
+
+
+        //
+        String basepath = localPath+ File.separator+agentName+File.separator+repoName;
+
+
         JSONObject result = new JSONObject();
-
-
-
         List<Repo> repolist  = agentService.getRepoByName(agentName);
-
 
         result.put("display","list");
         result.put("branchList",repolist);
@@ -63,6 +66,10 @@ public class RepoPageController {
         return result.toJSONString();
 
     }
+
+
+
+    //
 
 
 

@@ -22,6 +22,8 @@ public class FileController {
 
 
 
+
+
     @PostMapping("/RepoBrowser/{agentName}/{repoName}/{branch}/upload")
     public void upload(MultipartFile file, @PathVariable("agentName") String agentName,
                        @PathVariable("repoName") String repoName, @PathVariable("branch") String branch) throws IOException {
@@ -35,14 +37,16 @@ public class FileController {
         System.out.println(filePath);
 
 
+
         File savedFile = new File(filePath);
         boolean isCreateSuccess = savedFile.createNewFile(); // 是否创建文件成功
         if (isCreateSuccess) {
             file.transferTo(savedFile);
-            commitService.commitFiles("/Users/zhuhe/Desktop/Jgit",agentName, repoName, branch, savedFile);
+//            commitService.commitFiles("/Users/zhuhe/Desktop/Jgit",agentName, repoName, branch, savedFile);
         }
 
     }
+
 
 
 
@@ -112,9 +116,6 @@ public class FileController {
 
 
 
-
-
-
     /*
     * 上传文件
     * */
@@ -141,12 +142,14 @@ public class FileController {
             }
 
             file.transferTo(savedFile);
-            commitService.commitFiles("/Users/zhuhe/Desktop/Jgit",agentName, repoName, branch, savedFile);
+//            commitService.commitFiles("/Users/zhuhe/Desktop/Jgit",agentName, repoName, branch, savedFile);
 
+            //
         }
 
     }
 }
+
 
 
 
