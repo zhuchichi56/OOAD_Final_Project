@@ -9,15 +9,29 @@ import java.util.List;
 
 public class FileCoverUtil {
 
-    public static void updateFile(String path, File file){
+    public static void updateFile(String path, File file) {
         File origin = new File(path);
         if (origin.exists()) {
-            deleteFile(origin);
+            if (origin.isDirectory()) {
+                for (File f : origin.listFiles()) {
+                    deleteFile(f);
+                }
+            } else {
+                deleteFile(origin);
+            }
         } else {
-            origin.mkdirs();
+            if (file.isDirectory()) {
+                origin.mkdirs();
+            } else {
+                origin.getParentFile().mkdirs();
+            }
         }
-        for (File f: file.listFiles()) {
-            coverFile(path, f);
+        if (!file.isDirectory()) {
+            coverFile(origin.getParentFile().getAbsolutePath(), file);
+        } else {
+            for (File f : file.listFiles()) {
+                coverFile(path, f);
+            }
         }
     }
 

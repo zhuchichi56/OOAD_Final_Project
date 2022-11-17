@@ -43,12 +43,6 @@ public class CommitServiceImp implements CommitService {
      * @param file
      * @return
      */
-
-
-
-
-
-
     @Override
     public int commitFiles(String localPath, String agentName, String repoName, String branch, File file, String filePath) {
         String path = localPath+File.separator+agentName+File.separator+repoName;
