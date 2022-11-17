@@ -16,7 +16,7 @@ public interface CommitService {
      * @return
      */
     //可以实现对文件属性的增删改;
-    int commitFiles(String localPath, String agentName, String repoName, String branch, File file);
+    int commitFiles(String localPath, String agentName, String repoName, String branch, File file, String relativePath);
 
     /**
      * 返回所有提交版本的ID

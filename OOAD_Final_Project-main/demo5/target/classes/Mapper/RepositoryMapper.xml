@@ -27,10 +27,6 @@
         <id column="Fork" property="fork" />
     </resultMap>
 
-<!--    <update id="updateOwnerName">-->
-<!--        update repository set ownerName=#{newName} where ownerName=#{oldName} and repositoryId = #{repoId};-->
-<!--    </update>-->
-
     <select id="getAllRepo" resultType="String">
         select repositoryId
         from repository where ownerName = #{ownerName};
@@ -38,6 +34,10 @@
 
     <update id="updateRepoId">
         update repository set repositoryId=#{newId} where repositoryId=#{oldId};
+    </update>
+
+    <update id="setAuthority">
+        update repository set authority=#{authority} where repositoryId=#{repoId}
     </update>
 </mapper>
 

@@ -1,0 +1,34 @@
+<changelist name="Uncommitted_changes_before_Update_at_2022_11_16_17_18_[Changes]" date="1668590308607" recycled="true" deleted="true">
+  <option name="PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2022_11_16_17_18_[Changes]/shelved.patch" />
+  <option name="DESCRIPTION" value="Uncommitted changes before Update at 2022/11/16 17:18 [Changes]" />
+  <binary>
+    <option name="BEFORE_PATH" value="demo5/target/classes/com/example/demo/service/imp/RepositoryServiceImp.class" />
+    <option name="AFTER_PATH" value="demo5/target/classes/com/example/demo/service/imp/RepositoryServiceImp.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2022_11_16_17_18_[Changes]/RepositoryServiceImp.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="demo5/target/test-classes/com/example/demo/service/FunctionTest.class" />
+    <option name="AFTER_PATH" value="demo5/target/test-classes/com/example/demo/service/FunctionTest.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2022_11_16_17_18_[Changes]/FunctionTest.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="demo5/target/classes/com/example/demo/service/RepositoryService.class" />
+    <option name="AFTER_PATH" value="demo5/target/classes/com/example/demo/service/RepositoryService.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2022_11_16_17_18_[Changes]/RepositoryService.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="demo5/target/classes/com/example/demo/mapper/RepositoryMapper.class" />
+    <option name="AFTER_PATH" value="demo5/target/classes/com/example/demo/mapper/RepositoryMapper.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2022_11_16_17_18_[Changes]/RepositoryMapper.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="demo5/target/classes/com/example/demo/service/BranchService.class" />
+    <option name="AFTER_PATH" value="demo5/target/classes/com/example/demo/service/BranchService.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2022_11_16_17_18_[Changes]/BranchService.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="demo5/target/classes/com/example/demo/service/imp/BranchServiceimp.class" />
+    <option name="AFTER_PATH" value="demo5/target/classes/com/example/demo/service/imp/BranchServiceimp.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2022_11_16_17_18_[Changes]/BranchServiceimp.class" />
+  </binary>
+</changelist>

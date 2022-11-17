@@ -15,9 +15,5 @@
         select count(*) from contributor where repositoryId=#{repositoryId} and contributorName=#{contributorName};
     </select>
 
-<!--    <update id="updateContributorName">-->
-<!--        update contributor set contributorName=#{newName} where contributorName=#{oldName};-->
-<!--    </update>-->
-
 
 </mapper>

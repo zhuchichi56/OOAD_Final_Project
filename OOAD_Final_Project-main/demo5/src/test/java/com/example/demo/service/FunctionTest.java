@@ -3,6 +3,7 @@ package com.example.demo.service;
 import com.example.demo.entity.Agent;
 import com.example.demo.entity.Issue;
 import com.example.demo.mapper.RepositoryMapper;
+import com.example.demo.util.FileCoverUtil;
 import org.eclipse.jgit.api.Git;
 import org.eclipse.jgit.api.errors.GitAPIException;
 import org.eclipse.jgit.lib.Ref;
@@ -19,7 +20,7 @@ public class FunctionTest {
     String localPath = "C:\\Users\\12078\\Desktop\\TEST\\Local";
     String remoteURL = "C:\\Users\\12078\\Desktop\\TEST\\Local\\User_B\\Repo_002";
 
-    String testDirectory = "C:\\Users\\vip\\Desktop\\Files";
+    String testDirectory = "C:\\Users\\12078\\Desktop\\Spring-Project-thymeleaf";
     @Autowired
     RepositoryService repositoryService;
 
@@ -88,8 +89,10 @@ public class FunctionTest {
     @Test
     void testCommit(){
         File file = new File(testDirectory);
-        commitService.commitFiles(localPath, "User_A", "Repo_001", "master", file);
-        commitService.getCommitsByBranch(localPath, "User_A", "Repo_001", "master");
+//        FileCoverUtil.updateFile("C:\\Users\\12078\\Desktop\\TEST\\Local\\User_test_A\\REPO001\\block\\Practice7", file);
+        String dirPath = "C:\\Users\\12078\\Desktop\\TEST\\Local\\User_A\\Repo_001\\Spring-Project-thymeleaf";
+        commitService.commitFiles(localPath, "User_A", "Repo_001", "master", file,dirPath);
+//        commitService.getCommitsByBranch(localPath, "User_A", "Repo_001", "master");
     }
 
     @Test

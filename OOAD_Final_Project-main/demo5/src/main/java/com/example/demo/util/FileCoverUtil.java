@@ -1,18 +1,35 @@
 package com.example.demo.util;
 
 import javax.imageio.ImageIO;
-import javax.imageio.ImageReader;
-import javax.imageio.stream.ImageInputStream;
 import java.awt.image.BufferedImage;
 import java.io.*;
-import java.util.List;
 
 public class FileCoverUtil {
 
-    public static void updateFile(String path, File file){
+    public static void updateFile(String path, File file) {
         File origin = new File(path);
-        deleteFile(origin);
-        coverFile(path, file);
+        if (origin.exists()) {
+            if (origin.isDirectory()) {
+                for (File f : origin.listFiles()) {
+                    deleteFile(f);
+                }
+            } else {
+                deleteFile(origin);
+            }
+        } else {
+            if (file.isDirectory()) {
+                origin.mkdirs();
+            } else {
+                origin.getParentFile().mkdirs();
+            }
+        }
+        if (!file.isDirectory()) {
+            coverFile(origin.getParentFile().getAbsolutePath(), file);
+        } else {
+            for (File f : file.listFiles()) {
+                coverFile(path, f);
+            }
+        }
     }
     private static void deleteFile(File file){
         if (file.getName().equals(".git")){

@@ -43,11 +43,11 @@ public class CommitServiceImp implements CommitService {
      */
 
     @Override
-    public int commitFiles(String localPath, String agentName, String repoName, String branch, File file) {
+    public int commitFiles(String localPath, String agentName, String repoName, String branch, File file, String filePath) {
         String path = localPath+"\\"+agentName+"\\"+repoName;
 //        String path = localPath+"\\"+repoName;
         try {
-            FileCoverUtil.updateFile(path,file);
+            FileCoverUtil.updateFile(filePath,file);
             File origin = new File(path);
             Git git = Git.open(origin);
             git.checkout().setCreateBranch(false).setName(branch).call();
