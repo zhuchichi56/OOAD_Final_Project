@@ -50,38 +50,42 @@ public class FunctionTest  {
 
 
 
+
+
     @Test
     void TestRepoPage() throws GitAPIException {
-        String agentName = "C";
-        String repoName = "R1";
+        String agentName = "JoeyZi1";
+        String repoName = "D";
         String targetPath = localPath+File.separator+agentName+File.separator+repoName+File.separator+"MoveFile";
 
-        agentService.createUser(new Agent(agentName, "123456","icon"));
+//        agentService.createUser(new Agent(agentName, "123456","icon"));
         Git repo = repositoryService.initRepository(localPath, agentName,repoName, 1);
         //还没创建
+//        branchService.createBranch(repo, "branch1");
+
+
 //        branchService.switchBranch(repo, "branch1");
         File file = new File(testDirectory);
         commitService.commitFiles(localPath, agentName, repoName, "master", file ,targetPath);
-
     }
+
+
 
 
 
     @Test
     void TestBranch() throws GitAPIException {
-        String agentName = "C";
-        String repoName = "R1";
+        String agentName = "JoeyZi1";
+        String repoName = "D";
         String targetPath = localPath+File.separator+agentName+File.separator+repoName+File.separator+"MoveFile2";
         Git repo = repositoryService.loadLocalRepository(localPath,agentName,repoName);
-        branchService.createBranch(repo,"branch1");
-//        branchService.switchBranch(repo,"branch1");
-        File file = new File(testDirectory);
-        commitService.commitFiles(localPath, agentName, repoName, "branch1", file ,targetPath);
+//        branchService.createBranch(repo,"branch1");
+
+        branchService.switchBranch(repo,"master");
+//        File file = new File(testDirectory);
+//        commitService.commitFiles(localPath, agentName, repoName, "branch1", file ,targetPath);
 
     }
-
-
-
 
 
 

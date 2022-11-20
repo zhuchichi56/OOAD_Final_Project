@@ -49,17 +49,16 @@ public class UserPageController {
 
 
 
+
+
     @ResponseBody
-    @RequestMapping(value ="/hello/{name}", method = RequestMethod.GET, produces = "application/json;charset=UTF-8")
+    @RequestMapping(value ="/{name}", method = RequestMethod.GET, produces = "application/json;charset=UTF-8")
     public String showUserInfo(@PathVariable("name") String name){
 
         JSONObject result = new JSONObject();
         List<Repo> repolist  = agentService.getRepoByName(name);
-
-
         result.put("userName",name);
         result.put("repoList",repolist);
-
         result.put("userImg", "@Image('900x900','@color', 'Joey')");
         System.out.println(result.toJSONString());
         return result.toJSONString();
@@ -68,5 +67,5 @@ public class UserPageController {
 
 
 
-
 }
+

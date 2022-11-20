@@ -45,7 +45,6 @@ public class RepoPageController {
 
 
 
-
     @ResponseBody
     @RequestMapping(value ="/{agentName}/{repoName}/{branch}/{path}", method = RequestMethod.GET, produces = "application/json;charset=UTF-8")
     public String showRepoInfo(@PathVariable("agentName") String agentName,
@@ -108,6 +107,8 @@ public class RepoPageController {
             while ((str = in.readLine()) != null) {
                 Content.append(str);
             }
+
+
             Content.append(str);
             result.put("fileContent", Content.toString());
         }
@@ -117,16 +118,6 @@ public class RepoPageController {
         return result.toJSONString();
 
     }
-
-
-
-
-
-
-
-
-
-
 
 
 
