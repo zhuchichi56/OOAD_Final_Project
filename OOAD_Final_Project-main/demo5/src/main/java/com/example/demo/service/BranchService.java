@@ -25,7 +25,7 @@ public interface BranchService {
 
     Git Pull(String branchName, Git localRepository, String remotePath) throws GitAPIException;
 
-
+    void deleteBranch(Git repository, String branch) throws GitAPIException;
 
 
 

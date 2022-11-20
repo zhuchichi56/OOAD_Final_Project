@@ -8,6 +8,8 @@ public interface RepositoryService {
 
     Git initRepository (String path,String agentName ,String repositoryName, int authority);
 
+    boolean deleteRepository (String path, String agentName ,String repositoryName);
+
     int checkRepoInfo(String agentName, String repoName);
 
     int updateAuthority(String repoId, int authority);

@@ -47,5 +47,13 @@
     <update id="setAuthority">
         update repository set authority=#{authority} where repositoryId=#{repoId}
     </update>
+
+
+
+    <delete id="deleteRepository">
+        delete from repository where repositoryId = #{repoId};
+    </delete>
+
+
 </mapper>
 

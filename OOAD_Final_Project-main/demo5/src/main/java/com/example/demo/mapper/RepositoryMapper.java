@@ -23,9 +23,8 @@ public interface RepositoryMapper {
 
     List<String> getAllRepoId(@Param("ownerName") String ownerName);
 
-
-
-
     List<Repo> getAllRepo(@Param("ownerName") String ownerName);
 
+
+    int deleteRepository(@Param("repoId") String repoId);
 }

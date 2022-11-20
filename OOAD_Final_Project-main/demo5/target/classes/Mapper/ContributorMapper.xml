@@ -15,5 +15,8 @@
         select count(*) from contributor where repositoryId=#{repositoryId} and contributorName=#{contributorName};
     </select>
 
+    <delete id="deleteContributorByRepoId">
+        delete from contributor where repositoryId=#{repositoryId}
+    </delete>
 
 </mapper>

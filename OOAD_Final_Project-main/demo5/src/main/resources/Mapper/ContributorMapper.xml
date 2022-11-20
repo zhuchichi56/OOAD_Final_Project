@@ -6,6 +6,9 @@
 
 <mapper namespace="com.example.demo.mapper.ContributorMapper">
 
+    <delete id="deleteContributorByRepoId">
+        delete from contributor where repositoryId=#{repositoryId}
+    </delete>
 
     <insert id="insertNewContributor">
         insert into contributor values (#{repositoryId},  #{contributorName});

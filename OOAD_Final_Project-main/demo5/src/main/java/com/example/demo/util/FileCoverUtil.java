@@ -6,6 +6,7 @@ import javax.imageio.stream.ImageInputStream;
 import java.awt.image.BufferedImage;
 import java.io.*;
 import java.util.List;
+import java.util.Objects;
 
 public class FileCoverUtil {
 
@@ -49,6 +50,24 @@ public class FileCoverUtil {
         file.delete();
     }
 
+
+    public static boolean deleteFolder(File dirFile) {
+        // 如果dir对应的文件不存在，则退出
+        if (!dirFile.exists()) {
+            return false;
+        }
+
+        if (dirFile.isFile()) {
+            return dirFile.delete();
+        } else {
+
+            for (File file : Objects.requireNonNull(dirFile.listFiles())) {
+                deleteFolder(file);
+            }
+        }
+
+        return dirFile.delete();
+    }
 
 
     /*

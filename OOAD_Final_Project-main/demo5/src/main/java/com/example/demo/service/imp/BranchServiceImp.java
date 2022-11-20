@@ -99,6 +99,12 @@ public class BranchServiceImp implements BranchService {
         return localRepository;
     }
 
+    @Override
+    public void deleteBranch(Git repository, String branch) throws GitAPIException {
+        repository.branchDelete()
+                .setBranchNames(branch)
+                .call();
+    }
 
 
     @Override

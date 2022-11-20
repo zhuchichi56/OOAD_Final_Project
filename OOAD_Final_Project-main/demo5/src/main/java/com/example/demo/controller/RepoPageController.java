@@ -13,13 +13,14 @@ import org.springframework.web.bind.annotation.*;
 
 import java.io.*;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @RestController
 @RequestMapping(value = "/RepoBrowser")
 public class RepoPageController {
 
-    String localPath = "/Users/zhuhe/Desktop/Jgit";
+    String localPath = "C:/Users/vip/Desktop/TEST/Local";
 
     String testDirectory = "/Users/zhuhe/Desktop/Jgit.md";
     @Autowired
@@ -55,27 +56,33 @@ public class RepoPageController {
         JSONObject result = new JSONObject();
         result.put("display","list");
 
-        Git repo = repositoryService.loadLocalRepository(localPath, agentName,repoName);
+        Git repo = repositoryService.loadLocalRepository(localPath, agentName, repoName);
         List<String> branchNameList = BranchUtil.getAllBranch(repo);
+
         List<JSONObject> branchNameJson = new ArrayList<>();
-        for (String branchname:branchNameList) {
+        for (String branchName:branchNameList) {
             JSONObject sub = new JSONObject();
-            sub.put("branchName",branchname);
+            sub.put("branchName",branchName);
             branchNameJson.add(sub);
         }
+
         result.put("branchList",branchNameJson);
 
 
-//        branchService.switchBranch(repo,branch);
-
-        String basepath = localPath+ File.separator+agentName+File.separator+repoName;
-        String[] splitpath = path.split("_");
-        for (int i = 0; i < splitpath.length; i++) {
-            basepath+=File.separator;
-            basepath+=splitpath[i];
+        branchService.switchBranch(repo,branch);
+        //localPath / name / repo
+        StringBuilder basePath = new StringBuilder(localPath + File.separator + agentName + File.separator + repoName);
+        String[] splitPath = path.split("_");
+        //convert the path
+        for (String s : splitPath) {
+            basePath.append(File.separator);
+            basePath.append(s);
         }
-        System.out.println(basepath);
-        File file  = new File( basepath );
+
+        System.out.println(basePath);
+
+        File file  = new File(basePath.toString());
+
         if(file.isDirectory()) {
             File[] list = file.listFiles();
             List<JSONObject> jsonObjectList = new ArrayList<>();
@@ -84,23 +91,21 @@ public class RepoPageController {
                 JSONObject sub = new JSONObject();
                 sub.put("type", f.isFile() ? "file" : "folder");
                 sub.put("itemName", f.getName());
-                sub.put("msg", "updated 1 days ago");
+                sub.put("msg", "last modified: " + new Date(f.lastModified()));
                 jsonObjectList.add(sub);
             }
             result.put("itemList", jsonObjectList);
             result.put("fileContent", "");
         }else {
-            //要王里面加才行;
+
             List<JSONObject> jsonObjectList = new ArrayList<>();
             JSONObject sub = new JSONObject();
             sub.put("type", "file");
             sub.put("itemName", "file");
-            sub.put("msg", "updated 1 days ago");
+            sub.put("msg", "last modified: " + new Date(file.lastModified()));
             jsonObjectList.add(sub);
             result.put("itemList", jsonObjectList);
 
-
-            //todo:文件接收格式有问题
             BufferedReader in = new BufferedReader(new FileReader(file));
             StringBuilder Content = new StringBuilder();
             String str;
@@ -113,8 +118,7 @@ public class RepoPageController {
             result.put("fileContent", Content.toString());
         }
 
-         //debug
-        //System.out.println(result.toJSONString());
+
         return result.toJSONString();
 
     }

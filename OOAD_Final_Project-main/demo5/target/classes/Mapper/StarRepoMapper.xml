@@ -17,6 +17,12 @@
         delete from agentstarrepo where agentName = #{agentName} and repositoryId = #{repoId};
     </delete>
 
+    <delete id="removeStarByRepoId">
+        delete from agentstarrepo where repositoryId = #{repoId};
+    </delete>
+
+
+
     <update id="updateStarUserName">
         update agentstarrepo set agentName=#{newName} where agentName=#{oldName};
     </update>

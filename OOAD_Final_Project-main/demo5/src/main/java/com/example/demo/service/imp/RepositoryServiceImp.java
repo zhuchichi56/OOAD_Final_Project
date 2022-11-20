@@ -2,8 +2,11 @@ package com.example.demo.service.imp;
 
 
 import com.example.demo.entity.Repo;
+import com.example.demo.mapper.ContributorMapper;
 import com.example.demo.mapper.RepositoryMapper;
+import com.example.demo.mapper.StarRepoMapper;
 import com.example.demo.service.RepositoryService;
+import com.example.demo.util.FileCoverUtil;
 import com.example.demo.util.encodeUtil;
 import org.apache.ibatis.jdbc.Null;
 import org.eclipse.jgit.api.Git;
@@ -19,8 +22,14 @@ import java.nio.file.Paths;
 
 @Service
 public class RepositoryServiceImp implements RepositoryService{
-        @Autowired
+    @Autowired
     RepositoryMapper repositoryMapper;
+
+    @Autowired
+    ContributorMapper contributorMapper;
+
+    @Autowired
+    StarRepoMapper starRepoMapper;
     public static String flash = "/";
 
 
@@ -41,6 +50,15 @@ public class RepositoryServiceImp implements RepositoryService{
             e.printStackTrace();
         }
         return git;
+    }
+
+    @Override
+    public boolean deleteRepository(String path, String agentName ,String repositoryName) {
+
+        File repoPath = new File(path + File.separator + agentName + File.separator + repositoryName);
+        String repoId = repositoryMapper.getRepoId(agentName, repositoryName);
+        repositoryMapper.deleteRepository(repoId);
+        return FileCoverUtil.deleteFolder(repoPath);
     }
 
     /**
@@ -89,7 +107,7 @@ public class RepositoryServiceImp implements RepositoryService{
         Repository repository = null;
         try{
              repository = new FileRepositoryBuilder()
-                    .setGitDir(Paths.get(path+ flash + agentName +flash + repositoryName, ".git").toFile())
+                    .setGitDir(Paths.get(path+ File.separator+ agentName + File.separator + repositoryName, ".git").toFile())
                     .build();
         } catch (IOException e) {
             e.printStackTrace();
@@ -98,6 +116,9 @@ public class RepositoryServiceImp implements RepositoryService{
 
         return Git.wrap(repository);
     }
+
+
+
 }
 
 

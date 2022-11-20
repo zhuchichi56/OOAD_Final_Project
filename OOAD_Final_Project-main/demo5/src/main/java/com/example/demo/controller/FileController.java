@@ -17,7 +17,7 @@ public class FileController {
 
     @Autowired
     CommitService commitService;
-    String localpath = "/Users/zhuhe/Desktop/Jgit";
+    String localPath = "/Users/zhuhe/Desktop/Jgit";
 
 
 
