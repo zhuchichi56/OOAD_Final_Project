@@ -55,8 +55,6 @@ public class UserPageController {
 
         JSONObject result = new JSONObject();
         List<Repo> repolist  = agentService.getRepoByName(name);
-        System.out.println(1);
-
 
 
         result.put("userName",name);

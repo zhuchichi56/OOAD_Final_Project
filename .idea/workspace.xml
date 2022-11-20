@@ -6,19 +6,22 @@
   <component name="ChangeListManager">
     <list default="true" id="bfa79806-750e-4283-884f-11c49e88ba49" name="Changes" comment="flash">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/OOAD_Final_Project-main/demo5/src/main/java/com/example/demo/Demo5Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/OOAD_Final_Project-main/demo5/src/main/java/com/example/demo/Demo5Application.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/OOAD_Final_Project-main/demo5/src/main/java/com/example/demo/controller/FileController.java" beforeDir="false" afterPath="$PROJECT_DIR$/OOAD_Final_Project-main/demo5/src/main/java/com/example/demo/controller/FileController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/OOAD_Final_Project-main/demo5/src/main/java/com/example/demo/controller/RepoPageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/OOAD_Final_Project-main/demo5/src/main/java/com/example/demo/controller/RepoPageController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/OOAD_Final_Project-main/demo5/src/main/java/com/example/demo/controller/UserPageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/OOAD_Final_Project-main/demo5/src/main/java/com/example/demo/controller/UserPageController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/OOAD_Final_Project-main/demo5/src/main/java/com/example/demo/service/CommitService.java" beforeDir="false" afterPath="$PROJECT_DIR$/OOAD_Final_Project-main/demo5/src/main/java/com/example/demo/service/CommitService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/OOAD_Final_Project-main/demo5/src/main/java/com/example/demo/service/imp/CommitServiceImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/OOAD_Final_Project-main/demo5/src/main/java/com/example/demo/service/imp/CommitServiceImp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/OOAD_Final_Project-main/demo5/src/main/java/com/example/demo/util/FileCoverUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/OOAD_Final_Project-main/demo5/src/main/java/com/example/demo/util/FileCoverUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OOAD_Final_Project-main/demo5/src/main/java/com/example/demo/service/BranchService.java" beforeDir="false" afterPath="$PROJECT_DIR$/OOAD_Final_Project-main/demo5/src/main/java/com/example/demo/service/BranchService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OOAD_Final_Project-main/demo5/src/main/java/com/example/demo/service/imp/BranchServiceImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/OOAD_Final_Project-main/demo5/src/main/java/com/example/demo/service/imp/BranchServiceImp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OOAD_Final_Project-main/demo5/src/main/java/com/example/demo/service/imp/RepositoryServiceImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/OOAD_Final_Project-main/demo5/src/main/java/com/example/demo/service/imp/RepositoryServiceImp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OOAD_Final_Project-main/demo5/src/main/java/com/example/demo/util/BranchUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/OOAD_Final_Project-main/demo5/src/main/java/com/example/demo/util/BranchUtil.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/OOAD_Final_Project-main/demo5/src/test/java/com/example/demo/service/FunctionTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/OOAD_Final_Project-main/demo5/src/test/java/com/example/demo/service/FunctionTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OOAD_Final_Project-main/demo5/target/classes/com/example/demo/controller/RepoPageController.class" beforeDir="false" afterPath="$PROJECT_DIR$/OOAD_Final_Project-main/demo5/target/classes/com/example/demo/controller/RepoPageController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/OOAD_Final_Project-main/demo5/target/classes/com/example/demo/controller/UserPageController.class" beforeDir="false" afterPath="$PROJECT_DIR$/OOAD_Final_Project-main/demo5/target/classes/com/example/demo/controller/UserPageController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OOAD_Final_Project-main/demo5/target/classes/com/example/demo/service/imp/BranchServiceimp.class" beforeDir="false" afterPath="$PROJECT_DIR$/OOAD_Final_Project-main/demo5/target/classes/com/example/demo/service/imp/BranchServiceimp.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/OOAD_Final_Project-main/demo5/target/classes/com/example/demo/service/imp/CommitServiceImp.class" beforeDir="false" afterPath="$PROJECT_DIR$/OOAD_Final_Project-main/demo5/target/classes/com/example/demo/service/imp/CommitServiceImp.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/OOAD_Final_Project-main/demo5/target/classes/com/example/demo/service/imp/RepositoryServiceImp.class" beforeDir="false" afterPath="$PROJECT_DIR$/OOAD_Final_Project-main/demo5/target/classes/com/example/demo/service/imp/RepositoryServiceImp.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OOAD_Final_Project-main/demo5/target/classes/com/example/demo/util/BranchUtil.class" beforeDir="false" afterPath="$PROJECT_DIR$/OOAD_Final_Project-main/demo5/target/classes/com/example/demo/util/BranchUtil.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OOAD_Final_Project-main/demo5/target/classes/com/example/demo/util/FileCoverUtil.class" beforeDir="false" afterPath="$PROJECT_DIR$/OOAD_Final_Project-main/demo5/target/classes/com/example/demo/util/FileCoverUtil.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/OOAD_Final_Project-main/demo5/target/demo5-0.0.1-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/OOAD_Final_Project-main/demo5/target/demo5-0.0.1-SNAPSHOT.jar" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/OOAD_Final_Project-main/demo5/target/demo5-0.0.1-SNAPSHOT.jar.original" beforeDir="false" afterPath="$PROJECT_DIR$/OOAD_Final_Project-main/demo5/target/demo5-0.0.1-SNAPSHOT.jar.original" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OOAD_Final_Project-main/demo5/target/surefire-reports/TEST-com.example.demo.service.FunctionTest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/OOAD_Final_Project-main/demo5/target/surefire-reports/TEST-com.example.demo.service.FunctionTest.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/OOAD_Final_Project-main/demo5/target/test-classes/com/example/demo/service/FunctionTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/OOAD_Final_Project-main/demo5/target/test-classes/com/example/demo/service/FunctionTest.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -95,7 +98,7 @@
     &quot;spring.configuration.checksum&quot;: &quot;95346415f1f5933a78386d1759d2ef22&quot;
   }
 }</component>
-  <component name="RunManager" selected="JUnit.FunctionTest.testCommit">
+  <component name="RunManager" selected="Spring Boot.Demo5Application">
     <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
@@ -107,7 +110,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="FunctionTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="FunctionTest.TestBranch" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="demo5" />
       <extension name="coverage">
         <pattern>
@@ -117,7 +120,40 @@
       </extension>
       <option name="PACKAGE_NAME" value="com.example.demo.service" />
       <option name="MAIN_CLASS_NAME" value="com.example.demo.service.FunctionTest" />
-      <option name="TEST_OBJECT" value="class" />
+      <option name="METHOD_NAME" value="TestBranch" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="FunctionTest.TestRepoPage" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="demo5" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.example.demo.service.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.example.demo.service" />
+      <option name="MAIN_CLASS_NAME" value="com.example.demo.service.FunctionTest" />
+      <option name="METHOD_NAME" value="TestRepoPage" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="FunctionTest.TestSwitchBranch" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="demo5" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.example.demo.service.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.example.demo.service" />
+      <option name="MAIN_CLASS_NAME" value="com.example.demo.service.FunctionTest" />
+      <option name="METHOD_NAME" value="TestSwitchBranch" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -133,22 +169,6 @@
       <option name="PACKAGE_NAME" value="com.example.demo.service" />
       <option name="MAIN_CLASS_NAME" value="com.example.demo.service.FunctionTest" />
       <option name="METHOD_NAME" value="testBranchList" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="FunctionTest.testCommit" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="demo5" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.example.demo.service.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.example.demo.service" />
-      <option name="MAIN_CLASS_NAME" value="com.example.demo.service.FunctionTest" />
-      <option name="METHOD_NAME" value="testCommit" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -170,22 +190,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="FunctionTest.testInitial" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="demo5" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.example.demo.service.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.example.demo.service" />
-      <option name="MAIN_CLASS_NAME" value="com.example.demo.service.FunctionTest" />
-      <option name="METHOD_NAME" value="testInitial" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="Demo5Application" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="demo5" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.example.demo.Demo5Application" />
@@ -195,11 +199,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.FunctionTest.testCommit" />
-        <item itemvalue="JUnit.FunctionTest" />
-        <item itemvalue="JUnit.FunctionTest.testBranchList" />
+        <item itemvalue="JUnit.FunctionTest.TestSwitchBranch" />
+        <item itemvalue="JUnit.FunctionTest.TestBranch" />
+        <item itemvalue="JUnit.FunctionTest.TestRepoPage" />
         <item itemvalue="JUnit.FunctionTest.testCreateBranch" />
-        <item itemvalue="JUnit.FunctionTest.testInitial" />
+        <item itemvalue="JUnit.FunctionTest.testBranchList" />
       </list>
     </recent_temporary>
   </component>
@@ -226,7 +230,10 @@
       <workItem from="1668599310315" duration="3357000" />
       <workItem from="1668602894587" duration="1507000" />
       <workItem from="1668604479909" duration="3523000" />
-      <workItem from="1668609599000" duration="10342000" />
+      <workItem from="1668609599000" duration="11214000" />
+      <workItem from="1668848690639" duration="299000" />
+      <workItem from="1668853154013" duration="1917000" />
+      <workItem from="1668855079313" duration="9454000" />
     </task>
     <task id="LOCAL-00001" summary="方法测试，修改属性名">
       <created>1665136480478</created>
@@ -294,17 +301,31 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/OOAD_Final_Project-main/demo5/src/test/java/com/example/demo/service/FunctionTest.java</url>
-          <line>51</line>
+          <line>113</line>
           <properties class="com.example.demo.service.FunctionTest" method="testInitial">
             <option name="EMULATED" value="true" />
             <option name="WATCH_EXIT" value="false" />
           </properties>
           <option name="timeStamp" value="8" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/OOAD_Final_Project-main/demo5/src/test/java/com/example/demo/service/FunctionTest.java</url>
+          <line>70</line>
+          <properties class="com.example.demo.service.FunctionTest" method="TestBranch">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="14" />
+        </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/OOAD_Final_Project-main/demo5/src/main/java/com/example/demo/util/FileCoverUtil.java</url>
-          <line>93</line>
+          <line>107</line>
           <option name="timeStamp" value="11" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/OOAD_Final_Project-main/demo5/src/test/java/com/example/demo/service/FunctionTest.java</url>
+          <line>126</line>
+          <option name="timeStamp" value="12" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

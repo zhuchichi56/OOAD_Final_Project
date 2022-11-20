@@ -26,6 +26,9 @@ public interface BranchService {
     Git Pull(String branchName, Git localRepository, String remotePath) throws GitAPIException;
 
 
+
+
+
 }
 
 

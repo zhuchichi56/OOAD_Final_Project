@@ -30,11 +30,14 @@ public class BranchServiceImp implements BranchService {
     private DataSourceTransactionManager dataSourceTransactionManager;
 
 
+
+
     @Override
     public Ref createBranch(Git repository, String branchName) throws GitAPIException {
         Ref branch;
 
         if(!BranchUtil.branchExist(repository, branchName)) {
+
             branch = repository.branchCreate().setName(branchName).setForce(false).call();
         }else{
             branch = repository.checkout().setName(branchName).call();
@@ -48,12 +51,15 @@ public class BranchServiceImp implements BranchService {
 
 
 
+
     @Override
     public Ref switchBranch(Git repository, String branchName) throws GitAPIException {
 
-
         return repository.checkout().setName(branchName).call();
     }
+
+
+
 
 
     @Override
@@ -92,6 +98,8 @@ public class BranchServiceImp implements BranchService {
         localRepository.pull().call();
         return localRepository;
     }
+
+
 
     @Override
     public int rollback(String path,String id) {
