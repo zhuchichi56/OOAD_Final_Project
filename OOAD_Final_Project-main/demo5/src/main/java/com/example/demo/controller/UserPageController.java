@@ -1,6 +1,7 @@
 package com.example.demo.controller;
 
 import com.alibaba.fastjson.JSONObject;
+import com.example.demo.entity.Agent;
 import com.example.demo.entity.Repo;
 import com.example.demo.mapper.RepositoryMapper;
 import com.example.demo.service.*;
@@ -8,6 +9,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
+import javax.imageio.ImageIO;
+import java.awt.*;
+import java.io.File;
+import java.io.IOException;
 import java.util.List;
 
 
@@ -59,7 +64,7 @@ public class UserPageController {
         List<Repo> repolist  = agentService.getRepoByName(name);
         result.put("userName",name);
         result.put("repoList",repolist);
-        result.put("userImg", "@Image('900x900','@color', 'Joey')");
+        result.put("userImg", String.format("@Image('900x900','@color', '%s')", name));
         System.out.println(result.toJSONString());
         return result.toJSONString();
 

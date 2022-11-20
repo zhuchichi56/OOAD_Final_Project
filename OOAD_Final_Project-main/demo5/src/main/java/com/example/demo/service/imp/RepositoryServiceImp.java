@@ -26,7 +26,7 @@ public class RepositoryServiceImp implements RepositoryService{
 
     @Override
     public Git initRepository(String path, String agentName, String repositoryName, int authority) {
-        File repository = new File(path+ flash + agentName +flash + repositoryName);
+        File repository = new File(path+ File.separator + agentName + File.separator + repositoryName);
         if (repositoryMapper.getRepoId(agentName,repositoryName) == null)
             repositoryMapper.createNewRepository(encodeUtil.hash(agentName,repositoryName), new Repo(agentName, repositoryName, authority));
         if(repository.exists()) {

@@ -9,21 +9,25 @@ import java.util.List;
 public interface AgentService {
     String createUser(Agent agent);
 
+    int deleteUser(String localPath, String name);
+
     int updateUserName(String old, String latest);
 
-    int updateUserIcon(String localPath, String name, byte[] imageData);
+    int updateUserPassword(String name, String oldPassword, String newPassword);
 
     int inviteContributor(String contributorName, String repositoryId);
 
     int checkContributor(String contributorName, String repositoryId);
 
+    int removeContributor(String contributorName, String repositoryId);
+
     int starNewRepo(String agentName, String repoId);
 
     int removeStarToRepo(String agentName, String repoId);
 
+    List<String> getContributors(String repositoryId);
+
     List<Repo> allRepoAgentStar(String agentName);
-
-
 
     List<Repo> getRepoByName(String UserName);
 

@@ -48,18 +48,18 @@ public class AgentServiceImp implements AgentService {
         return agent.getAgentName();
     }
 
-
-
+    @Override
+    public int deleteUser(String localPath,String name) {
+        agentMapper.deleteUser(name);
+        File f = new File(localPath + File.separator + name);
+        f.delete();
+        return 1;
+    }
 
 
     public List<Repo> getRepoByName(String UserName) {
         return repositoryMapper.getAllRepo(UserName);
     }
-
-
-
-
-
 
 
 
@@ -75,22 +75,15 @@ public class AgentServiceImp implements AgentService {
         return agentMapper.updateUserName(old, latest);
     }
 
-
-
-
-
-
     @Override
-    public int updateUserIcon(String localPath, String name, byte[] imageData) {
-        String url = localPath + name + ".jpg";
-        Image image = Toolkit.getDefaultToolkit().createImage(imageData);
-        try {
-            ImageIO.write((RenderedImage) image,"JPEG", new File(url));
-        } catch (IOException e) {
-            throw new RuntimeException(e);
+    public int updateUserPassword(String name, String oldPassword, String newPassword) {
+        if (agentMapper.checkUser(name, oldPassword) == 1){
+            agentMapper.updateUserPassword(name, newPassword);
+            return 1;
         }
-        return agentMapper.updateUserIcon(name,url);
+        return 0;
     }
+
 
     /**
      * 仓库拥有者邀请其它用户作为贡献者加入仓库（未测试）
@@ -109,6 +102,10 @@ public class AgentServiceImp implements AgentService {
         return contributorMapper.checkContributor(contributorName, repositoryId);
     }
 
+    @Override
+    public int removeContributor(String contributorName, String repositoryId) {
+        return contributorMapper.removeContributor(contributorName, repositoryId);
+    }
 
 
     @Override
@@ -121,6 +118,10 @@ public class AgentServiceImp implements AgentService {
         return starRepoMapper.removeStar(agentName,repoId);
     }
 
+    @Override
+    public List<String> getContributors(String repositoryId) {
+        return contributorMapper.getAllContributors(repositoryId);
+    }
 
 
     @Override
