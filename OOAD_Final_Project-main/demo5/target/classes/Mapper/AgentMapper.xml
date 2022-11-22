@@ -14,11 +14,17 @@
             update Agent set agentName=#{newName} where agentName=#{oldName};
         </update>
 
-
-
-        <update id="updateUseIcon">
-            update Agent set iconUrl=#{newIconUrl} where agentName=#{name};
+        <update id="updateUserPassword">
+            update Agent set password=#{password} where agentName=#{name};
         </update>
+
+        <select id="checkUser" resultType="int">
+            select count(*) from Agent where agentName = #{name} and password = #{password}
+        </select>
+
+        <delete id="deleteUser">
+            delete from Agent where agentName = #{name};
+        </delete>
 
 
 

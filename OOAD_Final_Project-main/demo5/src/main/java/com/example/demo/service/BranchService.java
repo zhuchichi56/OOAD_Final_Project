@@ -14,7 +14,7 @@ import java.util.List;
 
 public interface BranchService {
 
-    int rollback(String path,String id);
+    int rollback(Git repository,String id);
     Ref createBranch(Git repository, String branchName) throws GitAPIException;
 
     Ref switchBranch(Git repository, String branchName) throws GitAPIException;
@@ -23,7 +23,7 @@ public interface BranchService {
 
     void merge(Git repository, String baseBranch, String targetBranch) throws GitAPIException, IOException;
 
-    Git Pull(String branchName, Git localRepository, String remotePath) throws GitAPIException;
+    Git pull(String branchName, Git localRepository, String remotePath) throws GitAPIException;
 
     void deleteBranch(Git repository, String branch) throws GitAPIException;
 

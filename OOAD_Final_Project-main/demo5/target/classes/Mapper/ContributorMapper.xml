@@ -6,6 +6,9 @@
 
 <mapper namespace="com.example.demo.mapper.ContributorMapper">
 
+    <delete id="deleteContributorByRepoId">
+        delete from contributor where repositoryId=#{repositoryId}
+    </delete>
 
     <insert id="insertNewContributor">
         insert into contributor values (#{repositoryId},  #{contributorName});
@@ -15,8 +18,11 @@
         select count(*) from contributor where repositoryId=#{repositoryId} and contributorName=#{contributorName};
     </select>
 
-    <delete id="deleteContributorByRepoId">
-        delete from contributor where repositoryId=#{repositoryId}
-    </delete>
+    <select id="getAllContributors" resultType="String">
+        select contributorName from contributor where repositoryId = #{repositoryId};
+    </select>
 
+    <delete id="removeContributor">
+        delete from contributor where repositoryId=#{repositoryId} and contributorName=#{contributorName};
+    </delete>
 </mapper>

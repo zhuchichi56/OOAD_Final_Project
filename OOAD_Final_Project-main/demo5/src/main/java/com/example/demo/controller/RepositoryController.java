@@ -35,19 +35,20 @@ public class RepositoryController {
     ) {
         JSONObject result = new JSONObject();
         Git repository = repositoryService.initRepository(localPath, agentName, repoName, Integer.parseInt(authority));
+
         result.put("status", "New repository successfully created");
         return result.toJSONString();
     }
 
     @ResponseBody
-    @RequestMapping(value ="/clone/{agentName}/{repoName}/{remotePathUrl}", method = RequestMethod.GET, produces = "application/json;charset=UTF-8")
+    @RequestMapping(value ="/clone/{agentName}/{remoteAgentName}/{remoteRepoName}", method = RequestMethod.GET, produces = "application/json;charset=UTF-8")
     public String cloneRepo(@PathVariable("agentName") String agentName,
-                               @PathVariable("repoName") String repoName,
-                               @PathVariable("remotePathUrl") String remotePathUrl
+                               @PathVariable("remoteAgentName") String remoteAgentName,
+                            @PathVariable("remoteRepoName") String remoteRepoName
 
     ) {
         JSONObject result = new JSONObject();
-        Git repository = repositoryService.cloneRepository(remotePathUrl, localPath, agentName, repoName);
+        Git repository = repositoryService.cloneRepository(localPath + File.separator + remoteAgentName + File.separator + remoteRepoName, localPath, agentName, remoteRepoName);
         result.put("status", "New repository successfully cloned");
         return result.toJSONString();
     }
