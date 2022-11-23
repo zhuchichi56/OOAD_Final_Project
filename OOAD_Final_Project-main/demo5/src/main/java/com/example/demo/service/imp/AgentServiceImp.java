@@ -5,15 +5,12 @@ import com.example.demo.entity.Agent;
 import com.example.demo.entity.Repo;
 import com.example.demo.mapper.*;
 import com.example.demo.service.AgentService;
+import com.example.demo.util.FileCoverUtil;
 import com.example.demo.util.encodeUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.imageio.ImageIO;
-import java.awt.*;
-import java.awt.image.RenderedImage;
 import java.io.File;
-import java.io.IOException;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -52,7 +49,7 @@ public class AgentServiceImp implements AgentService {
     public int deleteUser(String localPath,String name) {
         agentMapper.deleteUser(name);
         File f = new File(localPath + File.separator + name);
-        f.delete();
+        FileCoverUtil.deleteFolder(f);
         return 1;
     }
 
@@ -65,7 +62,9 @@ public class AgentServiceImp implements AgentService {
 
     @Override
     public int updateUserName(String old, String latest) {
-
+        if (agentMapper.checkUserName(latest) != 0){
+            return 0;
+        }
         List<String> repoIds = repositoryMapper.getAllRepoId(old);
         for (String repoId : repoIds) {
             Repo repo = repositoryMapper.getRepoById(repoId);
@@ -78,8 +77,7 @@ public class AgentServiceImp implements AgentService {
     @Override
     public int updateUserPassword(String name, String oldPassword, String newPassword) {
         if (agentMapper.checkUser(name, oldPassword) == 1){
-            agentMapper.updateUserPassword(name, newPassword);
-            return 1;
+            return agentMapper.updateUserPassword(name, newPassword);
         }
         return 0;
     }

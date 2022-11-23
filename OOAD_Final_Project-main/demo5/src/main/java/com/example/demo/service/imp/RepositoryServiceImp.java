@@ -75,8 +75,8 @@ public class RepositoryServiceImp implements RepositoryService{
     }
 
     @Override
-    public int updateAuthority(String repoId, int authority) {
-        return repositoryMapper.updateAuthority(authority,repoId);
+    public int setAuthority(String repoId, int authority) {
+        return repositoryMapper.setAuthority(authority,repoId);
     }
 
 

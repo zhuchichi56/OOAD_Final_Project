@@ -19,6 +19,8 @@ public interface AgentMapper {
 
     int checkUser(@Param("name") String name, @Param("password") String password);
 
+    int checkUserName(@Param("name") String name);
+
     int deleteUser(@Param("name") String name);
 
 }

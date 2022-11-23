@@ -19,9 +19,12 @@ public interface RepositoryMapper {
     int updateRepoId(@Param("oldId") String oldId, @Param("newId") String newId);
 
 //    int updateOwnerName(@Param("repoId") String hash,@Param("oldName") String oldName, @Param("newName") String newName);
-    int updateAuthority(@Param("authority") int authority, @Param("repoId") String repoId);
+    int setAuthority(@Param("authority") int authority, @Param("repoId") String repoId);
 
     List<String> getAllRepoId(@Param("ownerName") String ownerName);
+
+
+
 
     List<Repo> getAllRepo(@Param("ownerName") String ownerName);
 

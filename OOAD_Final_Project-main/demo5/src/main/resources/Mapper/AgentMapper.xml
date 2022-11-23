@@ -22,6 +22,10 @@
             select count(*) from Agent where agentName = #{name} and password = #{password}
         </select>
 
+        <select id="checkUserName" resultType="int">
+            select count(*) from Agent where agentName = #{name}
+        </select>
+
         <delete id="deleteUser">
             delete from Agent where agentName = #{name};
         </delete>

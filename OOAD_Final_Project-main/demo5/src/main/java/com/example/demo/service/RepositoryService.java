@@ -12,7 +12,7 @@ public interface RepositoryService {
 
     int checkRepoInfo(String agentName, String repoName);
 
-    int updateAuthority(String repoId, int authority);
+    int setAuthority(String repoId, int authority);
 
     Git cloneRepository (String remotePath, String localPath, String agentName, String repositoryName);
 

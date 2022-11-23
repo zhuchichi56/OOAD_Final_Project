@@ -77,7 +77,7 @@ public class FunctionTest {
     }
     @Test
     void testUser(){
-        agentService.updateUserName("User_A", "User_C");
+        System.out.println(agentService.updateUserName("User_A", "User_D"));
     }
 
 
@@ -106,8 +106,10 @@ public class FunctionTest {
 
     @Test
     void  testUpdateUser(){
-//        agentService.updateUserName("User_A", "User_f");
-        agentService.updateUserPassword("User_f","123456","654321");
+        agentService.createUser(new Agent("User_A","123456","1"));
+//        agentService.updateUserName("User_f", "User_A");
+//        agentService.updateUserPassword("User_f","123456","654321");
+        agentService.deleteUser(localPath,"User_A");
     }
 
 

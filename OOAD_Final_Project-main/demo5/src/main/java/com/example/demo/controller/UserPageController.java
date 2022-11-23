@@ -20,8 +20,6 @@ import java.util.List;
 @RequestMapping(value = "/UserPage")
 public class UserPageController {
 
-
-
     /***
      * json:
      *  userName:
@@ -70,7 +68,44 @@ public class UserPageController {
 
     }
 
+    @ResponseBody
+    @RequestMapping(value ="/{name}/edit/{newName}", method = RequestMethod.GET, produces = "application/json;charset=UTF-8")
+    public String EditUserName(@PathVariable("name") String name, @PathVariable("newName") String latest){
+        JSONObject result = new JSONObject();
+        int success = agentService.updateUserName(name, latest);
+        if (success == 1){
+            result.put("status", "success");
+        } else {
+            result.put("status", "The name has existed");
+        }
+        System.out.println(result.toJSONString());
+        return result.toJSONString();
+    }
 
+    @ResponseBody
+    @RequestMapping(value ="/{name}/edit/{password}/{newPassword}", method = RequestMethod.GET, produces = "application/json;charset=UTF-8")
+    public String EditUserName(@PathVariable("name") String name,
+                               @PathVariable("password") String oldPassword, @PathVariable("newPassword") String password){
+        JSONObject result = new JSONObject();
+        int success = agentService.updateUserPassword(name, oldPassword, password);
+        if (success == 1){
+            result.put("status", "success");
+        } else {
+            result.put("status", "the old password is wrong");
+        }
+        System.out.println(result.toJSONString());
+        return result.toJSONString();
+    }
+
+    @ResponseBody
+    @RequestMapping(value ="/{name}/edit/logout", method = RequestMethod.GET, produces = "application/json;charset=UTF-8")
+    public String DeleteUser(@PathVariable("name") String name){
+        JSONObject result = new JSONObject();
+        agentService.deleteUser(localPath, name);
+        result.put("status", "success");
+        System.out.println(result.toJSONString());
+        return result.toJSONString();
+    }
 
 }
 
