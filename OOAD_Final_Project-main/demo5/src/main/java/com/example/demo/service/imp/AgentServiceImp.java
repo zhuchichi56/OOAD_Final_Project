@@ -34,16 +34,12 @@ public class AgentServiceImp implements AgentService {
 
 
 
-
-    /**
-     * 用户注册
-     * **/
-    //直接返回User的自增主键；
     @Override
     public String createUser(Agent agent) {
         int count = agentMapper.createAgent(agent);
         return agent.getAgentName();
     }
+
 
     @Override
     public int deleteUser(String localPath,String name) {

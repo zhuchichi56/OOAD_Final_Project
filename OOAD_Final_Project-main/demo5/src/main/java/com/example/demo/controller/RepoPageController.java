@@ -2,7 +2,8 @@ package com.example.demo.controller;
 
 
 import com.alibaba.fastjson.JSONObject;
-import com.example.demo.entity.Repo;
+
+
 import com.example.demo.mapper.RepositoryMapper;
 import com.example.demo.service.*;
 import com.example.demo.util.BranchUtil;
@@ -20,7 +21,8 @@ import java.util.List;
 @RequestMapping(value = "/RepoBrowser")
 public class RepoPageController {
 
-    String localPath = "C:/Users/vip/Desktop/TEST/Local";
+
+    String localPath = "/Users/zhuhe/Desktop/Jgit";
 
     String testDirectory = "/Users/zhuhe/Desktop/Jgit.md";
     @Autowired
@@ -39,9 +41,6 @@ public class RepoPageController {
 
     @Autowired
     CommitService commitService;
-
-
-
 
 
 
@@ -74,10 +73,15 @@ public class RepoPageController {
         StringBuilder basePath = new StringBuilder(localPath + File.separator + agentName + File.separator + repoName);
         String[] splitPath = path.split("_");
         //convert the path
-        for (String s : splitPath) {
+        for (int i = 1; i < splitPath.length; i++) {
             basePath.append(File.separator);
-            basePath.append(s);
+            basePath.append(splitPath[i]);
         }
+
+//        for (String s : splitPath) {
+//            basePath.append(File.separator);
+//            basePath.append(s);
+//        }
 
         System.out.println(basePath);
 

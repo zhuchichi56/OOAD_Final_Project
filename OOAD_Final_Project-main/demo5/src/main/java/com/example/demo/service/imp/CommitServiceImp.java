@@ -44,8 +44,10 @@ public class CommitServiceImp implements CommitService {
      * @return
      */
     @Override
-    public int commitFiles(String localPath, String agentName, String repoName, String branch, File file, String filePath) {
+    public int commitFiles(String localPath, String agentName, String repoName, String branch, File file) {
         String path = localPath+File.separator+agentName+File.separator+repoName;
+        String filePath  = localPath + File.separator + agentName + File.separator + repoName + File.separator + file.getName();
+
         try {
             FileCoverUtil.updateFile(filePath,file);
             File origin = new File(path);
@@ -131,10 +133,6 @@ public class CommitServiceImp implements CommitService {
         }
         return commits;
     }
-
-
-
-
 
 
     @Override

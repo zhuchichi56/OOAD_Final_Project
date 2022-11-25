@@ -7,6 +7,7 @@ import com.example.demo.util.BranchUtil;
 import org.eclipse.jgit.api.Git;
 import org.eclipse.jgit.api.errors.GitAPIException;
 import org.eclipse.jgit.lib.Ref;
+import org.eclipse.jgit.revwalk.RevCommit;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -19,10 +20,14 @@ import java.util.List;
 public class FunctionTest {
 
 
-    String localPath = "C:\\Users\\12078\\Desktop\\TEST\\Local";
+    String localPath = "/Users/zhuhe/Desktop/Jgit";
+
+    String testDirectory = "/Users/zhuhe/Desktop/Print";
 
     String remoteURL = "C:\\Users\\12078\\Desktop\\TEST\\Local\\User_B\\Repo_002";
-    String testDirectory = "C:\\Users\\12078\\Desktop\\Practice7";
+//    String testDirectory = "C:\\Users\\12078\\Desktop\\Practice7";
+
+
     @Autowired
     RepositoryService repositoryService;
 
@@ -49,7 +54,7 @@ public class FunctionTest {
 
 
     @Test
-    void testInitial() throws GitAPIException {
+    void testRepoInit() throws GitAPIException {
         Git repo = repositoryService.initRepository(localPath, "User_A","Repo_001", 1);
 //        Git repo1 = repositoryService.initRepository(localPath, "User_B","Repo_002", 1);
 //        Git rep1o = repositoryService.initRepository(localPath, "User_A","Repo_002", 1);
@@ -57,6 +62,36 @@ public class FunctionTest {
 //        Git repo3 = repositoryService.initRepository(localPath, "User_A","Repo_004", 1);
     }
 
+
+    /**
+     * 测试commit操作
+     * */
+    @Test
+    void testCommit(){
+        File file = new File(testDirectory);
+        System.out.println(file);
+        commitService.commitFiles(localPath, "User_A", "Repo_001", "master", file);
+//        commitService.getCommitsByBranch(localPath, "User_A", "Repo_001", "master");
+    }
+
+
+    @Test
+    void TestGetCommit(){
+        File file = new File(testDirectory);
+        System.out.println(file);
+        List<RevCommit> commitlist = commitService.getCommitsByBranch(localPath,"User_A", "Repo_001", "master");
+
+    }
+
+
+    //branch操作;
+    @Test
+    void TestRollback(){
+        Git repo = repositoryService.loadLocalRepository(localPath,"User_A","Repo_001");
+//        if(branchService.rollback(repo,"6914bf40d7813984ef2702cae6ee0d215f5f72b8")==1){
+//        }
+
+    }
 
     @Test
     void testStar(){
@@ -113,13 +148,7 @@ public class FunctionTest {
     }
 
 
-    @Test
-    void testCommit(){
-        File file = new File(testDirectory);
-        System.out.println(file);
-        commitService.commitFiles(localPath, "User_A", "Repo_001", "master", file ,localPath + File.separator + "User_A" + File.separator + "Repo_001" + File.separator + "Practice7");
-//        commitService.getCommitsByBranch(localPath, "User_A", "Repo_001", "master");
-    }
+
 
     @Test
     void testCreateBranch() throws GitAPIException {
@@ -170,7 +199,7 @@ public class FunctionTest {
     @Test
     void testPull() throws GitAPIException {
         Git repo = repositoryService.loadLocalRepository(localPath, "User_A","Repo_002");
-        branchService.Pull("master", repo, remoteURL);
+        branchService.pull("master", repo, remoteURL);
     }
 
 

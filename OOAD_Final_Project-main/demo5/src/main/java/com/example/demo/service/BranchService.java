@@ -14,7 +14,7 @@ import java.util.List;
 
 public interface BranchService {
 
-    int rollback(Git repository,String id);
+    int rollback(Git repository, String branch,String id);
     Ref createBranch(Git repository, String branchName) throws GitAPIException;
 
     Ref switchBranch(Git repository, String branchName) throws GitAPIException;

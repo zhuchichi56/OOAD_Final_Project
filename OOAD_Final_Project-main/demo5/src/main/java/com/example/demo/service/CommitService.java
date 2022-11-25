@@ -16,7 +16,7 @@ public interface CommitService {
      * @return
      */
     //可以实现对文件属性的增删改;
-    int commitFiles(String localPath, String agentName, String repoName, String branch, File file, String filePath);
+    int commitFiles(String localPath, String agentName, String repoName, String branch, File file);
 
 
 
@@ -30,6 +30,8 @@ public interface CommitService {
      * @return
      */
     List<RevCommit> getCommitsByBranch(String localPath, String agentName, String repoName, String branch);
+
+
 
 
 

@@ -15,7 +15,11 @@ import java.io.IOException;
 @RestController
 @RequestMapping(value = "/Branch")
 public class BranchController {
-    String localPath = "C:/Users/vip/Desktop/TEST/Local";
+    String localPath = "/Users/zhuhe/Desktop/Jgit";
+
+    String testDirectory = "/Users/zhuhe/Desktop/Jgit.md";
+
+
     @Autowired
     RepositoryService repositoryService;
     @Autowired
@@ -82,21 +86,7 @@ public class BranchController {
         return result.toJSONString();
     }
 
-    @ResponseBody
-    @RequestMapping(value ="/rollback/{agentName}/{repoName}/{commitId}", method = RequestMethod.GET, produces = "application/json;charset=UTF-8")
-    public String rollBack(@PathVariable("agentName") String agentName,
-                              @PathVariable("repoName") String repoName,
-                              @PathVariable("commitId") String commitId
 
-
-    ) throws GitAPIException, IOException {
-        JSONObject result = new JSONObject();
-        Git repository = repositoryService.loadLocalRepository(localPath, agentName, repoName);
-        branchService.rollback(repository,commitId);
-
-        result.put("status", "RollBack to: " + commitId);
-        return result.toJSONString();
-    }
 
     @ResponseBody
     @RequestMapping(value ="/pull/{agentName}/{remoteAgentName}/{remoteRepoName}/{branchName}", method = RequestMethod.GET, produces = "application/json;charset=UTF-8")

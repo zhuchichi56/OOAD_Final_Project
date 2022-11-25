@@ -88,9 +88,11 @@ public class BranchServiceImp implements BranchService {
 
     }
 
+    
     @Override
     public Git pull(String branchName, Git localRepository, String remotePath) throws GitAPIException {
         if(BranchUtil.branchExist(localRepository, branchName)) {
+
             switchBranch(localRepository, branchName);
         }else {
             createBranch(localRepository,  branchName);
@@ -107,11 +109,13 @@ public class BranchServiceImp implements BranchService {
     }
 
 
+
     @Override
-    public int rollback(Git repository,String id) {
+    public int rollback(Git repository, String branch,String id) {
         try {
 
             Repository repo = repository.getRepository();
+            switchBranch(repository,branch);
             RevWalk revWalk = new RevWalk(repo);
             ObjectId objectId = repo.resolve(id);
             RevCommit revCommit = revWalk.parseCommit(objectId);
@@ -119,7 +123,7 @@ public class BranchServiceImp implements BranchService {
             repository.reset().setMode(ResetCommand.ResetType.HARD).setRef(preVision).call();
             repository.close();
         } catch (IOException | GitAPIException e) {
-            return -1;
+            return 0;
         }
         return 1;
     }
