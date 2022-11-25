@@ -81,15 +81,17 @@ public class RepositoryServiceImp implements RepositoryService{
 
 
     @Override
-    public Git cloneRepository(String remotePathUrl, String localPath, String agentName, String repositoryName) {
+    public Git cloneRepository(String remoteAgentName, String localPath, String agentName, String repositoryName) {
         Git git = null;
-        File repository = new File(localPath+ flash + agentName +flash + repositoryName);
-        if(repository.exists()) {
-            System.out.println("repo exists");
+        File repository = new File(localPath+ File.separator + agentName +File.separator + repositoryName);
+        if (repositoryMapper.getRepoId(agentName,repositoryName) == null){
+            String repoId = repositoryMapper.getRepoId(remoteAgentName, repositoryName);
+            Repo remoteRepo = repositoryMapper.getRepoById(repoId);
+            repositoryMapper.createNewRepository(encodeUtil.hash(agentName,repositoryName), new Repo(agentName, repositoryName, remoteRepo.getAuthority()));
         }
         try {
             git = Git.cloneRepository()
-                    .setURI(remotePathUrl)
+                    .setURI(localPath + File.separator + remoteAgentName + File.separator + repositoryName)
                     .setDirectory(repository)
                     .call();
 
@@ -114,6 +116,7 @@ public class RepositoryServiceImp implements RepositoryService{
         }
 
 
+        assert repository != null;
         return Git.wrap(repository);
     }
 

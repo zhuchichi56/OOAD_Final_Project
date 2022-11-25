@@ -48,7 +48,7 @@ public class RepositoryController {
 
     ) {
         JSONObject result = new JSONObject();
-        Git repository = repositoryService.cloneRepository(localPath + File.separator + remoteAgentName + File.separator + remoteRepoName, localPath, agentName, remoteRepoName);
+        Git repository = repositoryService.cloneRepository(remoteAgentName, localPath, agentName, remoteRepoName);
         result.put("status", "New repository successfully cloned");
         return result.toJSONString();
     }
