@@ -4,11 +4,37 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bfa79806-750e-4283-884f-11c49e88ba49" name="Changes" comment="" />
+    <list default="true" id="bfa79806-750e-4283-884f-11c49e88ba49" name="Changes" comment="方法测试，修改属性名">
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_googlecode_javaewah_JavaEWAH_0_7_9.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_jcraft_jsch_0_1_50.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__commons_codec_commons_codec_1_14.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_httpcomponents_httpclient_4_5_13.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_httpcomponents_httpcore_4_4_14.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_eclipse_jgit_org_eclipse_jgit_3_5_0_201409260305_r.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/OOAD_Final_Project-main/demo5/src/main/java/com/example/demo/service/RepositoryService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/OOAD_Final_Project-main/demo5/src/main/java/com/example/demo/service/imp/RepositoryServiceImp.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/OOAD_Final_Project-main/demo5/src/main/java/com/example/demo/util/BranchUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OOAD_Final_Project-main/demo5/demo5.iml" beforeDir="false" afterPath="$PROJECT_DIR$/OOAD_Final_Project-main/demo5/demo5.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OOAD_Final_Project-main/demo5/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/OOAD_Final_Project-main/demo5/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OOAD_Final_Project-main/demo5/src/main/java/com/example/demo/Demo5Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/OOAD_Final_Project-main/demo5/src/main/java/com/example/demo/Demo5Application.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OOAD_Final_Project-main/demo5/src/main/java/com/example/demo/service/BranchService.java" beforeDir="false" afterPath="$PROJECT_DIR$/OOAD_Final_Project-main/demo5/src/main/java/com/example/demo/service/BranchService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OOAD_Final_Project-main/demo5/src/main/java/com/example/demo/service/CommitService.java" beforeDir="false" afterPath="$PROJECT_DIR$/OOAD_Final_Project-main/demo5/src/main/java/com/example/demo/service/CommitService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OOAD_Final_Project-main/demo5/src/main/java/com/example/demo/service/imp/BranchServiceimp.java" beforeDir="false" afterPath="$PROJECT_DIR$/OOAD_Final_Project-main/demo5/src/main/java/com/example/demo/service/imp/BranchServiceImp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OOAD_Final_Project-main/demo5/src/main/java/com/example/demo/service/imp/CommitServiceImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/OOAD_Final_Project-main/demo5/src/main/java/com/example/demo/service/imp/CommitServiceImp.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <favorite-branches>
@@ -34,26 +60,138 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="MavenImportPreferences">
-    <option name="generalSettings">
-      <MavenGeneralSettings>
-        <option name="useMavenConfig" value="true" />
-      </MavenGeneralSettings>
-    </option>
+  <component name="MavenRunner">
+    <option name="delegateBuildToMaven" value="true" />
+    <option name="jreName" value="1.8" />
   </component>
   <component name="ProjectId" id="2FZMGqraWCRENbUIm5G7n090MXe" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "C:/Users/12078/Documents/GitHub/OOAD_Final_Project"
-  }
-}]]></component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$USER_HOME$/Desktop/java_RunningTimeSurvey" />
+    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.0" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="RunManager" selected="JUnit.CommitServiceImpTest.rollBackTest">
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="AgentServiceTest.createName" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="demo5" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.example.demo.service.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.example.demo.service" />
+      <option name="MAIN_CLASS_NAME" value="com.example.demo.service.AgentServiceTest" />
+      <option name="METHOD_NAME" value="createName" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="CommitServiceImpTest.commitFilesOnMain" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="demo5" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.example.demo.service.imp.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.example.demo.service.imp" />
+      <option name="MAIN_CLASS_NAME" value="com.example.demo.service.imp.CommitServiceImpTest" />
+      <option name="METHOD_NAME" value="commitFilesOnMain" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="CommitServiceImpTest.createNewBranchTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="demo5" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.example.demo.service.imp.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.example.demo.service.imp" />
+      <option name="MAIN_CLASS_NAME" value="com.example.demo.service.imp.CommitServiceImpTest" />
+      <option name="METHOD_NAME" value="createNewBranchTest" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="CommitServiceImpTest.initRepository" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="demo5" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.example.demo.service.imp.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.example.demo.service.imp" />
+      <option name="MAIN_CLASS_NAME" value="com.example.demo.service.imp.CommitServiceImpTest" />
+      <option name="METHOD_NAME" value="initRepository" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="CommitServiceImpTest.rollBackTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="demo5" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.example.demo.service.imp.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.example.demo.service.imp" />
+      <option name="MAIN_CLASS_NAME" value="com.example.demo.service.imp.CommitServiceImpTest" />
+      <option name="METHOD_NAME" value="rollBackTest" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Demo5Application" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="demo5" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.example.demo.Demo5Application" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.CommitServiceImpTest.rollBackTest" />
+        <item itemvalue="JUnit.CommitServiceImpTest.commitFilesOnMain" />
+        <item itemvalue="JUnit.CommitServiceImpTest.createNewBranchTest" />
+        <item itemvalue="JUnit.CommitServiceImpTest.initRepository" />
+        <item itemvalue="JUnit.AgentServiceTest.createName" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -63,7 +201,30 @@
       <option name="presentableId" value="Default" />
       <updated>1664695060310</updated>
       <workItem from="1664695062955" duration="275000" />
+      <workItem from="1665131518634" duration="16000" />
+      <workItem from="1665131549548" duration="2026000" />
+      <workItem from="1665133609404" duration="3478000" />
+      <workItem from="1665475440730" duration="40000" />
+      <workItem from="1665534377914" duration="1022000" />
+      <workItem from="1665541894831" duration="24000" />
+      <workItem from="1665919309375" duration="1489000" />
+      <workItem from="1667110611205" duration="7018000" />
     </task>
+    <task id="LOCAL-00001" summary="方法测试，修改属性名">
+      <created>1665136480478</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1665136480478</updated>
+    </task>
+    <task id="LOCAL-00002" summary="方法测试，修改属性名">
+      <created>1665136492808</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1665136492808</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -79,5 +240,31 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <ignored-roots>
+      <path value="$PROJECT_DIR$/.." />
+    </ignored-roots>
+    <MESSAGE value="方法测试，修改属性名" />
+    <option name="LAST_COMMIT_MESSAGE" value="方法测试，修改属性名" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/OOAD_Final_Project-main/demo5/src/test/java/com/example/demo/service/imp/CommitServiceImpTest.java</url>
+          <line>39</line>
+          <properties class="com.example.demo.service.imp.CommitServiceImpTest" method="commitFilesOnMain">
+            <option name="EMULATED" value="true" />
+          </properties>
+          <option name="timeStamp" value="5" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>

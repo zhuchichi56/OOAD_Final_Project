@@ -1,117 +1,175 @@
 package com.example.demo.service.imp;
 
-import com.example.demo.entity.Branch;
-import com.example.demo.entity.RepoContent;
+
 import com.example.demo.entity.StaticRepo;
 import com.example.demo.mapper.*;
+import java.text.SimpleDateFormat;
 import com.example.demo.service.CommitService;
-import com.example.demo.util.TransactionUtil;
+
+import com.example.demo.util.DateParser;
+import org.eclipse.jgit.api.Git;
+import org.eclipse.jgit.api.RmCommand;
+import org.eclipse.jgit.api.Status;
+import org.eclipse.jgit.api.errors.GitAPIException;
+import org.eclipse.jgit.lib.ObjectId;
+import org.eclipse.jgit.lib.Ref;
+import org.eclipse.jgit.lib.Repository;
+import org.eclipse.jgit.revwalk.RevCommit;
+import org.eclipse.jgit.revwalk.RevWalk;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.TransactionStatus;
 
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Paths;
+import java.util.*;
 
 
 @Service
 public class CommitServiceImp implements CommitService {
-
-
     @Autowired
     AgentMapper agentMapper;
-
-
-    @Autowired
-    BranchMapper branchMapper;
-
-
-    @Autowired
-    RepoContentMapper repoContentMapper;
-
 
     @Autowired
     StaticRepoMapper staticRepoMapper;
 
+    private String localPath = "C:\\Users\\12078\\Desktop\\大三上\\ooad\\test";
 
-    @Autowired
-    VCMapper vcMapper;
-
-    @Autowired
-    private DataSourceTransactionManager dataSourceTransactionManager;
-
-
-
-
+ /**
+  * 创建一个空的仓库，并创建主分支Master
+  * return 0 代表发生创建错误
+  * return 1 代表成功创建
+  * **/
     @Override
-    public int initRepository(int AgentId, String RepoName) {
-        TransactionStatus transaction = TransactionUtil.getTransaction(dataSourceTransactionManager);
+    public int initRepository(int agentId, String repoName){
+        staticRepoMapper.createNewStaticRepo(new StaticRepo(agentId, repoName,0,0));
         try {
-            StaticRepo staticRepo = new StaticRepo(AgentId,RepoName);
-            RepoContent repoContent = new RepoContent();
-            staticRepoMapper.createNewStaticRepo(staticRepo);
-            repoContentMapper.createNewRepoContent(repoContent );
-            int rootCurrentId = repoContent.getRepoId();
-            branchMapper.createNewBranch(new Branch(AgentId,RepoName,rootCurrentId,rootCurrentId));
-            vcMapper.createNewVc(rootCurrentId,rootCurrentId);
-        }catch (Exception e){
-            e.printStackTrace();
-            dataSourceTransactionManager.rollback(transaction);
-            return 0;
-        }
-        return 1;
-
-    }
-
-
-
-
-    @Override
-    public int commitFilesOnMain(int AgentId, String RepoName, String BranchName, String Content, String Comment, String Date) {
-        TransactionStatus transaction = TransactionUtil.getTransaction(dataSourceTransactionManager);
-        try {
-        //新创建一个repoContent 并直接返回 新的主键 childId
-        RepoContent repoContent = new RepoContent(Content,Comment,Date);
-        repoContentMapper.createNewRepoContent(repoContent );
-        int childId = repoContent.getRepoId();
-
-
-        //保留之前的currentId 作为FatherId
-        Branch branch = branchMapper.selectBranchAll(AgentId,RepoName,BranchName);
-
-
-        //更新到最新的 childId
-        branchMapper.updateBranchCurrentId(AgentId,RepoName,BranchName,childId);
-
-        // 增加VC表
-        vcMapper.createNewVc(branch.getCurrentRepoId(),childId);
-        }catch (Exception e){
-            e.printStackTrace();
-            dataSourceTransactionManager.rollback(transaction);
+            Git.init().setDirectory(new File(localPath+"\\"+agentId+"\\"+repoName))
+                      .setInitialBranch("Master").call();
+        } catch (GitAPIException e) {
             return 0;
         }
         return 1;
     }
 
+    /**
+     * 检测有无这个仓库的存在
+     * @param agentId
+     * @param repoName
+     * @return
+     */
+    @Override
+    public int checkRepoInfo(int agentId, String repoName) {
+        return staticRepoMapper.checkRepoInfo(agentId,repoName);
+    }
 
+
+    /**
+     * 指定分支提交数据,多用户提交情况还未考虑
+     * @param agentId
+     * @param repoName
+     * @param branch
+     * @param file
+     * @return
+     */
 
     @Override
-    public int commitFilesOnNewBranch(int AgentId, String RepoName, String BranchName,String BaseBranch, String Content, String Comment, String Date) {
-        TransactionStatus transaction = TransactionUtil.getTransaction(dataSourceTransactionManager);
+    public int commitFiles(int agentId, String repoName, String branch, File file) {
+        String path = localPath+"\\"+agentId+"\\"+repoName;
         try {
-        //查找base分支;
-        Branch basebranch = branchMapper.selectBranchAll(AgentId,RepoName,BaseBranch);
-        // 创建一个新的分支
-        branchMapper.createNewBranch(new Branch(AgentId,RepoName,BranchName, basebranch.getRootRepoId(), basebranch.getCurrentRepoId()));
-        //再从这个基础上进行提交；
-        commitFilesOnMain(AgentId,RepoName,BranchName,Content, Comment,Date);
-        }catch (Exception e){
-            e.printStackTrace();
-            dataSourceTransactionManager.rollback(transaction);
-            return 0;
+            File origin = new File(path);
+            Git git = Git.open(origin);
+            git.checkout().setCreateBranch(false).setName(branch).call();
+            git.add().addFilepattern(".").call();
+            Status status = git.status().call();
+            if (!checkStatus(status)){
+                return -1;
+            }
+            RmCommand rm = git.rm();
+            for (String m: status.getMissing()){
+                rm.addFilepattern(m).call();
+                rm = git.rm();
+                status = git.status().call();
+            }
+            for (String r: status.getRemoved()){
+                rm.addFilepattern(r).call();
+                rm = git.rm();
+                status = git.status().call();
+            }
+            git.commit().setMessage("default value").call();
+        } catch (IOException | GitAPIException e) {
+            throw new RuntimeException(e);
         }
         return 1;
     }
 
+    /**
+     * 检查本地文件变更状态
+     * @param status
+     * @return
+     */
+    private boolean checkStatus(Status status){
+        int add = status.getAdded().size();
+        System.out.printf("新增%d个文件\n", add);
+        int change = status.getChanged().size();
+        System.out.printf("变更%d个文件\n", change);
+        int remove = status.getRemoved().size();
+        System.out.printf("删除%d个文件\n", remove);
+        int miss = status.getMissing().size();
+        System.out.printf("丢失%d个文件\n", miss);
+        int modified = status.getModified().size();
+        System.out.printf("修改%d个文件\n", modified);
+        int conflict = status.getConflicting().size();
+        System.out.printf("冲突%d个文件\n", conflict);
+        int ignore = status.getIgnoredNotInIndex().size();
+        System.out.printf("忽略%d个文件\n", ignore);
+        if (add == 0 && change == 0 && remove == 0 && miss == 0 && modified ==0 && conflict == 0 && ignore == 0){
+            System.out.println("未发生改变");
+            return false;
+        }
+        return true;
+    }
+
+    /**
+     * 返回所有提交版本的ID
+     * @param agentId
+     * @param repoName
+     * @param branch
+     * @return
+     */
+    @Override
+    public List<RevCommit> getCommitsByBranch(int agentId, String repoName, String branch) {
+        List<RevCommit> commits = new ArrayList<>();
+        String path = localPath+"\\"+agentId+"\\"+repoName;
+        try {
+            Git git = Git.open(new File(path));
+            Repository repository = git.getRepository();
+            Ref ref = repository.findRef(branch);
+            RevWalk revWalk = new RevWalk(repository);
+            revWalk.markStart(revWalk.parseCommit(ref.getObjectId()));
+            for (RevCommit revCommit: revWalk){
+                System.out.printf("The commit time:%s The commit ID:%s\n", DateParser.printTime(revCommit.getCommitTime()), revCommit.getName());
+                commits.add(revCommit);
+            }
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        return commits;
+    }
+
+    /**
+     * clone分支的最新版本
+     * @param agentId
+     * @param repoName
+     * @param branch
+     * @return
+     */
+    @Override
+    public File clone(int agentId, String repoName, String branch) {
+        String path = localPath+"\\"+agentId+"\\"+repoName;
+        return new File(path);
+    }
 }
 
 

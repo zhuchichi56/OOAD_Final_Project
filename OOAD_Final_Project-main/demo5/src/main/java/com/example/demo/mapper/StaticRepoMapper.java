@@ -10,5 +10,5 @@ public interface StaticRepoMapper {
 
     int createNewStaticRepo(@Param("staticRepo")StaticRepo staticRepo);
 
-
+    int checkRepoInfo(@Param("agentId") int agentId, @Param("repoName") String repoName);
 }

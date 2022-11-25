@@ -1,0 +1,315 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="e808988d-61fd-4fe5-b049-ea8c081eb28d" name="Changes" comment="加入项目邀请贡献者和检测资格的服务">
+      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_googlecode_javaewah_JavaEWAH_1_1_13.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_commons_commons_compress_1_21.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_eclipse_jgit_org_eclipse_jgit_6_3_0_202209071007_r.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_eclipse_jgit_org_eclipse_jgit_archive_6_3_0_202209071007_r.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_osgi_org_osgi_core_6_0_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/demo5/src/main/java/com/example/demo/util/DateParser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2022_10_7_17_55_[Changes]/AgentServiceTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2022_10_7_17_55_[Changes]/CommitServiceImp.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2022_10_7_17_55_[Changes]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2022_10_7_17_55__Changes_.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo5/demo5.iml" beforeDir="false" afterPath="$PROJECT_DIR$/demo5/demo5.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo5/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/demo5/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo5/src/main/java/com/example/demo/mapper/StaticRepoMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/demo5/src/main/java/com/example/demo/mapper/StaticRepoMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo5/src/main/java/com/example/demo/service/BranchService.java" beforeDir="false" afterPath="$PROJECT_DIR$/demo5/src/main/java/com/example/demo/service/BranchService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo5/src/main/java/com/example/demo/service/CommitService.java" beforeDir="false" afterPath="$PROJECT_DIR$/demo5/src/main/java/com/example/demo/service/CommitService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo5/src/main/java/com/example/demo/service/imp/BranchServiceimp.java" beforeDir="false" afterPath="$PROJECT_DIR$/demo5/src/main/java/com/example/demo/service/imp/BranchServiceimp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo5/src/main/java/com/example/demo/service/imp/CommitServiceImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/demo5/src/main/java/com/example/demo/service/imp/CommitServiceImp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo5/src/main/resources/Mapper/StaticRepoMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/demo5/src/main/resources/Mapper/StaticRepoMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo5/src/test/java/com/example/demo/service/imp/CommitServiceImpTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/demo5/src/test/java/com/example/demo/service/imp/CommitServiceImpTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo5/src/test/java/com/example/demo/service/imp/VCServiceImpTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo5/target/classes/Mapper/AgentMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/demo5/target/classes/Mapper/AgentMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo5/target/classes/Mapper/BranchMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo5/target/classes/Mapper/RepoContentMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo5/target/classes/Mapper/StaticRepoMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/demo5/target/classes/Mapper/StaticRepoMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo5/target/classes/Mapper/VCMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo5/target/classes/com/example/demo/Demo5Application.class" beforeDir="false" afterPath="$PROJECT_DIR$/demo5/target/classes/com/example/demo/Demo5Application.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo5/target/classes/com/example/demo/config/CrossOriginConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/demo5/target/classes/com/example/demo/config/CrossOriginConfig.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo5/target/classes/com/example/demo/controller/RepoController.class" beforeDir="false" afterPath="$PROJECT_DIR$/demo5/target/classes/com/example/demo/controller/RepoController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo5/target/classes/com/example/demo/entity/Agent.class" beforeDir="false" afterPath="$PROJECT_DIR$/demo5/target/classes/com/example/demo/entity/Agent.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo5/target/classes/com/example/demo/entity/Branch.class" beforeDir="false" afterPath="$PROJECT_DIR$/demo5/target/classes/com/example/demo/entity/Branch.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo5/target/classes/com/example/demo/entity/RepoContent.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo5/target/classes/com/example/demo/entity/StaticRepo.class" beforeDir="false" afterPath="$PROJECT_DIR$/demo5/target/classes/com/example/demo/entity/StaticRepo.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo5/target/classes/com/example/demo/entity/VC.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo5/target/classes/com/example/demo/mapper/AgentMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/demo5/target/classes/com/example/demo/mapper/AgentMapper.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo5/target/classes/com/example/demo/mapper/BranchMapper.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo5/target/classes/com/example/demo/mapper/RepoContentMapper.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo5/target/classes/com/example/demo/mapper/StaticRepoMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/demo5/target/classes/com/example/demo/mapper/StaticRepoMapper.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo5/target/classes/com/example/demo/mapper/VCMapper.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo5/target/classes/com/example/demo/service/AgentService.class" beforeDir="false" afterPath="$PROJECT_DIR$/demo5/target/classes/com/example/demo/service/AgentService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo5/target/classes/com/example/demo/service/BranchService.class" beforeDir="false" afterPath="$PROJECT_DIR$/demo5/target/classes/com/example/demo/service/BranchService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo5/target/classes/com/example/demo/service/CommitService.class" beforeDir="false" afterPath="$PROJECT_DIR$/demo5/target/classes/com/example/demo/service/CommitService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo5/target/classes/com/example/demo/service/VCService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo5/target/classes/com/example/demo/service/imp/AgentServiceImp.class" beforeDir="false" afterPath="$PROJECT_DIR$/demo5/target/classes/com/example/demo/service/imp/AgentServiceImp.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo5/target/classes/com/example/demo/service/imp/BranchServiceimp.class" beforeDir="false" afterPath="$PROJECT_DIR$/demo5/target/classes/com/example/demo/service/imp/BranchServiceimp.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo5/target/classes/com/example/demo/service/imp/CommitServiceImp.class" beforeDir="false" afterPath="$PROJECT_DIR$/demo5/target/classes/com/example/demo/service/imp/CommitServiceImp.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo5/target/classes/com/example/demo/service/imp/VCServiceImp.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo5/target/classes/com/example/demo/util/TransactionUtil.class" beforeDir="false" afterPath="$PROJECT_DIR$/demo5/target/classes/com/example/demo/util/TransactionUtil.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo5/target/test-classes/com/example/demo/service/imp/CommitServiceImpTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/demo5/target/test-classes/com/example/demo/service/imp/CommitServiceImpTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo5/target/test-classes/com/example/demo/service/imp/VCServiceImpTest.class" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Interface" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$/.." value="main" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="useMavenConfig" value="true" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProjectId" id="2FfkegxeiUIfbxlovHti4qVbdTf" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;,
+    &quot;spring.configuration.checksum&quot;: &quot;95346415f1f5933a78386d1759d2ef22&quot;
+  }
+}</component>
+  <component name="RunManager" selected="JUnit.CommitServiceImpTest.commitFilesOnMain">
+    <configuration name="AgentServiceTest.createName" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="demo5" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.example.demo.service.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.example.demo.service" />
+      <option name="MAIN_CLASS_NAME" value="com.example.demo.service.AgentServiceTest" />
+      <option name="METHOD_NAME" value="createName" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="CommitServiceImpTest.commitFilesOnMain" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="demo5" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.example.demo.service.imp.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.example.demo.service.imp" />
+      <option name="MAIN_CLASS_NAME" value="com.example.demo.service.imp.CommitServiceImpTest" />
+      <option name="METHOD_NAME" value="commitFilesOnMain" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="CommitServiceImpTest.getAllCommits" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="demo5" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.example.demo.service.imp.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.example.demo.service.imp" />
+      <option name="MAIN_CLASS_NAME" value="com.example.demo.service.imp.CommitServiceImpTest" />
+      <option name="METHOD_NAME" value="getAllCommits" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="CommitServiceImpTest.initRepository" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="demo5" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.example.demo.service.imp.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.example.demo.service.imp" />
+      <option name="MAIN_CLASS_NAME" value="com.example.demo.service.imp.CommitServiceImpTest" />
+      <option name="METHOD_NAME" value="initRepository" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="CommitServiceImpTest.rollBackTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="demo5" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.example.demo.service.imp.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.example.demo.service.imp" />
+      <option name="MAIN_CLASS_NAME" value="com.example.demo.service.imp.CommitServiceImpTest" />
+      <option name="METHOD_NAME" value="rollBackTest" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Demo5Application" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="demo5" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.example.demo.Demo5Application" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.CommitServiceImpTest.commitFilesOnMain" />
+        <item itemvalue="JUnit.CommitServiceImpTest.rollBackTest" />
+        <item itemvalue="JUnit.CommitServiceImpTest.getAllCommits" />
+        <item itemvalue="JUnit.CommitServiceImpTest.initRepository" />
+        <item itemvalue="JUnit.AgentServiceTest.createName" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="e808988d-61fd-4fe5-b049-ea8c081eb28d" name="Changes" comment="" />
+      <created>1664890626293</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1664890626293</updated>
+      <workItem from="1664890629664" duration="44000" />
+      <workItem from="1664939503180" duration="6153000" />
+      <workItem from="1665028672516" duration="4662000" />
+      <workItem from="1665033353702" duration="2134000" />
+      <workItem from="1665035777039" duration="279000" />
+      <workItem from="1665036150692" duration="3973000" />
+      <workItem from="1665041235882" duration="35000" />
+      <workItem from="1665131623560" duration="4148000" />
+      <workItem from="1665148681829" duration="112000" />
+      <workItem from="1665224243826" duration="1668000" />
+      <workItem from="1665389177136" duration="6000" />
+      <workItem from="1665397661354" duration="2354000" />
+      <workItem from="1665922615934" duration="618000" />
+      <workItem from="1665964766391" duration="3141000" />
+      <workItem from="1666097765346" duration="8637000" />
+      <workItem from="1666168461162" duration="2533000" />
+      <workItem from="1666173124487" duration="600000" />
+      <workItem from="1666173746581" duration="611000" />
+      <workItem from="1666181212785" duration="1815000" />
+      <workItem from="1666189897808" duration="625000" />
+      <workItem from="1666318414503" duration="821000" />
+    </task>
+    <task id="LOCAL-00001" summary="store">
+      <created>1665036247079</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1665036247080</updated>
+    </task>
+    <task id="LOCAL-00002" summary="修好xml的bug">
+      <created>1665041260564</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1665041260564</updated>
+    </task>
+    <task id="LOCAL-00003" summary="修好事务管理">
+      <created>1665134017458</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1665134017458</updated>
+    </task>
+    <task id="LOCAL-00004" summary="加入项目邀请贡献者和检测资格的服务">
+      <created>1665225893542</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1665225893542</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="store" />
+    <MESSAGE value="修好xml的bug" />
+    <MESSAGE value="修好事务管理" />
+    <MESSAGE value="加入项目邀请贡献者和检测资格的服务" />
+    <option name="LAST_COMMIT_MESSAGE" value="加入项目邀请贡献者和检测资格的服务" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/demo5/src/main/java/com/example/demo/service/imp/CommitServiceImp.java</url>
+          <line>44</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/demo5/src/main/java/com/example/demo/service/imp/CommitServiceImp.java</url>
+          <line>83</line>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/demo5/src/main/java/com/example/demo/service/imp/CommitServiceImp.java</url>
+          <line>157</line>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>

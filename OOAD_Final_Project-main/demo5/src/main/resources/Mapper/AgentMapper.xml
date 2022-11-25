@@ -5,9 +5,6 @@
 
 
 <mapper namespace="com.example.demo.mapper.AgentMapper">
-<!--    <insert id="CreateAgent"  keyProperty="AgentId" useGeneratedKeys="true">-->
-<!--        insert into Agent value (null, #{AgentName});-->
-<!--    </insert>-->
 
         <insert id="createAgent"  useGeneratedKeys="true" parameterType="Agent" keyProperty="agentId">
             insert into Agent value (null, #{agent.agentName});

@@ -6,6 +6,9 @@
       <sourceFolder url="file://$MODULE_DIR$/demo5/src/main/java" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/demo5/src/main/resources" type="java-resource" />
       <sourceFolder url="file://$MODULE_DIR$/demo5/src/test/java" type="java-test-resource" />
+      <sourceFolder url="file://$MODULE_DIR$/OOAD_Final_Project-main/demo5/src/main/java" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/OOAD_Final_Project-main/demo5/src/main/resources" type="java-resource" />
+      <sourceFolder url="file://$MODULE_DIR$/OOAD_Final_Project-main/demo5/src/test/java" isTestSource="true" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
