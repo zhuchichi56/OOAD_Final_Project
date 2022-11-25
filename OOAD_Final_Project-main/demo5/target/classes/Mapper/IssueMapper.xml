@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.demo.mapper.IssueMapper">
+    <insert id="createIssue">
+        insert into issue values (#{issueId}, #{agentName}, #{repoId}, #{title},#{time});
+    </insert>
+
+    <select id="getIssues" resultMap="issueMap">
+        select * from issue where repositoryId = #{repoId};
+    </select>
+
+    <resultMap id="issueMap" type="Issue">
+        <id column="issueId" property="issueId" />
+        <id column="issueTitle" property="title" />
+        <id column="creatorName" property="creator" />
+        <id column="createTime" property="publishTime" />
+    </resultMap>
+
+    <delete id="deleteIssue">
+        delete from issue where issueId = #{issueId}
+    </delete>
+</mapper>

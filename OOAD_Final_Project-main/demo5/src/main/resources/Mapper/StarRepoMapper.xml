@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.demo.mapper.StarRepoMapper">
+    <insert id="starRepo">
+        insert into agentstarrepo values (#{agentName}, #{repoId});
+    </insert>
+
+    <select id="getAllStarRepos" resultType="String">
+        select repositoryId
+        from agentstarrepo where agentName = #{agentName};
+    </select>
+
+    <delete id="removeStar">
+        delete from agentstarrepo where agentName = #{agentName} and repositoryId = #{repoId};
+    </delete>
+
+    <delete id="removeStarByRepoId">
+        delete from agentstarrepo where repositoryId = #{repoId};
+    </delete>
+
+
+
+    <update id="updateStarUserName">
+        update agentstarrepo set agentName=#{newName} where agentName=#{oldName};
+    </update>
+
+
+</mapper>

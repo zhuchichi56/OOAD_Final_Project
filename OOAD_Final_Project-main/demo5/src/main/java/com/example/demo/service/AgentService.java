@@ -1,13 +1,36 @@
 package com.example.demo.service;
 
 import com.example.demo.entity.Agent;
-import com.example.demo.entity.StaticRepo;
+import com.example.demo.entity.Repo;
+
+import java.awt.*;
+import java.util.List;
 
 public interface AgentService {
-    int createName(Agent agent);
+    String createUser(Agent agent);
 
-    int inviteContributor(Agent agent, Agent contributor, String repoName);
+    int deleteUser(String localPath, String name);
 
-    int checkContributor(Agent agent, Agent contributor, String repoName);
+    int updateUserName(String old, String latest);
+
+    int updateUserPassword(String name, String oldPassword, String newPassword);
+
+    int inviteContributor(String contributorName, String repositoryId);
+
+    int checkContributor(String contributorName, String repositoryId);
+
+    int removeContributor(String contributorName, String repositoryId);
+
+    int starNewRepo(String agentName, String repoId);
+
+    int removeStarToRepo(String agentName, String repoId);
+
+    List<String> getContributors(String repositoryId);
+
+    List<Repo> allRepoAgentStar(String agentName);
+
+    List<Repo> getRepoByName(String UserName);
+
+
 }
 

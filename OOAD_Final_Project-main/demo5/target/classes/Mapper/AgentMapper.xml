@@ -6,9 +6,30 @@
 
 <mapper namespace="com.example.demo.mapper.AgentMapper">
 
-        <insert id="createAgent"  useGeneratedKeys="true" parameterType="Agent" keyProperty="agentId">
-            insert into Agent value (null, #{agent.agentName});
+        <insert id="createAgent" parameterType="Agent">
+            insert into agent values (#{agent.agentName}, #{agent.password}, #{agent.iconUrl});
         </insert>
+
+        <update id="updateUserName">
+            update Agent set agentName=#{newName} where agentName=#{oldName};
+        </update>
+
+        <update id="updateUserPassword">
+            update Agent set password=#{password} where agentName=#{name};
+        </update>
+
+        <select id="checkUser" resultType="int">
+            select count(*) from Agent where agentName = #{name} and password = #{password}
+        </select>
+
+        <select id="checkUserName" resultType="int">
+            select count(*) from Agent where agentName = #{name}
+        </select>
+
+        <delete id="deleteUser">
+            delete from Agent where agentName = #{name};
+        </delete>
+
 
 
 </mapper>

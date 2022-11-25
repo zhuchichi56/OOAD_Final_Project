@@ -3,11 +3,22 @@ package com.example.demo.mapper;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
+import java.util.List;
+
 @Mapper
 public interface ContributorMapper {
 
-    int insertNewContributor(@Param("contributorId") int contributorId,@Param("ownerId") int ownerId,@Param("repoName") String repoName);
+    int insertNewContributor(@Param("contributorName") String contributorName,@Param("repositoryId") String hash);
 
-    int checkContributor(@Param("contributorId") int contributorId,@Param("ownerId") int ownerId,@Param("repoName") String repoName);
+    int checkContributor(@Param("contributorName") String contributorName,@Param("repositoryId") String hash);
+
+    int removeContributor(@Param("contributorName") String contributorName,@Param("repositoryId") String hash);
+
+    List<String> getAllContributors(@Param("repositoryId") String hash);
+
+
+    int deleteContributorByRepoId(@Param("repositoryId") String repositoryId);
+
+//    int updateContributorName(@Param("oldName") String oldName, @Param("newName") String newName);
 }
 

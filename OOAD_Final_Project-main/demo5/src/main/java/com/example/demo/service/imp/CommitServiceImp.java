@@ -1,29 +1,26 @@
 package com.example.demo.service.imp;
 
 
-import com.example.demo.entity.StaticRepo;
 import com.example.demo.mapper.*;
-import java.text.SimpleDateFormat;
 import com.example.demo.service.CommitService;
 
 import com.example.demo.util.DateParser;
+import com.example.demo.util.FileCoverUtil;
 import org.eclipse.jgit.api.Git;
 import org.eclipse.jgit.api.RmCommand;
 import org.eclipse.jgit.api.Status;
 import org.eclipse.jgit.api.errors.GitAPIException;
-import org.eclipse.jgit.lib.ObjectId;
 import org.eclipse.jgit.lib.Ref;
 import org.eclipse.jgit.lib.Repository;
 import org.eclipse.jgit.revwalk.RevCommit;
 import org.eclipse.jgit.revwalk.RevWalk;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.stereotype.Service;
 
 import java.io.File;
 import java.io.IOException;
-import java.nio.file.Paths;
 import java.util.*;
+import java.util.stream.Collectors;
 
 
 @Service
@@ -32,52 +29,25 @@ public class CommitServiceImp implements CommitService {
     AgentMapper agentMapper;
 
     @Autowired
-    StaticRepoMapper staticRepoMapper;
+    RepositoryMapper repositoryMapper;
 
-    private String localPath = "C:\\Users\\12078\\Desktop\\大三上\\ooad\\test";
+    public static String flash = "/";
 
- /**
-  * 创建一个空的仓库，并创建主分支Master
-  * return 0 代表发生创建错误
-  * return 1 代表成功创建
-  * **/
-    @Override
-    public int initRepository(int agentId, String repoName){
-        staticRepoMapper.createNewStaticRepo(new StaticRepo(agentId, repoName,0,0));
-        try {
-            Git.init().setDirectory(new File(localPath+"\\"+agentId+"\\"+repoName))
-                      .setInitialBranch("Master").call();
-        } catch (GitAPIException e) {
-            return 0;
-        }
-        return 1;
-    }
-
-    /**
-     * 检测有无这个仓库的存在
-     * @param agentId
-     * @param repoName
-     * @return
-     */
-    @Override
-    public int checkRepoInfo(int agentId, String repoName) {
-        return staticRepoMapper.checkRepoInfo(agentId,repoName);
-    }
 
 
     /**
      * 指定分支提交数据,多用户提交情况还未考虑
-     * @param agentId
+     * @param agentName
      * @param repoName
      * @param branch
      * @param file
      * @return
      */
-
     @Override
-    public int commitFiles(int agentId, String repoName, String branch, File file) {
-        String path = localPath+"\\"+agentId+"\\"+repoName;
+    public int commitFiles(String localPath, String agentName, String repoName, String branch, File file, String filePath) {
+        String path = localPath+File.separator+agentName+File.separator+repoName;
         try {
+            FileCoverUtil.updateFile(filePath,file);
             File origin = new File(path);
             Git git = Git.open(origin);
             git.checkout().setCreateBranch(false).setName(branch).call();
@@ -103,6 +73,10 @@ public class CommitServiceImp implements CommitService {
         }
         return 1;
     }
+
+
+
+
 
     /**
      * 检查本地文件变更状态
@@ -133,15 +107,15 @@ public class CommitServiceImp implements CommitService {
 
     /**
      * 返回所有提交版本的ID
-     * @param agentId
+     * @param agentName
      * @param repoName
      * @param branch
      * @return
      */
     @Override
-    public List<RevCommit> getCommitsByBranch(int agentId, String repoName, String branch) {
+    public List<RevCommit> getCommitsByBranch(String localPath, String agentName, String repoName, String branch) {
         List<RevCommit> commits = new ArrayList<>();
-        String path = localPath+"\\"+agentId+"\\"+repoName;
+        String path = localPath+flash+agentName+flash+repoName;
         try {
             Git git = Git.open(new File(path));
             Repository repository = git.getRepository();
@@ -149,7 +123,7 @@ public class CommitServiceImp implements CommitService {
             RevWalk revWalk = new RevWalk(repository);
             revWalk.markStart(revWalk.parseCommit(ref.getObjectId()));
             for (RevCommit revCommit: revWalk){
-                System.out.printf("The commit time:%s The commit ID:%s\n", DateParser.printTime(revCommit.getCommitTime()), revCommit.getName());
+                System.out.printf("The commit time:%s The commit ID:%s\n", DateParser.getCommitDate(revCommit.getCommitTime()), revCommit.getName());
                 commits.add(revCommit);
             }
         } catch (IOException e) {
@@ -158,19 +132,26 @@ public class CommitServiceImp implements CommitService {
         return commits;
     }
 
-    /**
-     * clone分支的最新版本
-     * @param agentId
-     * @param repoName
-     * @param branch
-     * @return
-     */
+
+
+
+
+
     @Override
-    public File clone(int agentId, String repoName, String branch) {
-        String path = localPath+"\\"+agentId+"\\"+repoName;
-        return new File(path);
+    public List<String> getContent(String path, String branch,String dirPath) {
+        try {
+            Git repository = Git.open(new File(path));
+            Ref ref = repository.checkout().setName(branch).call();
+            File f = new File(dirPath);
+            return Arrays.stream(f.listFiles()).map(File::getName).filter(o->!o.equals(".git")).collect(Collectors.toList());
+        } catch (GitAPIException | IOException e) {
+            throw new RuntimeException(e);
+        }
     }
+
 }
+
+
 
 
 

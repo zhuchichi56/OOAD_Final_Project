@@ -14,6 +14,7 @@ import org.eclipse.jgit.treewalk.AbstractTreeIterator;
 import org.eclipse.jgit.treewalk.CanonicalTreeParser;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 public  class BranchUtil {
@@ -26,10 +27,11 @@ public  class BranchUtil {
         ObjectReader reader = repository.newObjectReader();
         treeParser.reset(reader, tree.getId());
         walk.dispose();
-
-
         return treeParser;
     }
+
+
+
 
     public static void listDiff(Repository repository, Git git, ObjectId oldCommit, ObjectId newCommit) throws GitAPIException, IOException {
         List<DiffEntry> diffs = git.diff()
@@ -53,6 +55,24 @@ public  class BranchUtil {
         }
         return false;
     }
+
+
+
+
+
+
+    public static List<String> getAllBranch(Git git) throws GitAPIException {
+        List<Ref> refs = git.branchList().call();
+        List<String> strings = new ArrayList<>();
+        for (Ref ref : refs) {
+            String branchname = ref.getName();
+            strings.add(branchname.split("/")[2]);
+        }
+        return strings;
+    }
+
+
+
 
 
 
