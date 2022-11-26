@@ -46,17 +46,18 @@ public class UserController {
     *
     * */
 
-    @ResponseBody
-    @PostMapping(value ="/rigister")
-    public String RigisterUser(@RequestParam("name") String agentName,
-                               @RequestParam("age") String password){
-        String name = agentService.createUser(new Agent(agentName,password));
-        if(name== null){
-            return "Wrong";
-        }else {
-            return "创建成功";
-        }
-    }
+
+//    @ResponseBody
+//    @PostMapping(value ="/rigister")
+//    public String RigisterUser(@RequestParam("name") String agentName,
+//                               @RequestParam("age") String password){
+//        String name = agentService.createUser(new Agent(agentName,password));
+//        if(name== null){
+//            return "Wrong";
+//        }else {
+//            return "创建成功";
+//        }
+//    }
 
     /*
      *

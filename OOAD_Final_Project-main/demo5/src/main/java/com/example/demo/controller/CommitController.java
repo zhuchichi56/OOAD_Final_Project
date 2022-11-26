@@ -59,9 +59,6 @@ public class CommitController {
     }
 
 
-
-
-
     @ResponseBody
     @RequestMapping(value ="/{agentName}/{repoName}/{branchName}/{ID}/Rollback", method = RequestMethod.GET, produces = "application/json;charset=UTF-8")
     public int Rollback(@PathVariable("agentName") String agentName,
@@ -72,6 +69,7 @@ public class CommitController {
         Git repo = repositoryService.loadLocalRepository(localPath, agentName,repoName);
         return branchService.rollback(repo,branchName,commitid);
     }
+
 
 
 

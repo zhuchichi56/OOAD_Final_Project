@@ -35,9 +35,9 @@ public class AgentServiceImp implements AgentService {
 
 
     @Override
-    public String createUser(Agent agent) {
-        int count = agentMapper.createAgent(agent);
-        return agent.getAgentName();
+    public int createUser(Agent agent) {
+        return agentMapper.createAgent(agent);
+//        return agent.getAgentName();
     }
 
 
@@ -49,6 +49,11 @@ public class AgentServiceImp implements AgentService {
         return 1;
     }
 
+    @Override
+    public int CheckUser(String agentname, String password) {
+        return agentMapper.checkUser(agentname,password);
+    }
+    
 
     public List<Repo> getRepoByName(String UserName) {
         return repositoryMapper.getAllRepo(UserName);

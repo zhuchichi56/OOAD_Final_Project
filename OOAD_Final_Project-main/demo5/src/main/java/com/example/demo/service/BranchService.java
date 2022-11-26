@@ -15,21 +15,30 @@ import java.util.List;
 public interface BranchService {
 
     int rollback(Git repository, String branch,String id);
-    Ref createBranch(Git repository, String branchName) throws GitAPIException;
+    Ref createBranch(Git repository, String baseName, String branchName) throws GitAPIException;
 
     Ref switchBranch(Git repository, String branchName) throws GitAPIException;
 
     List<String> getContent(String path,String dirPath, String branch);
 
-    void merge(Git repository, String baseBranch, String targetBranch) throws GitAPIException, IOException;
+    List<String> merge(Git repository, String baseBranch, String targetBranch) throws GitAPIException, IOException;
 
-    Git pull(String branchName, Git localRepository, String remotePath) throws GitAPIException;
-
-    void deleteBranch(Git repository, String branch) throws GitAPIException;
+//    Git pull(String branchName, Git localRepository, String remotePath) throws GitAPIException;
+//
+    List<String> deleteBranch(Git repository, String branch) throws GitAPIException;
 
 
 
 }
+
+
+
+
+
+
+
+
+
 
 
 

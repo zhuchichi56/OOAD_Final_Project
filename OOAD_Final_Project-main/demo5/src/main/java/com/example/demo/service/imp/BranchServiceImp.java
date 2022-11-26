@@ -7,6 +7,7 @@ import org.eclipse.jgit.api.Git;
 import org.eclipse.jgit.api.MergeResult;
 import org.eclipse.jgit.api.ResetCommand;
 import org.eclipse.jgit.api.errors.GitAPIException;
+import org.eclipse.jgit.diff.DiffEntry;
 import org.eclipse.jgit.lib.ObjectId;
 import org.eclipse.jgit.lib.Ref;
 import org.eclipse.jgit.lib.Repository;
@@ -18,6 +19,7 @@ import org.springframework.stereotype.Service;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -33,11 +35,10 @@ public class BranchServiceImp implements BranchService {
 
 
     @Override
-    public Ref createBranch(Git repository, String branchName) throws GitAPIException {
+    public Ref createBranch(Git repository, String baseName,String branchName) throws GitAPIException {
         Ref branch;
-
+        repository.checkout().setName(baseName).call();
         if(!BranchUtil.branchExist(repository, branchName)) {
-
             branch = repository.branchCreate().setName(branchName).setForce(false).call();
         }else{
             branch = repository.checkout().setName(branchName).call();
@@ -47,18 +48,11 @@ public class BranchServiceImp implements BranchService {
     }
 
 
-
-
-
-
-
     @Override
     public Ref switchBranch(Git repository, String branchName) throws GitAPIException {
 
         return repository.checkout().setName(branchName).call();
     }
-
-
 
 
 
@@ -74,40 +68,52 @@ public class BranchServiceImp implements BranchService {
         }
     }
 
+
+
     @Override
-    public void merge(Git repository, String baseBranch, String targetBranch) throws GitAPIException, IOException {
+    public List<String> merge(Git repository, String baseBranch, String targetBranch) throws GitAPIException, IOException {
         Ref checkout = repository.checkout().setName(baseBranch).call();
         ObjectId base = checkout.getObjectId();
         ObjectId target = repository.getRepository().resolve(targetBranch);
 
         MergeResult mergeResult = repository.merge().include(target).setCommit(true).setMessage("Merge request").call();
+        System.out.println(mergeResult.getMergeStatus());
+        List<String> difference = new ArrayList<>();
         if(mergeResult.getMergeStatus().equals(MergeResult.MergeStatus.CONFLICTING)) {
 
-            BranchUtil.listDiff(repository.getRepository() ,repository, base, target);
-        }
+            List<DiffEntry> diffs= BranchUtil.listDiff(repository.getRepository() ,repository, base, target);
 
+            for (DiffEntry diffEntry : diffs) {
+
+                difference.add("old: " + diffEntry.getOldPath() +
+                        ", new: " + diffEntry.getNewPath() +
+                        ", type: " + diffEntry.getChangeType());
+            }
+        }
+        return difference;
     }
+
+
 
     
-    @Override
-    public Git pull(String branchName, Git localRepository, String remotePath) throws GitAPIException {
-        if(BranchUtil.branchExist(localRepository, branchName)) {
+//    @Override
+//    public Git pull(String branchName, Git localRepository, String remotePath) throws GitAPIException {
+//        if(BranchUtil.branchExist(localRepository, branchName)) {
+//
+//            switchBranch(localRepository, branchName);
+//        }else {
+//            createBranch(localRepository, branchName);
+//        }
+//        localRepository.pull().call();
+//        return localRepository;
+//    }
 
-            switchBranch(localRepository, branchName);
-        }else {
-            createBranch(localRepository,  branchName);
-        }
-        localRepository.pull().call();
-        return localRepository;
-    }
-
     @Override
-    public void deleteBranch(Git repository, String branch) throws GitAPIException {
-        repository.branchDelete()
+    public List<String> deleteBranch(Git repository, String branch) throws GitAPIException {
+        return repository.branchDelete()
                 .setBranchNames(branch)
                 .call();
     }
-
 
 
     @Override

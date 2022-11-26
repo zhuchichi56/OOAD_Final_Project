@@ -48,8 +48,13 @@ public class CommitServiceImp implements CommitService {
         String path = localPath+File.separator+agentName+File.separator+repoName;
         String filePath  = localPath + File.separator + agentName + File.separator + repoName + File.separator + file.getName();
 
+        //执行删除.DS_store 文件;
+
+
+
         try {
             FileCoverUtil.updateFile(filePath,file);
+
             File origin = new File(path);
             Git git = Git.open(origin);
             git.checkout().setCreateBranch(false).setName(branch).call();
@@ -76,6 +81,11 @@ public class CommitServiceImp implements CommitService {
         return 1;
     }
 
+//
+//    private void DeleteDsFile(File file){
+//        file.listFiles();
+//
+//    }
 
 
 

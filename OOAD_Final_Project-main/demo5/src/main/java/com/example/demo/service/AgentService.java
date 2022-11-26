@@ -7,9 +7,13 @@ import java.awt.*;
 import java.util.List;
 
 public interface AgentService {
-    String createUser(Agent agent);
+    int createUser(Agent agent);
 
     int deleteUser(String localPath, String name);
+
+
+    int CheckUser( String agentname,String password);
+
 
     int updateUserName(String old, String latest);
 

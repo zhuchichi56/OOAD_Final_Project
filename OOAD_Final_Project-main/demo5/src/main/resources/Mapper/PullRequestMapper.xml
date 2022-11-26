@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.demo.mapper.PullRequestMapper">
+    <insert id="insertPullRequest" parameterType="PullRequest">
+        insert into pullRequest values (#{pullRequest.repositoryId}, #{pullRequest.agentName}
+        , #{pullRequest.branch}, #{pullRequest.targetId}, #{pullRequest.targetBranch})
+    </insert>
+
+    <select id="getPullRequestByTarget" resultType="PullRequest">
+        select * from pullRequest where targetId = #{targetId};
+    </select>
+
+    <delete id="rejectPull">
+        delete from pullRequest where repositoryId = #{repoId} and agentName = #{agentName} and branch = #{branch}
+    </delete>
+</mapper>
