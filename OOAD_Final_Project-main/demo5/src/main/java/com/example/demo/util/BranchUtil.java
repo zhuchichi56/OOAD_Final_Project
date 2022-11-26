@@ -31,19 +31,12 @@ public  class BranchUtil {
     }
 
 
+    public static List<DiffEntry> listDiff(Repository repository, Git git, ObjectId oldCommit, ObjectId newCommit) throws GitAPIException, IOException {
 
-
-    public static void listDiff(Repository repository, Git git, ObjectId oldCommit, ObjectId newCommit) throws GitAPIException, IOException {
-        List<DiffEntry> diffs = git.diff()
+        return git.diff()
                 .setOldTree(prepareTreeParser(repository, oldCommit))
                 .setNewTree(prepareTreeParser(repository, newCommit))
                 .call();
-
-        System.out.println("Found: " + diffs.size() + " differences");
-        for (DiffEntry diff : diffs) {
-            System.out.println("Diff: " + diff.getChangeType() + ": " +
-                    (diff.getOldPath().equals(diff.getNewPath()) ? diff.getNewPath() : diff.getOldPath() + " -> " + diff.getNewPath()));
-        }
     }
 
     public static boolean branchExist(Git git, String branchName) throws GitAPIException {

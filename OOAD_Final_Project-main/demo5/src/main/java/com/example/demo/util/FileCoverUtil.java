@@ -10,6 +10,30 @@ import java.util.Objects;
 
 public class FileCoverUtil {
 
+    /*
+    * 这个函数用于测试冲突效果;
+    * */
+
+    //这个commit;
+
+
+    public static void tranverse(File file) throws IOException {
+        if(file.isFile()){
+            BufferedWriter out = new BufferedWriter(new FileWriter(file));
+            out.write("菜鸟教程");
+            out.close();
+
+            System.out.println(file);
+        }
+        if(file.isDirectory()){
+            for(File f: Objects.requireNonNull(file.listFiles())){
+                tranverse(f);
+            }
+        }
+    }
+
+
+
     public static void updateFile(String path, File file) {
         File origin = new File(path);
         if (origin.exists()) {
@@ -77,11 +101,11 @@ public class FileCoverUtil {
     * */
 
 
-
-
-
     private static void coverFile(String path, File file){
         if (file.getName().equals(".git")){
+            return;
+        }
+        if (file.getName().equals(".DS_Store")){
             return;
         }
         if (file.isDirectory()){
@@ -95,17 +119,13 @@ public class FileCoverUtil {
         } else {
             try {
                 BufferedImage image = ImageIO.read(file);
-
                 if (image != null){
                     String location = path + File.separator + file.getName();
                     ImageIO.write(image, getImageType(file), new File(location));
                 } else {
-                    FileReader fr = new FileReader(file);
-                    char[] buffer = new char[999999];
-                    int len = fr.read(buffer);
+                    String buffer = readFileByLines(file);
                     FileWriter fw = new FileWriter(path + File.separator + file.getName());
                     fw.write(buffer);
-                    fr.close();
                     fw.close();
                 }
             } catch (IOException e) {
@@ -113,6 +133,33 @@ public class FileCoverUtil {
             }
         }
     }
+
+
+
+
+
+
+
+
+    public static String readFileByLines(File file) {
+        try {
+            byte[] bytes = new byte[1024];
+            StringBuffer sb = new StringBuffer();
+            FileInputStream in = new FileInputStream(file);
+            int len;
+            while ((len = in.read(bytes)) != -1) {
+                sb.append(new String(bytes, 0, len));
+            }
+            return sb.toString();
+        } catch (Exception e) {
+            return "";
+
+        }
+
+
+    }
+
+
     private static byte[] readInputStreamAt(FileInputStream fis, long skipLength, int length) throws IOException
     {
         byte[] buf = new byte[length];
@@ -129,6 +176,7 @@ public class FileCoverUtil {
             if(!file.exists() || file.isDirectory() || file.length()<8) {
                 throw new IOException("the file ["+file.getAbsolutePath()+"] is not image !");
             }
+
 
             fis= new FileInputStream(file);
             byte[] bufHeaders = readInputStreamAt(fis,0,8);

@@ -1,14 +1,19 @@
 package com.example.demo.controller;
 
 
+//import com.alibaba.druid.util.StringUtils;
 import com.alibaba.fastjson.JSONObject;
-import com.example.demo.entity.Repo;
+
+
 import com.example.demo.mapper.RepositoryMapper;
 import com.example.demo.service.*;
 import com.example.demo.util.BranchUtil;
+import org.eclipse.jgit.annotations.Nullable;
 import org.eclipse.jgit.api.Git;
 import org.eclipse.jgit.api.errors.GitAPIException;
+import org.pegdown.PegDownProcessor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.*;
@@ -20,7 +25,8 @@ import java.util.List;
 @RequestMapping(value = "/RepoBrowser")
 public class RepoPageController {
 
-    String localPath = "C:/Users/vip/Desktop/TEST/Local";
+
+    String localPath = "/Users/zhuhe/Desktop/Jgit";
 
     String testDirectory = "/Users/zhuhe/Desktop/Jgit.md";
     @Autowired
@@ -39,9 +45,6 @@ public class RepoPageController {
 
     @Autowired
     CommitService commitService;
-
-
-
 
 
 
@@ -74,12 +77,17 @@ public class RepoPageController {
         StringBuilder basePath = new StringBuilder(localPath + File.separator + agentName + File.separator + repoName);
         String[] splitPath = path.split("_");
         //convert the path
-        for (String s : splitPath) {
+        for (int i = 1; i < splitPath.length; i++) {
             basePath.append(File.separator);
-            basePath.append(s);
+            basePath.append(splitPath[i]);
         }
 
-        System.out.println(basePath);
+//        for (String s : splitPath) {
+//            basePath.append(File.separator);
+//            basePath.append(s);
+//        }
+
+//        System.out.println(basePath);
 
         File file  = new File(basePath.toString());
 
@@ -106,16 +114,21 @@ public class RepoPageController {
             jsonObjectList.add(sub);
             result.put("itemList", jsonObjectList);
 
-            BufferedReader in = new BufferedReader(new FileReader(file));
-            StringBuilder Content = new StringBuilder();
-            String str;
-            while ((str = in.readLine()) != null) {
-                Content.append(str);
+
+
+            //找到了这些路径
+            String str ;
+
+            if(file.getName().endsWith(".md")){
+                str = md2Html(basePath.toString(),null);
+                result.put("fileContent", str);
+                System.out.println(str);
             }
-
-
-            Content.append(str);
-            result.put("fileContent", Content.toString());
+            else {
+                String content = readFileByLines(String.valueOf(basePath));
+                 result.put("fileContent", content);
+                System.out.println(content);
+            }
         }
 
 
@@ -124,6 +137,44 @@ public class RepoPageController {
     }
 
 
+    public static String readFileByLines(String fileName) {
+        try {
+            File file = new File(fileName); // 要读取以上路径的input。txt文件
+//            System.out.println(file.getName());
+            byte[] bytes = new byte[1024];
+            StringBuffer sb = new StringBuffer();
+            FileInputStream in = new FileInputStream(file);
+            int len;
+            while ((len = in.read(bytes)) != -1) {
+                sb.append(new String(bytes, 0, len));
+            }
+            return sb.toString();
+
+        } catch (Exception e) {
+            return "";
+
+        }
 
 
+    }
+
+
+    public static String md2Html(String path,@Nullable String imgaddr) throws IOException {
+        String html = readFileByLines(path);
+        System.out.println(html);
+        PegDownProcessor pdp = new PegDownProcessor(Integer.MAX_VALUE);
+
+        html = pdp.markdownToHtml(html);
+
+        System.out.println(html);
+        if(!StringUtils.isEmpty(imgaddr)){
+            //将html中路径"assets/***" 变为 "http://localhost:4000/assets/"
+            String newHtml = StringUtils.replace(html, "assets/", imgaddr);
+            return newHtml;
+        }
+        return html;
+    }
 }
+
+
+

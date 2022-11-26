@@ -12,7 +12,7 @@ import java.util.List;
 public interface AgentMapper {
 
     int createAgent(@Param("agent") Agent agent);
-
+    
     int updateUserName(@Param("oldName") String oldName,@Param("newName") String newName);
 
     int updateUserPassword(@Param("name") String name,@Param("password") String password);
@@ -22,6 +22,9 @@ public interface AgentMapper {
     int checkUserName(@Param("name") String name);
 
     int deleteUser(@Param("name") String name);
+
+
+
 
 }
 

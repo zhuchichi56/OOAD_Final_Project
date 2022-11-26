@@ -7,6 +7,7 @@ import com.example.demo.util.BranchUtil;
 import org.eclipse.jgit.api.Git;
 import org.eclipse.jgit.api.errors.GitAPIException;
 import org.eclipse.jgit.lib.Ref;
+import org.eclipse.jgit.revwalk.RevCommit;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -19,10 +20,10 @@ import java.util.List;
 public class FunctionTest {
 
 
-    String localPath = "C:\\Users\\12078\\Desktop\\TEST\\Local";
+    String localPath = "/Users/zhuhe/Desktop/Jgit";
 
     String remoteURL = "C:\\Users\\12078\\Desktop\\TEST\\Local\\User_B\\Repo_002";
-    String testDirectory = "C:\\Users\\12078\\Desktop\\Practice7";
+
     @Autowired
     RepositoryService repositoryService;
 
@@ -40,6 +41,12 @@ public class FunctionTest {
     @Autowired
     CommitService commitService;
 
+
+
+
+    /*
+    * User 的 创建和删除
+    * */
     @Test
     void testRegisterAgent(){
         agentService.createUser(new Agent("User_A", "123456","icon"));
@@ -47,15 +54,177 @@ public class FunctionTest {
     }
 
 
+    @Test
+    void DeleteUser(){
+        agentService.deleteUser(localPath,"User_A");
+    }
+
 
     @Test
-    void testInitial() throws GitAPIException {
+    void testRepoInit() throws GitAPIException {
         Git repo = repositoryService.initRepository(localPath, "User_A","Repo_001", 1);
-//        Git repo1 = repositoryService.initRepository(localPath, "User_B","Repo_002", 1);
-//        Git rep1o = repositoryService.initRepository(localPath, "User_A","Repo_002", 1);
-//        Git repo2 = repositoryService.initRepository(localPath, "User_A","Repo_003", 1);
-//        Git repo3 = repositoryService.initRepository(localPath, "User_A","Repo_004", 1);
     }
+
+
+    /**
+     * 测试commit操作
+     * */
+    @Test
+    void Commit(String filename,String branch){
+        String testDirectory = "/Users/zhuhe/Desktop/"+ filename;
+        File file = new File(testDirectory);
+        System.out.println(file);
+        commitService.commitFiles(localPath, "User_A", "Repo_001", branch, file);
+    }
+
+
+
+
+    @Test
+    void TestCommit(){
+//        Commit("unkown","master");
+//        Commit("unkown1","master");
+        Commit("unkown2","master");
+    }
+
+
+
+    @Test
+    void TestGetCommit(){
+        List<RevCommit> commitlist = commitService.getCommitsByBranch(localPath,"User_A", "Repo_001", "master");
+    }
+
+
+    @Test
+    void TestRollback(){
+        Git repo = repositoryService.loadLocalRepository(localPath,"User_A","Repo_001");
+
+    }
+
+    /**
+     * 测试分支管理
+     * */
+    @Test
+    void TestBranchCreate() throws GitAPIException {
+        Git repo = repositoryService.loadLocalRepository(localPath,"User_A","Repo_001");
+        Commit("fasdfa","master");
+        branchService.createBranch(repo,"master","branch1");
+        Commit("fasdfa","branch1");
+        branchService.createBranch(repo,"branch1","branch2");
+        Commit("fasdfa","branch2");
+        branchService.createBranch(repo,"branch2","branch3");
+        Commit("fasdfa","branch3");
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+    @Test
+    void TestSwitchBranch() throws GitAPIException {
+        Git repo = repositoryService.loadLocalRepository(localPath,"User_A","Repo_001");
+        branchService.switchBranch(repo,"master");
+        System.out.println(BranchUtil.getAllBranch(repo));
+    }
+
+
+    @Test
+    void TestMergeBranch() throws GitAPIException, IOException {
+        Git repo = repositoryService.loadLocalRepository(localPath,"User_A","Repo_001");
+        branchService.merge(repo,"version3","version1");
+        branchService.switchBranch(repo,"version4");
+//        branchService.deleteBranch(repo,"version1");
+//        testCommit();
+    }
+
+
+
+
+
+    @Test
+    void TestDeleteBranch() throws GitAPIException, IOException {
+        Git repo = repositoryService.loadLocalRepository(localPath,"User_A","Repo_001");
+        branchService.switchBranch(repo,"master");
+        branchService.deleteBranch(repo,"version1");
+        branchService.deleteBranch(repo,"version2");
+        branchService.deleteBranch(repo,"version3");
+        branchService.deleteBranch(repo,"version4");
+
+    }
+
+
+    /**
+     * PR 功能实现;
+     * */
+
+    /*
+    * fastmerge
+    * */
+
+   /*
+   *
+   *单个用户
+   * */
+
+
+    @Test
+    void TestFastmerge() throws GitAPIException, IOException {
+        agentService.deleteUser(localPath,"User_A");
+        agentService.createUser(new Agent("User_A", "123456","icon"));
+        Git repo = repositoryService.initRepository(localPath, "User_A","Repo_001", 1);
+        Commit("fasdfa","master");
+        branchService.createBranch(repo,"master","branch1");
+        Commit("fasdfa1","branch1");
+
+        branchService.createBranch(repo,"branch1","branch2");
+        Commit("fasdfa2","branch2");
+
+
+        List<String> list_ = branchService.merge(repo, "master", "branch2");
+        for (int i = 0 ; i < list_.size(); i ++){
+            System.out.println(list_.get(i));
+        }
+        Ref branch1 = branchService.switchBranch(repo, "master");
+
+    }
+
+
+
+    @Test
+    void Ts() throws GitAPIException {
+        Git repo = repositoryService.loadLocalRepository(localPath,"User_A","Repo_001");
+        Ref branch1 = branchService.switchBranch(repo, "master");
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
     @Test
@@ -63,6 +232,7 @@ public class FunctionTest {
         agentService.starNewRepo("User_B", "2666908d8f3dad76eb0b45899a556e0a071f32d7");
         agentService.inviteContributor("User_B", "2666908d8f3dad76eb0b45899a556e0a071f32d7");
     }
+
 
 
     @Test
@@ -79,6 +249,7 @@ public class FunctionTest {
     void testUser(){
         System.out.println(agentService.updateUserName("User_A", "User_D"));
     }
+
 
 
     @Test
@@ -113,33 +284,8 @@ public class FunctionTest {
     }
 
 
-    @Test
-    void testCommit(){
-        File file = new File(testDirectory);
-        System.out.println(file);
-        commitService.commitFiles(localPath, "User_A", "Repo_001", "master", file ,localPath + File.separator + "User_A" + File.separator + "Repo_001" + File.separator + "Practice7");
-//        commitService.getCommitsByBranch(localPath, "User_A", "Repo_001", "master");
-    }
-
-    @Test
-    void testCreateBranch() throws GitAPIException {
-        Git repo = repositoryService.loadLocalRepository(localPath, "User_A","Repo_001");
-//        branchService.createBranch(repo, "branch2");
-        branchService.switchBranch(repo, "master");
-//        branchService.createBranch(repo, "branch3");
-
-    }
 
 
-
-
-
-
-    @Test
-    void testBranchList() throws GitAPIException {
-        Git repo = repositoryService.loadLocalRepository(localPath, "User_A","Repo_001");
-        System.out.println(BranchUtil.getAllBranch(repo));
-    }
 
 
 
@@ -167,11 +313,11 @@ public class FunctionTest {
 
     }
 
-    @Test
-    void testPull() throws GitAPIException {
-        Git repo = repositoryService.loadLocalRepository(localPath, "User_A","Repo_002");
-        branchService.Pull("master", repo, remoteURL);
-    }
+//    @Test
+//    void testPull() throws GitAPIException {
+//        Git repo = repositoryService.loadLocalRepository(localPath, "User_A","Repo_002");
+//        branchService.pull("master", repo, remoteURL);
+//    }
 
 
 }

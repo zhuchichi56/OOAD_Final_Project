@@ -19,7 +19,7 @@ import java.util.List;
 @RestController
 @RequestMapping(value = "/Repository")
 public class RepositoryController {
-    String localPath = "C:/Users/vip/Desktop/TEST/Local";
+    String localPath = "/Users/zhuhe/Desktop/Jgit";
     @Autowired
 
     RepositoryService repositoryService;
@@ -70,3 +70,10 @@ public class RepositoryController {
 
 
 }
+
+
+
+
+
+
+
