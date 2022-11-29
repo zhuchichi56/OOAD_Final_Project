@@ -55,5 +55,45 @@
     </delete>
 
 
+
+
+
+
+
+
+    <select id="getStar"  resultType="integer">
+        select count(*) from agentstarrepo where repositoryId=#{repoId}
+    </select>
+
+    <select id="getFork"  resultType="integer">
+        select count(*) from agentforkrepo where repositoryId=#{repoId}
+    </select>
+
+    <select id="getWatch"  resultType="integer">
+        select count(*) from agentwatchrepo where repositoryId=#{repoId}
+    </select>
+
+    <select id="starIsValid" resultType="boolean">
+        SELECT EXISTS(SELECT * FROM agentstarrepo WHERE agentName=#{agentName} and repositoryId=#{repoId})
+    </select>
+
+    <select id="forkIsValid" resultType="boolean">
+        SELECT EXISTS(SELECT * FROM agentforkrepo WHERE agentName=#{agentName} and repositoryId=#{repoId})
+    </select>
+
+    <select id="watchIsValid" resultType="boolean">
+        SELECT EXISTS(SELECT * FROM agentwatchrepo WHERE agentName=#{agentName} and repositoryId=#{repoId})
+    </select>
+
+
+
+
+
+
+
+
+
+
+
 </mapper>
 

@@ -5,7 +5,10 @@ package com.example.demo.controller;
 import com.alibaba.fastjson.JSONObject;
 
 
+import com.example.demo.mapper.AgentMapper;
+import com.example.demo.mapper.ForkRepoMapper;
 import com.example.demo.mapper.RepositoryMapper;
+import com.example.demo.mapper.WatchRepoMapper;
 import com.example.demo.service.*;
 import com.example.demo.util.BranchUtil;
 import org.eclipse.jgit.annotations.Nullable;
@@ -15,8 +18,11 @@ import org.pegdown.PegDownProcessor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.http.HttpServletResponse;
 import java.io.*;
+import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -29,11 +35,21 @@ public class RepoPageController {
     String localPath = "/Users/zhuhe/Desktop/Jgit";
 
     String testDirectory = "/Users/zhuhe/Desktop/Jgit.md";
+
+
+
     @Autowired
     RepositoryService repositoryService;
 
     @Autowired
     RepositoryMapper repositoryMapper;
+
+    @Autowired
+    ForkRepoMapper forkRepoMapper;
+
+    @Autowired
+    WatchRepoMapper watchRepoMapper;
+
     @Autowired
     AgentService agentService;
 
@@ -45,6 +61,9 @@ public class RepoPageController {
 
     @Autowired
     CommitService commitService;
+
+    @Autowired
+    AgentMapper agentMapper;
 
 
 
@@ -68,6 +87,37 @@ public class RepoPageController {
             sub.put("branchName",branchName);
             branchNameJson.add(sub);
         }
+
+
+
+
+
+        /**
+         *
+         *
+         *angentName 是仓库的主人
+         *
+         * */
+        result.put("Fork",repositoryMapper.getFork(repositoryMapper.getRepoId(agentName,repoName)));
+        result.put("canFork",repositoryMapper.forkIsValid(agentName,repositoryMapper.getRepoId(agentName,repoName)));
+
+        result.put("Star",repositoryMapper.getStar(repositoryMapper.getRepoId(agentName,repoName)));
+        result.put("canStar",repositoryMapper.starIsValid(agentName,repositoryMapper.getRepoId(agentName,repoName)));
+
+        result.put("watch",  repositoryMapper.getWatch(repositoryMapper.getRepoId(agentName,repoName)));
+        result.put("canWatch", repositoryMapper.watchIsValid(agentName,repositoryMapper.getRepoId(agentName,repoName)));
+
+        result.put("Auth", repositoryMapper.getRepoById(repositoryMapper.getRepoId(agentName,repoName)).getAuthority());
+
+
+
+        /**
+         *
+         *
+         *
+         * */
+
+
 
         result.put("branchList",branchNameJson);
 
@@ -131,8 +181,9 @@ public class RepoPageController {
             }
         }
 
-
+        System.out.println(result.toJSONString());
         return result.toJSONString();
+
 
     }
 
@@ -174,7 +225,65 @@ public class RepoPageController {
         }
         return html;
     }
+
+
+
+
+
+
+    /**
+     *
+     * Contributor;
+     *
+     *
+     * */
+
+
+    /*
+    * 还要验证这个用户是否存在,如果不存在就返回0;
+    * */
+
+
+
+    @GetMapping("/AddContributer/{userName}/{repoName}/{contributerName}")
+    public int inviteContributor(
+            @PathVariable("userName") String userName,
+            @PathVariable("repoName") String repoName,
+            @PathVariable("contributerName") String contributerName
+    ) {
+
+        if(!agentMapper.existUser(contributerName)){
+            return 0;
+        }
+        else {
+            return agentService.inviteContributor(contributerName, repositoryMapper.getRepoId(userName, repoName));
+        }
+    }
+
+    @GetMapping("/removeContributer/{User}/{repoName}/{contributerName}")
+    public int removeContributor(
+            @PathVariable("User") String User,
+            @PathVariable("repoName") String repoName,
+            @PathVariable("contributerName") String contributerName
+    ) {
+        return agentService.removeContributor(contributerName, repositoryMapper.getRepoId(User, repoName));
+    }
+
+
+    @GetMapping("/getContributer/{User}/{repoName}/{contributerName}")
+    public List<String> getContributor(
+            @PathVariable("User") String User,
+            @PathVariable("repoName") String repoName,
+            @PathVariable("contributerName") String contributerName
+    ) {
+        return agentService.getContributors(repositoryMapper.getRepoId(User, repoName));
+    }
+
+
 }
+
+
+
 
 
 

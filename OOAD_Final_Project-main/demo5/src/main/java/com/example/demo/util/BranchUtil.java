@@ -51,9 +51,6 @@ public  class BranchUtil {
 
 
 
-
-
-
     public static List<String> getAllBranch(Git git) throws GitAPIException {
         List<Ref> refs = git.branchList().call();
         List<String> strings = new ArrayList<>();

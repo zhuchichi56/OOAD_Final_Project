@@ -15,12 +15,10 @@ public class FileCoverUtil {
     * */
 
     //这个commit;
-
-
     public static void tranverse(File file) throws IOException {
         if(file.isFile()){
             BufferedWriter out = new BufferedWriter(new FileWriter(file));
-            out.write("菜鸟教程");
+            out.write("input");
             out.close();
 
             System.out.println(file);
@@ -99,8 +97,6 @@ public class FileCoverUtil {
     * path 是导入的路径
     * 复制文件夹的函数
     * */
-
-
     private static void coverFile(String path, File file){
         if (file.getName().equals(".git")){
             return;
@@ -133,10 +129,6 @@ public class FileCoverUtil {
             }
         }
     }
-
-
-
-
 
 
 
@@ -280,4 +272,42 @@ public class FileCoverUtil {
         }
         return true;
     }
+
+
+
+
+    /**
+     *  测试branch冲突
+     * */
+
+
+    public static void WriteIn(File file) throws IOException {
+        String input = readFileByLines(file);
+        BufferedWriter out = new BufferedWriter(new FileWriter(file));
+//        out.write(readFileByLines(file));
+        out.write(input+"\n I am change it!");
+        out.close();
+        System.out.println(file);
+    }
+
+
+//    /**
+//     *  测试branch冲突
+//     * */
+//    public static void WriteALlIn(File file) throws IOException {
+//        String input = readFileByLines(file);
+//        BufferedWriter out = new BufferedWriter(new FileWriter(file));
+////        out.write(readFileByLines(file));
+//        out.write(input+"\n I am change it!");
+//        out.close();
+//        System.out.println(file);
+//    }
+
+
+
+
 }
+
+
+
+

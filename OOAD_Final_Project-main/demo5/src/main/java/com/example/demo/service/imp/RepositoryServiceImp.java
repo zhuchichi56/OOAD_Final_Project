@@ -8,7 +8,6 @@ import com.example.demo.mapper.StarRepoMapper;
 import com.example.demo.service.RepositoryService;
 import com.example.demo.util.FileCoverUtil;
 import com.example.demo.util.encodeUtil;
-import org.apache.ibatis.jdbc.Null;
 import org.eclipse.jgit.api.Git;
 import org.eclipse.jgit.api.errors.GitAPIException;
 import org.eclipse.jgit.lib.Repository;
@@ -33,14 +32,19 @@ public class RepositoryServiceImp implements RepositoryService{
     public static String flash = "/";
 
 
+
     @Override
     public Git initRepository(String path, String agentName, String repositoryName, int authority) {
         File repository = new File(path+ File.separator + agentName + File.separator + repositoryName);
-        if (repositoryMapper.getRepoId(agentName,repositoryName) == null)
-            repositoryMapper.createNewRepository(encodeUtil.hash(agentName,repositoryName), new Repo(agentName, repositoryName, authority));
+        String repoId = encodeUtil.hash(agentName,repositoryName);
+        if (repositoryMapper.getRepoId(agentName,repositoryName) == null) {
+            repositoryMapper.createNewRepository(repoId, new Repo(agentName, repositoryName, authority));
+            contributorMapper.insertNewContributor(agentName, repoId);
+        }
         if(repository.exists()) {
             System.out.println("repo exists");
         }
+
         Git git = null;
         try {
             git = Git.init().setDirectory(repository).call();
@@ -61,6 +65,12 @@ public class RepositoryServiceImp implements RepositoryService{
         return FileCoverUtil.deleteFolder(repoPath);
     }
 
+    @Override
+    public String getRepoId(String agentName, String repoName) {
+        return repositoryMapper.getRepoId(agentName,repoName);
+    }
+
+
     /**
      * 检测有无这个仓库的存在
      * @param agentName
@@ -80,25 +90,46 @@ public class RepositoryServiceImp implements RepositoryService{
     }
 
 
-    @Override
-    public Git cloneRepository(String remotePathUrl, String localPath, String agentName, String repositoryName) {
+
+
+
+
+
+
+    public Git forkRepository(String localPath,String targetName, String targetRepoName, String targetBranchName,
+                              String forkName, String forkRepoName) {
+
         Git git = null;
-        File repository = new File(localPath+ flash + agentName +flash + repositoryName);
-        if(repository.exists()) {
+        String url = localPath+ File.separator + targetName +File.separator +targetRepoName;
+
+        File forkrepository = new File(localPath+ File.separator + forkName +File.separator + forkRepoName);
+
+        if(forkrepository.exists()) {
             System.out.println("repo exists");
         }
+        if (repositoryMapper.getRepoId(forkName,forkRepoName) == null){
+            String repoId = repositoryMapper.getRepoId( targetName, targetRepoName);
+            Repo remoteRepo = repositoryMapper.getRepoById(repoId);
+            repositoryMapper.createNewRepository(encodeUtil.hash(forkName,forkRepoName),
+                    new Repo(forkName,forkRepoName, remoteRepo.getAuthority()));
+        }
+
         try {
             git = Git.cloneRepository()
-                    .setURI(remotePathUrl)
-                    .setDirectory(repository)
+                    .setURI(url)
+                    .setDirectory(forkrepository)
                     .call();
-
         } catch (GitAPIException e) {
             e.printStackTrace();
         }
 
         return git;
     }
+
+
+
+
+
 
 
 

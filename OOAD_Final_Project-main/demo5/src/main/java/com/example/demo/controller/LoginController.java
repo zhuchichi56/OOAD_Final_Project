@@ -10,8 +10,6 @@ import com.example.demo.util.JwtUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import javax.servlet.http.HttpServletRequest;
-
 @RestController
 public class LoginController {
     String localPath = "/Users/zhuhe/Desktop/Jgit";
@@ -27,7 +25,6 @@ public class LoginController {
     AgentService agentService;
 
 
-
     @GetMapping("/login/signup/{username}/{password}")
     public int Signup(@PathVariable("username") String agentName,
                       @PathVariable("password") String repoName) {
@@ -37,13 +34,8 @@ public class LoginController {
         } else {
             System.out.println("注册成功");
         }
-
         return a;
     }
-
-
-
-
 
 
     @GetMapping("/login/signin/{username}/{password}")
@@ -63,34 +55,5 @@ public class LoginController {
         System.out.println(token);
         return result.toJSONString();
     }
-
-
-    @GetMapping("/checkToken")
-    public int checkToken(HttpServletRequest request){
-        String token = request.getHeader("token");
-        String[] strings = JwtUtil.checkToken(token);
-        if(strings==null){
-            return 0;
-        }
-        return agentService.CheckUser(strings[0],strings[1]);
-    }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 }

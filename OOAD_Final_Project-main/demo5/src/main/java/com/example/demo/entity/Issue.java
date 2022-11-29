@@ -17,4 +17,5 @@ public class Issue {
     List<Comment> content;
     String creator;
     Date publishTime;
+    int isClose;
 }

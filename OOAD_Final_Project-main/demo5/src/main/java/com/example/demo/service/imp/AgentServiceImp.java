@@ -41,6 +41,7 @@ public class AgentServiceImp implements AgentService {
     }
 
 
+
     @Override
     public int deleteUser(String localPath,String name) {
         agentMapper.deleteUser(name);
@@ -51,6 +52,7 @@ public class AgentServiceImp implements AgentService {
 
     @Override
     public int CheckUser(String agentname, String password) {
+        System.out.println(agentMapper.checkUser(agentname,password));
         return agentMapper.checkUser(agentname,password);
     }
     
@@ -58,6 +60,15 @@ public class AgentServiceImp implements AgentService {
     public List<Repo> getRepoByName(String UserName) {
         return repositoryMapper.getAllRepo(UserName);
     }
+
+
+    @Override
+    public List<Repo> getRepoByContributor(String UserName) {
+         return contributorMapper.getAllRepoId(UserName).stream().map(o->repositoryMapper.getRepoById(o)).collect(Collectors.toList());
+    }
+
+
+
 
 
 
@@ -109,7 +120,12 @@ public class AgentServiceImp implements AgentService {
 
     @Override
     public int starNewRepo(String agentName, String repoId) {
-        return starRepoMapper.starRepo(agentName,repoId);
+        try {
+            starRepoMapper.starRepo(agentName,repoId);
+        }catch (Exception e){
+            return 0;
+        }
+        return 1;
     }
 
     @Override

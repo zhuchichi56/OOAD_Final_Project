@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface IssueService {
 
-    int createIssueInRepo(String agentName,String repoId,String title);
+    int createIssueInRepo(String agentName,String repoId,String title, int isClose);
 
     int deleteIssueInRepo(String issueId);
 
@@ -18,4 +18,6 @@ public interface IssueService {
     int deleteCommentInIssue(String commentId);
 
     List<Comment> showAllCommentsInIssue(String issueId);
+
+    int openIssue(String issueId, int isClose);
 }

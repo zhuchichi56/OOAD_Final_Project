@@ -16,6 +16,8 @@ public interface ContributorMapper {
 
     List<String> getAllContributors(@Param("repositoryId") String hash);
 
+    List<String> getAllRepoId(@Param("contributorName") String contributorName);
+
 
     int deleteContributorByRepoId(@Param("repositoryId") String repositoryId);
 

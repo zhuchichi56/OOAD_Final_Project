@@ -5,7 +5,7 @@
 
 <mapper namespace="com.example.demo.mapper.IssueMapper">
     <insert id="createIssue">
-        insert into issue values (#{issueId}, #{agentName}, #{repoId}, #{title},#{time});
+        insert into issue values (#{issueId}, #{agentName}, #{repoId}, #{title},#{time}, #{isClose});
     </insert>
 
     <select id="getIssues" resultMap="issueMap">
@@ -17,9 +17,15 @@
         <id column="issueTitle" property="title" />
         <id column="creatorName" property="creator" />
         <id column="createTime" property="publishTime" />
+        <id column="isClose" property="isClose" />
     </resultMap>
 
     <delete id="deleteIssue">
         delete from issue where issueId = #{issueId}
     </delete>
+
+
+    <update id="updateOpen">
+        update issue set isClose = #{isClose} where issueId = #{issueId}
+    </update>
 </mapper>

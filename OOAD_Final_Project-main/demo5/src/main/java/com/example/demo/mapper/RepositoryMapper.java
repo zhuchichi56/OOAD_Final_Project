@@ -24,10 +24,24 @@ public interface RepositoryMapper {
     List<String> getAllRepoId(@Param("ownerName") String ownerName);
 
 
-
-
     List<Repo> getAllRepo(@Param("ownerName") String ownerName);
 
 
     int deleteRepository(@Param("repoId") String repoId);
+
+    boolean starIsValid(@Param("agentName")String name, @Param("repoId") String repoId);
+
+    boolean forkIsValid(@Param("agentName")String name, @Param("repoId") String repoId);
+
+    boolean watchIsValid(@Param("agentName")String name, @Param("repoId") String repoId);
+
+    int getStar(@Param("repoId") String repoId);
+
+    int getFork(@Param("repoId") String repoId);
+
+    int getWatch(@Param("repoId") String repoId);
+
 }
+
+
+

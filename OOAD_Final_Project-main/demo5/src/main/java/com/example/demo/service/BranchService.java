@@ -1,7 +1,9 @@
 package com.example.demo.service;
 
 
+import com.example.demo.entity.Repo;
 import org.eclipse.jgit.api.Git;
+import org.eclipse.jgit.api.MergeResult;
 import org.eclipse.jgit.api.errors.GitAPIException;
 import org.eclipse.jgit.lib.Ref;
 import org.eclipse.jgit.lib.Repository;
@@ -23,13 +25,17 @@ public interface BranchService {
 
     List<String> merge(Git repository, String baseBranch, String targetBranch) throws GitAPIException, IOException;
 
-//    Git pull(String branchName, Git localRepository, String remotePath) throws GitAPIException;
-//
     List<String> deleteBranch(Git repository, String branch) throws GitAPIException;
+    List<String> deleteBranchForce(Git repository, String branch) throws GitAPIException;
 
+//    List<String> GetConflict (Git repository, String baseBranch, String targetBranch) throws GitAPIException, IOException;
 
+    List<String> mergeNoCommit(Git repository, String baseBranch, String targetBranch) throws GitAPIException, IOException;
 
+    boolean push(Git repository, String sourceBranch, String destinationBranch);
 }
+
+
 
 
 

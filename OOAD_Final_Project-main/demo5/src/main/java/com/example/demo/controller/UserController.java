@@ -17,7 +17,6 @@ import java.util.List;
 @CrossOrigin
 public class UserController {
 
-
     String localPath = "/Users/zhuhe/Desktop/Jgit";
 
     String testDirectory = "/Users/zhuhe/Desktop/Jgit.md";

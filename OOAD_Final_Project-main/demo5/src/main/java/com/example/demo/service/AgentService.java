@@ -35,6 +35,9 @@ public interface AgentService {
 
     List<Repo> getRepoByName(String UserName);
 
+    List<Repo> getRepoByContributor(String UserName);
+
+
 
 }
 

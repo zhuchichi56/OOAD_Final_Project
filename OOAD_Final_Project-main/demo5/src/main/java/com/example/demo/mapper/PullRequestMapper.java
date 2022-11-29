@@ -13,5 +13,7 @@ public interface PullRequestMapper {
 
     List<PullRequest> getPullRequestByTarget(@Param("targetId")String targetId);
 
-    int rejectPull(@Param("repoId") String repoId, @Param("agentName") String agentName, @Param("branch") String branch);
+    int deletePull(@Param("pullRequest")PullRequest pullRequest);
+
+    int updatePull(@Param("pullRequest")PullRequest pullRequest);
 }

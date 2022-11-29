@@ -42,32 +42,32 @@ public class FileController {
 
 
 
-    @RequestMapping("/{agentName}/{repoName}/{branch}/upload")
-    public int upload(@RequestParam("type")int type,
-                      @PathVariable("agentName") String agentName,
-                      @PathVariable("repoName") String repoName,
-                      @PathVariable("branch") String branch,
-                      @RequestParam("file") MultipartFile[] file){
-        String temppath =  "/Users/zhuhe/Desktop/Temp";
-
-        for(MultipartFile f:file){
-            try {
-                String targetpath = temppath + File.separator+f.getOriginalFilename();
-                File file1 = new File(targetpath);
-                file1.mkdirs();
-                file1.createNewFile();
-                f.transferTo(file1);
-
-            }catch (Exception e){
-                e.printStackTrace();
-            }
-        }
-
-
-//        File file_ = new File(temppath+ File.separator);
-//        commitService.commitFiles(localPath, agentName, repoName, branch,file_);
-        return 1;
-    }
+//    @RequestMapping("/{agentName}/{repoName}/{branch}/upload")
+//    public int upload(@RequestParam("type")int type,
+//                      @PathVariable("agentName") String agentName,
+//                      @PathVariable("repoName") String repoName,
+//                      @PathVariable("branch") String branch,
+//                      @RequestParam("file") MultipartFile[] file){
+//        String temppath =  "/Users/zhuhe/Desktop/Temp";
+//
+//        for(MultipartFile f:file){
+//            try {
+//                String targetpath = temppath + File.separator+f.getOriginalFilename();
+//                File file1 = new File(targetpath);
+//                file1.mkdirs();
+//                file1.createNewFile();
+//                f.transferTo(file1);
+//
+//            }catch (Exception e){
+//                e.printStackTrace();
+//            }
+//        }
+//
+//
+////        File file_ = new File(temppath+ File.separator);
+////        commitService.commitFiles(localPath, agentName, repoName, branch,file_);
+//        return 1;
+//    }
 
 
 }

@@ -5,14 +5,17 @@ import com.example.demo.entity.Agent;
 import com.example.demo.entity.Repo;
 import com.example.demo.mapper.RepositoryMapper;
 import com.example.demo.service.*;
+import com.example.demo.util.JwtUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import javax.imageio.ImageIO;
+import javax.servlet.http.HttpServletRequest;
 import java.awt.*;
 import java.io.File;
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.List;
 
 
@@ -51,14 +54,10 @@ public class UserPageController {
     CommitService commitService;
 
 
-
-
-
-
-
     @ResponseBody
     @RequestMapping(value ="/{name}", method = RequestMethod.GET, produces = "application/json;charset=UTF-8")
     public String showUserInfo(@PathVariable("name") String name){
+
 
         JSONObject result = new JSONObject();
         List<Repo> repolist  = agentService.getRepoByName(name);
@@ -69,6 +68,8 @@ public class UserPageController {
         return result.toJSONString();
 
     }
+
+
 
     @ResponseBody
     @RequestMapping(value ="/{name}/edit/{newName}", method = RequestMethod.GET, produces = "application/json;charset=UTF-8")
@@ -83,6 +84,7 @@ public class UserPageController {
         System.out.println(result.toJSONString());
         return result.toJSONString();
     }
+
 
     @ResponseBody
     @RequestMapping(value ="/{name}/edit/{password}/{newPassword}", method = RequestMethod.GET, produces = "application/json;charset=UTF-8")
@@ -108,6 +110,30 @@ public class UserPageController {
         System.out.println(result.toJSONString());
         return result.toJSONString();
     }
+
+
+
+//    @GetMapping("/{name}/checkToken")
+//    public int checkToken(HttpServletRequest request){
+//        String token = request.getHeader("Token");
+////        System.out.println(t);
+//
+//        System.out.println(token);
+//        String[] strings = JwtUtil.checkToken(token);
+//
+//
+//
+//        if(strings==null){
+//            return 0;
+//        }
+//        System.out.println(Arrays.toString(strings));
+//        return agentService.CheckUser(strings[0],strings[1]);
+//    }
+
+
+
+
+
 
 }
 

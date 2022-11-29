@@ -6,14 +6,26 @@
 <mapper namespace="com.example.demo.mapper.PullRequestMapper">
     <insert id="insertPullRequest" parameterType="PullRequest">
         insert into pullRequest values (#{pullRequest.repositoryId}, #{pullRequest.agentName}
-        , #{pullRequest.branch}, #{pullRequest.targetId}, #{pullRequest.targetBranch})
+        , #{pullRequest.branch}, #{pullRequest.targetId}, #{pullRequest.targetBranch}, #{pullRequest.isClosed}
+        , #{pullRequest.title}, #{pullRequest.status})
     </insert>
 
     <select id="getPullRequestByTarget" resultType="PullRequest">
         select * from pullRequest where targetId = #{targetId};
     </select>
 
-    <delete id="rejectPull">
-        delete from pullRequest where repositoryId = #{repoId} and agentName = #{agentName} and branch = #{branch}
+    <delete id="deletePull" parameterType="PullRequest">
+        delete from pullRequest where repositoryId = #{pullRequest.repositoryId} and agentName = #{pullRequest.agentName}
+                                  and branch = #{pullRequest.branch} and targetId = #{pullRequest.targetId} and
+                                      targetBranch = #{pullRequest.targetBranch}
     </delete>
+
+    <update id="updatePull" parameterType="PullRequest">
+        update pullRequest set (isClosed = #{pullRequest.isClosed},status = #{pullRequest.status})
+                           where repositoryId = #{pullRequest.repositoryId} and agentName = #{pullRequest.agentName}
+                                and branch = #{pullRequest.branch} and targetId = #{pullRequest.targetId} and
+                                targetBranch = #{pullRequest.targetBranch}
+    </update>
 </mapper>
+
+

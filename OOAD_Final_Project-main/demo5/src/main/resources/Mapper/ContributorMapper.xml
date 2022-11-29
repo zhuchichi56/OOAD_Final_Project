@@ -18,9 +18,21 @@
         select count(*) from contributor where repositoryId=#{repositoryId} and contributorName=#{contributorName};
     </select>
 
+
+
+
+
     <select id="getAllContributors" resultType="String">
         select contributorName from contributor where repositoryId = #{repositoryId};
     </select>
+
+
+    <select id="getAllRepoId" resultType="String">
+        select repositoryId from contributor where contributorName=#{contributorName};
+    </select>
+
+
+
 
     <delete id="removeContributor">
         delete from contributor where repositoryId=#{repositoryId} and contributorName=#{contributorName};

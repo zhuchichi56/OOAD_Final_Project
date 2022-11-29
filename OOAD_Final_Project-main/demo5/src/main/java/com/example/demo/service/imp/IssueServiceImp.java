@@ -20,10 +20,10 @@ public class IssueServiceImp implements IssueService {
     CommentMapper commentMapper;
 
     @Override
-    public int createIssueInRepo(String agentName, String repoId, String title) {
+    public int createIssueInRepo(String agentName, String repoId, String title, int isClose) {
         String issueID = encodeUtil.hash(agentName, repoId, title);
         String time = DateParser.getCurrentDate();
-        return issueMapper.createIssue(issueID, agentName, repoId, title, time);
+        return issueMapper.createIssue(issueID, agentName, repoId, title, time, String.valueOf(isClose));
     }
 
     @Override
@@ -51,5 +51,10 @@ public class IssueServiceImp implements IssueService {
     @Override
     public List<Comment> showAllCommentsInIssue(String issueId) {
         return commentMapper.getComments(issueId);
+    }
+
+    @Override
+    public int openIssue(String issueId, int isClose) {
+        return issueMapper.updateOpen(issueId, isClose);
     }
 }

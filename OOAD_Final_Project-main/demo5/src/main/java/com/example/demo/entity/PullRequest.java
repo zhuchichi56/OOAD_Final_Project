@@ -13,13 +13,9 @@ public class PullRequest implements Serializable {
     String repositoryId;
     String agentName;
     String branch;
-
     String targetId;
     String targetBranch;
+    int isClosed = 0 ;
+    String title;
+    int status = 0 ;
 }
-
-
-
-
-
-

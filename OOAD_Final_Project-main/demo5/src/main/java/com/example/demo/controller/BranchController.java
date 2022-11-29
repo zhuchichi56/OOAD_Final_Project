@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -29,21 +30,18 @@ public class BranchController {
     BranchService branchService;
 
 
-
     @ResponseBody
-    @RequestMapping(value ="/createBranch/{agentName}/{repoName}/{baseName}/{targetbranch}", method = RequestMethod.GET, produces = "application/json;charset=UTF-8")
+    @RequestMapping(value ="/create/{agentName}/{repoName}/{baseName}/{targetbranch}", method = RequestMethod.GET, produces = "application/json;charset=UTF-8")
     public int createBranch(@PathVariable("agentName") String agentName,
                                @PathVariable("repoName") String repoName,
                             @PathVariable("baseName") String baseName,
-
                             @PathVariable("targetbranch") String targetbranch
     ) throws GitAPIException {
         Git repository = repositoryService.loadLocalRepository(localPath, agentName, repoName);
-        if(branchService.createBranch(repository, baseName,targetbranch)==null){
-            return 1;
-        }else {
-            return 0;}
+        return branchService.createBranch(repository, baseName,targetbranch)==null ? 0 : 1;
+
     }
+
 
 
 //
@@ -63,44 +61,71 @@ public class BranchController {
 
 
     @ResponseBody
-    @RequestMapping(value ="/deleteBranch/{agentName}/{repoName}/{branchName}", method = RequestMethod.GET, produces = "application/json;charset=UTF-8")
-    public int deleteBranch(@PathVariable("agentName") String agentName,
+    @RequestMapping(value ="/deleteForce/{agentName}/{repoName}/{branchName}", method = RequestMethod.GET, produces = "application/json;charset=UTF-8")
+    public int deleteBranchForce(@PathVariable("agentName") String agentName,
                                @PathVariable("repoName") String repoName,
                                @PathVariable("branchName") String branchName
 
     ) throws GitAPIException {
         Git repository = repositoryService.loadLocalRepository(localPath, agentName, repoName);
-        List<String> a = branchService.deleteBranch(repository, branchName);
-        if(a==null){
-            return 0;
-        }
-        else {
-            return 1;}
-
+        List<String> a = branchService.deleteBranchForce(repository, branchName);
+        return a == null ? 0 : 1;
     }
 
 
-
-
-
-    /**
-     * 目前未测;
-    * */
     @ResponseBody
-    @RequestMapping(value ="/merge/{agentName}/{repoName}/{baseBranchName}/{targetBranchName}", method = RequestMethod.GET, produces = "application/json;charset=UTF-8")
-    public String mergeBranch(@PathVariable("agentName") String agentName,
-                               @PathVariable("repoName") String repoName,
-                               @PathVariable("baseBranchName") String baseBranchName,
-                              @PathVariable("targetBranchName") String targetBranchName
+    @RequestMapping(value ="/delete/{agentName}/{repoName}/{branchName}", method = RequestMethod.GET, produces = "application/json;charset=UTF-8")
+    public int deleteBranch(@PathVariable("agentName") String agentName,
+                                 @PathVariable("repoName") String repoName,
+                                 @PathVariable("branchName") String branchName
 
-    ) throws GitAPIException, IOException {
-        JSONObject result = new JSONObject();
+    ) throws GitAPIException {
         Git repository = repositoryService.loadLocalRepository(localPath, agentName, repoName);
-        branchService.merge(repository, baseBranchName, targetBranchName);
-
-        result.put("status", "Merging Branch: " + baseBranchName +" to " +targetBranchName);
-        return result.toJSONString();
+        List<String> a = branchService.deleteBranch(repository, branchName);
+        return a == null ? 0 : 1;
     }
+
+
+
+
+
+
+
+
+
+
+
+
+//
+//    /**
+//     * 目前未测;
+//    * */
+//    @ResponseBody
+//    @RequestMapping(value ="/merge/{agentName}/{repoName}/{baseBranchName}/{targetBranchName}", method = RequestMethod.GET, produces = "application/json;charset=UTF-8")
+//    public String mergeBranch(@PathVariable("agentName") String agentName,
+//                               @PathVariable("repoName") String repoName,
+//                               @PathVariable("baseBranchName") String baseBranchName,
+//                              @PathVariable("targetBranchName") String targetBranchName
+//
+//    ) throws GitAPIException, IOException {
+//        JSONObject result = new JSONObject();
+//
+//        Git repository = repositoryService.loadLocalRepository(localPath, agentName, repoName);
+//        List<String> responce  = branchService.merge(repository, baseBranchName, targetBranchName);
+//        result.put("status",responce.get(0));
+//        List<String> list_ = new ArrayList<>();
+//        for (int i = 1; i <responce.size() ; i++) {
+//            list_.add(responce.get(i));
+//        }
+//        result.put("status",responce.get(0));
+//        result.put("List",list_);
+//        return result.toString();
+//    }
+
+
+
+
+
 
 
 

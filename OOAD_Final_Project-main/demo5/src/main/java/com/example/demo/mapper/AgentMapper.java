@@ -23,6 +23,10 @@ public interface AgentMapper {
 
     int deleteUser(@Param("name") String name);
 
+    boolean existUser(@Param("agentName") String name);
+
+
+
 
 
 

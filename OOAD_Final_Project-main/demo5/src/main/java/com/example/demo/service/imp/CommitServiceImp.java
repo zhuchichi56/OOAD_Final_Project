@@ -6,6 +6,7 @@ import com.example.demo.service.CommitService;
 
 import com.example.demo.util.DateParser;
 import com.example.demo.util.FileCoverUtil;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
 import org.eclipse.jgit.api.Git;
 import org.eclipse.jgit.api.RmCommand;
 import org.eclipse.jgit.api.Status;
@@ -43,18 +44,13 @@ public class CommitServiceImp implements CommitService {
      * @param file
      * @return
      */
+
     @Override
     public int commitFiles(String localPath, String agentName, String repoName, String branch, File file) {
         String path = localPath+File.separator+agentName+File.separator+repoName;
-        String filePath  = localPath + File.separator + agentName + File.separator + repoName + File.separator + file.getName();
-
-        //执行删除.DS_store 文件;
-
-
-
+        String filePath =localPath+File.separator+agentName+File.separator+repoName+File.separator+file.getName();
         try {
             FileCoverUtil.updateFile(filePath,file);
-
             File origin = new File(path);
             Git git = Git.open(origin);
             git.checkout().setCreateBranch(false).setName(branch).call();
@@ -81,13 +77,81 @@ public class CommitServiceImp implements CommitService {
         return 1;
     }
 
-//
-//    private void DeleteDsFile(File file){
-//        file.listFiles();
-//
-//    }
 
 
+    /*
+    * 提交一个Empty 即可
+    * */
+    @Override
+    public int commitinnerFiles(String localPath, String agentName, String repoName, String branch, File file) {
+        String path = localPath+File.separator+agentName+File.separator+repoName;
+        String filePath =localPath+File.separator+agentName+File.separator+repoName;
+        try {
+            FileCoverUtil.updateFile(filePath,file);
+            File origin = new File(path);
+            Git git = Git.open(origin);
+            git.checkout().setCreateBranch(false).setName(branch).call();
+            git.add().addFilepattern(".").call();
+            Status status = git.status().call();
+            if (!checkStatus(status)){
+                return -1;
+            }
+            RmCommand rm = git.rm();
+            for (String m: status.getMissing()){
+                rm.addFilepattern(m).call();
+                rm = git.rm();
+                status = git.status().call();
+            }
+            for (String r: status.getRemoved()){
+                rm.addFilepattern(r).call();
+                rm = git.rm();
+                status = git.status().call();
+            }
+            git.commit().setMessage("default value").call();
+        } catch (IOException | GitAPIException e) {
+            throw new RuntimeException(e);
+        }
+        return 1;
+    }
+
+
+
+
+
+
+    @Override
+    public int committopath(String localPath, String agentName, String repoName, String branch, String path_,File file) {
+        String path = localPath+File.separator+agentName+File.separator+repoName+path_;
+        System.out.println(path);
+        String filePath =localPath+File.separator+agentName+File.separator+repoName+File.separator+file.getName();
+        try {
+            FileCoverUtil.updateFile(filePath,file);
+            File origin = new File(path);
+            Git git = Git.open(origin);
+            git.checkout().setCreateBranch(false).setName(branch).call();
+            git.add().addFilepattern(".").call();
+            Status status = git.status().call();
+            if (!checkStatus(status)){
+                return -1;
+            }
+            RmCommand rm = git.rm();
+            for (String m: status.getMissing()){
+                rm.addFilepattern(m).call();
+                rm = git.rm();
+                status = git.status().call();
+            }
+            for (String r: status.getRemoved()){
+                rm.addFilepattern(r).call();
+                rm = git.rm();
+                status = git.status().call();
+            }
+            git.commit().setMessage("default value").call();
+        } catch (IOException | GitAPIException e) {
+            throw new RuntimeException(e);
+        }
+        return 1;
+
+    }
 
 
     /**
@@ -116,6 +180,7 @@ public class CommitServiceImp implements CommitService {
         }
         return true;
     }
+
 
     /**
      * 返回所有提交版本的ID

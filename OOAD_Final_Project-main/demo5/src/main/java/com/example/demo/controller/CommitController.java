@@ -37,13 +37,14 @@ public class CommitController {
     CommitService commitService;
 
 
+    //T
     @ResponseBody
     @RequestMapping(value ="/{agentName}/{repoName}/{branchName}/getCommitList", method = RequestMethod.GET, produces = "application/json;charset=UTF-8")
     public String getCommitList(@PathVariable("agentName") String agentName,
                                @PathVariable("repoName") String repoName,
                                @PathVariable("branchName") String branchName
-
     ) {
+
         JSONObject result = new JSONObject();
         List<RevCommit> commitlist = commitService.getCommitsByBranch(localPath,agentName,repoName,branchName);
         List<JSONObject> cljson  = new ArrayList<>();
@@ -59,6 +60,8 @@ public class CommitController {
     }
 
 
+
+
     @ResponseBody
     @RequestMapping(value ="/{agentName}/{repoName}/{branchName}/{ID}/Rollback", method = RequestMethod.GET, produces = "application/json;charset=UTF-8")
     public int Rollback(@PathVariable("agentName") String agentName,
@@ -69,19 +72,5 @@ public class CommitController {
         Git repo = repositoryService.loadLocalRepository(localPath, agentName,repoName);
         return branchService.rollback(repo,branchName,commitid);
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 }
 
