@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 
+
 @RestController
 public class star_fork_watch_Controller {
 
@@ -41,24 +42,6 @@ public class star_fork_watch_Controller {
     }
 
 
-//    @ResponseBody
-//    @RequestMapping(value ="/fork/add/{repoOwner}/{repoName}/{agentName}", method = RequestMethod.GET, produces = "application/json;charset=UTF-8")
-//    public int AddFork(
-//            @PathVariable("repoOwner") String repoOwner,
-//            @PathVariable("repoName") String repoName,
-//            @PathVariable("agentName") String agentName
-//    ){
-//        try {
-//            forkRepoMapper.forkRepo(agentName,repositoryMapper.getRepoId(repoOwner,repoName));
-//        }catch (Exception e){
-//            return 0;
-//        }
-//        return 1;
-//    }
-
-
-
-
     @ResponseBody
     @RequestMapping(value ="/watch/add/{repoOwner}/{repoName}/{agentName}", method = RequestMethod.GET, produces = "application/json;charset=UTF-8")
     public int AddWatch(
@@ -89,22 +72,6 @@ public class star_fork_watch_Controller {
         }
         return 1;
     }
-
-//    @ResponseBody
-//    @RequestMapping(value ="/fork/delete/{repoOwner}/{repoName}/{agentName}", method = RequestMethod.GET, produces = "application/json;charset=UTF-8")
-//    public int deleteFork(
-//            @PathVariable("repoOwner") String repoOwner,
-//            @PathVariable("repoName") String repoName,
-//            @PathVariable("agentName") String agentName
-//    ){
-//        try {
-//            forkRepoMapper.removeFork(agentName,repositoryMapper.getRepoId(repoOwner,repoName));
-//        }catch (Exception e){
-//            return 0;
-//        }
-//        return 1;
-//    }
-
     @ResponseBody
     @RequestMapping(value ="/watch/delete/{repoOwner}/{repoName}/{agentName}", method = RequestMethod.GET, produces = "application/json;charset=UTF-8")
     public int deleteWatch(

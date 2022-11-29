@@ -9,10 +9,9 @@
 <mapper namespace="com.example.demo.mapper.RepositoryMapper">
 
 
-
     <insert id="createNewRepository">
         insert into repository value (#{hash},#{Repository.agentName},#{Repository.repoName},
-            #{Repository.star},#{Repository.fork},#{Repository.authority});
+            #{Repository.star},#{Repository.fork},#{Repository.authority}, #{Repository.ownerRepoId});
     </insert>
 
     <select id="getRepoId" resultType="String">
@@ -37,6 +36,8 @@
         <id column="repoName" property="repoName" />
         <id column="Star" property="star" />
         <id column="Fork" property="fork" />
+        <id column="authority" property="authority" />
+        <id column="forkRepoId" property="forkRepoId" />
     </resultMap>
 
 
@@ -47,8 +48,6 @@
     <update id="setAuthority">
         update repository set authority=#{authority} where repositoryId=#{repoId}
     </update>
-
-
 
     <delete id="deleteRepository">
         delete from repository where repositoryId = #{repoId};

@@ -2,9 +2,11 @@ package com.example.demo.controller;
 
 import com.alibaba.fastjson.JSONObject;
 import com.example.demo.entity.PullRequest;
+import com.example.demo.entity.Repo;
 import com.example.demo.mapper.ForkRepoMapper;
 import com.example.demo.mapper.RepositoryMapper;
 import com.example.demo.service.*;
+import com.example.demo.util.BranchUtil;
 import com.example.demo.util.DateParser;
 import com.example.demo.util.FileCoverUtil;
 import org.eclipse.jgit.api.Git;
@@ -39,7 +41,6 @@ public class PRController {
     @Autowired
     PullService pullService;
 
-
     @Autowired
     RepositoryMapper repositoryMapper;
 
@@ -47,22 +48,60 @@ public class PRController {
     ForkRepoMapper forkRepoMapper;
 
 
+
+
+    /*
+     * Finish!
+     * */
     @ResponseBody
     @RequestMapping(value ="/fork/{forkName}/{forkRepoName}/{targetAgentName}/{targetRepoName}/{targetBranch}", method = RequestMethod.GET, produces = "application/json;charset=UTF-8")
     public int fork(        @PathVariable("targetAgentName") String targetAgentName,
                             @PathVariable("targetRepoName") String targetRepoName,
                             @PathVariable("targetBranch") String targetBranch,
                             @PathVariable("forkName") String forkName,
-                            @PathVariable("forkRepoName") String forkRepoName )
-     {
+                            @PathVariable("forkRepoName") String forkRepoName ) throws GitAPIException {
+
+        Git target  = repositoryService.loadLocalRepository(localPath,targetAgentName,targetRepoName);
+//        System.out.println(BranchUtil.getAllBranch(target));
+        branchService.switchBranch(target,"master");
         Git forgit  = repositoryService.forkRepository(localPath,targetAgentName,targetRepoName,targetBranch,forkName,forkRepoName);
-        if(forgit!=null) {
-            forkRepoMapper.forkRepo(forkName, repositoryMapper.getRepoId(targetAgentName, targetRepoName));
-        }
+
+//        if(forgit!=null) {
+//            forkRepoMapper.forkRepo(forkName, repositoryMapper.getRepoId(targetAgentName, targetRepoName));
+//        }
         return forgit==null?0:1;
     }
 
 
+    /*
+    * Finish!
+    * */
+    @ResponseBody
+    @RequestMapping(value ="/getTargetInfo/{forkName}/{forkRepoName}/{forkBranch}", method = RequestMethod.GET, produces = "application/json;charset=UTF-8")
+    public JSONObject getTarget(
+                            @PathVariable("forkName") String forkName,
+                            @PathVariable("forkRepoName") String forkRepoName   ,
+                            @PathVariable("forkBranch") String forkBranch) throws GitAPIException {
+
+        Repo forkrepo = repositoryMapper.getRepoById(repositoryMapper.getRepoId( forkName,forkRepoName));
+        String ownerRepoId = forkrepo.getOwnerRepoId();
+        Repo ownerrepo  = repositoryMapper.getRepoById(ownerRepoId);
+        Git ownerrepogit = repositoryService.loadLocalRepository(localPath,ownerrepo.getAgentName(),ownerrepo.getRepoName());
+        JSONObject result = new JSONObject();
+        result.put("targetAgentName",ownerrepo.getAgentName());
+        result.put("targetRepoName",ownerrepo.getRepoName());
+        List<String> branchNameList = BranchUtil.getAllBranch(ownerrepogit);
+
+        List<JSONObject> branchNameJson = new ArrayList<>();
+        for (String branchName:branchNameList) {
+            JSONObject sub = new JSONObject();
+            sub.put("branchName",branchName);
+            branchNameJson.add(sub);
+        }
+
+        result.put("targetBranch",branchNameJson);
+        return result;
+    }
 
 
 
@@ -129,14 +168,17 @@ public class PRController {
 
 
 
+
+
     /*完成request 方法*/
     /*
     * 接受到请求加入数据库中
     * 返回一个json字符串
     *
     * */
-    @RequestMapping(value ="/Request/{forkName}/{forkRepoName}/{forkBranch}/{targetAgentName}/{targetRepoName}/{targetBranch}/{title}", method = RequestMethod.GET, produces = "application/json;charset=UTF-8")
-    public PullRequest Request(
+    @RequestMapping(value ="/Request/{forkName}/{forkRepoName}/{forkBranch}/{targetAgentName}/{targetRepoName}/{targetBranch}/{title}",
+            method = RequestMethod.GET, produces = "application/json;charset=UTF-8")
+    public int Request(
                             @PathVariable("targetAgentName") String targetAgentName,
                              @PathVariable("targetRepoName") String targetRepoName,
                              @PathVariable("targetBranch") String targetBranch,
@@ -146,7 +188,6 @@ public class PRController {
                              @PathVariable("title") String title
     ) {
 
-
         PullRequest pullRequest = new PullRequest();
         pullRequest.setTitle(title);
         pullRequest.setRepositoryId(repositoryMapper.getRepoId(forkName,forkRepoName));
@@ -154,10 +195,10 @@ public class PRController {
         pullRequest.setTargetBranch(targetBranch);
         pullRequest.setBranch(forkBranch);
         pullRequest.setAgentName(forkName);
-        pullService.createNewPull(pullRequest);
-        return pullRequest;
+        int a =pullService.createNewPull(pullRequest);
+        System.out.println(a==1?"Request Success!":"Request Failed");
+        return a;
     }
-
 
 
     @ResponseBody
@@ -181,3 +222,8 @@ public class PRController {
 
 
 }
+
+
+
+
+

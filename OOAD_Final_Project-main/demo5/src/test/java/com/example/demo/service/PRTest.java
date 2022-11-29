@@ -2,6 +2,7 @@ package com.example.demo.service;
 
 import com.example.demo.entity.Agent;
 import com.example.demo.mapper.RepositoryMapper;
+import com.example.demo.util.BranchUtil;
 import com.example.demo.util.CommonMethod;
 import com.example.demo.util.FileCoverUtil;
 import org.eclipse.jgit.api.Git;
@@ -43,6 +44,16 @@ public class PRTest {
 
 
     @Test
+    void test_init(String filename,String username, String reponame,String branch){
+        agentService.deleteUser(localPath,"User_A");
+        agentService.createUser(new Agent("User_A", "123456","icon"));
+        agentService.deleteUser(localPath,"User_B");
+        agentService.createUser(new Agent("User_B", "123456","icon"));
+        Git repoA = repositoryService.initRepository(localPath, "User_A","Repo_001", 1);
+    }
+
+
+    @Test
     void Commit_fork(String filename,String username, String reponame,String branch){
         String testDirectory = "/Users/zhuhe/Desktop/TestRoot/"+ filename;
         File file = new File(testDirectory);
@@ -50,22 +61,52 @@ public class PRTest {
     }
 
 
-
     @Test
-    void testfork(){
+    void testfork() throws GitAPIException {
         agentService.deleteUser(localPath,"User_A");
         agentService.createUser(new Agent("User_A", "123456","icon"));
         agentService.deleteUser(localPath,"User_B");
         agentService.createUser(new Agent("User_B", "123456","icon"));
-
         Git repoA = repositoryService.initRepository(localPath, "User_A","Repo_001", 1);
         Git repoB = repositoryService.initRepository(localPath, "User_B","Repo_002", 1);
         Commit_fork("fasdfa","User_A","Repo_001","master");
         Commit_fork("fasdfa1","User_A","Repo_001","master");
-        repositoryService.forkRepository(localPath,"User_A", "Repo_001","master","User_B","Repo_001");
+        branchService.createBranch(repoA,"master","branch1");
+        branchService.switchBranch(repoA,"branch1");
+        Commit_fork("fasdfa2","User_A","Repo_001","master");
+
+        branchService.switchBranch(repoA,"master");
+
+        System.out.println(BranchUtil.getAllBranch(repoA));
+
+//        branchService.createBranch(repoA,"master","branch1");
+//        repositoryService.forkRepository(localPath,"User_A", "Repo_001","master","User_B","Repo_001");
+
+    }
+
+
+
+    @Test
+    void testforkbranchinformation() throws GitAPIException {
+        Git repoA = repositoryService.loadLocalRepository(localPath, "User_A","Repo_001");
+
+        Git repoB = repositoryService.loadLocalRepository(localPath, "User_B","Repo_001");
+        System.out.println(commitService.getCommitsByBranch(localPath, "User_B", "Repo_001", "master"));
+
+//        Commit_fork("fasdfa","User_A","Repo_001","master");
+//        Commit_fork("fasdfa1","User_A","Repo_001","master");
+//        branchService.createBranch(repoA,"master","branch1");
+//        branchService.switchBranch(repoA,"branch1");
+//        Commit_fork("fasdfa2","User_A","Repo_001","master");
+//        branchService.createBranch(repoA,"master","branch1");
+//        repositoryService.forkRepository(localPath,"User_A", "Repo_001","master","User_B","Repo_001");
+//
+
 
 
     }
+
+
 
 
 
@@ -76,7 +117,6 @@ public class PRTest {
     public void testPR() throws GitAPIException, IOException {
         Git gitB = repositoryService.loadLocalRepository(localPath,"User_B","Repo_001");
         Git gitA = repositoryService.loadLocalRepository(localPath,"User_A","Repo_001");
-
         CommonMethod.CommitFile(gitB,localPath+File.separator+"User_B"+File.separator+"Repo_001","nihao");
         System.out.println(branchService.push(gitB, "master", "branch$"));
         gitA.commit().setMessage("merge").call();
@@ -85,6 +125,13 @@ public class PRTest {
         System.out.println(branchService.mergeNoCommit(gitA, "master", "branch$"));
     }
 }
+
+
+
+
+
+
+
 
 
 

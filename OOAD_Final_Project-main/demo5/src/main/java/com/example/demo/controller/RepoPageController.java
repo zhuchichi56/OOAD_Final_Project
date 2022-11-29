@@ -5,6 +5,8 @@ package com.example.demo.controller;
 import com.alibaba.fastjson.JSONObject;
 
 
+import com.example.demo.entity.PullRequest;
+import com.example.demo.entity.Repo;
 import com.example.demo.mapper.AgentMapper;
 import com.example.demo.mapper.ForkRepoMapper;
 import com.example.demo.mapper.RepositoryMapper;
@@ -65,6 +67,11 @@ public class RepoPageController {
     @Autowired
     AgentMapper agentMapper;
 
+    @Autowired
+    PullService pullService;
+
+
+
 
 
 
@@ -88,10 +95,6 @@ public class RepoPageController {
             branchNameJson.add(sub);
         }
 
-
-
-
-
         /**
          *
          *
@@ -108,18 +111,15 @@ public class RepoPageController {
         result.put("canWatch", repositoryMapper.watchIsValid(agentName,repositoryMapper.getRepoId(agentName,repoName)));
 
         result.put("Auth", repositoryMapper.getRepoById(repositoryMapper.getRepoId(agentName,repoName)).getAuthority());
-
-
-
+        result.put("PRList", getAllPR(repositoryMapper.getRepoId(agentName,repoName)));
         /**
          *
          *
          *
          * */
 
-
-
         result.put("branchList",branchNameJson);
+        result.put("contributorsList",agentService.getContributors(repositoryMapper.getRepoId(agentName, repoName)));
 
 
         branchService.switchBranch(repo,branch);
@@ -186,6 +186,35 @@ public class RepoPageController {
 
 
     }
+
+
+
+    public List<JSONObject> getAllPR(String RepoId){
+        List<PullRequest> pullRequestList = pullService.getAllPull(RepoId);
+        List<JSONObject> pulljsonlist = new ArrayList<>();
+        for (PullRequest pull:pullRequestList) {
+            JSONObject sub = new JSONObject();
+            Repo targetRepo = repositoryMapper.getRepoById(pull.getTargetId());
+            Repo repoRepo = repositoryMapper.getRepoById(pull.getRepositoryId());
+
+            sub.put("PRTitle",pull.getTitle());
+
+            sub.put("status",pull.getIsClosed()==1?"closed":"open");
+            sub.put("result",pull.getStatus());
+            sub.put("target",targetRepo.getAgentName());
+            sub.put("targetRepo",targetRepo.getRepoName());
+            sub.put("targetBranch",pull.getTargetBranch());
+            sub.put("from",repoRepo.getAgentName());
+            sub.put("fromRepo",repoRepo.getRepoName());
+            sub.put("fromBranch",pull.getBranch());
+            pulljsonlist.add(sub);
+        }
+        return pulljsonlist;
+    }
+
+
+
+
 
 
     public static String readFileByLines(String fileName) {
@@ -270,17 +299,17 @@ public class RepoPageController {
     }
 
 
-    @GetMapping("/getContributer/{User}/{repoName}/{contributerName}")
-    public List<String> getContributor(
-            @PathVariable("User") String User,
-            @PathVariable("repoName") String repoName,
-            @PathVariable("contributerName") String contributerName
-    ) {
-        return agentService.getContributors(repositoryMapper.getRepoId(User, repoName));
-    }
+
+
+
+
+
 
 
 }
+
+
+
 
 
 

@@ -19,3 +19,5 @@ public class PullRequest implements Serializable {
     String title;
     int status = 0 ;
 }
+
+

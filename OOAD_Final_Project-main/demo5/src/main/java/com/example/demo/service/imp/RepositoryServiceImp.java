@@ -38,8 +38,8 @@ public class RepositoryServiceImp implements RepositoryService{
         File repository = new File(path+ File.separator + agentName + File.separator + repositoryName);
         String repoId = encodeUtil.hash(agentName,repositoryName);
         if (repositoryMapper.getRepoId(agentName,repositoryName) == null) {
-            repositoryMapper.createNewRepository(repoId, new Repo(agentName, repositoryName, authority));
-            contributorMapper.insertNewContributor(agentName, repoId);
+            repositoryMapper.createNewRepository(repoId, new Repo(agentName, repositoryName, authority, repoId));
+
         }
         if(repository.exists()) {
             System.out.println("repo exists");
@@ -64,6 +64,7 @@ public class RepositoryServiceImp implements RepositoryService{
         repositoryMapper.deleteRepository(repoId);
         return FileCoverUtil.deleteFolder(repoPath);
     }
+
 
     @Override
     public String getRepoId(String agentName, String repoName) {
@@ -91,29 +92,26 @@ public class RepositoryServiceImp implements RepositoryService{
 
 
 
-
-
-
-
-
     public Git forkRepository(String localPath,String targetName, String targetRepoName, String targetBranchName,
                               String forkName, String forkRepoName) {
 
         Git git = null;
-        String url = localPath+ File.separator + targetName +File.separator +targetRepoName;
 
+
+
+        String url = localPath+ File.separator + targetName +File.separator +targetRepoName;
         File forkrepository = new File(localPath+ File.separator + forkName +File.separator + forkRepoName);
 
         if(forkrepository.exists()) {
             System.out.println("repo exists");
         }
-        if (repositoryMapper.getRepoId(forkName,forkRepoName) == null){
+        if(repositoryMapper.getRepoById(repositoryMapper.getRepoId(forkName,forkRepoName))==null){
             String repoId = repositoryMapper.getRepoId( targetName, targetRepoName);
             Repo remoteRepo = repositoryMapper.getRepoById(repoId);
             repositoryMapper.createNewRepository(encodeUtil.hash(forkName,forkRepoName),
-                    new Repo(forkName,forkRepoName, remoteRepo.getAuthority()));
+                    new Repo(forkName,forkRepoName, remoteRepo.getAuthority(),
+                            repositoryMapper.getRepoId(targetName,targetRepoName)));
         }
-
         try {
             git = Git.cloneRepository()
                     .setURI(url)
@@ -125,12 +123,6 @@ public class RepositoryServiceImp implements RepositoryService{
 
         return git;
     }
-
-
-
-
-
-
 
 
     @Override
