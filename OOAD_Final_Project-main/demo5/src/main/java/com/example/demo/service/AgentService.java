@@ -38,6 +38,12 @@ public interface AgentService {
     List<Repo> getRepoByContributor(String UserName);
 
 
+    List<Repo> getStarRepos(String name);
+
+
+
+
+
 
 }
 

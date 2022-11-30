@@ -182,22 +182,7 @@ public class FunctionTest {
     }
 
 
-    /**
-     * PR 功能实现;
-     * */
 
-    /*
-    * fastmerge
-    * */
-
-
-
-
-
-   /*
-   *
-   *单个用户
-   * */
 
 
 
@@ -273,9 +258,12 @@ public class FunctionTest {
         FileCoverUtil.WriteIn(new File("/Users/zhuhe/Desktop/TestRoot/test2.c"));
         Commit("test2.c","master");
 
-//        List<String> list = branchService.merge(repo,"master","branch1");
-//        System.out.println(list.toString());
+        List<String> list = branchService.merge(repo,"master","branch1");
+        System.out.println(list.toString());
     }
+
+
+    //
 
 
     @Test
@@ -292,6 +280,7 @@ public class FunctionTest {
 //        String a = String.valueOf(branchService.GetConflict (repo, "master", "branch1"));
 //        System.out.println(a);
     }
+
 
 
 

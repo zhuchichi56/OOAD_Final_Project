@@ -63,8 +63,8 @@ public class uploadController {
 
 
 
-    @RequestMapping("/{agentName}/{repoName}/{branchName}/{path}/upload")
-    public int upload(
+    @RequestMapping("/{agentName}/{repoName}/{branchName}/{path}/upload/{token_name}")
+    public int upload_mutil(
             @PathVariable("agentName")String agentName,
             @PathVariable("repoName")String repoName,
             @PathVariable("branchName") String branchName,
@@ -101,14 +101,11 @@ public class uploadController {
         System.out.println(name[0]);
         File temp = new File(temppath+File.separator+name[0]);
         commitService.committopath(localPath,agentName,repoName,branchName,basePath,temp);
+
         FileCoverUtil.deleteFolder(temp);
 
         return 1;
     }
-
-
-
-
 
 
 

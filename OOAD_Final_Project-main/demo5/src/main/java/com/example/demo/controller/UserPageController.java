@@ -15,6 +15,7 @@ import javax.servlet.http.HttpServletRequest;
 import java.awt.*;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -23,15 +24,6 @@ import java.util.List;
 @RequestMapping(value = "/UserPage")
 public class UserPageController {
 
-    /***
-     * json:
-     *  userName:
-     *  repoList:
-     *      repoName:
-     *      permission:
-     *      msg:
-     *  useImage:
-     */
 
     String localPath = "/Users/zhuhe/Desktop/Jgit";
 
@@ -62,7 +54,30 @@ public class UserPageController {
         JSONObject result = new JSONObject();
         List<Repo> repolist  = agentService.getRepoByName(name);
         result.put("userName",name);
+
+        List<Repo> starRepo = agentService.getStarRepos(name);
+
+
+
+//        ArrayList<JSONObject> arrayList = new ArrayList<>();
+//        for (int i = 0; i < repolist.size(); i++) {
+//            Repo repo =repolist.get(i);
+//            JSONObject sub = new JSONObject();
+//            sub.put("agentName",repo.getAgentName());
+//            sub.put("authority",repo.getAuthority());
+//
+//
+//            sub.put("fork");
+//            sub.put("ownerRepoId",repo.getAgentName());
+//            sub.put("repoName",repo.getAgentName());
+//            sub.put("star",repo.getAgentName());
+//
+//
+//        }
         result.put("repoList",repolist);
+
+
+
         result.put("userImg", String.format("@Image('900x900','@color', '%s')", name));
         System.out.println(result.toJSONString());
         return result.toJSONString();
@@ -112,21 +127,25 @@ public class UserPageController {
     }
 
 
-
+//
 //    @GetMapping("/{name}/checkToken")
 //    public int checkToken(HttpServletRequest request){
 //        String token = request.getHeader("Token");
-////        System.out.println(t);
-//
-//        System.out.println(token);
+////        System.out.println(token);
 //        String[] strings = JwtUtil.checkToken(token);
-//
-//
+//       /*
+//       没有token返回报错;
+//       */
 //
 //        if(strings==null){
 //            return 0;
 //        }
 //        System.out.println(Arrays.toString(strings));
+//
+//        /*
+//        如果token出错也不行;
+//       */
+//
 //        return agentService.CheckUser(strings[0],strings[1]);
 //    }
 

@@ -1,9 +1,13 @@
 package com.example.demo.util;
+import com.alibaba.fastjson.JSONObject;
 import com.auth0.jwt.exceptions.AlgorithmMismatchException;
 import com.auth0.jwt.exceptions.SignatureVerificationException;
 import com.auth0.jwt.exceptions.TokenExpiredException;
 import io.jsonwebtoken.*;
 
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.Date;
 import java.util.UUID;
 
@@ -11,7 +15,7 @@ import java.util.UUID;
 
 public class JwtUtil {
 
-    private static long time = 1000*24*60*60;
+    private static long time = 1000*60*60*24;
 
     private static String signature = "Token";
 
@@ -66,6 +70,76 @@ public class JwtUtil {
         }
         return strings;
     }
+
+
+
+
+
+
+    public static boolean sendNullResponce(HttpServletResponse response) throws IOException {
+        response.setCharacterEncoding("UTF-8");
+        response.setContentType("application/json; charset=utf-8");
+        PrintWriter out = null;
+        try {
+            JSONObject res = new JSONObject();
+            res.put("status", false);
+            res.put("message", "没有token");
+            System.out.println("token为空");
+            response.setStatus(401);
+            out = response.getWriter();
+            out.append(res.toString());
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            response.sendError(500);
+        }
+        return false;
+    }
+
+    public static boolean sendWrongResponce(HttpServletResponse response,String message) throws IOException {
+        response.setCharacterEncoding("UTF-8");
+        response.setContentType("application/json; charset=utf-8");
+        PrintWriter out = null;
+        try {
+            JSONObject res = new JSONObject();
+            res.put("status", false);
+            res.put("message", message);
+//            System.out.println("token验证不能通过");
+            response.setStatus(401);
+            out = response.getWriter();
+            out.append(res.toString());
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            response.sendError(500);
+        }
+        return false;
+    }
+
+    public static boolean sendSuccessResponce(HttpServletResponse response) throws IOException {
+        response.setCharacterEncoding("UTF-8");
+        response.setContentType("application/json; charset=utf-8");
+        PrintWriter out = null;
+        try {
+            JSONObject res = new JSONObject();
+            res.put("status", true);
+            res.put("message", "token验证通过");
+            System.out.println("token验证通过");
+            response.setStatus(200);
+            out = response.getWriter();
+            out.append(res.toString());
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+            response.sendError(500);
+            return false;
+        }
+    }
+
+
+
+
+
 }
 
 

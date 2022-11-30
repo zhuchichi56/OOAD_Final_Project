@@ -37,7 +37,7 @@
         <id column="Star" property="star" />
         <id column="Fork" property="fork" />
         <id column="authority" property="authority" />
-        <id column="forkRepoId" property="forkRepoId" />
+        <id column="ownerId" property="ownerRepoId" />
     </resultMap>
 
 

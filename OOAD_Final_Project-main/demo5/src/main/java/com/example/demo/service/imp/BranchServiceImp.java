@@ -105,11 +105,11 @@ public class BranchServiceImp implements BranchService {
 
 
 
-    
+
+
 //    @Override
 //    public Git pull(String branchName, Git localRepository, String remotePath) throws GitAPIException {
 //        if(BranchUtil.branchExist(localRepository, branchName)) {
-//
 //            switchBranch(localRepository, branchName);
 //        }else {
 //            createBranch(localRepository, branchName);

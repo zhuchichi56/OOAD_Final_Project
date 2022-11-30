@@ -61,6 +61,15 @@ public class PRTest {
     }
 
 
+
+
+    @Test
+    void Tesemd(){
+        Commit_fork("fasdfa","User_A","Repo_001","master");
+        Commit_fork("开发文档.md","User_A","Repo_001","master");
+    }
+
+
     @Test
     void testfork() throws GitAPIException {
         agentService.deleteUser(localPath,"User_A");
@@ -80,7 +89,9 @@ public class PRTest {
         System.out.println(BranchUtil.getAllBranch(repoA));
 
 //        branchService.createBranch(repoA,"master","branch1");
-//        repositoryService.forkRepository(localPath,"User_A", "Repo_001","master","User_B","Repo_001");
+        repositoryService.forkRepository(localPath,"User_A", "Repo_001","master","User_B","Repo_001");
+        branchService.switchBranch(repoA,"master");
+        Commit_fork("test_2_r04.out","User_A","Repo_001","master");
 
     }
 
@@ -101,6 +112,7 @@ public class PRTest {
 //        branchService.createBranch(repoA,"master","branch1");
 //        repositoryService.forkRepository(localPath,"User_A", "Repo_001","master","User_B","Repo_001");
 //
+
 
 
 

@@ -33,13 +33,14 @@ public class RepositoryServiceImp implements RepositoryService{
 
 
 
+
     @Override
     public Git initRepository(String path, String agentName, String repositoryName, int authority) {
         File repository = new File(path+ File.separator + agentName + File.separator + repositoryName);
         String repoId = encodeUtil.hash(agentName,repositoryName);
         if (repositoryMapper.getRepoId(agentName,repositoryName) == null) {
             repositoryMapper.createNewRepository(repoId, new Repo(agentName, repositoryName, authority, repoId));
-
+            contributorMapper.insertNewContributor(agentName,repositoryMapper.getRepoId(agentName,repositoryName));
         }
         if(repository.exists()) {
             System.out.println("repo exists");
@@ -96,8 +97,6 @@ public class RepositoryServiceImp implements RepositoryService{
                               String forkName, String forkRepoName) {
 
         Git git = null;
-
-
 
         String url = localPath+ File.separator + targetName +File.separator +targetRepoName;
         File forkrepository = new File(localPath+ File.separator + forkName +File.separator + forkRepoName);

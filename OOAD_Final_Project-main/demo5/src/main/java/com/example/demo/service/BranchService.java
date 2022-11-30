@@ -33,6 +33,13 @@ public interface BranchService {
     List<String> mergeNoCommit(Git repository, String baseBranch, String targetBranch) throws GitAPIException, IOException;
 
     boolean push(Git repository, String sourceBranch, String destinationBranch);
+
+//    Git pull(String branchName, Git localRepository, String remotePath);
+
+
+
+
+
 }
 
 

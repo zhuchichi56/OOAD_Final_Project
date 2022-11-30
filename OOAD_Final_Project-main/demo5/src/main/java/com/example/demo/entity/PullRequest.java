@@ -10,6 +10,7 @@ import java.io.Serializable;
 @NoArgsConstructor
 @AllArgsConstructor
 public class PullRequest implements Serializable {
+    String prId;
     String repositoryId;
     String agentName;
     String branch;

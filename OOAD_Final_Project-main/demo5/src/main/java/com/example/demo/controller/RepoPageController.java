@@ -13,15 +13,19 @@ import com.example.demo.mapper.RepositoryMapper;
 import com.example.demo.mapper.WatchRepoMapper;
 import com.example.demo.service.*;
 import com.example.demo.util.BranchUtil;
+import com.example.demo.util.DateParser;
+import com.example.demo.util.JwtUtil;
 import org.eclipse.jgit.annotations.Nullable;
 import org.eclipse.jgit.api.Git;
 import org.eclipse.jgit.api.errors.GitAPIException;
+import org.eclipse.jgit.revwalk.RevCommit;
 import org.pegdown.PegDownProcessor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.*;
 import java.nio.file.Files;
@@ -71,19 +75,18 @@ public class RepoPageController {
     PullService pullService;
 
 
-
-
-
-
     @ResponseBody
     @RequestMapping(value ="/{agentName}/{repoName}/{branch}/{path}", method = RequestMethod.GET, produces = "application/json;charset=UTF-8")
-    public String showRepoInfo(@PathVariable("agentName") String agentName,
+    public String showRepoInfo(
+            HttpServletRequest request,
+            @PathVariable("agentName") String agentName,
                                @PathVariable("repoName") String repoName,
                                @PathVariable("branch") String branch,
                                @PathVariable("path") String path
     ) throws GitAPIException, IOException {
         JSONObject result = new JSONObject();
-        result.put("display","list");
+
+
 
         Git repo = repositoryService.loadLocalRepository(localPath, agentName, repoName);
         List<String> branchNameList = BranchUtil.getAllBranch(repo);
@@ -95,34 +98,34 @@ public class RepoPageController {
             branchNameJson.add(sub);
         }
 
-        /**
-         *
-         *
-         *angentName 是仓库的主人
-         *
-         * */
+
+        String token = request.getHeader("Token");
+        String currentAgentName = JwtUtil.checkToken(token)[0];
+//        System.out.println(currentAgentName);
+
         result.put("Fork",repositoryMapper.getFork(repositoryMapper.getRepoId(agentName,repoName)));
-        result.put("canFork",repositoryMapper.forkIsValid(agentName,repositoryMapper.getRepoId(agentName,repoName)));
+        result.put("canFork",repositoryMapper.forkIsValid(currentAgentName,repositoryMapper.getRepoId(agentName,repoName)));
+
+
 
         result.put("Star",repositoryMapper.getStar(repositoryMapper.getRepoId(agentName,repoName)));
-        result.put("canStar",repositoryMapper.starIsValid(agentName,repositoryMapper.getRepoId(agentName,repoName)));
+        result.put("canStar",repositoryMapper.starIsValid(currentAgentName,repositoryMapper.getRepoId(agentName,repoName)));
+
+
 
         result.put("watch",  repositoryMapper.getWatch(repositoryMapper.getRepoId(agentName,repoName)));
-        result.put("canWatch", repositoryMapper.watchIsValid(agentName,repositoryMapper.getRepoId(agentName,repoName)));
+        result.put("canWatch", repositoryMapper.watchIsValid(currentAgentName,repositoryMapper.getRepoId(agentName,repoName)));
 
-        result.put("Auth", repositoryMapper.getRepoById(repositoryMapper.getRepoId(agentName,repoName)).getAuthority());
+        result.put("Auth", repositoryMapper.getRepoById(repositoryMapper.getRepoId(agentName,repoName)).getAuthority()==0?"private":"public");
         result.put("PRList", getAllPR(repositoryMapper.getRepoId(agentName,repoName)));
-        /**
-         *
-         *
-         *
-         * */
-
         result.put("branchList",branchNameJson);
-        result.put("contributorsList",agentService.getContributors(repositoryMapper.getRepoId(agentName, repoName)));
-
+        result.put("contributorsList",getAllContributor(agentName,repoName));
 
         branchService.switchBranch(repo,branch);
+
+
+
+
         //localPath / name / repo
         StringBuilder basePath = new StringBuilder(localPath + File.separator + agentName + File.separator + repoName);
         String[] splitPath = path.split("_");
@@ -131,31 +134,39 @@ public class RepoPageController {
             basePath.append(File.separator);
             basePath.append(splitPath[i]);
         }
-
-//        for (String s : splitPath) {
-//            basePath.append(File.separator);
-//            basePath.append(s);
-//        }
-
-//        System.out.println(basePath);
-
         File file  = new File(basePath.toString());
+        System.out.println(basePath.toString());
 
         if(file.isDirectory()) {
+
+            /*
+             * 如果该路径是文件夹
+             * */
+
+            result.put("display","list");
             File[] list = file.listFiles();
             List<JSONObject> jsonObjectList = new ArrayList<>();
             assert list != null;
+            String str  = null;
             for (File f : list) {
                 JSONObject sub = new JSONObject();
                 sub.put("type", f.isFile() ? "file" : "folder");
                 sub.put("itemName", f.getName());
                 sub.put("msg", "last modified: " + new Date(f.lastModified()));
                 jsonObjectList.add(sub);
+                if(f.isFile()){
+                    if(f.getName().endsWith(".md")){
+                        str = md2Html(f.getAbsolutePath().toString(),null);
+                    }
+                }
             }
             result.put("itemList", jsonObjectList);
-            result.put("fileContent", "");
+            result.put("fileContent", str);
         }else {
-
+            /*
+            * 如果该路径是文件
+            * */
+            result.put("display","file");
             List<JSONObject> jsonObjectList = new ArrayList<>();
             JSONObject sub = new JSONObject();
             sub.put("type", "file");
@@ -164,9 +175,6 @@ public class RepoPageController {
             jsonObjectList.add(sub);
             result.put("itemList", jsonObjectList);
 
-
-
-            //找到了这些路径
             String str ;
 
             if(file.getName().endsWith(".md")){
@@ -183,9 +191,9 @@ public class RepoPageController {
 
         System.out.println(result.toJSONString());
         return result.toJSONString();
-
-
     }
+
+
 
 
 
@@ -197,6 +205,7 @@ public class RepoPageController {
             Repo targetRepo = repositoryMapper.getRepoById(pull.getTargetId());
             Repo repoRepo = repositoryMapper.getRepoById(pull.getRepositoryId());
 
+            sub.put("PrId",pull.getPrId());
             sub.put("PRTitle",pull.getTitle());
 
             sub.put("status",pull.getIsClosed()==1?"closed":"open");
@@ -214,6 +223,16 @@ public class RepoPageController {
 
 
 
+    public List<JSONObject> getAllContributor(String agentName,String repoName) {
+        List<String> contributorlist =agentService.getContributors(repositoryMapper.getRepoId(agentName, repoName));
+        List<JSONObject> contribureJson = new ArrayList<>();
+        for (String contribute : contributorlist) {
+            JSONObject sub = new JSONObject();
+            sub.put("name", contribute);
+            contribureJson.add(sub);
+        }
+        return contribureJson;
+    }
 
 
 
@@ -272,8 +291,6 @@ public class RepoPageController {
     * 还要验证这个用户是否存在,如果不存在就返回0;
     * */
 
-
-
     @GetMapping("/AddContributer/{userName}/{repoName}/{contributerName}")
     public int inviteContributor(
             @PathVariable("userName") String userName,
@@ -289,9 +306,10 @@ public class RepoPageController {
         }
     }
 
-    @GetMapping("/removeContributer/{User}/{repoName}/{contributerName}")
+
+    @GetMapping("/removeContributer/{userName}/{repoName}/{contributerName}")
     public int removeContributor(
-            @PathVariable("User") String User,
+            @PathVariable("userName") String User,
             @PathVariable("repoName") String repoName,
             @PathVariable("contributerName") String contributerName
     ) {
@@ -300,13 +318,47 @@ public class RepoPageController {
 
 
 
+    //T
+    @ResponseBody
+    @RequestMapping(value ="/{agentName}/{repoName}/{branchName}/getCommitList", method = RequestMethod.GET, produces = "application/json;charset=UTF-8")
+    public String getCommitList(@PathVariable("agentName") String agentName,
+                                @PathVariable("repoName") String repoName,
+                                @PathVariable("branchName") String branchName
+    ) {
+
+        JSONObject result = new JSONObject();
+        List<RevCommit> commitlist = commitService.getCommitsByBranch(localPath,agentName,repoName,branchName);
+        List<JSONObject> cljson  = new ArrayList<>();
+        for (RevCommit revCommit: commitlist){
+            JSONObject sub = new JSONObject();
+            sub.put("commitUser", DateParser.getCommitDate(revCommit.getCommitTime()));
+            sub.put("time",DateParser.getCommitDate(revCommit.getCommitTime()));
+            sub.put("commitId", revCommit.getName());
+            cljson.add(sub);
+        }
+        result.put("commitList",cljson);
+        return result.toJSONString();
+    }
 
 
+
+
+    @ResponseBody
+    @RequestMapping(value ="/{agentName}/{repoName}/{branchName}/{ID}/Rollback", method = RequestMethod.GET, produces = "application/json;charset=UTF-8")
+    public int Rollback(@PathVariable("agentName") String agentName,
+                        @PathVariable("repoName") String repoName,
+                        @PathVariable("branchName") String branchName,
+                        @PathVariable("ID") String commitid
+    ) throws IOException {
+        Git repo = repositoryService.loadLocalRepository(localPath, agentName,repoName);
+        return branchService.rollback(repo,branchName,commitid);
+    }
 
 
 
 
 }
+
 
 
 

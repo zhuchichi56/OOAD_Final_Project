@@ -116,14 +116,10 @@ public class CommitServiceImp implements CommitService {
 
 
 
-
-
-
     @Override
     public int committopath(String localPath, String agentName, String repoName, String branch, String path_,File file) {
         String path = localPath+File.separator+agentName+File.separator+repoName+path_;
-        System.out.println(path);
-        String filePath =localPath+File.separator+agentName+File.separator+repoName+File.separator+file.getName();
+        String filePath =path+File.separator+file.getName();
         try {
             FileCoverUtil.updateFile(filePath,file);
             File origin = new File(path);

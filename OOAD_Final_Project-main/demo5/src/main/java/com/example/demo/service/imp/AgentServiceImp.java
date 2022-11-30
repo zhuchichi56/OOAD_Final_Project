@@ -145,6 +145,13 @@ public class AgentServiceImp implements AgentService {
         return repoIdList.stream().map(o->repositoryMapper.getRepoById(o)).collect(Collectors.toList());
     }
 
+    @Override
+    public List<Repo> getStarRepos(String name) {
+        List<String>repoIds = starRepoMapper.getAllStarRepos(name);
+        return repoIds.stream().map(e-> repositoryMapper.getRepoById(e)).collect(Collectors.toList());
+    }
+
+
 
 
 }

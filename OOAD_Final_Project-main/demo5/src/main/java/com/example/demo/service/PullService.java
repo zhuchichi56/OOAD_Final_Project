@@ -14,3 +14,4 @@ public interface PullService {
 
     int updatePull(PullRequest pullRequest);
 }
+
